@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/extra-libs/taskboard/css/lobilist.css">
+    <link rel="stylesheet" href="../assets/extra-libs/taskboard/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Custom CSS -->
+    <link href="../../dist/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <%- include('./sideBar.ejs') %>
+
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <div class="invoice-application">
+            <!-- Left Part -->
+            <div class="left-part bg-white fixed-left-part list-of-user">
+                <!-- Mobile toggle button -->
+                <a class="ti-menu ti-close btn btn-success show-left-part d-block d-md-none"
+                    href="javascript:void(0)"></a>
+                <!-- Mobile toggle button -->
+                <div class="p-3">
+                    <h4>Chat Sidebar</h4>
+                </div>
+                <div class="scrollable position-relative" style="height:100%;">
+                    <div class="p-3 border-bottom">
+                        <h5 class="card-title">Search Invoice</h5>
+                        <form>
+                            <div class="searchbar">
+                                <input class="form-control" type="text" placeholder="Search Invoice">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="mailbox list-style-none app-invoice">
+                        <li>
+                            <div class="message-center chat-scroll invoice-users">
+
+                                <% for(i=0; i<data.length; i++) { %>
+
+
+                                <a href="javascript:void(0)"
+                                    class="invoice-user message-item align-items-center border-bottom px-3 py-2 active listing-user"
+                                    id="invoice-<%=data[i].phone%>" data-invoice-id="<%=data[i].phone%>">
+                                    <span class="user-img position-relative d-inline-block">
+                                        <button class="btn btn-success btn-circle"><i class="mdi mdi-face"></i></button>
+                                    </span>
+                                    <div class="mail-contnet w-75 d-inline-block v-middle pl-2">
+                                        <h5 class="message-title mb-0 mt-1 text-truncate invoice-customer">To:
+                                            <%=data[i].stuffName%></h5>
+                                        <span
+                                            class="font-12 text-nowrap d-block text-muted text-truncate invoice-id"><span
+                                                class="font-weight-bold text-dark">Phone:</span>
+                                            <%=data[i].phone%></span>
+                                        <span class="font-12 text-nowrap d-block text-muted invoice-date"><span
+                                                class="font-weight-bold text-dark">Position:</span>
+                                            <%=data[i].position%></span>
+                                    </div>
+                                </a>
+                                <%  } %>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ./Left part -->
+            <!-- Right Part -->
+           
+            <div class="right-part invoice-box">
+                <% for(i=0; i<data.length; i++) { %>
+                <div class="p-4 invoice-inner-part">
+                    <div class="chat-not-selected">
+                        <div class="text-center">
+                            <span class="display-5 text-info"><i class="mdi mdi-file-document-box"></i></span>
+                            <h5>Open Invoice from the list</h5>
+                        </div>
+                    </div>
+                   
+                    <div class="invoiceing-box">
+
+                        <div class="" id="custom-invoice">
+                            <!-- (1) -->
+                            <div class="invoice-<%=data[i].phone%>" id="printableArea">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div class="card">
+                                            <!-- Tabs -->
+                                            <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-timeline-tab"
+                                                        data-toggle="pill" href="#invoice-<%=data[i].phone%>Cur"
+                                                        role="tab" aria-controls="pills-timeline"
+                                                        aria-selected="true">Profile</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                                        href="#invoice-<%=data[i].phone%>Prev" role="tab"
+                                                        aria-controls="pills-profile" aria-selected="false">Service</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-setting-tab" data-toggle="pill"
+                                                        href="#invoice-<%=data[i].phone%>Last" role="tab"
+                                                        aria-controls="pills-setting" aria-selected="false">TimeLine</a>
+                                                </li>
+                                            </ul>
+                                            <!-- Tabs -->
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active"
+                                                    id="invoice-<%=data[i].phone%>Cur" role="tabpanel"
+                                                    aria-labelledby="pills-timeline-tab">
+                                                    <div class="card-body">
+                                                        <form class="form-horizontal form-material">
+                                                            <div class="form-group">
+                                                                <label class="col-md-12">Full Name</label>
+                                                                <div class="col-md-12">
+                                                                    <input type="text"
+                                                                        placeholder="<%=data[i].stuffName%>"
+                                                                        class="form-control form-control-line">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="example-email"
+                                                                    class="col-lg-12">Email</label>
+                                                                <div class="col-md-12">
+                                                                    <input type="email" placeholder="<%=data[i].email%>"
+                                                                        class="form-control form-control-line"
+                                                                        name="example-email" id="example-email">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-12">Phone No</label>
+                                                                <div class="col-md-12">
+                                                                    <input type="text" placeholder="<%=data[i].phone%>"
+                                                                        class="form-control form-control-line">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-12">Skills & Position</label>
+                                                                <div class="col-md-12">
+                                                                    <textarea rows="5"
+                                                                        class="form-control form-control-line"
+                                                                        placeholder="<%=data[i].position%>"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h3 class="col-sm-12">Staff Profile Image</h3>
+                                                                <img src="<%=data[i].img%>" alt="" srcset="">
+
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-12">
+                                                                    <a href="/shop/staffmember" class="btn btn-info">
+                                                                        Update Profile
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="invoice-<%=data[i].phone%>Prev"
+                                                    role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                    <div class="card-body">
+                                                        <form action="/shop/addservicestaff" method="post">
+                                                            <%  for(j=0; j<service.length; j++ ){ %>
+                                                            <div class="form-check form-check-block">
+                                                                <% if( staffServices.length ){ %>
+                                                                <% temp = 0 %>
+                                                                <% for(k=0; k<staffServices.length ;k++ ) { %>
+                                                                <% if(staffServices[k].serviceName == service[j].name && staffServices[k].staffMail == data[i].email ){ %>
+                                                                <% temp = 1 %>
+                                                                <input class="form-check-input material-inputs"
+                                                                    type="checkbox" name="<%=service[j].name%>" checked
+                                                                    id="inlineCheckbox1" value="<%=service[j].name%>">
+                                                                <% } %>
+                                                                <% } %>
+
+                                                                <% if( temp == 0 ){ %>
+                                                                <input class="form-check-input material-inputs"
+                                                                    type="checkbox" name="<%=service[j].name%>"
+                                                                    id="inlineCheckbox1" value="<%=service[j].name%>">
+                                                                <% } %>
+
+                                                                <% } else{  %>
+                                                                <input class="form-check-input material-inputs"
+                                                                    type="checkbox" name="<%=service[j].name%>"
+                                                                    id="inlineCheckbox1" value="<%=service[j].name%>">
+                                                                <% } %>
+
+                                                                <label class="form-check-label"
+                                                                    for="inlineCheckbox1"><%=service[j].name%></label>
+                                                            </div>
+                                                            <% } %>
+                                                            <input type="hidden" name="mail" value="<%=data[i].email%>">
+                                                            <button type="submit" class="btn btn-info"> Add Service
+                                                            </button>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="invoice-<%=data[i].phone%>Last"
+                                                    role="tabpanel" aria-labelledby="pills-setting-tab">
+                                                    <form action="/shop/addstafftime" method="post">
+                                                        <input type="hidden" value="<%=data[i].email%>" name="mail">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let monC = "" 
+                                                                    if(info[data[i].email+'mondaystart'] != undefined){
+                                                                    monC = "checked"
+                                                                    }
+                                                                %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="monday<%=data[i].email%>"
+                                                                                name="monday" value="monday" <%=monC%>>
+                                                                            <label class="form-check-label"
+                                                                                for="monday<%=data[i].email%>">Monday</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% if(monC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'mondaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="mondayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'mondaystart'][s]%>" selected><%=info[data[i].email+'mondaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="mondayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'mondayend'][s]%>" selected><%=info[data[i].email+'mondayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('monday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                       
+                                                                            <div id="monday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                                     <% } %>  
+                                                               <% } else {  %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="mondayStartTime">
+
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="mondayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('monday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="monday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                               <% } %>
+
+                                                              
+                                                        </div>
+
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let tueC = "" 
+                                                                if(info[data[i].email+'tuesdaystart'] != undefined){
+                                                                    tueC = "checked"
+                                                                }
+                                                                 %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="tuesday<%=data[i].email%>"
+                                                                                name="tuesday" value="tuesday"
+                                                                                <%=tueC%>>
+                                                                            <label class="form-check-label"
+                                                                                for="tuesday<%=data[i].email%>">TuesDay</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% if(tueC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'tuesdaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="tuesdayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'tuesdaystart'][s]%>" selected><%=info[data[i].email+'tuesdaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="tuesdayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'tuesdayend'][s]%>" selected><%=info[data[i].email+'tuesdayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('tuesday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="tuesday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                    
+                                                                     <% } %>  
+                                                               <% }  else { %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="tuesdayStartTime">
+
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="tuesdayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('tuesday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="tuesday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                               <% } %>
+                                                              
+                                                        </div>
+
+
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let wedC = "" 
+                                                                if(info[data[i].email+'wednesdaystart'] != undefined){
+                                                                    wedC = "checked"
+                                                                }
+                                                            %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="wednesday<%=data[i].email%>"
+                                                                                name="wednesday" value="wednesday" <%=wedC%> >
+                                                                            <label class="form-check-label"
+                                                                                for="wednesday<%=data[i].email%>">Wednesday</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% if(wedC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'wednesdaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="wednesdayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'wednesdaystart'][s]%>" selected><%=info[data[i].email+'wednesdaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="wednesdayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'wednesdayend'][s]%>" selected><%=info[data[i].email+'wednesdayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('wednesday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="wednesday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                    
+                                                                     <% } %>  
+                                                               <% } else{  %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="wednesdayStartTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="wednesdayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('wednesday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="wednesday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                              <% }%>
+                                                            
+                                                        </div>
+
+
+
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let thrC = "" 
+                                                                if(info[data[i].email+'thrusdaystart'] != undefined){
+                                                                    thrC = "checked"
+                                                                }
+                                                            %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="thrusday<%=data[i].email%>"
+                                                                                name="thrusday" value="thrusday" <%=thrC%> >
+                                                                            <label class="form-check-label"
+                                                                                for="thrusday<%=data[i].email%>">Thrusday</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <% if(thrC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'thrusdaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="thrusdayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'thrusdaystart'][s]%>" selected><%=info[data[i].email+'thrusdaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="thrusdayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'thrusdayend'][s]%>" selected><%=info[data[i].email+'thrusdayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('thrusday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="thrusday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                    
+                                                                     <% } %>  
+                                                               <% }else{  %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="thrusdayStartTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="thrusdayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('thrusday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="thrusday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                               <% } %>
+                                                              
+                                                                
+                                                        </div>
+
+
+
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let friC = "" 
+                                                                if(info[data[i].email+'fridaystart'] != undefined){
+                                                                    friC = "checked"
+                                                                }
+                                                            %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="friday<%=data[i].email%>"
+                                                                                name="friday" value="friday" <%=friC%> >
+                                                                            <label class="form-check-label"
+                                                                                for="friday<%=data[i].email%>">Friday</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% if(friC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'fridaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="fridayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'fridaystart'][s]%>" selected><%=info[data[i].email+'fridaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="fridayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'fridayend'][s]%>" selected><%=info[data[i].email+'fridayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('friday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="friday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                    
+                                                                     <% } %>  
+                                                               <% }else{ %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="fridayStartTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="fridayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('friday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="friday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                               <% } %>
+                                                              
+                                                        </div>
+
+
+
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let satC = "" 
+                                                                if(info[data[i].email+'saturdaystart'] != undefined){
+                                                                    satC = "checked"
+                                                                }
+                                                            %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="saturday<%=data[i].email%>"
+                                                                                name="saturday" value="saturday" <%=satC%> >
+                                                                            <label class="form-check-label"
+                                                                                for="saturday<%=data[i].email%>">Saturday</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% if(satC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'saturdaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="saturdayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'saturdaystart'][s]%>" selected><%=info[data[i].email+'saturdaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="saturdayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'saturdayend'][s]%>" selected><%=info[data[i].email+'saturdayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('saturday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="saturday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                    
+                                                                     <% } %>  
+                                                               <% } else{ %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="saturdayStartTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="saturdayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('saturday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="saturday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                              <% } %>
+                                                              
+                                                        </div>
+
+
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <% let sunC = "" 
+                                                                if(info[data[i].email+'sundaystart'] != undefined){
+                                                                    sunC = "checked"
+                                                                }
+                                                            %>
+                                                                <div class="col-sm-3">
+                                                                    <div class="form-group">
+                                                                        <div
+                                                                            class="form-check form-control p-2 form-check-inline">
+                                                                            <input
+                                                                                class="form-check-input material-inputs"
+                                                                                type="checkbox" id="sunday<%=data[i].email%>"
+                                                                                name="sunday" value="sunday" <%=sunC%> >
+                                                                            <label class="form-check-label"
+                                                                                for="sunday<%=data[i].email%>">Sunday</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <% if(sunC == "checked"){ %>
+                                                                
+                                                                    <% for(s in info[data[i].email+'sundaystart']){ %>
+                                                                        
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="startTime"
+                                                                                        name="sundayStartTime">
+                                                                                        <option value="<%=info[data[i].email+'sundaystart'][s]%>" selected><%=info[data[i].email+'sundaystart'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control" id="endTime"
+                                                                                        name="sundayEndTime">
+                                                                                        <option value="<%=info[data[i].email+'sundayend'][s]%>" selected><%=info[data[i].email+'sundayend'][s]%></option>
+                                                                                        <option value="10:30">10:30</option>
+                                                                                        <option value="11:00">11:00</option>
+                                                                                        <option value="11:30">11:30</option>
+                                                                                        <option value="12:00">12:00</option>
+                                                                                        <option value="12:30">12:30</option>
+                                                                                        <option value="01:00">01:00</option>
+                                                                                        <option value="01:30">01:30</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-1">
+                                                                                <div class="form-group">
+                                                                                    <button class="btn btn-success" type="button"
+                                                                                        onclick="education_fields('sunday<%=data[i].email%>');"><i
+                                                                                            class="fa fa-plus"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                       
+                                                                            <div id="sunday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                                     <% } %>  
+                                                               <% }else { %>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="startTime"
+                                                                            name="sundayStartTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control" id="endTime"
+                                                                            name="sundayEndTime">
+                                                                            <option value="10:00">10:00</option>
+                                                                            <option value="10:30">10:30</option>
+                                                                            <option value="11:00">11:00</option>
+                                                                            <option value="11:30">11:30</option>
+                                                                            <option value="12:00">12:00</option>
+                                                                            <option value="12:30">12:30</option>
+                                                                            <option value="01:00">01:00</option>
+                                                                            <option value="01:30">01:30</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" type="button"
+                                                                            onclick="education_fields('sunday<%=data[i].email%>');"><i
+                                                                                class="fa fa-plus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="sunday<%=data[i].email%>Slot" class=" m-t-10"></div>
+                                                               <% } %>
+                                                              
+                                                        </div>
+
+                                                        <button class="btn btn-success text-center">Add Staff
+                                                            Time</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+                 <% } %>
+            </div>
+           
+            <!-- ./Right Part -->
+        </div>
+    </div>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+    <script src="../assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="../../dist/js/app.min.js"></script>
+    <script src="../../dist/js/app.init.dark.js"></script>
+    <script src="../../dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="../../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../../dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../../dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="../../dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+    <script src="../../dist/js/pages/invoice/invoice.js"></script>
+    <script src="../assets/extra-libs/jquery.repeater/dff.js"></script>
+</body>
+
+</html>

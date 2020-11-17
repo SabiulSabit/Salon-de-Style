@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/lobilist.css">
+    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <%- include('./sideBar.ejs') %>
+
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <div class="heath-information">
+            <div class="container">
+                <h1 class="text-center">Category of your Business</h1>
+                <div class="row">
+                    <form action="/shop/categorieslist" method="post">
+                        <div class="col-sm-12 col-lg-6 col-md-6">
+                            <h3 class="text-center">Service List</h3>
+                            <% for(i=0;i<data.length;i++){ %>
+                            <div class="form-group">
+                                <div class="form-check form-control p-2 form-check-inline">
+                                    <input class="form-check-input material-inputs" type="checkbox"
+                                        id="<%=data[i].name%>" name="cat" value="<%=data[i].name%>" checked>
+                                    <label class="form-check-label" for="<%=data[i].name%>"><%=data[i].name%></label>
+                                </div>
+                            </div>
+                            <% } %>
+                            <div id="addNew"></div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 col-md-6">
+                            <h3>Selected service list</h3>
+                            <h4 class="text-danger" id="show"></h4>
+                            <button type="submit" class="btn btn-info">Submit</button>
+                            <input type="text" name="newVal" placeholder="Add New" id="newVal">
+                            <p class="btn btn-info" onclick="addNew()">Addnew</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+    <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="/dist/js/app.min.js"></script>
+    <script src="/dist/js/app.init.dark.js"></script>
+    <script src="/dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+    <script src="/dist/js/pages/invoice/invoice.js"></script>
+    <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
+
+
+    <script>
+        function addNew() {
+            let val = document.getElementById('newVal').value 
+            //console.log(val)
+            document.getElementById('newVal').value =""
+
+            document.getElementById('addNew').innerHTML += `
+                                    <div class="form-group">
+                                        <div class="form-check form-control p-2 form-check-inline">
+                                            <input class="form-check-input material-inputs" type="checkbox" id="${val}" name="cat" value="${val}" checked>
+                                            <label class="form-check-label" for="${val}">${val}</label>
+                                        </div>
+                                    </div>
+                                    `
+        }
+    </script>
+
+
+
+</body>
+
+</html>

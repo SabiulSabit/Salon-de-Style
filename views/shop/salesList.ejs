@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/lobilist.css">
+    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body onload="calculateTotal()">
+
+    <%- include('./sideBar.ejs') %>
+
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <form action="/shop/processed" method="post">
+        <input type="hideen" name="extra" id="ex" value="0">
+        <div class="page-wrapper">
+            <div class="invoice-application">
+                <!-- Left Part -->
+                <div class="left-part bg-white fixed-left-part list-of-user">
+                    <!-- Mobile toggle button -->
+                    <a class="ti-menu ti-close btn btn-success show-left-part d-block d-md-none"
+                        href="javascript:void(0)"></a>
+                    <!-- Mobile toggle button -->
+                    <div class="p-3">
+                        <h4>Chat Sidebar</h4>
+                    </div>
+                    <div class="scrollable position-relative" style="height:100%;">
+                        <div class="p-3 border-bottom">
+                            <h5 class="card-title">Service LIst</h5>
+
+                        </div>
+                        <ul class="mailbox list-style-none app-invoice">
+                            <li>
+                                <div class="message-center chat-scroll invoice-users">
+
+                                    <% for(k=0;k<services.length; k++) { %>
+
+
+                                    <a onclick="addServices('<%=services[k].name%>','<%=services[k].price%>')"
+                                        class="invoice-user message-item align-items-center border-bottom px-3 py-2 active listing-user">
+                                        <span class="user-img position-relative d-inline-block">
+                                            <button class="btn btn-success btn-circle"><i
+                                                    class="mdi mdi-face"></i></button>
+                                        </span>
+                                        <div class="mail-contnet w-75 d-inline-block v-middle pl-2">
+                                            <h5 class="message-title mb-0 mt-1 text-truncate invoice-customer">
+                                                <%=services[k].name%> </h5>
+                                            <span
+                                                class="font-12 text-nowrap d-block text-muted text-truncate invoice-id"><span
+                                                    class="font-weight-bold text-dark">Time: <%=services[k].hour%> hour
+                                                    <%=services[k].min%> minutes</span>
+                                                <span class="font-12 text-nowrap d-block text-muted invoice-date"><span
+                                                        class="font-weight-bold text-dark">Price: $
+                                                        <%=services[k].price%></span>
+                                        </div>
+                                    </a>
+
+                                    <% } %>
+
+
+
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- ./Left part -->
+                <!-- Right Part -->
+                <div class="right-part2 invoice-box">
+                    <div class="p-4">
+                        <div id="custom-invoice">
+                            <div id="printableArea">
+                                <div class="row pt-3">
+                                    <div class="col-md-12">
+
+
+
+                                        <div class="table-responsive">
+                                            <table id="mainTable" class="table table-striped search-table v-middle">
+                                                <thead class="header-item">
+                                                    <th class="text-dark font-weight-bold">Service</th>
+                                     
+                                                    <th class="text-dark font-weight-bold">Amount</th>
+                                                    <th class="text-center">
+                                                        <div class="action-btn">
+                                                            <a href="javascript:void(0)"
+                                                                class="delete-multiple  text-danger"><i
+                                                                    class="fas fa-trash font-20 font-medium"></i> Delete
+                                                                service</a>
+                                                        </div>
+                                                    </th>
+                                                </thead>
+                                                <tbody id='extra'>
+                                                    <input type="hidden" id="sLen" value="<%=user.length%>">
+                                                    <% for(p=0;p<user.length; p++ ){ %>
+                                                    <div>
+                                                        <input type="hidden" name="serviceName"
+                                                            value="<%=user[p].serviceName%>">
+                                                        <input type="hidden" id="<%=user[p].serviceName%><%=p%>"
+                                                            class="servicePrice" name="servicePrice"
+                                                            value="<%=user[p].servicePrice%>">
+                                                        <tr id="<%=p%>" class="search-items">
+                                                            <td>
+                                                                <span
+                                                                    class="usr-email-addr"><%=user[p].serviceName%></span>
+                                                            </td>
+                                                           
+
+                                                            <td>
+                                                                <span class="usr-ph-no">$ <span
+                                                                        id="<%=p%>Price"><%=user[p].servicePrice%>
+                                                                    </span> </span>
+                                                            </td>
+                                                            <td class="text-center">
+
+                                                                <div class="action-btn">
+
+
+
+                                                                    <a onclick="deleteEmp('<%=p%>','<%=user[p].serviceName%><%=p%>')"
+                                                                        class="text-dark  ml-2"><i
+                                                                            class="mdi mdi-delete font-20"></i></a>
+                                                                    <!--  -->
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    </div>
+                                                    <% } %>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+
+                                                       
+                                                        <th></th>
+                                                        <th><label class="text-center">Sub Total Discount: </label></th>
+                                                        <th>
+
+                                                            <input style="width: 100px" onkeyup="subTotalDiscountFun()"
+                                                                type="number" id="subTotalDiscount" class="form-control"
+                                                                value="0">
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tfoot>
+                                                    <tr>
+
+                                                       
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>
+                                                            <p class="text-center">Sub-total: $<span id="subTotal"></span> </p>
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="pull-right mt-4 text-right">
+
+                                            <div class="table-responsive">
+                                                <table id="mainTable" class="table table-bordered table-striped m-b-0">
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <select name="" id="" class="form-control"
+                                                                    onmousedown="this.value='';"
+                                                                    onchange="setOffer(this.value)">
+                                                                    <option value="0  " selected>None</option>
+                                                                    <% for(l=0;l<giftCard.length;l++){ %>
+                                                                    <option
+                                                                        value="<%=giftCard[l].price%> <%=giftCard[l].token%>">
+                                                                        GiftCard: <%=giftCard[l].giftCardName%></option>
+                                                                    <% } %>
+                                                                    <% for(l=0;l<package.length;l++){ %>
+                                                                    <option
+                                                                        value="<%=package[l].price%> <%=package[l].token%>">
+                                                                        Package: <%=package[l].packageName%></option>
+                                                                    <% } %>
+                                                                    <% for(l=0;l<membership.length;l++){ %>
+                                                                    <option
+                                                                        value="<%=membership[l].price%> <%=membership[l].token%>">
+                                                                        Membership: <%=membership[l].userMail%></option>
+                                                                    <% } %>
+
+
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Token Code" id="token">
+                                                            </td>
+                                                            <td>$ <span id="offerDiscount">0</span> </td>
+                                                        </tr>
+
+                                                    </tbody>
+
+
+                                                </table>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table id="mainTable" class="table table-bordered table-striped m-b-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Tips Amount(%)
+                                                            </td>
+                                                            <td>
+                                                                <input class="form-control" onkeyup="addTips()"
+                                                                    type="number" name="tipsAmountPercentage" value="0"
+                                                                    id="tipsAmountPercentage">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control"
+                                                                    name="tipsAmount" id="tipsAmount"
+                                                                    placeholder="Amount" value="0" readonly>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+
+
+                                                </table>
+                                            </div>
+
+                                            <h3><b>Total :</b> $ <span id="total">0</span> </h3>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="pull-left">
+                                            <address>
+                                                <h3>Shop Name: <%=shop.businessName%></h3>
+                                                <h4 class="mb-0 font-weight-bold">&nbsp;<%=userInfo.name%></h4>
+                                                <div class="mb-2">
+                                                    <span class="font-weight-bold ml-1">Invoice Id:
+                                                        <%=user[0].bookingID%></span><span
+                                                        class="invoice-number ml-2"></span>
+                                                    <h6 class="text-muted font-medium">&nbsp;Email:
+                                                        <%=user[0].userMail%>
+                                                    </h6>
+                                                </div>
+                                                <p class="text-muted ml-1"><%=userInfo.address%></p>
+                                                <p class="text-muted ml-1">Payment Type:
+                                                    <span><%=user[0].paymentType%></span></p>
+                                                <input type="hidden" name="user" value="<%=user[0].userMail%>">
+                                                <input type="hidden" name="id" value="<%=user[0].bookingID%>">
+                                                <input type="hidden" name="paymentType"
+                                                    value="<%=user[0].paymentType%>">
+                                            </address>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <hr>
+                                        <div class="text-right">
+
+                                            <% if(user[0].paymentType == "Hand Cash") { %>
+                                            <div role="tabpanel" class="tab-pane" id="handcash">
+                                                <br />Confirm with hand cash <a href="">click here</a>
+                                                <br>
+                                                <br>
+                                                <button class="btn btn-info"><i class="fab fa-cc-paypal"></i></button>
+                                                <input type="submit" class="btn btn-info" value="Hand cash">
+                                            </div>
+                                            <% }%>
+                                            <button class="btn btn-danger" type="submit"> Proceed to payment
+                                            </button>
+                                            <button class="btn btn-default print-page" type="button"> <span><i
+                                                        class="fa fa-print"></i> Print</span> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- ./(1) -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ./Right Part -->
+        </div>
+
+    </form>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+    <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="/dist/js/app.min.js"></script>
+    <script src="/dist/js/app.init.dark.js"></script>
+    <script src="/dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+    <script src="/dist/js/pages/invoice/invoice.js"></script>
+    <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
+    <script src="/assets/extra-libs/tiny-editable/mindmup-editabletable.js"></script>
+
+
+    <script>
+        $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+        $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+        $(function () {
+            $('#editable-datatable').DataTable();
+        });
+    </script>
+
+    <script>
+        function addServices(name, price) {
+
+            document.getElementById('ex').value = 1;
+            let len = document.getElementById('sLen').value;
+            document.getElementById('sLen').value = parseInt(len) + 1;
+            len = parseInt(len) + 1;
+            document.getElementById('extra').innerHTML += ` <input type="hidden" name="serviceName"
+                                                        value="${name}">
+                                                    <input type="hidden" id="${name}${len}" name="servicePrice"
+                                                        value=${price}>
+                                                    <tr id=${len}>
+                                                        <td>${name}</td>
+                                                        
+                                                        <td class="font-500">$${price}</td>
+                                                        <td class="text-center">
+
+                                                            <div class="action-btn"> 
+                                                                <a onclick="deleteEmp('${len}','${name}${len}')"
+                                                                class="text-dark  ml-2"><i
+                                                                class="mdi mdi-delete font-20"></i></a>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>`
+            calculateTotal();
+            // addTips()
+
+        }
+
+        function setOffer(value) {
+
+            let arr = value.split(' ')
+            document.getElementById('offerDiscount').innerHTML = arr[0];
+            document.getElementById('token').value = arr[1];
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let taskArray = new Array();
+            $("input[name=servicePrice]").each(function () {
+                taskArray.push($(this).val());
+            });
+
+            let total = 0
+            for (i = 0; i < taskArray.length; i++) {
+                total += parseInt(taskArray[i]);
+            }
+
+            document.getElementById('subTotal').innerHTML = total
+            // let total = document.getElementById('total').innerHTML  ;
+            let tips = document.getElementById('tipsAmount').value;
+            let dis = document.getElementById('subTotalDiscount').value;
+            let offer = document.getElementById('offerDiscount').innerHTML;
+
+            if (dis == "") {
+                dis = 0;
+            }
+            document.getElementById('total').innerHTML = total - parseFloat(dis) - parseFloat(offer) + parseFloat(tips)
+
+            //addTips();
+        }
+
+        function deleteEmp(val, id) {
+            //console.log("asdfasfd", val)
+            document.getElementById(id).value = 0;
+            document.getElementById(val).remove();
+            calculateTotal();
+        }
+
+        function subTotalDiscountFun() {
+            let sub = document.getElementById('subTotal').innerHTML;
+            //console.log(sub)
+
+            let subDiscount = document.getElementById('subTotalDiscount').value;
+            if (subDiscount == '') {
+                subDiscount = 0
+            }
+            if (sub == '') {
+                sub = 0
+            }
+            // console.log(sub,subDiscount)
+            document.getElementById('total').innerHTML = parseFloat(sub) - parseFloat(subDiscount)
+            calculateTotal()
+            //addTips()
+        }
+
+        function addTips() {
+            let tipsPrecentage = document.getElementById('tipsAmountPercentage').value;
+            let sub = document.getElementById('subTotal').innerHTML;
+            let subDiscount = document.getElementById('subTotalDiscount').value;
+            if (subDiscount == '') {
+                subDiscount = 0
+            }
+            if (tipsPrecentage == '') {
+                tipsPrecentage = 0
+            }
+            sub = parseFloat(sub) - parseFloat(subDiscount);
+            // console.log("Sub: ",sub)
+            let percetage = (sub * parseFloat(tipsPrecentage)) / 100
+
+            document.getElementById('tipsAmount').value = percetage;
+            calculateTotal();
+
+        }
+
+       
+    </script>
+
+</body>
+
+</html>

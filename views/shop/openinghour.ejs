@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>opening Hours</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/lobilist.css">
+    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <style>
+      .openCalendar{
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    </style>
+</head>
+
+<body onload="closeDay('sunday'); closeDay('monday'); closeDay('tuesday'); closeDay('wednesday'); closeDay('thrusday'); closeDay('friday'); closeDay('saturday');">
+  <!-- partial:index.partial.html -->
+
+
+  <!-- Side bar start -->
+  <%- include('./sideBar.ejs') %>
+  <!-- Side bar end -->
+
+  <!-- page content -->
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mt-3">
+          <h1 class="text-center">Opening Hour</h1>
+        </div>
+        <div class="col-lg-2 mt-3">
+          <input type="submit" form="daySave" class="btn btn-success" onclick="hiddenAdd()" value="Save">
+        </div>
+</div>
+        <form action="/shop/savedate" id="daySave" method="POST">
+
+          <!-- Hidden Data -->
+           <div id="hidden">
+                 <input type="text" name="sunChecked" id="sunChecked" hidden>
+                 <input type="text" name="monChecked" id="monChecked" hidden>
+                 <input type="text" name="tueChecked" id="tueChecked" hidden>
+                 <input type="text" name="wedChecked" id="wedChecked" hidden>
+                 <input type="text" name="thuChecked" id="thuChecked" hidden>
+                 <input type="text" name="friChecked" id="friChecked" hidden>
+                 <input type="text" name="satChecked" id="satChecked" hidden>
+           </div>
+          <div class="col-lg-12">
+            <h2>Default Opening Hours For Business</h2>
+          </div>
+
+            <div class="day">
+              <div class="container">
+                <div class="row mb-3">
+                  <div class="col-lg-2">
+                    <% let sunC = "" 
+                    if(sun.length == 1){
+                      sunC = "checked"
+                    }
+                %>
+                    <input type="checkbox" id="sundayChecked" class="material-inputs chk-col-green" <%=sunC%> onchange="closeDay('sunday');" />
+                                          <label for="sundayChecked">Sunday</label>
+                  
+                    
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="closeTime" id="sundayClose">
+                      <h3>Close</h3>
+                    </div>
+                    <div class="startTime" id="sundayStartTime">
+                      <select name="sunopen" id="" class="form-control">
+                        <%  if(sun.length == 1){ %>
+                        <option value="<%=sun[0].open%>" selected><%=sun[0].open%></option>
+                        <% } %>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="10:05">10:05 AM</option>
+                        <option value="10:10">10:10 AM</option>
+                        <option value="10:15">10:15 AM</option>
+                        <option value="10:20">10:20 AM</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="endTime" id="sundayEndTime">
+                      <select name="sunclose" id="" class="form-control">
+                        <%  if(sun.length == 1){ %>
+                        <option value="<%=sun[0].close%>" selected><%=sun[0].close%></option>
+                        <% } %>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="10:05">10:05 AM</option>
+                        <option value="10:10">10:10 AM</option>
+                        <option value="10:15">10:15 AM</option>
+                        <option value="10:20">10:20 AM</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-2" id="sundayAddBtn">
+                    <a id="datebtn" onclick="timeAdd('sunday')"  class="btn btn-info">ADD Time</a>
+                  </div>
+                </div>
+              </div>
+              <div id="sundayNewSlot"></div>
+             
+            </div>
+
+            <div class="day">
+              <div class="row mb-3">
+                <div class="col-lg-2">
+                  <% let monC = "" 
+                  if(mon.length == 1){
+                    monC = "checked"
+                  }
+                %>
+                  <input type="checkbox" id="mondayChecked" class="material-inputs chk-col-green" <%=monC%> onchange="closeDay('monday');" />
+                                        <label for="mondayChecked">Monday</label>
+               
+           
+                </div>
+                <div class="col-lg-4">
+                  <div class="closeTime1" id="mondayClose">
+                    <h3>Close</h3>
+                  </div>
+                  <div class="startTime1" id="mondayStartTime">
+                    <select name="monopen" id="" class="form-control">
+                      <%  if(mon.length == 1){ %>
+                      <option value="<%=mon[0].open%>" selected><%=mon[0].open%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="endTime1" id="mondayEndTime">
+                    <select name="monclose" id="" class="form-control">
+                      <%  if(mon.length == 1){ %>
+                      <option value="<%=mon[0].close%>" selected><%=mon[0].close%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2" id="mondayAddBtn">
+                  <a id="datebtn1" onclick="timeAdd('monday')"  class="btn btn-info">ADD Time</a>
+                </div>
+              </div>
+              <div id="mondayNewSlot"></div>
+              
+            </div>
+
+            <div class="day">
+              <div class="row mb-3">
+                <div class="col-lg-2">
+                  <% let tueC = "" 
+                  if(tue.length == 1){
+                    tueC = "checked"
+                  }
+              %>
+                  <input type="checkbox" id="tuesdayChecked" class="material-inputs chk-col-green" <%=tueC%> onchange="closeDay('tuesday');" />
+                                        <label for="tuesdayChecked">Tuesday</label>
+               
+                </div>
+                <div class="col-lg-4">
+                  <div class="closeTime2" id="tuesdayClose">
+                    <h3>Close</h3>
+                  </div>
+                  <div class="startTime2" id="tuesdayStartTime">
+                    <select name="tueopen" id="" class="form-control">
+                      <%  if(tue.length == 1){ %>
+                      <option value="<%=tue[0].open%>" selected><%=tue[0].open%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="endTime2" id="tuesdayEndTime">
+                    <select name="tueclose" id="" class="form-control">
+                      <%  if(tue.length == 1){ %>
+                      <option value="<%=tue[0].close%>" selected><%=tue[0].close%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2" id="tuesdayAddBtn">
+                  <a id="datebtn2" onclick="timeAdd('tuesday')"  class="btn btn-info">ADD Time</a>
+                </div>
+              </div>
+              <div id="tuesdayNewSlot"></div>
+              
+            </div>
+
+
+            <div class="day">
+              <div class="row mb-3">
+                <div class="col-lg-2">
+                  <% let wedC = "" 
+                    if(wed.length == 1){
+                      wedC = "checked"
+                    }
+                   %>
+                  <input type="checkbox" id="wednesdayChecked" class="material-inputs chk-col-green" <%=wedC%> onchange="closeDay('wednesday');" />
+                                        <label for="wednesdayChecked">Wednesday</label>
+            
+                </div>
+                <div class="col-lg-4">
+                  <div class="closeTime1" id="wednesdayClose">
+                    <h3>Close</h3>
+                  </div>
+                  <div class="startTime3" id="wednesdayStartTime">
+                    <select name="wedopen" id="" class="form-control">
+                      <%  if(wed.length == 1){ %>
+                      <option value="<%=wed[0].open%>" selected><%=wed[0].open%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="endTime3" id="wednesdayEndTime">
+                    <select name="wedclose" id="" class="form-control">
+                      <%  if(wed.length == 1){ %>
+                      <option value="<%=wed[0].close%>" selected><%=wed[0].close%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2" id="wednesdayAddBtn">
+                  <a id="datebtn3" onclick="timeAdd('wednesday')"  class="btn btn-info">ADD Time</a>
+                </div>
+              </div>
+              <div id="sundayNewSlot" id="wednesdayAddBtn"></div>
+              
+            </div>
+
+
+            <div class="day">
+              <div class="row mb-3">
+                <div class="col-lg-2">
+                  <% let thuC = "" 
+                  if(thu.length == 1){
+                     thuC = "checked"
+                  }
+                 %>
+                  <input type="checkbox" id="thrusdayChecked" class="material-inputs chk-col-green" <%=thuC%> onchange="closeDay('thrusday');" />
+                                        <label for="thrusdayChecked">Thursday</label>
+                  
+                </div>
+                <div class="col-lg-4">
+                  <div class="closeTime4" id="thrusdayClose">
+                    <h3>Close</h3>
+                  </div>
+                  <div class="startTime4" id="thrusdayStartTime">
+                    <select name="thuopen" id="" class="form-control">
+                      <%  if(thu.length == 1){ %>
+                      <option value="<%=thu[0].open%>" selected><%=thu[0].open%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="endTime4" id="thrusdayEndTime">
+                    <select name="thuclose" id="" class="form-control">
+                      <%  if(thu.length == 1){ %>
+                      <option value="<%=thu[0].close%>" selected><%=thu[0].close%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2" id="thrusdayAddBtn">
+                  <a id="datebtn4" onclick="timeAdd('thrusday')"  class="btn btn-info">ADD Time</a>
+                </div>
+              </div>
+              <div id="thrusdayNewSlot"></div>
+             
+            </div>
+
+            <div class="day">
+              <div class="row mb-3">
+                <div class="col-lg-2">
+                  <% let friC = "" 
+                  if(fri.length == 1){
+                    friC = "checked"
+                  }
+                %>
+                  <input type="checkbox" id="fridayChecked" class="material-inputs chk-col-green" <%=friC%> onchange="closeDay('friday');" />
+                                        <label for="fridayChecked">Friday</label>
+   
+                </div>
+                <div class="col-lg-4">
+                  <div class="closeTime5" id="fridayClose">
+                    <h3>Close</h3>
+                  </div>
+                  <div class="startTime5" id="fridayStartTime">
+                    <select name="friopen" id="" class="form-control">
+                      <%  if(fri.length == 1){ %>
+                      <option value="<%=fri[0].open%>" selected><%=fri[0].open%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="endTime5" id="fridayEndTime">
+                    <select name="friclose" id="" class="form-control">
+                      <%  if(fri.length == 1){ %>
+                      <option value="<%=fri[0].close%>" selected><%=fri[0].close%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2" id="fridayAddBtn">
+                  <a id="datebtn5" onclick="timeAdd('friday')"  class="btn btn-info">ADD Time</a>
+                </div>
+              </div>
+              <div id="fridayNewSlot"></div>
+              
+            </div>
+
+            <div class="day">
+              <div class="row mb-3">
+                <div class="col-lg-2">
+                  <% let satC = "" 
+                  if(sat.length == 1){
+                    satC = "checked"
+                   }
+                 %>
+                  <input type="checkbox" id="saturdayChecked" class="material-inputs chk-col-green" <%=satC%> onchange="closeDay('saturday');" />
+                                        <label for="saturdayChecked">Saturday</label>
+                  
+
+                </div>
+                <div class="col-lg-4">
+                  <div class="closeTime6" id="saturdayClose">
+                    <h3>Close</h3>
+                  </div>
+                  <div class="startTime6" id="saturdayStartTime">
+                    <select name="satopen" id="" class="form-control">
+                      <%  if(sat.length == 1){ %>
+                      <option value="<%=sat[0].open%>" selected><%=sat[0].open%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="endTime6" id="saturdayEndTime">
+                    <select  name="satclose" id="" class="form-control">
+                      <%  if(sat.length == 1){ %>
+                      <option value="<%=sat[0].close%>" selected><%=sat[0].close%></option>
+                      <% } %>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:05">10:05 AM</option>
+                      <option value="10:10">10:10 AM</option>
+                      <option value="10:15">10:15 AM</option>
+                      <option value="10:20">10:20 AM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2" id="saturdayAddBtn">
+                  <a id="datebtn6" onclick="timeAdd('saturday')" class="btn btn-info">ADD Time</a>
+                </div>
+              </div>
+              <div id="saturdayNewSlot"></div>
+              
+            </div>
+          
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h1>Opening Hours Note</h1>
+              <p>Note for Clients</p>
+                <div class="form-group">
+                  <textarea name="descrip" class="form-control" rows="6" placeholder="Text Here..."></textarea>
+              </div>
+              
+              <div class="openCalendar">
+                <a href="workSchedule.html">Customize Opening calender</a>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      
+    </div>
+  </div>
+  <!-- /page content -->
+
+
+  </div>
+  </div>
+
+<!-- partial -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+<script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- apps -->
+<script src="/dist/js/app.min.js"></script>
+<script src="/dist/js/app.init.dark.js"></script>
+<script src="/dist/js/app-style-switcher.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+<script src="/dist/js/pages/invoice/invoice.js"></script>
+<script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
+<script src="/dist/js/custom.min.js"></script>
+
+<!-- custom js -->
+
+<script src="/js/shop/script.js"></script>
+
+<!-- <script src="calender.js"></script> -->
+<script>
+  function hiddenAdd(){
+    //get all checkbox info
+    sun = document.getElementById('sundayChecked').checked;
+    mon = document.getElementById('mondayChecked').checked;
+    tue = document.getElementById('tuesdayChecked').checked;
+    wed = document.getElementById('wednesdayChecked').checked;
+    thu = document.getElementById('thrusdayChecked').checked;
+    fri = document.getElementById('fridayChecked').checked;
+    sat = document.getElementById('saturdayChecked').checked;
+     
+    //set all hidden input value
+    document.getElementById("sunChecked").value = sun;
+    document.getElementById("monChecked").value = mon;
+    document.getElementById("tueChecked").value = tue;
+    document.getElementById("wedChecked").value = wed;
+    document.getElementById("thuChecked").value = thu;
+    document.getElementById("friChecked").value = fri;
+    document.getElementById("satChecked").value = sat;
+  }
+</script>
+</body>
+
+</html>

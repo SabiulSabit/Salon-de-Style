@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
+    <!-- Custom CSS -->
+    <link href="../../dist/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <%- include('./sideBar.ejs') %>
+
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-12 align-self-center">
+                <h3 class="text-themecolor mb-0">Products Cart</h3>
+                <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Products Cart</li>
+                </ol>
+            </div>
+
+        </div>
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-md-9 col-lg-9">
+                    <div class="card">
+                        <div class="card-header bg-info">
+                            <h5 class="mb-0 text-white">Your Cart (4 items)</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form action="/shop/processed" method="post">
+                                    <table class="table product-overview">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Product info</th>
+                                                <th>Price</th>
+                                                <th>Discount</th>
+                                                <th style="text-align:center">Total</th>
+                                                <th style="text-align:center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <input type="hidden" name="user" value="<%=user[0].userMail%>">
+                                            <input type="hidden" name="id" value="<%=user[0].bookingID%>">
+                                            <% for(i=0;i<user.length; i++ ){ %>
+                                                <input type="hidden" name="serviceName" value="<%=user[i].serviceName%>">
+                                                <input type="hidden" name="servicePrice" value="<%=user[i].servicePrice%>">
+                                                
+                                            <tr>
+                                                <td width="150"><img src="<%=shop.img%>" alt="<%=user[i].serviceName%>" width="80"></td>
+                                                <td width="550">
+                                                    <h5 class="font-500"><%=user[i].serviceName%></h5>
+                                                    <p><%=shop.description%></p>
+                                                </td>
+                                                <td>$<%=user[i].servicePrice%></td>
+                                                <td width="70">
+                                                    <input type="number" name="discount" class="form-control" placeholder="0">
+                                                </td>
+                                                <td width="150" align="center" class="font-500">
+                                                    $<%=user[i].servicePrice%>
+                                                </td>
+                                                <td align="center"><a href="javascript:void(0)" class="text-inverse"
+                                                        title="" data-toggle="tooltip" data-original-title="Delete"><i
+                                                            class="ti-trash text-dark"></i></a></td>
+                                            </tr>
+                                            <% } %>
+
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                    <div class="d-flex no-block align-items-center">
+                                        <div class="ml-auto">
+                                            <button class="btn btn-danger"><i class="fa fa fa-shopping-cart"></i>
+                                               </button>
+                                                <input type="submit" class="btn btn-danger" value="Processed">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">CART SUMMARY</h5>
+                            <hr>
+                            <small>Total Price</small>
+                            <h2>$612</h2>
+                            <hr>
+                            <button class="btn btn-success">Checkout</button>
+                            <button class="btn btn-secondary btn-outline">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">For Any Support</h5>
+                            <hr>
+                            <h4><i class="ti-mobile"></i> 9998979695 (Toll Free)</h4> <small>Please contact with us if
+                                you have any questions. We are avalible 24h.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer">
+            © 2020 Material Pro Admin by wrappixel.com
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="../../dist/js/app.min.js"></script>
+    <script src="../../dist/js/app.init.dark.js"></script>
+    <script src="../../dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="../../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="../../dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../../dist/js/custom.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/gentelella/1.3.0/css/custom.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- custom css -->
+  <link rel="stylesheet" href="/css/shop/main.css">
+  <link rel="stylesheet" href="/css/shop/maintwo.css">
+  <!-- <link rel="stylesheet" href="calender.css"> -->
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+
+  
+   <!-- Side bar start -->
+   <%- include('./sideBar.ejs') %>
+    <!-- Side bar end -->
+        <!-- page content -->
+        <div class="right_col">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-10">
+                <h1 class="text-center">Categories</h1>
+              </div>
+              <div class="col-lg-2">
+                <input type="submit" class="btn btn-success" value="Save">
+              </div>
+              <div class="col-lg-6 category-checkbox">
+                <h2>Category of your Business</h2>
+                <div>
+                  <input type="checkbox" id="hair-salon" name="hair-salon" value="hair-salon">
+                  <label for="hair-salon">Hair-salon</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="barbershop" name="barbershop" value="barbershop">
+                  <label for="barbershop">Barbershop</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="nailsalon" name="nailsalon" value="nailsalon">
+                  <label for="nailsalon">Nail Salon</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="beautysalon" name="beautysalon" value="beautysalon">
+                  <label for="beautysalon">Beauty Salon</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="eyebrow" name="eyebrow" value="eyebrow">
+                  <label for="eyebrow">Eyebrows & Lashes</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="massage" name="massage" value="massage">
+                  <label for="massage">Massage</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="makeup" name="makeup" value="makeup">
+                  <label for="makeup">Makeup Artist</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="tattoo" name="tattoo" value="tattoo">
+                  <label for="tattoo">Tattoo Shops</label>
+                </div>
+
+              </div>
+              <div class="col-lg-6">
+                <h2>Main Category</h2>
+                <select name="" id="" class="form-control">
+                  <option value="">Hair-salon</option>
+                  <option value="">Tatto Shops</option>
+                  <option value="">Makeup Artist</option>
+                  <option value="">Massage</option>
+                  <option value="">Eyebrows & Lashes</option>
+                  <option value="">Beauty Salon</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+
+      </div>
+    </div>
+  </body>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <!-- calender js -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js'></script>
+
+  <!-- custom js -->
+
+  <script src="/js/shop/script.js"></script>
+  <script src="/js/shop/admin.js"></script>
+  <!-- <script src="calender.js"></script> -->
+
+</body>
+
+</html>

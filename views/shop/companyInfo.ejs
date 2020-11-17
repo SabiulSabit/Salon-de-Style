@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+  <title>opening Hours</title>
+  <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/lobilist.css">
+  <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Custom CSS -->
+  <link href="/dist/css/style.min.css" rel="stylesheet">
+  <!-- Google map -->
+
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 500px;
+    }
+
+    #description {
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    #infowindow-content .title {
+      font-weight: bold;
+    }
+
+    #infowindow-content {
+      display: none;
+    }
+
+    #map #infowindow-content {
+      display: inline;
+    }
+
+    .pac-card {
+      margin: 10px 10px 0 0;
+      border-radius: 2px 0 0 2px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      background-color: #fff;
+      font-family: Roboto;
+    }
+
+    #pac-container {
+      padding-bottom: 12px;
+      margin-right: 12px;
+    }
+
+    .pac-controls {
+      display: inline-block;
+      padding: 5px 11px;
+    }
+
+    .pac-controls label {
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    #pac-input {
+      background-color: #fff;
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+      margin-left: 12px;
+      padding: 0 11px 0 13px;
+      text-overflow: ellipsis;
+      width: 400px;
+    }
+
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
+
+    #title {
+      color: #fff;
+      background-color: #4d90fe;
+      font-size: 25px;
+      font-weight: 500;
+      padding: 6px 12px;
+    }
+
+    #target {
+      width: 345px;
+    }
+  </style>
+
+</head>
+
+<body onload="setMap()">
+  <!-- partial:index.partial.html -->
+
+
+  <!-- Side bar start -->
+  <%- include('./sideBar.ejs') %>
+  <!-- Side bar end -->
+
+
+  <div class="page-wrapper">
+    <div class="row">
+      <div class="col-lg-10 mt-4">
+        <h2 class="text-center">Company Info</h2>
+      </div>
+
+      <input type="hidden" value="<%=data.lat%>" id="lat">
+      <input type="hidden" value="<%=data.lon%>" id="lon">
+      <input type="hidden" value="<%=data.address%>" id="address">
+      <div class="col-lg-2 mt-4">
+        <form action="/shop/companyinfo" method="post">
+          <input type="submit" class="btn btn-success" value="Save">
+
+      </div>
+
+      <div class="col-lg-5 ml-3 mb-5">
+        <h2>Business name</h2>
+        <input type="text" class="form-control" name="businessName" value="<%=data.businessName%>">
+        <h2>Name of Salon</h2>
+        <input type="text" class="form-control" name="officialName" value="<%=data.officialName%>">
+        <h2>Business Phone</h2>
+        <input type="text" class="form-control" name="businessNumber" value="<%=data.businessNumber%>">
+        <h2>Short business description</h2>
+        <div class="form-group">
+          <textarea name="description" value="<%=data.description%>" class="form-control" rows="8"
+            placeholder="Text Here..."></textarea>
+        </div>
+        <h2>E-commerce link</h2>
+        <input type="text" class="form-control" name="ecom" value="<%=data.ecom%>">
+        <h2>Facebook link</h2>
+        <input type="text" class="form-control" name="fb" value="<%=data.fb%>">
+        <h2>Instagram link</h2>
+        <input type="text" class="form-control" name="insta" value="<%=data.insta%>">
+        <h2>Website link</h2>
+        <input type="text" class="form-control" name="businessWebsite" value="<%=data.businessWebsite%>">
+      </div>
+      <div class="col-lg-6">
+
+        <div class="col-lg-12">
+          <p>Map Location</p>
+          <div class="container well mt-3">
+            <div id="maparea" style="width: 100%; height: 400px;"></div>
+            <p> <label for="">Location:</label> <input type="text" value="<%=data.address%>" name="address"
+                id="us2-address" class="form-control" /> </p>
+            <p><label for="">Lat.:</label> <input type="text" value="<%=data.lat%>" name="lat" id="us2-lat"
+                class="form-control" /></p>
+            <p><label for="">Long.:</label> <input type="text" name="lon" value="<%=data.lon%>" id="us2-lon"
+                class="form-control" /></p>
+            <div class=""></div>
+          </div>
+
+        </div>
+        </form>
+        <div class="col-lg-12">
+
+          <input type="submit" class="btn btn-info mt-3" data-toggle="modal" data-target="#taxModalLong"
+            value="TAX Info">
+
+          <div class="modal fade" id="taxModalLong" role="dialog" aria-labelledby="exampleModalLongTitle"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">TAX Information</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/shop/savetax" id="taxForm" method="post">
+                  <div class="modal-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <p>Company Name</p>
+                          <input name="companyName" type="text" value="<%=tax.companyName%>" class="form-control"
+                            required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>TAX ID</p>
+                          <input name="taxID" type="text" value="<%=tax.taxID%>" class="form-control" required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Invoice Prefix</p>
+                          <input name="invoicePrefix" type="text" value="<%=tax.invoicePrefix%>" class="form-control"
+                            required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Correction Prefix</p>
+                          <input name="correctionPrefix" type="text" value="<%=tax.correctionPrefix%>"
+                            class="form-control" required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Prefix Cash In</p>
+                          <input name="prefixCashIn" type="text" value="<%=tax.prefixCashIn%>" class="form-control"
+                            required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Prefix Cash Out</p>
+                          <input name="prefixCashOut" type="text" value="<%=tax.prefixCashOut%>" class="form-control"
+                            required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Address</p>
+                          <input name="address" type="text" value="<%=tax.address%>" class="form-control" required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Country</p>
+                          <select name="country" id="" value="<%=tax.country%>" class="form-control">
+                            <option value="United State of America">United State of America</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="India">India</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>City</p>
+                          <input name="city" type="text" value="<%=tax.city%>" class="form-control" required>
+                        </div>
+                        <div class="col-lg-6">
+                          <p>Post Code</p>
+                          <input name="postCode" type="text" value="<%=tax.postCode%>" class="form-control" required>
+                        </div>
+                        <div class="col-lg-4">
+                          <p>Bank</p>
+                          <input name="bank" type="text" value="<%=tax.bank%>" class="form-control" required>
+                        </div>
+                        <div class="col-lg-8">
+                          <p>Account Number</p>
+                          <input name="accountNumber" type="text" value="<%=tax.accountNumber%>" class="form-control"
+                            required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <!-- class="btn btn-primary" data-dismiss="modal" -->
+
+                  <button type="submit" form="taxForm">Save changes</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /page content -->
+
+
+  </div>
+  </div>
+
+  <!-- partial -->
+  <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+  <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- apps -->
+  <script src="/dist/js/app.min.js"></script>
+  <script src="/dist/js/app.init.dark.js"></script>
+  <script src="/dist/js/app-style-switcher.js"></script>
+  <!-- slimscrollbar scrollbar JavaScript -->
+  <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+  <!--Wave Effects -->
+  <script src="/dist/js/waves.js"></script>
+  <!--Menu sidebar -->
+  <script src="/dist/js/sidebarmenu.js"></script>
+  <!--Custom JavaScript -->
+  <script src="/dist/js/custom.min.js"></script>
+  <!--This page JavaScript -->
+  <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+  <script src="/dist/js/pages/invoice/invoice.js"></script>
+  <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
+  <script src="../../dist/js/custom.min.js"></script>
+
+  <!-- custom js -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
+  <!-- <script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script> -->
+  
+  <script src="/js/shop/map.js"></script>
+  <script src="/js/shop/script.js"></script>
+
+  <script>
+
+    let lat, lon;
+    function setMap() {
+
+      lat = document.getElementById('lat').value;
+      lon = document.getElementById('lon').value;
+      let address = document.getElementById('address').value;
+
+
+      //console.log(lat,lon);
+
+      document.getElementById('us2-lat').value = lat;
+      document.getElementById('us2-lon').value = lon;
+      document.getElementById('us2-address').value = address;
+
+    }
+
+    $(document).ready(function () {
+
+      // lat = document.getElementById('lat').value;
+      // lon = document.getElementById('lon').value;
+      $('#maparea').locationpicker({
+        inputBinding: {
+          latitudeInput: $('#us2-lat'),
+          longitudeInput: $('#us2-lon'),
+          locationNameInput: $('#us2-address')
+        },
+        enableAutocomplete: true,
+        onchanged: function (currentLocation) {
+          console.log(currentLocation)
+          var placeType = ["atm", "pharmacy"];
+          var sep = ',';
+          var request = [], resultset,
+           lat = currentLocation.latitude,
+           lan = currentLocation.longitude;
+          for (var i = 0; i < placeType.length; i++) {
+            request = {
+              location: new google.maps.LatLng(lat, lon),
+              types: [placeType[i]],
+              rankBy: google.maps.places.RankBy.DISTANCE
+
+            };
+            var container = document.getElementById(placeType[i]);
+            //console.log(container);
+            var service = new google.maps.places.PlacesService(container);
+            service.nearbySearch(request, callback);
+            //console.log(placeType[i]);
+            function callback(results, status) {
+              if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var j = 0; j < 3; j++) {
+                  resultset += results[j].name + sep + results[j].vicinity + '.<br>'
+
+                }
+
+              }
+            }
+
+          }
+        }
+
+      });
+    });
+  </script>
+
+</body>
+
+</html>

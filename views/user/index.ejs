@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<head>
+
+	<!-- Basic Page Needs
+================================================== -->
+	<title>Listeo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+================================================== -->
+	<link rel="stylesheet" href="/css/user/css/style.css">
+	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+
+</head>
+
+<body class="transparent-header">
+
+
+	<% if(user){ %>
+	<%- include('./loginNavbar.ejs') %>
+	<% } else{ %>
+	<%- include('./navbar.ejs') %>
+	<% }  %>
+
+
+
+
+	<!-- Banner
+================================================== -->
+	<div class="main-search-container centered">
+
+
+		<div class="main-search-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>
+							Find Nearby
+							<span class="typed-words"></span>
+						</h2>
+						<h4>Discover and book beauty & wellness professionals near you</h4>
+						<form action="/search" method="post">
+							<div class="main-search-input">
+
+								<div class="main-search-input-item">
+									<input type="text" placeholder="What are you looking for?" value="" name="name"
+										required />
+								</div>
+
+								<div class="main-search-input-item location">
+									<div id="autocomplete-container">
+										<input id="autocomplete-input" type="text" placeholder="Location"
+											name="location">
+									</div>
+									<a href="#"><i class="fa fa-map-marker"></i></a>
+								</div>
+
+								<div class="main-search-input-item">
+									<select data-placeholder="All Categories" name="category" class="chosen-select">
+										<option>All Categories</option>
+										<option>Shops</option>
+										<option>Hotels</option>
+										<option>Restaurants</option>
+										<option>Fitness</option>
+										<option>Events</option>
+									</select>
+								</div>
+
+								<button type="submit" class="button">Search</button>
+
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- Features Categories -->
+				<div class="row">
+					<div class="col-md-12">
+						<h5 class="highlighted-categories-headline">Popular searching category</h5>
+
+						<div class="highlighted-categories">
+							<!-- Box -->
+							<a href="/search/category/Hair Salon" class="highlighted-category">
+
+								<h4>Hair Salon</h4>
+							</a>
+
+							<!-- Box -->
+							<a href="/search/category/Beauty Salon" class="highlighted-category">
+
+								<h4>Beauty Salon</h4>
+							</a>
+
+							<!-- Box -->
+							<a href="/search/category/Tattoo Shop" class="highlighted-category">
+
+								<h4>Tattoo Shop</h4>
+							</a>
+
+							<!-- Box -->
+							<a href="/search/category/Massage" class="highlighted-category">
+
+								<h4>Massage</h4>
+							</a>
+						</div>
+
+					</div>
+				</div>
+				<!-- Featured Categories - End -->
+
+			</div>
+
+		</div>
+
+		<div class="video-container">
+			<video poster="images/main-search-video-poster.jpg" loop autoplay muted>
+				<source src="/video/user/US.mp4" type="video/mp4">
+			</video>
+		</div>
+	</div>
+
+
+
+	<!-- Fullwidth Section -->
+	<section class="fullwidth margin-top-65 padding-bottom-70" data-background-color="#f8f8f8">
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-12">
+					<h3 class="headline centered margin-bottom-45">
+						<strong class="headline-with-separator">Recommended</strong>
+
+					</h3>
+				</div>
+
+				<div class="col-md-12">
+					<div class="simple-slick-carousel dots-nav">
+						<% for(i=0;i<shop.length;i++) { %>
+						<!-- Listing Item -->
+						<div class="carousel-item">
+
+							<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
+								class="listing-item-container">
+								<div class="listing-item">
+									<img src="<%=shop[i].img%>" alt="">
+
+									<div class="listing-badge now-open">Now Open</div>
+
+									<div class="listing-item-content">
+										<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
+										<span><%=shop[i].address%></span>
+									</div>
+									<span class="like-icon"></span>
+								</div>
+								<div class="star-rating" data-rating="<%=shop[i].rating%>">
+									<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
+								</div>
+							</a>
+						</div>
+						<!-- Listing Item / End -->
+
+						<% } %>
+
+
+
+					</div>
+
+				</div>
+			</div>
+
+	</section>
+	<!-- Fullwidth Section / End -->
+
+	<!-- Footer -->
+
+	<%- include('./footer.ejs') %>
+
+	<!-- Footer -->
+
+	<!-- Scripts
+================================================== -->
+	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+
+
+	<!-- Leaflet // Docs: https://leafletjs.com/ -->
+	<script src="/js/user/scripts/leaflet.min.js"></script>
+
+	<!-- Leaflet Maps Scripts -->
+	<script src="/js/user/scripts/leaflet-markercluster.min.js"></script>
+	<script src="/js/user/scripts/leaflet-gesture-handling.min.js"></script>
+	<script src="/js/user/scripts/leaflet-listeo.js"></script>
+
+	<!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
+	<script src="/js/user/scripts/leaflet-autocomplete.js"></script>
+	<script src="/js/user/scripts/leaflet-control-geocoder.js"></script>
+
+
+	<!-- Typed Script -->
+	<script type="text/javascript" src="/js/user/scripts/typed.js"></script>
+	<script>
+		var typed = new Typed('.typed-words', {
+			strings: ["Attractions", " Restaurants", " Hotels"],
+			typeSpeed: 80,
+			backSpeed: 80,
+			backDelay: 4000,
+			startDelay: 1000,
+			loop: true,
+			showCursor: true
+		});
+	</script>
+
+
+	<script>
+	
+
+		function validatePassword() {
+			let password = document.getElementById("abc_password")
+			let confirm_password = document.getElementById("confirm_password");
+			console.log(password.value,confirm_password.value)
+			if (password.value != confirm_password.value) {
+				confirm_password.setCustomValidity("Passwords Don't Match");
+			} else {
+				confirm_password.setCustomValidity('');
+			}
+		}
+
+	
+	</script>
+
+
+
+
+</body>
+
+</html>

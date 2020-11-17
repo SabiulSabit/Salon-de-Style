@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>User Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+================================================== -->
+    <link rel="stylesheet" href="/css/user/css/style.css">
+    <link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+
+</head>
+
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header Container
+================================================== -->
+        <header id="header-container" class="fixed fullwidth dashboard">
+
+            <!-- Header -->
+            
+   <% if(user){ %>
+	<%- include('./loginNavbar.ejs') %>
+  <% } else{ %>
+	<%- include('./navbar.ejs') %>
+  <% }  %>
+            <!-- Header / End -->
+<!-- side Navbar -->
+<%- include('./sideNavbar.ejs') %>
+<!-- side Navbar -->
+
+            <!-- Content
+	================================================== -->
+            <div class="dashboard-content">
+
+                <!-- Titlebar -->
+                <div id="titlebar">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>My Profile</h2>
+                          
+                            <nav id="breadcrumbs">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li>My Profile</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Profile -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="dashboard-list-box margin-top-0">
+                            <h4 class="gray">Profile Details</h4>
+                            <div class="dashboard-list-box-static">
+                                <form action="/updateprofile" enctype="multipart/form-data" method="post">
+                                    <!-- Avatar -->
+                                    <div class="edit-profile-photo">
+                                        <img src="<%=user.img%>" alt="">
+                                       
+
+                                    </div>
+                                    <div class="edit-profile-photo">
+                                     
+                                       
+                                            <div class="photoUpload">
+                                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                <input type="file" name="image" id="myFile" name="filename">
+                                                <!-- <input type="file" class="upload" /> -->
+
+                                            </div>
+                                        
+
+                                    </div>
+
+                                    <!-- Details -->
+                                    <div class="my-profile">
+
+                                        <label>Your Name</label>
+                                        <input value="<%=user.name%>" name="name" type="text">
+
+                                        <label>Phone</label>
+                                        <input value="<%=user.phone%>" name="phone" type="text">
+
+                                        <label>Email</label>
+                                        <input value="<%=user.email%>" name="email" readonly type="text">
+
+                                        <label>Notes</label>
+                                        <textarea name="notes" id="notes" cols="30" rows="10"><%=user.note%></textarea>
+
+                                        <label><i class="fa fa-twitter"></i> Twitter</label>
+                                        <input placeholder="https://www.twitter.com/" name="twitter"
+                                            value="<%=user.twitter%>" type="text">
+
+                                        <label><i class="fa fa-facebook-square"></i> Facebook</label>
+                                        <input placeholder="https://www.facebook.com/" name="facebook"
+                                            value="<%=user.fb%>" type="text">
+
+                                        <label><i class="fa fa-google-plus"></i> Google+</label>
+                                        <input placeholder="https://www.google.com/" name="google"
+                                            value="<%=user.google%>" type="text">
+                                    </div>
+
+                                    <button class="button margin-top-15">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Change Password -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="dashboard-list-box margin-top-0">
+                            <h4 class="gray">Change Password</h4>
+                            <div class="dashboard-list-box-static">
+
+                                <!-- Change Password -->
+                                <div class="my-profile">
+                                    <form action="/chnagepassword" method="POST">
+                                        <label class="margin-top-0">Current Password</label>
+                                        <input type="password" name="curpass">
+
+                                        <label>New Password</label>
+                                        <input type="password" name="newpass">
+
+                                        <label>Confirm New Password</label>
+                                        <input type="password" name="newpass1">
+
+                                        <button class="button margin-top-15">Change Password</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Copyrights -->
+                    <div class="col-md-12">
+                        <div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Content / End -->
+
+
+        </div>
+        <!-- Dashboard / End -->
+
+
+    </div>
+    <!-- Wrapper / End -->
+
+
+    <!-- Scripts
+================================================== -->
+    <script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+    <script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+
+
+</body>
+
+</html>

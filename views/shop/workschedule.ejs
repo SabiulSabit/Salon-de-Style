@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <title>Admin</title>
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+  <!-- calendar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.3.2/main.css">
+  
+  <link rel="stylesheet" href="/css/shop/calender.css">
+</head>
+
+<body>
+  <!-- onload="setValue()" -->
+  <!-- Side bar start -->
+  <%- include('./sideBar.ejs') %>
+  <!-- Side bar end -->
+
+  <input type="text" id="len" value="<%=data.length%>" hidden>
+
+  <% for(i=0;i<data.length;i++){  %>
+
+  <input type="text" id=<%=i+"open"%> hidden value="<%=data[i].open%>">
+  <input type="text" id=<%=i+"close"%> hidden value="<%=data[i].close%>">
+  <input type="text" id=<%=i+"day"%> hidden value="<%=data[i].dayName%>">
+
+  <%}%>
+
+  <!-- page content -->
+  <div class="page-wrapperOne">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="calendar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /page content -->
+
+
+  </div>
+
+
+<!-- partial -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+<script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- apps -->
+<script src="/dist/js/app.min.js"></script>
+<script src="/dist/js/app.init.dark.js"></script>
+<script src="/dist/js/app-style-switcher.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!-- calender js -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.3.2/main.js"></script>
+
+
+<script src="/js/shop/calender.js"></script>
+
+</body>
+
+</html>
