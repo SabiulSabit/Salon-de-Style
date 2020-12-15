@@ -138,7 +138,7 @@ exports.postCreateAccount = (req, res, next) => {
     let fri, openFri, closeFri;
     let sat, openSat, closeSat;
 
-
+  return;
     //catche all data and save them
     new formidable.IncomingForm().parse(req)
         .on('field', (name, field) => {

@@ -11,312 +11,292 @@
   <!-- custom css -->
 
   <style>
-    .createAccount input{
+    .createAccount input {
       margin-bottom: 10px;
     }
-  
 
-.box {
-  position: relative;
-  background: #ffffff;
-  width: 100%;
-}
 
-.box-header {
-  color: #444;
-  display: block;
-  padding: 10px;
-  position: relative;
-  border-bottom: 1px solid #f4f4f4;
-  margin-bottom: 10px;
-}
+    .box {
+      position: relative;
+      background: #ffffff;
+      width: 100%;
+    }
 
-.box-tools {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-}
+    .box-header {
+      color: #444;
+      display: block;
+      padding: 10px;
+      position: relative;
+      border-bottom: 1px solid #f4f4f4;
+      margin-bottom: 10px;
+    }
 
-.dropzone-wrapper {
-  border: 2px dashed #222;
-  color: #92b0b3;
-  position: relative;
-  height: 50px;
-}
+    .box-tools {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+    }
 
-.dropzone-desc {
-  position: absolute;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 16px;
-}
-.dropzone-desc i, .dropzone-desc p{
-  color: #222;
-}
+    .dropzone-wrapper {
+      border: 2px dashed #222;
+      color: #92b0b3;
+      position: relative;
+      height: 50px;
+    }
 
-.dropzone,
-.dropzone:focus {
-  position: absolute;
-  outline: none !important;
-  width: 100%;
-  height: 50px;
-  cursor: pointer;
-  opacity: 0;
-}
+    .dropzone-desc {
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 16px;
+    }
 
-.dropzone-wrapper:hover,
-.dropzone-wrapper.dragover {
-  background: #ecf0f5;
-}
+    .dropzone-desc i,
+    .dropzone-desc p {
+      color: #222;
+    }
 
-.preview-zone {
-  text-align: center;
-}
+    .dropzone,
+    .dropzone:focus {
+      position: absolute;
+      outline: none !important;
+      width: 100%;
+      height: 50px;
+      cursor: pointer;
+      opacity: 0;
+    }
 
-.preview-zone .box {
-  box-shadow: none;
-  border-radius: 0;
-  margin-bottom: 0;
-}
+    .dropzone-wrapper:hover,
+    .dropzone-wrapper.dragover {
+      background: #ecf0f5;
+    }
+
+    .preview-zone {
+      text-align: center;
+    }
+
+    .preview-zone .box {
+      box-shadow: none;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
   </style>
 
 </head>
 
 <body>
 
-<section class="createAccount">
+  <section class="createAccount">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="text-center">ENTER YOUR SHOP INFO</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">ENTER YOUR SHOP INFO</h2>
+        </div>
       </div>
     </div>
-  </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
+    <div class="container">
+      <form action="" method="POST" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <label for="">Full Name</label>
+              <input type="text" class="form-control" name="ownername" placeholder="Enter Your Name" required>
+            </div>
+            <div class="col-md-12">
+              <label for="">Email Address</label>
+              <input type="text" class="form-control" name="ownermail" placeholder="Enter Your Email Address" required>
+            </div>
+            <div class="col-md-12">
+              <label for="">Password</label>
+              <input type="password" class="form-control" name="pass" placeholder="Enter Your Password" required>
+            </div>
+            <div class="col-md-12">
+              <label for="">Confirm Password</label>
+              <input type="text" class="form-control" name="conPass" placeholder="Confirm Your Password" required>
+            </div>
+            <div class="col-md-12">
 
-      <div class="col-md-12">
-        <label for="">Full Name</label>
-        <input type="text" class="form-control" placeholder="Enter Your Name">
-      </div>
-      <div class="col-md-12">
-        <label for="">Email Address</label>
-        <input type="text" class="form-control" placeholder="Enter Your Email Address">
-      </div>
-      <div class="col-md-12">
-        <label for="">Password</label>
-        <input type="password" class="form-control" placeholder="Enter Your Password">
-      </div>
-      <div class="col-md-12">
-        <label for="">Confirm Password</label>
-        <input type="text" class="form-control" placeholder="Confirm Your Password">
-      </div>
-      <div class="col-md-12">
-          <form action="" method="POST" enctype="multipart/form-data">
-                  <div class="form-group">
-                    <label class="control-label">Upload File</label>
-                    <div class="preview-zone hidden">
-                      <div class="box box-solid">
-                        <div class="box-header with-border">
-                          <div><b>Preview</b></div>
-                          <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-danger btn-xs remove-preview">
-                              <i class="fa fa-times"></i> Reset This Form
-                            </button>
-                          </div>
-                        </div>
-                        <div class="box-body"></div>
+              <div class="form-group">
+                <label class="control-label">Upload File</label>
+                <div class="preview-zone hidden">
+                  <div class="box box-solid">
+                    <div class="box-header with-border">
+                      <div><b>Preview</b></div>
+                      <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-danger btn-xs remove-preview">
+                          <i class="fa fa-times"></i> Remove Image
+                        </button>
                       </div>
                     </div>
-                    <div class="dropzone-wrapper">
-                      <div class="dropzone-desc">
-                        <i class="glyphicon glyphicon-download-alt"></i>
-                        <p>Choose an image file or drag it here.</p>
-                      </div>
-                      <input type="file" name="img_logo" class="dropzone">
-                    </div>
+                    <div class="box-body"></div>
                   </div>
-               
-        
-              <div class="row">
-                <div class="col-md-12">
-                  <button type="submit" class="btn btn-primary pull-right">Upload</button>
+                </div>
+                <div class="dropzone-wrapper">
+                  <div class="dropzone-desc">
+                    <i class="glyphicon glyphicon-download-alt"></i>
+                    <p>Choose an image file or drag it here.</p>
+                  </div>
+                  <input type="file" name="img" class="dropzone" required>
                 </div>
               </div>
-         
-          </form>
-      </div>
+            </div>
 
-    </div>
+          </div>
 
-    <div class="col-md-6">
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <label for="">Shop Name</label>
+              <input type="text" class="form-control" name="shopname" placeholder="Enter Your Shop Name" required>
+            </div>
+            <div class="col-md-12">
+              <label for="">Shop Phone</label>
+              <input type="text" name="phone" class="form-control" placeholder="Enter Your Shop Phone Number" required>
+            </div>
+            <div class="col-md-12">
+              <label for="">Shop Email Address</label>
+              <input type="text" class="form-control" name="shopemail" placeholder="Enter Your Shop Email Address"
+                required>
+            </div>
+            <div class="col-md-12">
+              <label for="">Location</label>
+              <input class="form-control" name="address" type="text" id="us2-address" required />
+              <div class="col-md-6">
+                <label for="">Latituale</label>
+                <input class="form-control" name="lati" type="text" id="us2-lat" required />
+              </div>
+              <div class="col-md-6">
+                <label for="">Longtitute</label>
+                <input class="form-control" name="long" type="text" id="us2-lon" required />
+              </div>
+              <div class="col-md-12">
+                <div id="maparea" style="height: 300px;"></div>
+                <div class=""></div>
+              </div>
+            </div>
 
-      <div class="col-md-12">
-        <label for="">Shop Name</label>
-        <input type="text" class="form-control" placeholder="Enter Your Shop Name">
-      </div>
-      <div class="col-md-12">
-        <label for="">Shop Email Address</label>
-        <input type="text" class="form-control" placeholder="Enter Your Shop Email Address">
-      </div>
-      <div class="col-md-12">
-        <label for="">Location</label>
-        <input class="form-control" type="text" id="us2-address"/>	
-        <div class="col-md-6">
-          <label for="">Latituale</label>
-        <input class="form-control" type="text" id="us2-lat"/>
+          </div>
         </div>
-        <div class="col-md-6">
-          <label for="">Longtitute</label>
-        <input class="form-control" type="text" id="us2-lon"/>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </div>
-        <div class="col-md-12">
-          <div id="maparea" style="height: 300px;"></div>
-          <div class=""></div>
-        </div>
+
+      </form>
     </div>
-
-    </div>
-   
-    
-
-</div>
-
-</section>
+  </section>
 
 </body>
-  <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
-  <script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
+<script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
 
-  <script>
-    $(document).ready(function() {
-     $('#maparea').locationpicker({
-       inputBinding: {
-         latitudeInput: $('#us2-lat'),
-         longitudeInput: $('#us2-lon'),
-         locationNameInput: $('#us2-address')
-       },
-       enableAutocomplete: true,
-    
-       onchanged: function(currentLocation) {
-           var placeType = ["atm", "pharmacy"];
-           var sep = ',';
-           var request = [],
-             lat = currentLocation.latitude,
-             lan = currentLocation.longitude;
-           for (var i = 0; i < placeType.length; i++) {
-             request = {
-               location: new google.maps.LatLng(lat, lan),
-               types: [placeType[i]],
-               rankBy: google.maps.places.RankBy.DISTANCE
-             };
-             var container = document.getElementById("'" + placeType[i] + "'");
-             var service = new google.maps.places.PlacesService(container);
-             service.nearbySearch(request, callback);
-   
-             function callback(results, status) {
-               if (status == google.maps.places.PlacesServiceStatus.OK) {
-                 for (var j = 0; j < 3; j++) {
-                   var input = document.getElementById("'" + placeType[i] + "'");
-                   var resultset = results[j].name + sep + results[j].vicinity + '.';
-                   
-   
-                 }
-   
-               }
-             }
-           }
-         } 
-   
-     });
-   });
-   </script>
+<script>
+  $(document).ready(function () {
+    $('#maparea').locationpicker({
+      inputBinding: {
+        latitudeInput: $('#us2-lat'),
+        longitudeInput: $('#us2-lon'),
+        locationNameInput: $('#us2-address')
+      },
+      enableAutocomplete: true,
 
-   <script>
-function readFile(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
+      onchanged: function (currentLocation) {
+        var placeType = ["atm", "pharmacy"];
+        var sep = ',';
+        var request = [],
+          lat = currentLocation.latitude,
+          lan = currentLocation.longitude;
+        for (var i = 0; i < placeType.length; i++) {
+          request = {
+            location: new google.maps.LatLng(lat, lan),
+            types: [placeType[i]],
+            rankBy: google.maps.places.RankBy.DISTANCE
+          };
+          var container = document.getElementById("'" + placeType[i] + "'");
+          var service = new google.maps.places.PlacesService(container);
+          service.nearbySearch(request, callback);
 
-    reader.onload = function(e) {
-      var htmlPreview =
-        '<img width="200" src="' + e.target.result + '" />' +
-        '<p>' + input.files[0].name + '</p>';
-      var wrapperZone = $(input).parent();
-      var previewZone = $(input).parent().parent().find('.preview-zone');
-      var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+          function callback(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+              for (var j = 0; j < 3; j++) {
+                var input = document.getElementById("'" + placeType[i] + "'");
+                var resultset = results[j].name + sep + results[j].vicinity + '.';
 
-      wrapperZone.removeClass('dragover');
-      previewZone.removeClass('hidden');
-      boxZone.empty();
-      boxZone.append(htmlPreview);
-    };
 
-    reader.readAsDataURL(input.files[0]);
+              }
+
+            }
+          }
+        }
+      }
+
+    });
+  });
+</script>
+
+<script>
+  function readFile(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var htmlPreview =
+          '<img width="200" src="' + e.target.result + '" />' +
+          '<p>' + input.files[0].name + '</p>';
+        var wrapperZone = $(input).parent();
+        var previewZone = $(input).parent().parent().find('.preview-zone');
+        var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+
+        wrapperZone.removeClass('dragover');
+        previewZone.removeClass('hidden');
+        boxZone.empty();
+        boxZone.append(htmlPreview);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
   }
-}
 
-function reset(e) {
-  e.wrap('<form>').closest('form').get(0).reset();
-  e.unwrap();
-}
+  function reset(e) {
+    e.wrap('<form>').closest('form').get(0).reset();
+    e.unwrap();
+  }
 
-$(".dropzone").change(function() {
-  readFile(this);
-});
+  $(".dropzone").change(function () {
+    readFile(this);
+  });
 
-$('.dropzone-wrapper').on('dragover', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  $(this).addClass('dragover');
-});
+  $('.dropzone-wrapper').on('dragover', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).addClass('dragover');
+  });
 
-$('.dropzone-wrapper').on('dragleave', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  $(this).removeClass('dragover');
-});
+  $('.dropzone-wrapper').on('dragleave', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).removeClass('dragover');
+  });
 
-$('.remove-preview').on('click', function() {
-  var boxZone = $(this).parents('.preview-zone').find('.box-body');
-  var previewZone = $(this).parents('.preview-zone');
-  var dropzone = $(this).parents('.form-group').find('.dropzone');
-  boxZone.empty();
-  previewZone.addClass('hidden');
-  reset(dropzone);
-});
-   </script>
+  $('.remove-preview').on('click', function () {
+    var boxZone = $(this).parents('.preview-zone').find('.box-body');
+    var previewZone = $(this).parents('.preview-zone');
+    var dropzone = $(this).parents('.form-group').find('.dropzone');
+    boxZone.empty();
+    previewZone.addClass('hidden');
+    reset(dropzone);
+  });
+</script>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
