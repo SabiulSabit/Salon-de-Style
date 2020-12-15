@@ -1,687 +1,322 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-  <!-- font-awesome cdn -->
+  <meta charset="UTF-8">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/gentelella/1.3.0/css/custom.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-   
-    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@500&display=swap" rel="stylesheet"> 
   <!-- custom css -->
 
-  <link rel="stylesheet" href="/css/shop/main.css">
-  <title>Sign Up</title>
+  <style>
+    .createAccount input{
+      margin-bottom: 10px;
+    }
+  
+
+.box {
+  position: relative;
+  background: #ffffff;
+  width: 100%;
+}
+
+.box-header {
+  color: #444;
+  display: block;
+  padding: 10px;
+  position: relative;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 10px;
+}
+
+.box-tools {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.dropzone-wrapper {
+  border: 2px dashed #222;
+  color: #92b0b3;
+  position: relative;
+  height: 50px;
+}
+
+.dropzone-desc {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 16px;
+}
+.dropzone-desc i, .dropzone-desc p{
+  color: #222;
+}
+
+.dropzone,
+.dropzone:focus {
+  position: absolute;
+  outline: none !important;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.dropzone-wrapper:hover,
+.dropzone-wrapper.dragover {
+  background: #ecf0f5;
+}
+
+.preview-zone {
+  text-align: center;
+}
+
+.preview-zone .box {
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+  </style>
 
 </head>
 
-<body onload="clearAll()">
-  <!-- Login info start -->
+<body>
 
+<section class="createAccount">
 
-<form action="/shop/createaccount" method="post" enctype="multipart/form-data" novalidate>
-  <section id="loginInfo" class="loginInfo">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 sign-up">
-          <h3 class="text-center">Start your free trial right Now</h3>
-          <p class="text-center">No credit card. No commitment. It takes only 2 minutes.</p>
-          <input id="businessName" name="businessName" type="text" class="form-control bg-dark text-white" placeholder="What is the name of your Business"
-            required>
-          <input id="businessLink" name="businessLink" type="text" class="form-control bg-dark text-white" placeholder="business website" required>
-          <input id="ownerName" name="ownerName" type="text" class="form-control bg-dark text-white" placeholder="What is your Name?" required>
-          <input id="ownerEmail" name="ownerEmail" type="text" class="form-control bg-dark text-white" placeholder="What is your email address" required>
-          <input id="password" name="password"  type="password" class="form-control bg-dark text-white" placeholder="set your booksy password" required>
-          <a id="loginInfobtn"  class="btn btn-info text-center loginbtn text-dark " value="Create your booksy account">Create
-            your
-            booksy account</a>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">ENTER YOUR SHOP INFO</h2>
       </div>
     </div>
-  </section>
-
-  <!-- login info end -->
-
-  <!-- staff Info start -->
-  <section id="staffInfo" class="staffInfo">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 sign-up1">
-          <h5 class="text-center">Well Done</h5>
-          <p class="text-center">Add a few more details to start getting booking</p>
-          <p>Add staff members to your account</p>
-        </div>
-        <div class="col-6 sign-up1">
-          <div class="owner-info">
-            <div class="owner-icon">
-              <span> <i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
-            </div>
-            <div class="owner-name">
-
-              <p id="ownerNamShow"></p>
-              <p>Account Owner</p>
-            </div>
-            <div class="owner-edit">
-              <a data-toggle="modal" data-target="#ownerModalCenter" class="btn btn-danger" value="Edit">Edit</a>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-6 sign-up1">
-          <div id="staffMember"></div>
-          <a href="#" class="addStaff" data-toggle="modal" data-target="#staffModalCenter"><i class="fa fa-plus"
-              aria-hidden="true"></i>Add staff Member</a>
-
-          <a id="staffInfobtn" type="submit" class="btn btn-info continueBtn" value="Continue">Continue</a>
-        </div>
-        <!-- add staff start -->
-        <div class="add-staff-modal">
-          <div class="modal fade" id="staffModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Add Staff Member</h5>
-
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-
-                  <input id="staffName"  type="text" class="form-control" placeholder="What is staffer name?" required>
-                  <input id="staffJob"   type="text" class="form-control" placeholder="What is staffer job positions?"
-                    required>
-                  <input id="staffPhone" type="text" class="form-control" placeholder="What is staffer phone number?"
-                    required>
-                  <input id="staffEmail" type="text" class="form-control" placeholder="What is staffer e-mail address?"
-                    required>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" onclick="AddStaffMemberSave()" class="close" data-dismiss="modal"
-                    aria-label="Close" class="btn btn-primary">Save</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- add staff end -->
-
-        <!-- Edit Owner info start -->
-        <div class="add-staff-modal">
-          <div class="modal fade" id="ownerModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Edit Owner Info</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-
-                  <input type="text" class="form-control" placeholder="What is staffer name?">
-                  <input type="text" class="form-control" placeholder="What is staffer job positions?">
-                  <input type="text" class="form-control" placeholder="What is staffer phone number?">
-                  <input type="text" class="form-control" placeholder="What is staffer e-mail address?">
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Save</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Edit owner info end -->
-      </div>
-    </div>
-  </section>
-  <!-- staff Info end -->
-
-  <!-- shop location section start -->
-  <section id="shop-info" class="shop-info">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 sign-up">
-          <h2 class="text-center">Help client find you</h2>
-          <h5 class="text-center">Enter the contact details of your business</h5>
-          <div class="business-number">
-            <input id="businessPhone" name="businessPhone" type="text" class="form-control"
-              placeholder="What is your business phone number?">
-          </div>
-          <div class="location-save " data-toggle="modal" data-target="#mapLocationModal">
-            <a href="#" class="text-white">Enter your business Location</a>
-          </div>
-          <div class="categories-save" data-toggle="modal" data-target="#categoriesModal">
-            <a href="#" class="text-white">Select which Categories apply</a>
-          </div>
-          <div class="time-select" data-toggle="modal" data-target="#timeZoneModal">
-            <a href="#" class="text-white">Monday - Friday</a>
-          </div>
-          <div class="continueSubmitBtn">
-            <a id="shop-infobtn" type="submit" class="btn btn-info" value="Continue">Continue</a>
-           
-          </div>
-        </div>
-
-        <!-- Map location start -->
-        <div class="modal fade" id="mapLocationModal" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <!-- <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
-                  <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                    frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div> -->
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Map location end -->
-
-        <!-- categories modal start -->
-
-        <div class="modal fade" id="categoriesModal" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="categories-box">
-                  <h5><input class="pl-4" id="checkboxHaircut" name="checkboxHaircut" type="checkbox"> Haircut</h5>
-                  <h5><input class="pl-4" id="checkboxSalon" name="checkboxSalon" type="checkbox"> Salon</h5>
-                  <h5><input class="pl-4" id="checkboxNailCutter" name="checkboxNailCutter" type="checkbox"> Nail cutter</h5>
-                  <h5><input class="pl-4" id="checkboxBeautySalon" name="checkboxBeautySalon" type="checkbox"> Beauty salon</h5>
-                </div>
-                <div class="main-category">
-                  <p>Main category</p>
-                  <select class="form-control" id="mainCategoryDropDown" name="mainCategoryDropDown">
-                    <option value="Hair cut">Hair cut</option>
-                    <option value="Nail Salon">Nail Salon</option>
-                    <option value="Baeuty salon">Baeuty salon</option>
-
-                  </select>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" onclick="ModalTitleSave()" class="close" data-dismiss="modal" aria-label="Close"
-                  class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- categories modal end -->
-        <!-- time set modal start -->
-        <div class="modal fade" id="timeZoneModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                
-                <div class="day-time">
-
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="sun" name="sun" type="checkbox">Sunday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openSun" name="openSun" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeSun" name="closeSun" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="day-time">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="mon" name="mon" type="checkbox">Monday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openMon" name="openMon" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeMon" name="closeMon" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="day-time"> 
-
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="tue" name="tue" type="checkbox">Tuesday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openTue" name="openTue" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeTue" name="closeTue" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="day-time">
-
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="wed" name="wed" type="checkbox">Wednesday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openWed" name="openWed" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeWed" name="closeWed" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="day-time">
-
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="thu"  name="thu" type="checkbox">Thursday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openThu" name="openThu" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeThu" name="closeThu" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="day-time">
-
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="fri" name="fri" type="checkbox">Friday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openFri" name="openFri" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeFri" name="closeFri" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="day-time">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <h5><input id="sat" name="sat" type="checkbox">Saturday</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="openSat" name="openSat" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-4">
-                      <select id="closeSat" name="closeSat" class="form-control">
-                        <option value="12:00:00">12.00 AM</option>
-                        <option value="12:05:00">12.05 AM</option>
-                        <option value="12:10:00">12.10 AM</option>
-                        <option value="12:15:00">12.15 AM</option>
-                        <option value="12:20:00">12.20 AM</option>
-                        <option value="12:25:00">12.25 AM</option>
-                        <option value="12:30:00">12.30 AM</option>
-                        <option value="12:35:00">12.35 AM</option>
-                        <option value="12:40:00">12.40 AM</option>
-                        <option value="12:45:00">12.45 AM</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="modal-footer">
-                <button class="close" data-dismiss="modal" aria-label="Close" onclick="setDay()" type="button"
-                  class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- time set modal end -->
-
-      </div>
-    </div>
-  </section>
-  <!-- shop location section end -->
-
-  <!-- shop image upload start -->
-  <section id="shop-image-upload" class="shop-image-upload">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 sign-up">
-          <h5 class="text-center">Show off your workplace</h5>
-          <p class="text-center">Get clients booking with confidence</p>
-          <div class="upsideBox">
-
-            <div class="form-group">
-              <div class="preview-zone hidden">
-                <div class="box box-solid">
-                  <div class="box-header with-border">
-
-                    <div class="box-tools pull-right">
-                      <button type="button" class="btn btn-danger btn-xs remove-preview">
-                        <i class="fa fa-times"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="box-body"></div>
-                </div>
-              </div>
-              <div class="dropzone-wrapper">
-                <div class="dropzone-desc">
-                  <p>Choose an image file or drag it here.</p>
-                </div>
-                <input type="file" name="img_logo" class="dropzone">
-              </div>
-
-            </div>
-
-          </div>
-          <div class="imgDiv">
-            <a id="shop-image-uploadbtn" type="submit" class="btn btn-danger" onclick="showCat()" value="Continue">Continue</a>
-         
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- shop image upload end -->
-
-  <!-- service and price section start -->
-  <section id="service-price" class="service-price">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 sign-up1">
-          <h2 class="text-center">Your services & prices</h2>
-          <h5 class="text-center">You need at least one service for clients to book:)</h5>
-        
-          <div class="category-time" >
-            <div id="newCategoryAdd"></div>
-            <div id="categoryAdd"></div>
-          </div>
-          <div class="addService text-center" data-toggle="modal" data-target="#addServiceModalLong">
-            <a href="#">ADD Service</a>
-          </div>
-          <div class="addCategory text-center" data-toggle="modal" data-target="#addCategoryModalLong">
-            <a href="#">ADD Category</a>
-          </div>
-        </div>
-      </div>
-
-  
-    
-
-      <!-- add Service modal start -->
-      <div class="modal fade" id="addServiceModalLong" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Edit service</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="service-name">
-                <label>Service name</label>
-                <input type="text" class="form-control" id="serviceName" placeholder="Service Name">
-              </div>
-              <div class="price-option">
-                <h2>Price Options</h2>
-                <p>Duration</p>
-                <div class="row">
-                  <select class="col-6 form-control" id="hour">
-                    <option value="1">1 <span>hour(s)</span> </option>
-                  </select>
-                  <select class="col-6 form-control" id="min">
-                    <option value="1">1 <span>min(s)</span> </option>
-                  </select>
-                </div>
-                <p>Price Type & Price</p>
-                <div class="row">
-                  <select class="col-6 form-control" id="priceType">
-                    <option value="Fixed">Fixed</option>
-                    <option value="Varies">Varies</option>
-                    <option value="Dont show">Don't show</option>
-                  </select>
-                  <input type="text" id="price" class="col-6 form-control">
-                </div>
-
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary close"  data-dismiss="modal" aria-label="Close" onclick="addNewCatandTime()">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- add Service modal end -->
-
-      <!-- add category start -->
-      <div class="modal fade" id="addCategoryModalLong" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Add Category</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input id="addCategory" type="text" class="form-control" placeholder="Add category">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary close" data-dismiss="modal" onclick="addNewCategory()" aria-label="Close">Save changes</button>
-              <button type="button" class="btn btn-primary" onclick="addNewCategory()">Save and another</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- add category end -->
-
-    </div>
-  </section>
-  <!-- service and price section end -->
-
-
-  <div id="finishDiv">
-    <button class="btn btn-danger" type="submit" id="finishButton">Finish</button>
   </div>
 
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
+      <div class="col-md-12">
+        <label for="">Full Name</label>
+        <input type="text" class="form-control" placeholder="Enter Your Name">
+      </div>
+      <div class="col-md-12">
+        <label for="">Email Address</label>
+        <input type="text" class="form-control" placeholder="Enter Your Email Address">
+      </div>
+      <div class="col-md-12">
+        <label for="">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Your Password">
+      </div>
+      <div class="col-md-12">
+        <label for="">Confirm Password</label>
+        <input type="text" class="form-control" placeholder="Confirm Your Password">
+      </div>
+      <div class="col-md-12">
+          <form action="" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label class="control-label">Upload File</label>
+                    <div class="preview-zone hidden">
+                      <div class="box box-solid">
+                        <div class="box-header with-border">
+                          <div><b>Preview</b></div>
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-danger btn-xs remove-preview">
+                              <i class="fa fa-times"></i> Reset This Form
+                            </button>
+                          </div>
+                        </div>
+                        <div class="box-body"></div>
+                      </div>
+                    </div>
+                    <div class="dropzone-wrapper">
+                      <div class="dropzone-desc">
+                        <i class="glyphicon glyphicon-download-alt"></i>
+                        <p>Choose an image file or drag it here.</p>
+                      </div>
+                      <input type="file" name="img_logo" class="dropzone">
+                    </div>
+                  </div>
+               
+        
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary pull-right">Upload</button>
+                </div>
+              </div>
+         
+          </form>
+      </div>
 
-  <script src="/js/shop/script.js"></script>
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="col-md-12">
+        <label for="">Shop Name</label>
+        <input type="text" class="form-control" placeholder="Enter Your Shop Name">
+      </div>
+      <div class="col-md-12">
+        <label for="">Shop Email Address</label>
+        <input type="text" class="form-control" placeholder="Enter Your Shop Email Address">
+      </div>
+      <div class="col-md-12">
+        <label for="">Location</label>
+        <input class="form-control" type="text" id="us2-address"/>	
+        <div class="col-md-6">
+          <label for="">Latituale</label>
+        <input class="form-control" type="text" id="us2-lat"/>
+        </div>
+        <div class="col-md-6">
+          <label for="">Longtitute</label>
+        <input class="form-control" type="text" id="us2-lon"/>
+        </div>
+        <div class="col-md-12">
+          <div id="maparea" style="height: 300px;"></div>
+          <div class=""></div>
+        </div>
+    </div>
+
+    </div>
+   
+    
+
+</div>
+
+</section>
+
+</body>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
+  <script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
+
+  <script>
+    $(document).ready(function() {
+     $('#maparea').locationpicker({
+       inputBinding: {
+         latitudeInput: $('#us2-lat'),
+         longitudeInput: $('#us2-lon'),
+         locationNameInput: $('#us2-address')
+       },
+       enableAutocomplete: true,
+    
+       onchanged: function(currentLocation) {
+           var placeType = ["atm", "pharmacy"];
+           var sep = ',';
+           var request = [],
+             lat = currentLocation.latitude,
+             lan = currentLocation.longitude;
+           for (var i = 0; i < placeType.length; i++) {
+             request = {
+               location: new google.maps.LatLng(lat, lan),
+               types: [placeType[i]],
+               rankBy: google.maps.places.RankBy.DISTANCE
+             };
+             var container = document.getElementById("'" + placeType[i] + "'");
+             var service = new google.maps.places.PlacesService(container);
+             service.nearbySearch(request, callback);
+   
+             function callback(results, status) {
+               if (status == google.maps.places.PlacesServiceStatus.OK) {
+                 for (var j = 0; j < 3; j++) {
+                   var input = document.getElementById("'" + placeType[i] + "'");
+                   var resultset = results[j].name + sep + results[j].vicinity + '.';
+                   
+   
+                 }
+   
+               }
+             }
+           }
+         } 
+   
+     });
+   });
+   </script>
+
+   <script>
+function readFile(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var htmlPreview =
+        '<img width="200" src="' + e.target.result + '" />' +
+        '<p>' + input.files[0].name + '</p>';
+      var wrapperZone = $(input).parent();
+      var previewZone = $(input).parent().parent().find('.preview-zone');
+      var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+
+      wrapperZone.removeClass('dragover');
+      previewZone.removeClass('hidden');
+      boxZone.empty();
+      boxZone.append(htmlPreview);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function reset(e) {
+  e.wrap('<form>').closest('form').get(0).reset();
+  e.unwrap();
+}
+
+$(".dropzone").change(function() {
+  readFile(this);
+});
+
+$('.dropzone-wrapper').on('dragover', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).addClass('dragover');
+});
+
+$('.dropzone-wrapper').on('dragleave', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).removeClass('dragover');
+});
+
+$('.remove-preview').on('click', function() {
+  var boxZone = $(this).parents('.preview-zone').find('.box-body');
+  var previewZone = $(this).parents('.preview-zone');
+  var dropzone = $(this).parents('.form-group').find('.dropzone');
+  boxZone.empty();
+  previewZone.addClass('hidden');
+  reset(dropzone);
+});
+   </script>
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
