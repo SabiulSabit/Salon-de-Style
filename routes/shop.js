@@ -16,7 +16,6 @@ router.route('/login')
       .get(shopController.getLogin)
 //login request routing
 router.route('/dashboard')
-      .get(shopController.isAuthentic, shopController.showIndex)      
       .post(shopController.postLogin)      
 
 router.route('/createaccount')

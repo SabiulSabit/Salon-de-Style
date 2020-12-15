@@ -77,7 +77,7 @@ exports.postLogin = (req, res, next) => {
                 }
                 else {
                     req.session.mail = req.body.username;
-                    return res.render('shop/index');
+                    return res.redirect('/shop/invoicedetail');
                 }
             });
             // else if()
@@ -579,7 +579,7 @@ exports.postCreateAccount = (req, res, next) => {
 
                         // console.log("All Data Saved");
                         req.session.mail = ownerEmail;
-                        res.render('shop/index');
+                        return res.redirect('/shop/invoicedetail');
 
 
                     }
@@ -1026,10 +1026,6 @@ exports.getWorkSchedule = (req, res, next) => {
 }
 
 
-//show index file on get Request
-exports.showIndex = (req, res, next) => {
-    return res.render('shop/index');
-}
 
 // show staff info
 exports.getStaffInfo = (req, res, next) => {
