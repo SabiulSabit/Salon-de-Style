@@ -108,7 +108,8 @@ exports.postCreateAccount = (req, res, next) => {
 
     let ownername,pass,conPass,category;
     let shopname,phone,address,lati,long;
-    let  shopemail = ""
+    let  s = ""
+    let imgPath=""
     let wrong = 0;
 
     //catche all data and save them
@@ -133,7 +134,7 @@ exports.postCreateAccount = (req, res, next) => {
                 phone = field;
             }
             else if (name === "shopemail") {
-                shopemail = field;
+                s = field;
             }
             else if (name === "address") {
                 address = field;
@@ -144,15 +145,12 @@ exports.postCreateAccount = (req, res, next) => {
             else if (name === "long") {
                 long = parseFloat(field);
             }
-
-
         })
         .on('file', (name, file) => {
             // console.log('Uploaded file', name)
             //   fs.rename(file.path,__dirname+"a")
         })
         .on('fileBegin', function (name, file) {
-
 
             var fileType = file.type.split('/').pop();
 
@@ -161,12 +159,12 @@ exports.postCreateAccount = (req, res, next) => {
                 a = path.join(__dirname, '../')
 
                 if (name === "img") {
-                    imgPath = (shopemail + "." + fileType);
+                    imgPath = (s + "." + fileType);
                 }
-               // console.log(shopemail,shopname,phone,address);
-                console.log(imgPath);
-                //imgPath = '/images/shop/shopImg/' + (shopemail + "." + fileType)
-                file.path = a + '/public/images/shop/shopImg/' + (shopemail + "." + fileType); // __dirname
+              //  console.log(s,shopname,phone,address);
+                //console.log(imgPath);
+                imgPath = '/images/shop/shopImg/' + (s + "." + fileType)
+                file.path = a + '/public/images/shop/shopImg/' + (s + "." + fileType); // __dirname
             } else {
                 console.log("Wrong File type")
                 wrong = 1;
@@ -192,11 +190,11 @@ exports.postCreateAccount = (req, res, next) => {
                 
               let data = "INSERT INTO `shopadmin` " + 
                          " ( `businessName`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `address`, `lat`, `lon`) "+
-                         " VALUES ('"+shopname+"','"+ownername+"','"+shopemail+"','"+phone+"','"+pass+"','"+imgPath+"','"+address+"','"+address+"','"+address+"') "
+                         " VALUES ('"+shopname+"','"+ownername+"','"+s+"','"+phone+"','"+pass+"','"+imgPath+"','"+address+"','"+address+"','"+address+"') "
 
               let data1 = " INSERT INTO `category` "+
                          " (`name`, `businessMail`)  "+
-                         " VALUES ('"+category+"','"+shopemail+"') "       
+                         " VALUES ('"+category+"','"+s+"') "       
                          
               connectDB.query(data,(err,result)=>{
                   if(err){
