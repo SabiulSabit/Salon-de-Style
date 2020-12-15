@@ -61,7 +61,7 @@ exports.postLogin = (req, res, next) => {
         database: databaseName,
     });
 
-    //console.log("asfdsad")
+    console.log(req.body.username)
     data = "SELECT password FROM `shopadmin` WHERE businessMail = " + mysql.escape(req.body.username);
 
     connectDB.query(data, (err, result) => {
@@ -106,301 +106,45 @@ exports.postCreateAccount = (req, res, next) => {
 
     });
 
-    let wrong = 0, imgPath = "";
-    //show owner
-    let businessName = "";
-    let businessLink = "";
-    let ownerName = "";
-    let ownerEmail = "";
-    let password = "";
-    let businessPhone = "";
+    let ownername,pass,conPass,category;
+    let shopname,phone,address,lati,long;
+    let  shopemail = ""
+    let wrong = 0;
 
-    //default category
-    let checkboxHaircut = 0, checkboxSalon = 0, checkboxNailCutter = 0, checkboxBeautySalon = 0;
-    let mainCategoryDropDown;
-    //stuff information
-    let staffName = [], staffJob = [], staffPhone = [], staffEmail = [];
-
-    //all service
-    let serviceName = [];
-    let hour = [];
-    let min = [];
-    let priceType = []
-    let price = [];
-    let addCategory = [];
-
-    //all open day time info
-    let sun, openSun, closeSun;
-    let mon, openMon, closeMon;
-    let tue, openTue, closeTue;
-    let wed, openWed, closeWed;
-    let thu, openThu, closeThu;
-    let fri, openFri, closeFri;
-    let sat, openSat, closeSat;
-
-  return;
     //catche all data and save them
     new formidable.IncomingForm().parse(req)
         .on('field', (name, field) => {
-            if (name === "businessName") {
-                businessName = field;
+            if (name === "ownername") {
+                ownername = field;
             }
-            else if (name === "businessLink") {
-                businessLink = field;
+            else if (name === "pass") {
+                pass = bcrypt.hashSync(field, 10);
             }
-            else if (name === "ownerName") {
-                ownerName = field;
+            else if (name === "conPass") {
+                conPass= field;
             }
-            else if (name === "password") {
-                password = bcrypt.hashSync(field, 10);
+            else if (name === "category") {
+                category = field;
             }
-            else if (name === "ownerEmail") {
-                ownerEmail = field
+            else if (name === "shopname") {
+                shopname = field;
             }
-            else if (name === "staffName0") {
-                staffName[0] = field
+            else if (name === "phone") {
+                phone = field;
             }
-            else if (name === "staffJob0") {
-                staffJob[0] = field
+            else if (name === "shopemail") {
+                shopemail = field;
             }
-            else if (name === "staffEmail0") {
-                staffEmail[0] = field
+            else if (name === "address") {
+                address = field;
             }
-            else if (name === "staffPhone0") {
-                staffPhone[0] = field
+            else if (name === "lati") {
+                lati = parseFloat(field);
             }
-            else if (name === "staffName01") {
-                staffName[1] = field
+            else if (name === "long") {
+                long = parseFloat(field);
             }
-            else if (name === "staffJob01") {
-                staffJob[1] = field
-            }
-            else if (name === "staffEmail01") {
-                staffEmail[1] = field
-            }
-            else if (name === "staffPhone01") {
-                staffPhone[1] = field
-            }
-            else if (name === "staffName012") {
-                staffName[2] = field
-            }
-            else if (name === "staffJob012") {
-                staffJob[2] = field
-            }
-            else if (name === "staffEmail012") {
-                staffEmail[2] = field
-            }
-            else if (name === "staffPhone012") {
-                staffPhone[2] = field
-            }
-            else if (name === "staffName0123") {
-                staffName[3] = field
-            }
-            else if (name === "staffJob0123") {
-                staffJob[3] = field
-            }
-            else if (name === "staffEmail0123") {
-                staffEmail[3] = field
-            }
-            else if (name === "staffPhone0123") {
-                staffPhone[3] = field
-            }
-            else if (name === "staffName01234") {
-                staffName[4] = field
-            }
-            else if (name === "staffJob01234") {
-                staffJob[4] = field
-            }
-            else if (name === "staffEmail01234") {
-                staffEmail[4] = field
-            }
-            else if (name === "staffPhone01234") {
-                staffPhone[4] = field
-            }
-            else if (name === "businessPhone") {
-                businessPhone = field
-            }
-            else if (name === "checkboxHaircut") {
-                checkboxHaircut = 1;
-            }
-            else if (name === "checkboxSalon") {
-                checkboxSalon = 1;
-            }
-            else if (name === "checkboxNailCutter") {
-                checkboxNailCutter = 1;
-            }
-            else if (name === "checkboxBeautySalon") {
-                checkboxBeautySalon = 1;
-            }
-            else if (name === "mainCategoryDropDown") {
-                mainCategoryDropDown = field;
-            }
-            //sunday
-            else if (name === "sun") {
-                sun = field;
-            }
-            else if (name === "openSun") {
-                openSun = field;
-            }
-            else if (name === "closeSun") {
-                closeSun = field;
-            }
-            //Monday
-            else if (name === "mon") {
-                mon = field;
-            }
-            else if (name === "openMon") {
-                openMon = field;
-            }
-            else if (name === "closeMon") {
-                closeMon = field;
-            }
-            //Tuesday
-            else if (name === "tue") {
-                tue = field;
-            }
-            else if (name === "openTue") {
-                openTue = field;
-            }
-            else if (name === "closeTue") {
-                closeTue = field;
-            }
-            //Wednesday
-            else if (name === "wed") {
-                wed = field;
-            }
-            else if (name === "openWed") {
-                openWed = field;
-            }
-            else if (name === "closeWed") {
-                closeWed = field;
-            }
-            //Thursday
-            else if (name === "thu") {
-                thu = field;
-            }
-            else if (name === "openThu") {
-                openThu = field;
-            }
-            else if (name === "closeThu") {
-                closeThu = field;
-            }
-            //Friday
-            else if (name === "fri") {
-                fri = field;
-            }
-            else if (name === "openFri") {
-                openFri = field;
-            }
-            else if (name === "closeFri") {
-                closeFri = field;
-            }
-            //Saturday
-            else if (name === "sat") {
-                sat = field;
-            }
-            else if (name === "openSat") {
-                openSat = field;
-            }
-            else if (name === "closeSat") {
-                closeSat = field;
-            }
-            //all service name
-            else if (name === "serviceName0") {
-                serviceName[0] = field;
-            }
-            else if (name === "serviceName01") {
-                serviceName[1] = field;
-            }
-            else if (name === "serviceName012") {
-                serviceName[2] = field;
-            }
-            else if (name === "serviceName0123") {
-                serviceName[3] = field;
-            }
-            else if (name === "serviceName01234") {
-                serviceName[4] = field;
-            }
-            //all hour 
-            else if (name === "hour0") {
-                hour[0] = field;
-            }
-            else if (name === "hour01") {
-                hour[1] = field;
-            }
-            else if (name === "hour012") {
-                hour[2] = field;
-            }
-            else if (name === "hour0123") {
-                hour[3] = field;
-            }
-            else if (name === "hour01234") {
-                hour[4] = field;
-            }
-            //all min  
-            else if (name === "min0") {
-                min[0] = field;
-            }
-            else if (name === "min01") {
-                min[1] = field;
-            }
-            else if (name === "min012") {
-                min[2] = field;
-            }
-            else if (name === "min0123") {
-                min[3] = field;
-            }
-            else if (name === "min01234") {
-                min[4] = field;
-            }
-            //all priceType
-            else if (name === "priceType0") {
-                priceType[0] = field;
-            }
-            else if (name === "priceType01") {
-                priceType[1] = field;
-            }
-            else if (name === "priceType012") {
-                priceType[2] = field;
-            }
-            else if (name === "priceType0123") {
-                priceType[3] = field;
-            }
-            else if (name === "priceType01234") {
-                priceType[4] = field;
-            }
-            //all price
-            else if (name === "price0") {
-                price[0] = field;
-            }
-            else if (name === "price01") {
-                price[1] = field;
-            }
-            else if (name === "price012") {
-                price[2] = field;
-            }
-            else if (name === "price0123") {
-                price[3] = field;
-            }
-            else if (name === "price01234") {
-                price[4] = field;
-            }
-            //add new caregory 
-            else if (name === "addCategory0") {
-                addCategory[0] = field;
-            }
-            else if (name === "addCategory01") {
-                addCategory[1] = field;
-            }
-            else if (name === "addCategory012") {
-                addCategory[2] = field;
-            }
-            else if (name === "addCategory0123") {
-                addCategory[3] = field;
-            }
-            else if (name === "addCategory01234") {
-                addCategory[4] = field;
-            }
+
 
         })
         .on('file', (name, file) => {
@@ -416,14 +160,17 @@ exports.postCreateAccount = (req, res, next) => {
 
                 a = path.join(__dirname, '../')
 
-                if (name === "img_logo") {
-                    imgPath = (ownerEmail + "." + fileType);
+                if (name === "img") {
+                    imgPath = (shopemail + "." + fileType);
                 }
-                imgPath = '/images/shop/shopImg/' + (ownerEmail + "." + fileType)
-                file.path = a + '/public/images/shop/shopImg/' + (ownerEmail + "." + fileType); // __dirname
+               // console.log(shopemail,shopname,phone,address);
+                console.log(imgPath);
+                //imgPath = '/images/shop/shopImg/' + (shopemail + "." + fileType)
+                file.path = a + '/public/images/shop/shopImg/' + (shopemail + "." + fileType); // __dirname
             } else {
                 console.log("Wrong File type")
                 wrong = 1;
+
                 // res.render('admin/addhotel', { msg: "", err: "Wrong File type" });
             }
         })
@@ -442,148 +189,32 @@ exports.postCreateAccount = (req, res, next) => {
                 return;
             }
             else {
+                
+              let data = "INSERT INTO `shopadmin` " + 
+                         " ( `businessName`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `address`, `lat`, `lon`) "+
+                         " VALUES ('"+shopname+"','"+ownername+"','"+shopemail+"','"+phone+"','"+pass+"','"+imgPath+"','"+address+"','"+address+"','"+address+"') "
 
+              let data1 = " INSERT INTO `category` "+
+                         " (`name`, `businessMail`)  "+
+                         " VALUES ('"+category+"','"+shopemail+"') "       
+                         
+              connectDB.query(data,(err,result)=>{
+                  if(err){
+                      throw err;
+                  }
+                  else{
+                      connectDB.query(data1,(err1,resutl1)=>{
+                          if(err1){
+                              throw err1
+                          }
+                          else{
+                              res.redirect('/shop/login')
+                          }
+                      })
+                  }
+              })           
 
-                //password =password;
-                data = "INSERT INTO `shopadmin`(`businessName`, `businessWebsite`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`) " +
-                    "VALUES('" + businessName + "','" + businessLink + "', '" + ownerName + "','" + ownerEmail + "' ,'" + businessPhone + "' ,'" + password + "', '" + imgPath + "')"
-
-                connectDB.query(data, (err, result) => {
-
-                    if (err) {
-                        throw err;
-                    }
-                    else {
-
-                        data = ""; //celar prev query data
-                        //multiple query to add stuffs info
-                        for (i = 0; i < staffEmail.length; i++) {
-
-                            data += " INSERT INTO `stuffinfo`(`businessMail`, `stuffName`, `position`, `phone`, `email`) " +
-                                "VALUES ('" + ownerEmail + "', '" + staffName[i] + "', '" + staffJob[i] + "','" + staffPhone[i] + "','" + staffEmail[i] + "') ;"
-                        }
-                        //console.log(data);
-
-                        if (data.length) {
-                            connectDB.query(data, (err, result) => {
-                                if (err) {
-                                    console.log("Stuff Query Info Error")
-                                    throw err;
-                                }
-
-                            })
-                        }
-
-                        data = "";  //celar prev query data 
-                        data = " INSERT INTO `shopinfo`(`businessMail`, `haircut`, `salon`, `nailCutter`, `beautySalon`) " +
-                            "VALUES ('" + ownerEmail + "','" + mysql.escape(checkboxHaircut) + "','" + mysql.escape(checkboxSalon) + "','" + mysql.escape(checkboxNailCutter) + "','" + mysql.escape(checkboxBeautySalon) + "')"
-
-                        //console.log(data);
-                        if (data.length) {
-                            connectDB.query(data, (err, result) => {
-                                if (err) {
-                                    console.log("shopinfo query err");
-                                    console.log(err)
-                                }
-                            })
-                        }
-
-                        data = "" //clear prev query
-                        data = "INSERT INTO `category`(`name`, `businessMail`) " +
-                            " VALUES ('" + mainCategoryDropDown + "','" + ownerEmail + "')"
-
-                        if (data.length) {
-                            connectDB.query(data, (err, result) => {
-                                if (err) {
-                                    console.log(err);
-                                    throw err;
-                                }
-                            })
-                        }
-
-                        data = "" //clear prev query
-                        //multiple query to add stuffs info
-                        if (sun != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "sun" + "','" + openSun + "','" + closeSun + "','" + ownerEmail + "') ; "
-                        }
-                        if (mon != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "mon" + "','" + openMon + "','" + closeMon + "','" + ownerEmail + "') ; "
-                        }
-                        if (tue != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "tue" + "','" + openTue + "','" + closeTue + "','" + ownerEmail + "') ; "
-                        }
-                        if (wed != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "wed" + "','" + openWed + "','" + closeWed + "','" + ownerEmail + "') ; "
-                        }
-                        if (thu != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "thu" + "','" + openThu + "','" + closeThu + "','" + ownerEmail + "') ; "
-                        }
-                        if (fri != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "fri" + "','" + openFri + "','" + closeFri + "','" + ownerEmail + "') ; "
-                        }
-                        if (sat != undefined) {
-                            data += "INSERT INTO `shoptime`(`dayName`, `open`, `close`, `businessMail`) " +
-                                "VALUES ('" + "sat" + "','" + openSat + "','" + closeSat + "','" + ownerEmail + "') ; "
-                        }
-
-                        //console.log(openSat,closeSat)
-                        if (data.length) {
-                            connectDB.query(data, (err, result) => {
-                                if (err) {
-                                    console.log(err);
-                                    throw err;
-                                }
-                            })
-                        }
-
-
-                        //services
-
-                        data = "";//clear prev query
-                        for (i = 0; i < serviceName.length; i++) {
-
-                            data += "INSERT INTO `shopservice`(`businessMail`, `name`, `hour`, `min`, `priceType`, `price`) " +
-                                "VALUES ('" + ownerEmail + "','" + serviceName[i] + "','" + hour[i] + "','" + min[i] + "','" + priceType[i] + "','" + price[i] + "') ; "
-                        }
-
-                        if (data.length) {
-                            connectDB.query(data, (err, result) => {
-                                if (err) {
-                                    console.log(err)
-                                    throw err;
-                                }
-                            })
-                        }
-
-                        //category
-                        data = ""; //clear prev query
-                        for (i = 0; i < addCategory.length; i++) {
-
-                            data += "INSERT INTO `category`(`name`, `businessMail`) " +
-                                " VALUES ('" + addCategory[i] + "','" + ownerEmail + "') ; "
-                        }
-                        if (data.length) {
-                            connectDB.query(data, (err, result) => {
-                                if (err) {
-                                    console.log(err)
-                                    throw err;
-                                }
-                            })
-                        }
-
-                        // console.log("All Data Saved");
-                        req.session.mail = ownerEmail;
-                        return res.redirect('/shop/invoicedetail');
-
-
-                    }
-                });
+            
             }
         })
 }
