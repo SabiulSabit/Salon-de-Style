@@ -1476,7 +1476,15 @@ exports.getClientDetail = (req, res, next) => {
 }
 //save new client data
 exports.postClientDetail = (req,res,next) => {
-    console.log(req.body);
+    //console.log(req.body);
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName
+    });
+
+    let count = ""
 }
 
 //get Client Invoice 
@@ -1490,7 +1498,7 @@ exports.getClientInvoice = (req, res, next) => {
 //get Categories List getCategoriesList
 exports.getCategoriesList = (req, res, next) => {
 
-    var connectDB = mysql.createConnection({
+    let connectDB = mysql.createConnection({
         host: hostNameDB,
         user: userNameDB,
         password: passwordDB,

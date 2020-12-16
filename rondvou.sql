@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2020 at 09:33 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Dec 16, 2020 at 02:32 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -55,6 +54,7 @@ INSERT INTO `booking` (`businessMail`, `userMail`, `userPhone`, `userAddress`, `
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 1, 45685, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-19', '2020-10-19', '01:05:00', '01:35:00', 'Hand Cash', 0, 45687, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-27', '2020-10-27', '09:00:00', '09:30:00', 'Hand Cash', 0, 45689, 0),
+('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-12-15', '2020-12-15', '10:00:00', '10:30:00', 'Hand Cash', 0, 45690, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-08', '2020-10-08', '11:10:00', '11:40:00', 'Hand Cash', -1, 45681, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 1, 45683, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 0, 45685, 0),
@@ -79,8 +79,25 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`name`, `businessMail`) VALUES
 ('Abc', 'iamsabit99@gmail.com'),
+('Hair Salon ', 'abc@gmail.com'),
 ('Nail Salon', 'iamsabit98@gmail.com'),
 ('Nail Salon', 'iamsabit99@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client`
+--
+
+CREATE TABLE `client` (
+  `name` varchar(40) NOT NULL,
+  `useremail` varchar(40) NOT NULL,
+  `shopMail` varchar(40) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -291,6 +308,7 @@ CREATE TABLE `shopadmin` (
 --
 
 INSERT INTO `shopadmin` (`businessName`, `businessWebsite`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `ecom`, `fb`, `insta`, `officialName`, `description`, `address`, `lat`, `lon`) VALUES
+('Cool Hairdresser', '', 'Sabiul Sabit', 'abc@gmail.com', '01744248058', '$2b$10$9DygGZMGodT1hB3RqUz34uF7fOVBcwp4Y2g8L.MksphlawqWSb.WG', '/images/shop/shopImg/abc.jpeg', '', '', '', '', '', '182 Bashundhara Rd, Dhaka, Bangladesh', 23.8136, 90.4235),
 ('sabit hair dress123', 'www.ad123.com', 'Sabit', 'iamsabit98@gmail.com', '12345', '$2b$10$ZnR6hxspC0guySJhjGMwE.yk4SSk3.T00V.NjcflOT7S08/CKz7wi', '/images/shop/shopImg/iamsabit98@gmail.com.jpeg', '', '', '', '', '', '', 0, 0),
 ('sabit hair dress', 'www.ad.com', 'sabit', 'iamsabit99@gmail.com', '123456', '$2b$10$YgzWXVxyt2or966pKCjxP.l6PjyrjTuhaUjruLz4YCImQbSUu44Ii', '/images/shop/shopImg/iamsabit99@gmail.com.jpeg', 'ecom.com', 'fb.com', '', 'ABC', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Dhaka 1205, Bangladesh', 23.7489, 90.4034);
 
@@ -359,6 +377,7 @@ CREATE TABLE `shoptime` (
 
 INSERT INTO `shoptime` (`dayName`, `open`, `close`, `businessMail`) VALUES
 ('mon', '01:05:00', '12:10:00', 'iamsabit99@gmail.com'),
+('sun', '10:00:00', '10:20:00', 'abc@gmail.com'),
 ('sun', '12:00:00', '12:40:00', 'iamsabit98@gmail.com'),
 ('sun', '16:00:00', '23:05:00', 'iamsabit99@gmail.com'),
 ('thu', '10:40:00', '18:45:00', 'iamsabit99@gmail.com'),
@@ -506,6 +525,13 @@ ALTER TABLE `category`
   ADD KEY `b3Mail` (`businessMail`);
 
 --
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`useremail`,`shopMail`,`id`),
+  ADD KEY `c_shop` (`shopMail`);
+
+--
 -- Indexes for table `egiftcard`
 --
 ALTER TABLE `egiftcard`
@@ -618,6 +644,12 @@ ALTER TABLE `booking`
 --
 ALTER TABLE `category`
   ADD CONSTRAINT `b3Mail` FOREIGN KEY (`businessMail`) REFERENCES `shopadmin` (`businessMail`);
+
+--
+-- Constraints for table `client`
+--
+ALTER TABLE `client`
+  ADD CONSTRAINT `c_shop` FOREIGN KEY (`shopMail`) REFERENCES `shopadmin` (`businessMail`);
 
 --
 -- Constraints for table `healthandsafety`
