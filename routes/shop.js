@@ -95,6 +95,7 @@ router.route('/invoicedetail')
 ///clientdetail      
 router.route('/clientdetail')
       .get(shopController.isAuthentic,shopController.getClientDetail)
+      .post(shopController.isAuthentic,shopController.postClientDetail)
 
 ///clientinvoice
 router.route('/clientinvoice')

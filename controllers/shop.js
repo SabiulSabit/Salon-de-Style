@@ -1474,6 +1474,10 @@ exports.getInvoiceDetail = (req, res, next) => {
 exports.getClientDetail = (req, res, next) => {
     return res.render('shop/clientDetail')
 }
+//save new client data
+exports.postClientDetail = (req,res,next) => {
+    console.log(req.body);
+}
 
 //get Client Invoice 
 exports.getClientInvoice = (req, res, next) => {
