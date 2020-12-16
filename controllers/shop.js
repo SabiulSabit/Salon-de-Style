@@ -1355,18 +1355,21 @@ exports.getInvoiceDetail = (req, res, next) => {
     });
 
     let data = "SELECT count(*) as total " +
-        "FROM `booking` "
+        "FROM `booking` "+
+        " WHERE  `businessMail` = " + mysql.escape(req.session.mail)
     let data1 = "SELECT count(*) as pending " +
         " FROM `booking` " +
-        " WHERE status = 0"
+        " WHERE status = 0 AND `businessMail` = " + mysql.escape(req.session.mail)
     let data2 = "SELECT count(*) as cancel " +
         " FROM `booking` " +
-        " WHERE status = -1"
+        " WHERE status = -1 AND `businessMail` = " + mysql.escape(req.session.mail)
     let data3 = "SELECT count(*) as complete " +
         " FROM `booking` " +
-        " WHERE status = 1"
+        " WHERE status = 1  AND `businessMail` = " + mysql.escape(req.session.mail)
     let data4 = "SELECT * " +
-        "FROM `booking` "
+        "FROM `booking` "+
+        " WHERE  `businessMail` = " + mysql.escape(req.session.mail)
+
 
     connectDB.query(data, (err, total) => {
         if (err) {
