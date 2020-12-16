@@ -45,9 +45,7 @@ router.route('/savedate')
 router.route('/workschedule')
       .get(shopController.isAuthentic,shopController.getWorkSchedule)  
       
-//show staff part
-router.route('/staffinfo')
-      .get(shopController.isAuthentic,shopController.getStaffInfo)
+
 
 router.route('/staffmember')
       .get(shopController.isAuthentic,shopController.getStaffMember)      
