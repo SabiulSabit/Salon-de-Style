@@ -1475,7 +1475,7 @@ exports.getClientDetail = (req, res, next) => {
     return res.render('shop/clientDetail')
 }
 //save new client data
-exports.postClientDetail = (req,res,next) => {
+exports.postClientDetail = (req, res, next) => {
     //console.log(req.body);
     let connectDB = mysql.createConnection({
         host: hostNameDB,
@@ -1484,7 +1484,31 @@ exports.postClientDetail = (req,res,next) => {
         database: databaseName
     });
 
-    let count = ""
+    let count = "SELECT COUNT(*) as total " +
+        " FROM `client` "
+
+    connectDB.query(count, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            let total = parseInt(result[0].total) + 1 + 51000;
+
+            let data = " INSERT INTO `client` " +
+                " (`name`, `useremail`, `shopMail`, `phone`, `address`, `discount`,`description`, `id`) " +
+                " VALUES ( '" + req.body.name + "', '" + req.body.email + "', '" + req.session.mail + "' , '" + req.body.phone + "', '" + req.body.address + "', '" + parseInt(req.body.discount) + "', '" + req.body.description + "', '" + total + "'  )"
+
+            connectDB.query(data, (err1, result1) => {
+                if (err1) {
+                    throw err1;
+                }
+                else {
+                    return res.redirect('/shop/clientdetail');
+                }
+            })
+
+        }
+    })
 }
 
 //get Client Invoice 
