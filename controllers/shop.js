@@ -61,7 +61,7 @@ exports.postLogin = (req, res, next) => {
         database: databaseName,
     });
 
-   // console.log(req.body.username)
+    // console.log(req.body.username)
     data = "SELECT password FROM `shopadmin` WHERE businessMail = " + mysql.escape(req.body.username);
 
     connectDB.query(data, (err, result) => {
@@ -106,10 +106,10 @@ exports.postCreateAccount = (req, res, next) => {
 
     });
 
-    let ownername,pass,conPass,category;
-    let shopname,phone,address,lati,long;
-    let  s = ""
-    let imgPath=""
+    let ownername, pass, conPass, category;
+    let shopname, phone, address, lati, long;
+    let s = ""
+    let imgPath = ""
     let wrong = 0;
 
     //catche all data and save them
@@ -122,7 +122,7 @@ exports.postCreateAccount = (req, res, next) => {
                 pass = bcrypt.hashSync(field, 10);
             }
             else if (name === "conPass") {
-                conPass= field;
+                conPass = field;
             }
             else if (name === "category") {
                 category = field;
@@ -161,7 +161,7 @@ exports.postCreateAccount = (req, res, next) => {
                 if (name === "img") {
                     imgPath = (s + "." + fileType);
                 }
-              //  console.log(s,shopname,phone,address);
+                //  console.log(s,shopname,phone,address);
                 //console.log(imgPath);
                 imgPath = '/images/shop/shopImg/' + (s + "." + fileType)
                 file.path = a + '/public/images/shop/shopImg/' + (s + "." + fileType); // __dirname
@@ -187,32 +187,32 @@ exports.postCreateAccount = (req, res, next) => {
                 return;
             }
             else {
-                
-              let data = "INSERT INTO `shopadmin` " + 
-                         " ( `businessName`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `address`, `lat`, `lon`) "+
-                         " VALUES ('"+shopname+"','"+ownername+"','"+s+"','"+phone+"','"+pass+"','"+imgPath+"','"+address+"','"+address+"','"+address+"') "
 
-              let data1 = " INSERT INTO `category` "+
-                         " (`name`, `businessMail`)  "+
-                         " VALUES ('"+category+"','"+s+"') "       
-                         
-              connectDB.query(data,(err,result)=>{
-                  if(err){
-                      throw err;
-                  }
-                  else{
-                      connectDB.query(data1,(err1,resutl1)=>{
-                          if(err1){
-                              throw err1
-                          }
-                          else{
-                              res.redirect('/shop/login')
-                          }
-                      })
-                  }
-              })           
+                let data = "INSERT INTO `shopadmin` " +
+                    " ( `businessName`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `address`, `lat`, `lon`) " +
+                    " VALUES ('" + shopname + "','" + ownername + "','" + s + "','" + phone + "','" + pass + "','" + imgPath + "','" + address + "','" + address + "','" + address + "') "
 
-            
+                let data1 = " INSERT INTO `category` " +
+                    " (`name`, `businessMail`)  " +
+                    " VALUES ('" + category + "','" + s + "') "
+
+                connectDB.query(data, (err, result) => {
+                    if (err) {
+                        throw err;
+                    }
+                    else {
+                        connectDB.query(data1, (err1, resutl1) => {
+                            if (err1) {
+                                throw err1
+                            }
+                            else {
+                                res.redirect('/shop/login')
+                            }
+                        })
+                    }
+                })
+
+
             }
         })
 }
@@ -366,7 +366,7 @@ exports.getOpeningHours = (req, res, next) => {
         }
         else {
             sun = [], mon = [], tue = [], wed = [], thu = [], fri = [], sat = [];
-           // console.log(result)
+            // console.log(result)
             for (i = 0; i < result.length; i++) {
                 if (result[i].dayName == "sun") {
                     sun.push(result[i]);
@@ -390,8 +390,7 @@ exports.getOpeningHours = (req, res, next) => {
                     sat.push(result[i]);
                 }
             }
-            console.log(sun,mon,tue,wed,thu,fri, sat)
-
+            //  console.log(sun,mon,tue,wed,thu,fri, sat)
             res.render("shop/openinghour", {
                 sun: sun,
                 mon: mon,
@@ -1216,7 +1215,39 @@ exports.getAppointment = (req, res, next) => {
 
 //get  sales history page
 exports.getSalesHistory = (req, res, next) => {
-    return res.render('shop/saleshistory')
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName
+    });
+
+    let count = "SELECT * " +
+        " FROM `booking` " +
+        " WHERE status = 1  AND `businessMail` = " + mysql.escape(req.session.mail)
+
+    connectDB.query(count, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            let sum = 0;
+            for (i in result) {
+                sum += result[i].servicePrice;
+                let a = result[i].day;
+                let b = result[i].curDate
+                result[i].day = a.toString().slice(0, 15);
+                result[i].curDate = b.toString().slice(0, 15);
+            }
+
+
+            return res.render('shop/saleshistory', {
+                data: result,
+                totalSell: sum,
+            })
+        }
+    })
 }
 
 //get getSalesList
@@ -1307,7 +1338,7 @@ exports.postSalesList = (req, res, next) => {
                                                             throw err6;
                                                         }
                                                         else {
-                                                            
+
                                                             return res.render('shop/salesList', {
                                                                 user: result,
                                                                 shop: result1[0],
@@ -1356,7 +1387,7 @@ exports.getInvoiceDetail = (req, res, next) => {
     });
 
     let data = "SELECT count(*) as total " +
-        "FROM `booking` "+
+        "FROM `booking` " +
         " WHERE  `businessMail` = " + mysql.escape(req.session.mail)
     let data1 = "SELECT count(*) as pending " +
         " FROM `booking` " +
@@ -1368,7 +1399,7 @@ exports.getInvoiceDetail = (req, res, next) => {
         " FROM `booking` " +
         " WHERE status = 1  AND `businessMail` = " + mysql.escape(req.session.mail)
     let data4 = "SELECT * " +
-        "FROM `booking` "+
+        "FROM `booking` " +
         " WHERE  `businessMail` = " + mysql.escape(req.session.mail)
 
 
@@ -1399,21 +1430,21 @@ exports.getInvoiceDetail = (req, res, next) => {
                                         }
                                         else {
                                             //S console.log(allData)
-                                            let pendingData =[],cacelData= [],completeData = [];
+                                            let pendingData = [], cacelData = [], completeData = [];
                                             for (i in allData) {
                                                 var a = allData[i].day;
                                                 allData[i].day = a.toString().slice(0, 15);
-                                                if(allData[i].status == 0){
+                                                if (allData[i].status == 0) {
                                                     pendingData.push(allData[i])
                                                 }
-                                                else if(allData[i].status == -1){
+                                                else if (allData[i].status == -1) {
                                                     cacelData.push(allData[i])
                                                 }
-                                                else if(allData[i].status == 1){
+                                                else if (allData[i].status == 1) {
                                                     completeData.push(allData[i])
                                                 }
                                             }
-                                        
+
 
                                             return res.render('shop/invoiceDetail', {
                                                 total: total[0].total,
@@ -2222,7 +2253,7 @@ exports.postProcessed = (req, res, next) => {
         //             subject: "Purchase Information - Rondvou",
         //             html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         //             <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-                    
+
         //             <head>
         //                 <meta name="viewport" content="width=device-width" />
         //                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -2230,14 +2261,14 @@ exports.postProcessed = (req, res, next) => {
         //                 <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
         //                 <link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
         //             </head>
-                    
+
         //             <body style="margin:0px; background: #f8f8f8; ">
         //                 <div width="100%" style="background: #f8f8f8; padding: 0px 0px; font-family:arial; line-height:28px; height:100%;  width: 100%; color: #514d6a;">
         //                     <div style="max-width: 700px; padding:50px 0;  margin: 0px auto; font-size: 14px">
         //                         <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
         //                             <tbody>
         //                                 <tr>
-                                            
+
         //                                   <img src="../assets/images/logo-text.png" alt="Web Site Logo" style="border:none"></a> </td>
         //                                 </tr>
         //                             </tbody>
@@ -2263,9 +2294,9 @@ exports.postProcessed = (req, res, next) => {
         //                                             <div>
         //                                                 <table width="100%" cellpadding="0" cellspacing="0">
         //                                                     <tbody>
-                                                                
+
         //                                                     ${mailInfo}
-                                                                
+
         //                                                     </tbody>
         //                                                 </table>
         //                                             </div>
@@ -2287,7 +2318,7 @@ exports.postProcessed = (req, res, next) => {
         //                     </div>
         //                 </div>
         //             </body>
-                    
+
         //             </html>`
 
         //         }, function (err, result) {
@@ -2307,7 +2338,7 @@ exports.postProcessed = (req, res, next) => {
         //         })
         //     }
         // })
-       
+
 
     }
 }
