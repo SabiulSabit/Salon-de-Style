@@ -111,11 +111,55 @@
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="total">
                                         <h1>Total</h1>
+                                        <div class="table-responsive">
+                                            <% if(data.length !== 0) { %>
+                                             <table id="zero_config" class="table table-striped table-bordered">
+                                                 <thead>
+                                                     <tr>
+                                                         <th>Status</th>
+                                                         <th>User info</th>
+                                                         <th>Invoice</th>
+                                                         <th>Service</th>
+                                                         <th>Date</th>
+                                                         <th>Time</th>
+                                                     </tr>
+                                                 </thead>
+                                                 <tbody>
+             
+                                                     <% for(i=0;i<data.length;i++) { %>
+                                                         <form action="/shop/saleslist" method="POST">
+                                                            <input type="hidden" name= "mail" value="<%=data[i].userMail%>">
+                                                            <input type="hidden" name= "bookid" value="<%=data[i].bookingID%>">
+                
+                                                        <tr>
+                                                            <% if(data[i].status == 0) {  %>
+                                                            <td><span class="badge badge-warning">Pending</span></td>
+                                                            <% } else if(data[i].status == -1) {  %>
+                                                            <td><span class="badge badge-danger">Cancled</span></td>
+                                                            <% } else if(data[i].status == 1) {  %>
+                                                            <td><span class="badge badge-success">Completed</span></td>
+                                                            <% } %>
+                
+                                                            <td><input type="submit" class="font-medium link" value="<%=data[i].userMail%>"></td>
+                                                            <td><%=data[i].bookingID%></td>
+                                                            <td><%=data[i].serviceName%></td>
+                                                            <td><%=data[i].day%></td>
+                                                            <td><%=data[i].timeSlotStart%>-<%=data[i].timeSlotEnd%></td>
+                                                        </tr>
+                                                    </form>   
+                                                        <% } %>
+             
+                                                 </tbody>
+             
+                                             </table>
+                                            <% } %>
+                                            
+                                         </div>
                                     </div>
                                     <div class="tab-pane" id="cancel">
                                         <h1>Cancel</h1>
                                         <div class="table-responsive">
-                                           <% if(data.length !== 0) { %>
+                                           <% if(cacelData.length !== 0) { %>
                                             <table id="zero_config" class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
@@ -129,25 +173,18 @@
                                                 </thead>
                                                 <tbody>
             
-                                                    <% for(i=0;i<data.length;i++) { %>
+                                                    <% for(i=0;i<cacelData.length;i++) { %>
                                                         <form action="/shop/saleslist" method="POST">
-                                                           <input type="hidden" name= "mail" value="<%=data[i].userMail%>">
-                                                           <input type="hidden" name= "bookid" value="<%=data[i].bookingID%>">
+                                                           <input type="hidden" name= "mail" value="<%=cacelData[i].userMail%>">
+                                                           <input type="hidden" name= "bookid" value="<%=cacelData[i].bookingID%>">
                
-                                                       <tr>
-                                                           <% if(data[i].status == 0) {  %>
-                                                           <td><span class="badge badge-warning">Pending</span></td>
-                                                           <% } else if(data[i].status == -1) {  %>
+                                                       <tr>       
                                                            <td><span class="badge badge-danger">Cancled</span></td>
-                                                           <% } else if(data[i].status == 1) {  %>
-                                                           <td><span class="badge badge-success">Completed</span></td>
-                                                           <% } %>
-               
-                                                           <td><input type="submit" class="font-medium link" value="<%=data[i].userMail%>"></td>
-                                                           <td><%=data[i].bookingID%></td>
-                                                           <td><%=data[i].serviceName%></td>
-                                                           <td><%=data[i].day%></td>
-                                                           <td><%=data[i].timeSlotStart%>-<%=data[i].timeSlotEnd%></td>
+                                                           <td><input type="submit" class="font-medium link" value="<%=cacelData[i].userMail%>"></td>
+                                                           <td><%=cacelData[i].bookingID%></td>
+                                                           <td><%=cacelData[i].serviceName%></td>
+                                                           <td><%=cacelData[i].day%></td>
+                                                           <td><%=cacelData[i].timeSlotStart%>-<%=cacelData[i].timeSlotEnd%></td>
                                                        </tr>
                                                    </form>   
                                                        <% } %>
@@ -160,10 +197,84 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="complete">
-                                       <h1>Resolve</h1>
+                                       <h1>Complete</h1>
+                                       <div class="table-responsive">
+                                        <% if(completeData.length !== 0) { %>
+                                         <table id="zero_config" class="table table-striped table-bordered">
+                                             <thead>
+                                                 <tr>
+                                                     <th>Status</th>
+                                                     <th>User info</th>
+                                                     <th>Invoice</th>
+                                                     <th>Service</th>
+                                                     <th>Date</th>
+                                                     <th>Time</th>
+                                                 </tr>
+                                             </thead>
+                                             <tbody>
+         
+                                                 <% for(i=0;i<completeData.length;i++) { %>
+                                                     <form action="/shop/saleslist" method="POST">
+                                                        <input type="hidden" name= "mail" value="<%=completeData[i].userMail%>">
+                                                        <input type="hidden" name= "bookid" value="<%=completeData[i].bookingID%>">
+            
+                                                    <tr>
+                                                        <td><span class="badge badge-success">Completed</span></td>         
+                                                        <td><input type="submit" class="font-medium link" value="<%=completeData[i].userMail%>"></td>
+                                                        <td><%=completeData[i].bookingID%></td>
+                                                        <td><%=completeData[i].serviceName%></td>
+                                                        <td><%=completeData[i].day%></td>
+                                                        <td><%=completeData[i].timeSlotStart%>-<%=completeData[i].timeSlotEnd%></td>
+                                                    </tr>
+                                                </form>   
+                                                    <% } %>
+         
+                                             </tbody>
+         
+                                         </table>
+                                        <% } %>
+                                        
+                                     </div>
                                     </div>
                                     <div class="tab-pane" id="pending">
                                         <h1>Pending</h1>
+                                        <div class="table-responsive">
+                                            <% if(pendingData.length !== 0) { %>
+                                             <table id="zero_config" class="table table-striped table-bordered">
+                                                 <thead>
+                                                     <tr>
+                                                         <th>Status</th>
+                                                         <th>User info</th>
+                                                         <th>Invoice</th>
+                                                         <th>Service</th>
+                                                         <th>Date</th>
+                                                         <th>Time</th>
+                                                     </tr>
+                                                 </thead>
+                                                 <tbody>
+             
+                                                     <% for(i=0;i<pendingData.length;i++) { %>
+                                                         <form action="/shop/saleslist" method="POST">
+                                                            <input type="hidden" name= "mail" value="<%=pendingData[i].userMail%>">
+                                                            <input type="hidden" name= "bookid" value="<%=pendingData[i].bookingID%>">
+                
+                                                        <tr>
+                                                            <td><span class="badge badge-warning">Pending</span></td>
+                                                            <td><input type="submit" class="font-medium link" value="<%=pendingData[i].userMail%>"></td>
+                                                            <td><%=pendingData[i].bookingID%></td>
+                                                            <td><%=pendingData[i].serviceName%></td>
+                                                            <td><%=pendingData[i].day%></td>
+                                                            <td><%=pendingData[i].timeSlotStart%>-<%=pendingData[i].timeSlotEnd%></td>
+                                                        </tr>
+                                                    </form>   
+                                                        <% } %>
+             
+                                                 </tbody>
+             
+                                             </table>
+                                            <% } %>
+                                            
+                                         </div>
                                     </div>
                                 </div>
 

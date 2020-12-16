@@ -61,7 +61,7 @@ exports.postLogin = (req, res, next) => {
         database: databaseName,
     });
 
-    console.log(req.body.username)
+   // console.log(req.body.username)
     data = "SELECT password FROM `shopadmin` WHERE businessMail = " + mysql.escape(req.body.username);
 
     connectDB.query(data, (err, result) => {
