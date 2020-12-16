@@ -2,264 +2,326 @@
 <html dir="ltr" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/lobilist.css">
-    <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Custom CSS -->
-    <link href="/dist/css/style.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+  <title>Material pro admin Template - The Ultimate Multipurpose admin template</title>
+  <link rel="canonical" href="https://www.wrappixel.com/templates/Material proadmin/" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/lobilist.css">
+  <link rel="stylesheet" href="/assets/extra-libs/taskboard/css/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- Custom CSS -->
+  <link href="/dist/css/style.min.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <%- include('./sideBar.ejs') %>
+  <%- include('./sideBar.ejs') %>
 
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
-        <div class="heath-information">
-            <div class="container">
-                <h1 class="text-center">Health and Safety Rules</h1>
-                <form action="/shop/health&safety" method="post">
-                    <div class="row">
+      <div class="heath-information">
+        <div class="container">
+          <h1 class="text-center">Health and Safety Rules</h1>
+          <form action="/shop/health&safety" method="post">
+            <div class="row">
 
-                        <div class="col-sm-12 col-lg-6 col-md-6">
-                            <h3 class="text-center">Health and Safety Policy</h3>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op1 = "" 
-                                      if(data.noWaitingArea.length){ 
-                                        op1 = "checked"
-                                      }
-                                    %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op1"  id="one" <%=op1%> value="No waiting area">
-                                    <label class="form-check-label" for="one">No waiting area</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op2 = "" 
-                                      if(data.employeeWearMasks.length){ 
-                                        op2 = "checked"
-                                      }
-                                    %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op2" id="two" value="Employee wear masks" <%=op2%> >
-                                    <label class="form-check-label" for="two">Employee wear masks</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op3 = "" 
-                                    if(data.employeesWearDisposableGloves.length){ 
-                                      op3 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op3" id="three" value="Employees wear disposable gloves" <%=op3%> >
-                                    <label class="form-check-label" for="three">Employees wear disposable gloves</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op4 = "" 
-                                    if(data.employeeTemperatureChecks.length){ 
-                                      op4 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op4" id="four" value="Employee temperature checks" <%=op4%> >
-                                    <label class="form-check-label" for="four">Employee temperature checks</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op5 = "" 
-                                    if(data.disinfectionBetweenClients.length){ 
-                                      op5 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op5" id="five" value="Disinfection between clients" <%=op5%> >
-                                    <label class="form-check-label" for="five">Disinfection between clients</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op6 = "" 
-                                    if(data.mustWareMask.length){ 
-                                      op6 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op6" id="six" value="Must ware mask" <%=op6%> >
-                                    <label class="form-check-label" for="six">Must ware mask</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op7 = "" 
-                                    if(data.disinfectionofallSurfacesintheVenue.length){ 
-                                      op7 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op7" id="seven" value="Disinfection of all surfaces in the venue" <%=op7%> >
-                                    <label class="form-check-label" for="seven">Disinfection of all surfaces in the venue</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op8 = "" 
-                                    if(data.maintainSocialDistancing.length){ 
-                                      op8 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op8" id="eight" value="Maintain social distancing" <%=op8%> >
-                                    <label class="form-check-label" for="eight">Maintain social distancing</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op9 = "" 
-                                    if(data.venueProvidesMasksforClients.length){ 
-                                      op9 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op9" id="nine" value="Venue provides masks for clients" <%=op9%> >
-                                    <label class="form-check-label" for="nine">Venue provides masks for clients</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op10 = "" 
-                                    if(data.clientTemperatureChecks.length){ 
-                                      op10 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op10" id="ten" value="Client temperature checks" <%=op10%> >
-                                    <label class="form-check-label" for="ten">Client temperature checks</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op11 = "" 
-                                    if(data.clientScreenings.length){ 
-                                      op11 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op11" id="eleven" value="Client screenings" <%=op11%> >
-                                    <label class="form-check-label" for="eleven">Client screenings</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op12 = "" 
-                                    if(data.barbicideCOVID_19Certified.length){ 
-                                      op12 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op12" id="twelve" value="Barbicide COVID-19 Certified" <%=op12%> >
-                                    <label class="form-check-label" for="twelve">Barbicide COVID-19 Certified</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op13 = "" 
-                                    if(data.contactlessPaymentAvailable.length){ 
-                                      op13 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op13" id="thirty" value="Contactless payment available"  <%=op13%> >
-                                    <label class="form-check-label" for="thirty">Contactless payment available</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op14 = "" 
-                                    if(data.noInteractionsWithOtherClients.length){ 
-                                      op14 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op14" id="fourteen" value="No interactions with other clients"  <%=op14%> >
-                                    <label class="form-check-label" for="fourteen">No interactions with other clients</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op15 = "" 
-                                    if(data.disposableSuppliesinUse.length){ 
-                                      op15 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op15" id="fifteen" value="Disposable supplies in use"  <%=op15%> >
-                                    <label class="form-check-label" for="fifteen">Disposable supplies in use</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op16 = "" 
-                                    if(data.placetoWashHandsAvailable.length){ 
-                                      op16 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op16" id="sixteen" value="Place to wash hands available"  <%=op16%> >
-                                    <label class="form-check-label" for="sixteen">Place to wash hands available</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op17 = "" 
-                                    if(data.masksAvailableforPurchase.length){ 
-                                      op17 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op17" id="seventeen" value="Masks available for purchase" <%=op17%> >
-                                    <label class="form-check-label" for="seventeen">Masks available for purchase</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op18 = "" 
-                                    if(data.timeGapBetweenAppointments.length){ 
-                                      op18 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op18" id="eighteen" value="Time gap between appointments" <%=op18%> >
-                                    <label class="form-check-label" for="eighteen">Time gap between appointments</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check form-control p-2 form-check-inline">
-                                    <% let op19 = "" 
-                                    if(data.noWalk_ins.length){ 
-                                      op19 = "checked"
-                                    }
-                                  %>
-                                    <input class="form-check-input material-inputs" type="checkbox" name="op19" id="nineteen" value="No walk-ins" <%=op19%> >
-                                    <label class="form-check-label" for="nineteen">No walk-ins</label>
-                                </div>
-                            </div>
+              <div class="col-sm-12 col-lg-6 col-md-6">
+                <h3 class="text-center">Health and Safety Policy</h3>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op1=""; 
+                          if(sz !==0 ){ 
+                              if(data.noWaitingArea.length){ 
+                                  op1="checked" 
+                                } 
+                            } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op1" id="one" <%=op1%>
+                      value="No waiting area">
+                      <label class="form-check-label" for="one">No waiting area</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op2="";  
+                          if(sz !==0 ){ 
+                              if(data.employeeWearMasks.length){ 
+                                  op2="checked" 
+                                } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op2" id="two"
+                        value="Employee wear masks" <%=op2%> >
+                      <label class="form-check-label" for="two">Employee wear masks</label>
+                  </div>
+                </div>
+                <div class="form-group">
 
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6">
-                            <h3>Describe more (optional)</h3>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="3" name="op20"  placeholder="Text Here..."><%=data.describeMore%></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-info">Submit</button>
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op3=""; 
+                          if(sz !==0 ){ 
+                               if(data.employeesWearDisposableGloves.length){ 
+                                  op3="checked" 
+                                } 
+                            } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op3" id="three"
+                        value="Employees wear disposable gloves" <%=op3%> >
+                      <label class="form-check-label" for="three">Employees wear disposable gloves</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op4="";  
+                        if(sz !==0 ){ 
+                            if(data.employeeTemperatureChecks.length){ 
+                                op4="checked" 
+                            } 
+                        } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op4" id="four"
+                        value="Employee temperature checks" <%=op4%> >
+                      <label class="form-check-label" for="four">Employee temperature checks</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op5="";  
+                          if(sz !==0 ){ 
+                              if(data.disinfectionBetweenClients.length){ 
+                                  op5="checked" 
+                              } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op5" id="five"
+                        value="Disinfection between clients" <%=op5%> >
+                      <label class="form-check-label" for="five">Disinfection between clients</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op6=""; 
+                            if(sz !==0 ){ 
+                                if(data.mustWareMask.length){ 
+                                    op6="checked" 
+                                  } 
+                              } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op6" id="six"
+                        value="Must ware mask" <%=op6%> >
+                      <label class="form-check-label" for="six">Must ware mask</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op7=""; 
+                          if(sz !==0 ){ 
+                              if(data.disinfectionofallSurfacesintheVenue.length){ 
+                                    op7="checked" 
+                              } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op7" id="seven"
+                        value="Disinfection of all surfaces in the venue" <%=op7%> >
+                      <label class="form-check-label" for="seven">Disinfection of all surfaces in the venue</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op8="";  
+                          if(sz !==0 ){ 
+                              if(data.maintainSocialDistancing.length){ 
+                                  op8="checked" 
+                                } 
+                            } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op8" id="eight"
+                        value="Maintain social distancing" <%=op8%> >
+                      <label class="form-check-label" for="eight">Maintain social distancing</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op9=""; 
+                          if(sz !==0 ){ 
+                              if(data.venueProvidesMasksforClients.length){ 
+                                  op9="checked"; 
+                              } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op9" id="nine"
+                        value="Venue provides masks for clients" <%=op9%> >
+                      <label class="form-check-label" for="nine">Venue provides masks for clients</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op10=""; 
+                          if(sz !==0 ){ 
+                              if(data.clientTemperatureChecks.length){ 
+                                     op10="checked" 
+                                } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op10" id="ten"
+                        value="Client temperature checks" <%=op10%> >
+                      <label class="form-check-label" for="ten">Client temperature checks</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op11=""; 
+                          if(sz !==0 ){ 
+                              if(data.clientScreenings.length){ 
+                                  op11="checked" 
+                              } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op11" id="eleven"
+                        value="Client screenings" <%=op11%> >
+                      <label class="form-check-label" for="eleven">Client screenings</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op12=""; 
+                          if(sz !==0 ){ 
+                              if(data.barbicideCOVID_19Certified.length){ 
+                                  op12="checked" 
+                                } 
+                            } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op12" id="twelve"
+                        value="Barbicide COVID-19 Certified" <%=op12%> >
+                      <label class="form-check-label" for="twelve">Barbicide COVID-19 Certified</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op13=""; 
+                          if(sz !==0 ){ 
+                              if(data.contactlessPaymentAvailable.length){ 
+                                   op13="checked" 
+                                } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op13" id="thirty"
+                        value="Contactless payment available" <%=op13%> >
+                      <label class="form-check-label" for="thirty">Contactless payment available</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op14=""; 
+                            if(sz !==0 ){ 
+                                if(data.noInteractionsWithOtherClients.length){ 
+                                    op14="checked" 
+                                  }
+                             }
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op14" id="fourteen"
+                        value="No interactions with other clients" <%=op14%> >
+                      <label class="form-check-label" for="fourteen">No interactions with other clients</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op15=""; 
+                          if(sz !==0 ){ 
+                              if(data.disposableSuppliesinUse.length){ 
+                                  op15="checked"
+                               } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op15" id="fifteen"
+                        value="Disposable supplies in use" <%=op15%> >
+                      <label class="form-check-label" for="fifteen">Disposable supplies in use</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op16=""; 
+                           if(sz !==0 ){ 
+                               if(data.placetoWashHandsAvailable.length){ 
+                                    op16="checked" 
+                                } 
+                            } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op16" id="sixteen"
+                        value="Place to wash hands available" <%=op16%> >
+                      <label class="form-check-label" for="sixteen">Place to wash hands available</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op17=""; 
+                           if(sz !==0 ){ 
+                                 if(data.masksAvailableforPurchase.length){ 
+                                    op17="checked" 
+                              } 
+                            }
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op17" id="seventeen"
+                        value="Masks available for purchase" <%=op17%> >
+                      <label class="form-check-label" for="seventeen">Masks available for purchase</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op18=""; 
+                          if(sz !==0 ){ 
+                               if(data.timeGapBetweenAppointments.length){ 
+                                    op18="checked" 
+                                }  
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op18" id="eighteen"
+                        value="Time gap between appointments" <%=op18%> >
+                      <label class="form-check-label" for="eighteen">Time gap between appointments</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-control p-2 form-check-inline">
+                    <% let op19=""; 
+                           if(sz !==0 ){  
+                                if(data.noWalk_ins.length){  
+                                    op19="checked"
+                                 } 
+                          } 
+                    %>
+                      <input class="form-check-input material-inputs" type="checkbox" name="op19" id="nineteen"
+                        value="No walk-ins" <%=op19%> >
+                      <label class="form-check-label" for="nineteen">No walk-ins</label>
+                  </div>
+                </div>
 
-                        </div>
-                </form>
-            </div>
+              </div>
+              <div class="col-sm-12 col-lg-6 col-md-6">
+                <h3>Describe more (optional)</h3>
+                <div class="form-group">
+
+                  <textarea class="form-control" rows="3" name="op20" placeholder="Text Here...">
+                    <% if(sz !== 0 ){  %>
+                      <%=data.describeMore%>
+                    <% } %>  
+                  </textarea>
+
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+
+              </div>
+          </form>
         </div>
+      </div>
     </div>
     </div>
 

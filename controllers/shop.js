@@ -1612,7 +1612,11 @@ exports.getHealthSafety = (req, res, next) => {
         }
         else {
             //console.log(result)
-            return res.render('shop/healthSafety', { data: result[0] });
+           // let a = result[0]
+            return res.render('shop/healthSafety', {
+                 data: result[0],
+                 sz: result.length
+                 });
         }
     })
 
