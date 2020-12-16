@@ -2197,7 +2197,26 @@ exports.getStaffCommission = (req, res, next) => {
 
 //getInventory 
 exports.getInventory = (req, res, next) => {
-    return res.render('shop/inventory')
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = "SELECT `name`, `useremail`,  `phone`, `address`, `discount`, `description`, `id` "+
+                " FROM `client` "+
+                " WHERE `shopMail` = "+mysql.escape(req.session.mail);
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+            return res.render('shop/inventory');
+        }
+    })           
 }
 
 //get Review and Rating 
@@ -2209,7 +2228,7 @@ exports.getReviewandRating = (req, res, next) => {
 
 exports.getReports = (req, res, next) => {
     //console.log("Rpoets");
-    var connectDB = mysql.createConnection({
+    let connectDB = mysql.createConnection({
         host: hostNameDB,
         user: userNameDB,
         password: passwordDB,
