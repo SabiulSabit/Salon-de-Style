@@ -2214,7 +2214,9 @@ exports.getInventory = (req, res, next) => {
             throw err;
         }
         else{
-            return res.render('shop/inventory');
+            return res.render('shop/inventory',{
+                data: result
+            });
         }
     })           
 }

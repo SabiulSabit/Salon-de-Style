@@ -69,15 +69,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Elegant</td>
-                                                <td>saidulislamsaif789@gmail.com</td>
-                                                <td>276377</td>
-                                                <td>27</td>
-                                                <td>01632663430</td>
-                                                <td>Yes</td>
-                                                
-                                            </tr>
+                                            <% for(let i=0;i<data.length;i++){ %>
+                                                <tr>
+                                                    <td><%=data[i].name%></td>
+                                                    <td><%=data[i].useremail%></td>
+                                                    <td><%=data[i].id%></td>
+                                                    <td><%=data[i].discount%></td>
+                                                    <td><%=data[i].phone%></td>
+                                                    <td><%=data[i].address%></td>
+                                                </tr>
+                                            <% } %>
+                                          
                                         </tbody>
                                       
                                     </table>
