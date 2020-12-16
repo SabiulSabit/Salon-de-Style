@@ -358,7 +358,7 @@ exports.getOpeningHours = (req, res, next) => {
         "FROM `shoptime` " +
         " WHERE businessMail = " + mysql.escape(req.session.mail);
 
-    //console.log()
+    //console.log(req.session.mail)
 
     connectDB.query(data, (err, result) => {
         if (err) {
@@ -366,7 +366,7 @@ exports.getOpeningHours = (req, res, next) => {
         }
         else {
             sun = [], mon = [], tue = [], wed = [], thu = [], fri = [], sat = [];
-
+           // console.log(result)
             for (i = 0; i < result.length; i++) {
                 if (result[i].dayName == "sun") {
                     sun.push(result[i]);
@@ -390,7 +390,7 @@ exports.getOpeningHours = (req, res, next) => {
                     sat.push(result[i]);
                 }
             }
-            // console.log(sun,mon,tue,wed,thu,fri, sat)
+            console.log(sun,mon,tue,wed,thu,fri, sat)
 
             res.render("shop/openinghour", {
                 sun: sun,
@@ -616,6 +616,7 @@ exports.saveNewDate = (req, res, next) => {
                 }
                 else {
                     console.log('Done');
+                    return res.redirect('/shop/openinghours')
                 }
             })
         }
