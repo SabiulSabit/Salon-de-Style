@@ -1398,17 +1398,31 @@ exports.getInvoiceDetail = (req, res, next) => {
                                         }
                                         else {
                                             //S console.log(allData)
+                                            let pendingData =[],cacelData= [],completeData = [];
                                             for (i in allData) {
                                                 var a = allData[i].day;
                                                 allData[i].day = a.toString().slice(0, 15);
+                                                if(allData[i].status == 0){
+                                                    pendingData.push(allData[i])
+                                                }
+                                                else if(allData[i].status == -1){
+                                                    cacelData.push(allData[i])
+                                                }
+                                                else if(allData[i].status == 1){
+                                                    completeData.push(allData[i])
+                                                }
                                             }
+                                        
+
                                             return res.render('shop/invoiceDetail', {
                                                 total: total[0].total,
                                                 pending: pending[0].pending,
                                                 cancel: cancel[0].cancel,
                                                 complete: complete[0].complete,
-                                                data: allData
-
+                                                data: allData,
+                                                pendingData: pendingData,
+                                                cacelData: cacelData,
+                                                completeData: completeData,
                                             })
                                         }
                                     })
