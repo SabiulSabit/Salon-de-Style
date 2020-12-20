@@ -2334,14 +2334,27 @@ exports.getAddServices =(req,res,next) =>{
                 " FROM `category` "+
                 " WHERE `businessMail` = "+mysql.escape(req.session.mail);
 
+    let data1 = "SELECT  `name`, `hour`, `min`, `priceType`, `price`, `category` "+
+                " FROM  `shopservice` "+
+                " WHERE `businessMail` = " +mysql.escape(req.session.mail)           
+
     connectDB.query(data,(err,result)=>{
         if(err){
             throw err;
         }
         else{
-            return res.render('shop/addServices',{
-                category: result
-            });
+            connectDB.query(data1,(err1,result1)=>{
+                if(err1){
+                    throw err1;
+                }
+                else{
+                    return res.render('shop/addServices',{
+                        category: result,
+                        data: result1
+                    });
+                }
+            })
+           
         }
     })            
 }
