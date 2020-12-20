@@ -2321,5 +2321,27 @@ exports.getLogout = (req, res, next) => {
 
 //get add services page
 exports.getAddServices =(req,res,next) =>{
-    console.log("adf");
+    //console.log("adf");
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = " SELECT `name` "+
+                " FROM `category` "+
+                " WHERE `businessMail` = "+mysql.escape(req.session.mail);
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+            return res.render('shop/addServices',{
+                category: result
+            });
+        }
+    })            
 }
