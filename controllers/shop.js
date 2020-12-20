@@ -2348,5 +2348,25 @@ exports.getAddServices =(req,res,next) =>{
 
 //post add service data
 exports.postAddServices  = (req,res,next) => {
-    console.log("postAddServices");
+    //console.log(req.body);
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = " INSERT INTO `shopservice` "+
+                " (`businessMail`, `name`, `hour`, `min`, `priceType`, `price`, `category`) "+
+                " VALUES ( '"+req.session.mail+"' , '"+req.body.name+"' ,'"+ parseInt(req.body.hour)+"','"+ parseInt(req.body.min)+"','"+req.body.priceType+"','"+parseFloat(req.body.price)+"','"+req.body.cat+"')"
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+            return res.redirect('/shop/addservices');
+        }
+    })
 }
