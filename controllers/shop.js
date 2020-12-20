@@ -2317,3 +2317,9 @@ exports.getLogout = (req, res, next) => {
     req.session.destroy();
     return res.redirect('/shop/login')
 }
+
+
+//get add services page
+exports.getAddServices =(req,res,next) =>{
+    console.log("adf");
+}

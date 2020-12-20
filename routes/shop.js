@@ -215,6 +215,9 @@ router.route('/updateegiftstatus')
 router.route('/deleteegiftstatus')
       .post(shopController.isAuthentic,shopController.postDeleteEgiftStatus)   
 
+//add new services
+router.route('/addservices')    
+      .get(shopController.isAuthentic,shopController.getAddServices)
 
 ///logout
 router.route('/logout')
