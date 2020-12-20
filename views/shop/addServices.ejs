@@ -44,7 +44,8 @@
                                         <% } %>
                                 </select>
                             </div>
-                            <input class="col-md-2 form-control" name="name" type="text" placeholder="Service Name" required>
+                            <input class="col-md-2 form-control" name="name" type="text" placeholder="Service Name"
+                                required>
                             <input class="col-md-2 form-control" name="hour" type="text" placeholder="Hour" required>
                             <input class="col-md-2 form-control" name="min" type="text" placeholder="Minute" required>
                             <input class="col-md-2 form-control" name="price" type="text" placeholder="Price" required>
@@ -65,6 +66,39 @@
 
 
 
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Hour</th>
+                                <th scope="col">Minute</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Price Type</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i=0; i < data.length ; i++ ) { %>
+                                <tr>
+                                    <th><%=data[i].name%></th>
+                                    <th><%=data[i].category%></th>
+                                    <th><%=data[i].hour%></th>
+                                    <th><%=data[i].min%></th>
+                                    <th><%=data[i].price%></th>
+                                    <th><%=data[i].priceType%></th>
+                                    <th> <i class="fa fa-trash"></i> </th>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
