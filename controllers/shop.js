@@ -2345,3 +2345,8 @@ exports.getAddServices =(req,res,next) =>{
         }
     })            
 }
+
+//post add service data
+exports.postAddServices  = (req,res,next) => {
+    console.log("postAddServices");
+}

@@ -32,35 +32,37 @@
             <div class="heath-information">
                 <div class="container">
                     <h1 class="text-center">Service of your Business</h1>
+                    <form action="/shop/addservices" method="post">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected hidden>Selecet Category</option>
+                                    <% for(let i=0; i< category.length; i++ ) { %>
+                                        <option>
+                                            <%=category[i].name%>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </div>
+                            <input class="col-md-2 form-control" type="text" placeholder="Service Name" required>
+                            <input class="col-md-2 form-control" type="text" placeholder="Hour" required>
+                            <input class="col-md-2 form-control" type="text" placeholder="Minute" required>
+                            <input class="col-md-2 form-control" type="text" placeholder="Price" required>
+                            <div class="col-md-2" required>
+                                <select class="form-control" required>
+                                    <option value="" disabled selected hidden>Price Type</option>
+                                    <option>Fixed</option>
+                                    <option>Negotiable</option>
+                                </select>
+                            </div>
 
-                    <div class="row">
-                        <div class="col-md-2">
-                            <select class="form-control" required>
-                                <option value="" disabled selected hidden>Selecet Category</option>
-                                <% for(let i=0; i< category.length; i++ ) { %>
-                                    <option>
-                                        <%=category[i].name%>
-                                    </option>
-                                    <% } %>
-                            </select>
                         </div>
-                        <input class="col-md-2 form-control" type="text" placeholder="Service Name" required>
-                        <input class="col-md-2 form-control" type="text" placeholder="Hour" required>
-                        <input class="col-md-2 form-control" type="text" placeholder="Minute" required>
-                        <input class="col-md-2 form-control" type="text" placeholder="Price" required>
-                        <div class="col-md-2" required>
-                            <select class="form-control">
-                                <option value="" disabled selected hidden>Price Type</option>
-                                <option>Fixed</option>
-                                <option>Negotiable</option>
-                            </select>
+                        <div class="row">
+                            <button type="submit" class="btn btn-info mt-3">ADD</button>
                         </div>
+                    </form>
+                </div>
 
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-info mt-3">ADD</button>
-                </div>
 
 
             </div>
