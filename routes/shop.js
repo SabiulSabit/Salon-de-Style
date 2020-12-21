@@ -111,23 +111,6 @@ router.route('/health&safety')
       .post(shopController.isAuthentic,shopController.postHealthSafety)
 
 
- ///egiftcard    
- router.route('/egiftcard')
-      .get(shopController.isAuthentic,shopController.getEGiftCard) 
-      .post(shopController.isAuthentic,shopController.postEGiftCard) 
-
-///egiftdetail
-router.route('/egiftdetail')
-      .get(shopController.isAuthentic,shopController.getEGiftDetail) 
-
-///membership
-router.route('/membership')
-      .get(shopController.isAuthentic,shopController.getMembership) 
-      .post(shopController.isAuthentic,shopController.postMembership)
-
-///membershipdetail     
-router.route('/membershipdetail')
-      .get(shopController.isAuthentic,shopController.getMembershipDetail) 
 
 ///package     
 router.route('/package')
@@ -211,13 +194,7 @@ router.route('/deletemembership')
 router.route('/deletepackage')
       .post(shopController.isAuthentic,shopController.postDeletePackage) 
       
-///updateegiftstatus
-router.route('/updateegiftstatus')
-      .post(shopController.isAuthentic,shopController.postUpdateEgiftStatus)   
 
-///deleteegiftstatus
-router.route('/deleteegiftstatus')
-      .post(shopController.isAuthentic,shopController.postDeleteEgiftStatus)   
 
 //add new services
 router.route('/addservices')    
