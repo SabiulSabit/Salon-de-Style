@@ -139,6 +139,10 @@ router.route('/package')
 router.route('/packagedetail')
       .get(shopController.isAuthentic,shopController.getPackageDetail) 
 
+//update pacakge data
+router.route('/updatepackage')      
+      .post(shopController.isAuthentic,shopController.postPacakheUpdate)
+
 ///portfolio
 router.route('/portfolio')
       .get(shopController.isAuthentic,shopController.getPortfolio) 

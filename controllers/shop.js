@@ -2407,3 +2407,8 @@ exports.getDeleteServices = (req, res, next) => {
         }
     })
 }
+
+//update package data
+exports.postPacakheUpdate = (req,res,next) =>{
+    console.log(req.body);
+}
