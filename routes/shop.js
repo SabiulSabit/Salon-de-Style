@@ -117,10 +117,13 @@ router.route('/package')
       .get(shopController.isAuthentic,shopController.getPackage) 
       .post(shopController.isAuthentic,shopController.postPackage) 
 
-
 ///packagedetail 
 router.route('/packagedetail')
       .get(shopController.isAuthentic,shopController.getPackageDetail) 
+
+//show package orders 
+router.route('/packageOrders')
+      .get(shopController.isAuthentic,shopController.getPackageOrders)      
 
 //update pacakge data
 router.route('/updatepackage')      
@@ -184,17 +187,12 @@ router.route('/reports')
 
 ///processed
 router.route('/processed')
-      .post(shopController.isAuthentic,shopController.postProcessed)  
-
-////deletemembership
-router.route('/deletemembership')
-      .post(shopController.isAuthentic,shopController.postDeleteMemberShip)      
+      .post(shopController.isAuthentic,shopController.postProcessed)       
 
 ///deletepackage
 router.route('/deletepackage')
       .post(shopController.isAuthentic,shopController.postDeletePackage) 
       
-
 
 //add new services
 router.route('/addservices')    
