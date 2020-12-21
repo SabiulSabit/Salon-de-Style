@@ -1496,11 +1496,11 @@ exports.getHealthSafety = (req, res, next) => {
         }
         else {
             //console.log(result)
-           // let a = result[0]
+            // let a = result[0]
             return res.render('shop/healthSafety', {
-                 data: result[0],
-                 sz: result.length
-                 });
+                data: result[0],
+                sz: result.length
+            });
         }
     })
 
@@ -2093,20 +2093,20 @@ exports.getInventory = (req, res, next) => {
         database: databaseName,
     });
 
-    let data = "SELECT `name`, `useremail`,  `phone`, `address`, `discount`, `description`, `id` "+
-                " FROM `client` "+
-                " WHERE `shopMail` = "+mysql.escape(req.session.mail);
+    let data = "SELECT `name`, `useremail`,  `phone`, `address`, `discount`, `description`, `id` " +
+        " FROM `client` " +
+        " WHERE `shopMail` = " + mysql.escape(req.session.mail);
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
-            return res.render('shop/inventory',{
+        else {
+            return res.render('shop/inventory', {
                 data: result
             });
         }
-    })           
+    })
 }
 
 //get Review and Rating 
@@ -2320,7 +2320,7 @@ exports.getLogout = (req, res, next) => {
 
 
 //get add services page
-exports.getAddServices =(req,res,next) =>{
+exports.getAddServices = (req, res, next) => {
     //console.log("adf");
 
     let connectDB = mysql.createConnection({
@@ -2330,37 +2330,37 @@ exports.getAddServices =(req,res,next) =>{
         database: databaseName,
     });
 
-    let data = " SELECT `name` "+
-                " FROM `category` "+
-                " WHERE `businessMail` = "+mysql.escape(req.session.mail);
+    let data = " SELECT `name` " +
+        " FROM `category` " +
+        " WHERE `businessMail` = " + mysql.escape(req.session.mail);
 
-    let data1 = "SELECT  `name`, `hour`, `min`, `priceType`, `price`, `category` "+
-                " FROM  `shopservice` "+
-                " WHERE `businessMail` = " +mysql.escape(req.session.mail)           
+    let data1 = "SELECT  `name`, `hour`, `min`, `priceType`, `price`, `category` " +
+        " FROM  `shopservice` " +
+        " WHERE `businessMail` = " + mysql.escape(req.session.mail)
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
-            connectDB.query(data1,(err1,result1)=>{
-                if(err1){
+        else {
+            connectDB.query(data1, (err1, result1) => {
+                if (err1) {
                     throw err1;
                 }
-                else{
-                    return res.render('shop/addServices',{
+                else {
+                    return res.render('shop/addServices', {
                         category: result,
                         data: result1
                     });
                 }
             })
-           
+
         }
-    })            
+    })
 }
 
 //post add service data
-exports.postAddServices  = (req,res,next) => {
+exports.postAddServices = (req, res, next) => {
     //console.log(req.body);
 
     let connectDB = mysql.createConnection({
@@ -2370,21 +2370,40 @@ exports.postAddServices  = (req,res,next) => {
         database: databaseName,
     });
 
-    let data = " INSERT INTO `shopservice` "+
-                " (`businessMail`, `name`, `hour`, `min`, `priceType`, `price`, `category`) "+
-                " VALUES ( '"+req.session.mail+"' , '"+req.body.name+"' ,'"+ parseInt(req.body.hour)+"','"+ parseInt(req.body.min)+"','"+req.body.priceType+"','"+parseFloat(req.body.price)+"','"+req.body.cat+"')"
+    let data = " INSERT INTO `shopservice` " +
+        " (`businessMail`, `name`, `hour`, `min`, `priceType`, `price`, `category`) " +
+        " VALUES ( '" + req.session.mail + "' , '" + req.body.name + "' ,'" + parseInt(req.body.hour) + "','" + parseInt(req.body.min) + "','" + req.body.priceType + "','" + parseFloat(req.body.price) + "','" + req.body.cat + "')"
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
+        else {
             return res.redirect('/shop/addservices');
         }
     })
 }
 
 //delete service
-exports.getDeleteServices = (req,res,next) =>{
-    console.log("getDeleteServices");
+exports.getDeleteServices = (req, res, next) => {
+    //   console.log("getDeleteServices");
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = " DELETE FROM `shopservice` " +
+        " WHERE businessMail = " + mysql.escape(req.session.mail) + " AND  name  = " + mysql.escape(req.params.name)
+
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            return res.redirect('/shop/addservices');
+        }
+    })
 }
