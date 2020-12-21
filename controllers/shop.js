@@ -1904,7 +1904,7 @@ exports.getPackage = (req, res, next) => {
         " FROM `shopservice` " +
         " WHERE `businessMail` = " + mysql.escape(req.session.mail);
 
-    let dataPack = "SELECT  `packageName`, `description`, `service`, `tax`, `amount`, `price`, `endDate` " +
+    let dataPack = "SELECT  * " +
         " FROM `package` " +
         " WHERE `businessMail` =" + mysql.escape(req.session.mail);
 
