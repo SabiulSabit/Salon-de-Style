@@ -141,7 +141,7 @@ router.route('/packagedetail')
 
 //update pacakge data
 router.route('/updatepackage')      
-      .post(shopController.isAuthentic,shopController.postPacakheUpdate)
+      .post(shopController.isAuthentic,shopController.postPackageUpdate)
 
 ///portfolio
 router.route('/portfolio')

@@ -2409,6 +2409,26 @@ exports.getDeleteServices = (req, res, next) => {
 }
 
 //update package data
-exports.postPacakheUpdate = (req,res,next) =>{
-    console.log(req.body);
+exports.postPackageUpdate = (req,res,next) =>{
+    //console.log(req.body);
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = " UPDATE `package` "+
+                " SET `packageName`= '"+req.body.name+"' ,`description`= '"+req.body.des+"' ,`service`= '"+req.body.service+"' ,`tax`= '"+parseFloat(req.body.tax) +"' ,`amount`= '"+ parseInt(req.body.amount) +"' ,`price`= '"+parseFloat(req.body.price)+"' ,`endDate`= " + " DATE_ADD(CURDATE(), INTERVAL '" + parseInt(req.body.validity) + "' DAY) " +
+                " WHERE `businessMail` = "+mysql.escape(req.session.mail) +  " AND `packageName` = "+mysql.escape(req.body.prevName)
+
+
+   connectDB.query(data,(err,result)=>{
+       if(err){
+           throw err;
+       }
+       else{
+         return res.redirect('/shop/package');
+       }
+   })             
 }
