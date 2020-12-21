@@ -2383,3 +2383,8 @@ exports.postAddServices  = (req,res,next) => {
         }
     })
 }
+
+//delete service
+exports.getDeleteServices = (req,res,next) =>{
+    console.log("getDeleteServices");
+}

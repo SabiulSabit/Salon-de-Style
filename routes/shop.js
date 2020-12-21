@@ -220,6 +220,8 @@ router.route('/addservices')
       .get(shopController.isAuthentic,shopController.getAddServices)
       .post(shopController.isAuthentic,shopController.postAddServices)
 
+router.route('/deleteservice/:name')
+      .get(shopController.isAuthentic,shopController.getDeleteServices)      
 ///logout
 router.route('/logout')
       .get(shopController.isAuthentic,shopController.getLogout)       
