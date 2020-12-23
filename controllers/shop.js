@@ -1761,7 +1761,28 @@ exports.postDeletePackage = (req, res, next) => {
 
 //get Portfolio  
 exports.getPortfolio = (req, res, next) => {
-    return res.render('shop/portfolio')
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+    
+    let data = "SELECT `img`, `img1`, `img2`, `img3`, `img4` "+
+                " FROM `shopadmin` "+
+                " WHERE `businessName` = "+mysql.escape(req.session.mail);
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+            return res.render('shop/portfolio',{
+                data: result
+            })
+        }
+    })            
 }
 
 //get Email 
