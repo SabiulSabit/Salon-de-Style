@@ -933,7 +933,13 @@ exports.postReport = (req, res, next) => {
 
 //order package
 exports.postOrderPackage =(req,res,next)=>{
-    console.log("postOrderPackage");
+    //console.log("postOrderPackage");
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
 }
 
 //getDashbord

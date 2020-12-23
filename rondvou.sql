@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 02:32 PM
+-- Generation Time: Dec 23, 2020 at 05:47 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -96,8 +96,16 @@ CREATE TABLE `client` (
   `phone` int(11) NOT NULL,
   `address` varchar(100) NOT NULL,
   `discount` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`name`, `useremail`, `shopMail`, `phone`, `address`, `discount`, `description`, `id`) VALUES
+('Sabiul Sabit', 'df9@gmail.com', 'iamsabit99@gmail.com', 1744248058, 'San Diago', 23, 'ds sd sdjf dfgsdf sdfg', 51001);
 
 -- --------------------------------------------------------
 
@@ -121,6 +129,7 @@ CREATE TABLE `egiftcard` (
 --
 
 INSERT INTO `egiftcard` (`businessMail`, `giftCardName`, `description`, `price`, `tax`, `serviceName`, `endDate`, `token`) VALUES
+('abc@gmail.com', 'Eid', 'This is a free offer', 100, 0, 'Stylish Hair Cut', '2021-01-19', 45353),
 ('iamsabit99@gmail.com', 'OFFER', 'This is a free offer', 10, 10, 'Nail Cut', '2021-01-11', 45351),
 ('iamsabit99@gmail.com', 'OFFER1', 'This is a free offer', 100, 12, 'Nail Cut', '2021-01-12', 45352);
 
@@ -183,6 +192,7 @@ CREATE TABLE `healthandsafety` (
 --
 
 INSERT INTO `healthandsafety` (`businessMail`, `noWaitingArea`, `employeeWearMasks`, `employeesWearDisposableGloves`, `employeeTemperatureChecks`, `disinfectionBetweenClients`, `mustWareMask`, `disinfectionofallSurfacesintheVenue`, `maintainSocialDistancing`, `venueProvidesMasksforClients`, `clientTemperatureChecks`, `clientScreenings`, `barbicideCOVID_19Certified`, `contactlessPaymentAvailable`, `noInteractionsWithOtherClients`, `disposableSuppliesinUse`, `placetoWashHandsAvailable`, `masksAvailableforPurchase`, `timeGapBetweenAppointments`, `noWalk_ins`, `describeMore`) VALUES
+('abc@gmail.com', '', '', '', '', '', 'Must ware mask', '', '', '', '', '', 'Barbicide COVID-19 Certified', '', '', '', '', '', '', '', '                    \r\n                                            \r\n                  \r\n                      \r\n                  '),
 ('iamsabit99@gmail.com', 'No waiting area', 'Employee wear masks', '', '', '', 'Must ware mask', '', 'Maintain social distancing', '', '', 'Client screenings', '', '', '', '', '', '', '', 'No walk-ins', 'This is sabit');
 
 -- --------------------------------------------------------
@@ -233,7 +243,22 @@ CREATE TABLE `package` (
 --
 
 INSERT INTO `package` (`businessMail`, `packageName`, `description`, `service`, `tax`, `amount`, `price`, `endDate`, `token`) VALUES
-('iamsabit99@gmail.com', 'PACK', 'This is a good package', 'Hair Cut', 5, 1, 232, '2021-01-12', 45351);
+('abc@gmail.com', 'Combo', 'This is a good package', 'Basic Hair Cut', 0, 2, 30, '2021-01-20', 45352),
+('iamsabit99@gmail.com', 'PACK', 'This is a good package', 'Hair Cut', 5, 1, 232, '2021-01-12', 45351),
+('iamsabit99@gmail.com', 'Pack-01', 'This is a good package', 'Nail Cut', 5, 45, 12, '2021-01-22', 45353);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `packageorder`
+--
+
+CREATE TABLE `packageorder` (
+  `packageToken` int(11) NOT NULL,
+  `userMail` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `token` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -252,6 +277,7 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`businessMail`, `user`, `reports`) VALUES
+('abc@gmail.com', 'iamsabit99@gmail.com', 'Hateful or abusive content'),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', 'Harmful dangerous acts'),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', 'Hateful or abusive content');
 
@@ -293,6 +319,10 @@ CREATE TABLE `shopadmin` (
   `businessNumber` varchar(15) NOT NULL,
   `password` varchar(500) NOT NULL,
   `img` varchar(50) NOT NULL,
+  `img1` varchar(200) NOT NULL,
+  `img2` varchar(200) NOT NULL,
+  `img3` varchar(200) NOT NULL,
+  `img4` varchar(200) NOT NULL,
   `ecom` varchar(50) NOT NULL,
   `fb` varchar(50) NOT NULL,
   `insta` varchar(50) NOT NULL,
@@ -307,10 +337,10 @@ CREATE TABLE `shopadmin` (
 -- Dumping data for table `shopadmin`
 --
 
-INSERT INTO `shopadmin` (`businessName`, `businessWebsite`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `ecom`, `fb`, `insta`, `officialName`, `description`, `address`, `lat`, `lon`) VALUES
-('Cool Hairdresser', '', 'Sabiul Sabit', 'abc@gmail.com', '01744248058', '$2b$10$9DygGZMGodT1hB3RqUz34uF7fOVBcwp4Y2g8L.MksphlawqWSb.WG', '/images/shop/shopImg/abc.jpeg', '', '', '', '', '', '182 Bashundhara Rd, Dhaka, Bangladesh', 23.8136, 90.4235),
-('sabit hair dress123', 'www.ad123.com', 'Sabit', 'iamsabit98@gmail.com', '12345', '$2b$10$ZnR6hxspC0guySJhjGMwE.yk4SSk3.T00V.NjcflOT7S08/CKz7wi', '/images/shop/shopImg/iamsabit98@gmail.com.jpeg', '', '', '', '', '', '', 0, 0),
-('sabit hair dress', 'www.ad.com', 'sabit', 'iamsabit99@gmail.com', '123456', '$2b$10$YgzWXVxyt2or966pKCjxP.l6PjyrjTuhaUjruLz4YCImQbSUu44Ii', '/images/shop/shopImg/iamsabit99@gmail.com.jpeg', 'ecom.com', 'fb.com', '', 'ABC', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Dhaka 1205, Bangladesh', 23.7489, 90.4034);
+INSERT INTO `shopadmin` (`businessName`, `businessWebsite`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `img1`, `img2`, `img3`, `img4`, `ecom`, `fb`, `insta`, `officialName`, `description`, `address`, `lat`, `lon`) VALUES
+('Cool Hairdresser', '', 'Sabiul Sabit', 'abc@gmail.com', '01744248058', '$2b$10$9DygGZMGodT1hB3RqUz34uF7fOVBcwp4Y2g8L.MksphlawqWSb.WG', '/images/shop/shopImg/abc.jpeg', '', '', '', '', '', '', '', '', '', '182 Bashundhara Rd, Dhaka, Bangladesh', 23.8136, 90.4235),
+('sabit hair dress123', 'www.ad123.com', 'Sabit', 'iamsabit98@gmail.com', '12345', '$2b$10$ZnR6hxspC0guySJhjGMwE.yk4SSk3.T00V.NjcflOT7S08/CKz7wi', '/images/shop/shopImg/iamsabit98@gmail.com.jpeg', '', '', '', '', '', '', '', '', '', '', 0, 0),
+('sabit hair dress', 'www.ad.com', 'sabit', 'iamsabit99@gmail.com', '123456', '$2b$10$YgzWXVxyt2or966pKCjxP.l6PjyrjTuhaUjruLz4YCImQbSUu44Ii', '/images/shop/shopImg/iamsabit99@gmail.com.jpeg', '/images/shop/shopImg/iamsabit99@gmail.comimg1.png', '/images/shop/shopImg/iamsabit99@gmail.comimg2.png', '', '', 'ecom.com', 'fb.com', '', 'ABC', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Dhaka 1205, Bangladesh', 23.7489, 90.4034);
 
 -- --------------------------------------------------------
 
@@ -346,17 +376,20 @@ CREATE TABLE `shopservice` (
   `hour` int(11) NOT NULL DEFAULT 0,
   `min` int(11) NOT NULL DEFAULT 0,
   `priceType` varchar(15) NOT NULL,
-  `price` float NOT NULL
+  `price` float NOT NULL,
+  `category` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shopservice`
 --
 
-INSERT INTO `shopservice` (`businessMail`, `name`, `hour`, `min`, `priceType`, `price`) VALUES
-('iamsabit99@gmail.com', 'Hair Cut', 1, 1, 'Dont', 123),
-('iamsabit99@gmail.com', 'Nail Cut', 1, 1, 'Fixed', 22),
-('iamsabit99@gmail.com', 'Nail Put', 2, 2, 'Fixed', 15);
+INSERT INTO `shopservice` (`businessMail`, `name`, `hour`, `min`, `priceType`, `price`, `category`) VALUES
+('abc@gmail.com', 'Basic Hair Cut', 0, 30, 'Fixed', 10, 'Hair Salon'),
+('abc@gmail.com', 'Stylish Hair Cut', 1, 30, 'Negotiable', 10, 'Hair Salon'),
+('iamsabit99@gmail.com', 'Hair Cut', 1, 1, 'Dont', 123, 'Hair Salon'),
+('iamsabit99@gmail.com', 'Nail Cut', 1, 1, 'Fixed', 22, 'Nail Salon'),
+('iamsabit99@gmail.com', 'Nail Put', 2, 2, 'Fixed', 15, 'Nail Salon');
 
 -- --------------------------------------------------------
 
@@ -376,6 +409,7 @@ CREATE TABLE `shoptime` (
 --
 
 INSERT INTO `shoptime` (`dayName`, `open`, `close`, `businessMail`) VALUES
+('fri', '10:00:00', '10:00:00', 'abc@gmail.com'),
 ('mon', '01:05:00', '12:10:00', 'iamsabit99@gmail.com'),
 ('sun', '10:00:00', '10:20:00', 'abc@gmail.com'),
 ('sun', '12:00:00', '12:40:00', 'iamsabit98@gmail.com'),
@@ -449,7 +483,8 @@ CREATE TABLE `stuffinfo` (
 INSERT INTO `stuffinfo` (`businessMail`, `stuffName`, `position`, `phone`, `email`, `img`) VALUES
 ('iamsabit99@gmail.com', 'Sabit', 'Web Dev', 12345678, 'abc@gmail.com', '/images/shop/employee/abc@gmail.com.jpeg'),
 ('iamsabit99@gmail.com', 'Saidul', 'Web Dev Tev', 123, 'hello@fmai.com', '/images/shop/employee/hello@fmai.com.jpeg'),
-('iamsabit98@gmail.com', 'staff', 'Hair', 12344, 'iamsabit99111@gmail.com', '');
+('iamsabit98@gmail.com', 'staff', 'Hair', 12344, 'iamsabit99111@gmail.com', ''),
+('abc@gmail.com', 'Sabit', 'Senior Dev', 1744248058, 'sabit@gmail.com', '/images/shop/employee/sabit@gmail.com.jpeg');
 
 -- --------------------------------------------------------
 
@@ -562,6 +597,12 @@ ALTER TABLE `package`
   ADD PRIMARY KEY (`businessMail`,`packageName`);
 
 --
+-- Indexes for table `packageorder`
+--
+ALTER TABLE `packageorder`
+  ADD PRIMARY KEY (`token`);
+
+--
 -- Indexes for table `report`
 --
 ALTER TABLE `report`
@@ -628,6 +669,16 @@ ALTER TABLE `taxinfo`
 --
 ALTER TABLE `userinfo`
   ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `packageorder`
+--
+ALTER TABLE `packageorder`
+  MODIFY `token` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
