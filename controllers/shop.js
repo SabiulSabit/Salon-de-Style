@@ -1850,7 +1850,27 @@ exports.getReviewandRating = (req, res, next) => {
         database: databaseName,
     });
 
-    return res.render('shop/reviewandRating')
+    let data = " SELECT  `reviewrMail`, `reviewrName`, `reviewrDP`, `review`, `date`, `rating`, `img` "+
+                "  FROM `review` "+
+                " WHERE `businessMail`  = " +mysql.escape(req.session.mail);
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+
+            for(let i=0; i<result.length; i++){
+                let a =  result[i].date;
+                result[i].data = a.toString().slice(0, 15);
+            }
+
+            return res.render('shop/reviewandRating',{
+                data: result
+            })
+        }
+    })            
+
 }
 
 //getReports
