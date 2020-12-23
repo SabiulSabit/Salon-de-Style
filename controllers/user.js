@@ -940,7 +940,22 @@ exports.postOrderPackage =(req,res,next)=>{
         password: passwordDB,
         database: databaseName,
     });
+
+    let data = " INSERT INTO `packageorder`  "+
+                " (`packageToken`, `userMail`, `date`) "+
+                " VALUES ([value-1],[value-2],[value-3])"
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+            
+        }
+    })            
 }
+
+
 
 //getDashbord
 
