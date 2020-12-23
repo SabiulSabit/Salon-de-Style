@@ -1804,6 +1804,7 @@ exports.postPortfolio = (req, res, next) => {
     let i_0 = 0, i_1 = 0, i_2 = 0, i_3 = 0, i_4 = 0;
 
     let insertField = "";
+    let imgPath = ""
     let wrong = 0;
 
     connectDB.query(data, (err, result) => {
@@ -1813,87 +1814,87 @@ exports.postPortfolio = (req, res, next) => {
         else {
             if (result[0].img == "") {
                 insertField = "img";
-                console.log("1");
+              //  console.log("1");
             }
-            if (result[0].img1 == "" && insertField != "") {
+            if (result[0].img1 == "" && insertField == "") {
                 insertField = "img1";
-                console.log("2");
+              //  console.log("2");
             }
-            if (result[0].img2 == "" && insertField != "") {
+            if (result[0].img2 == "" && insertField == "") {
                 insertField = "img2";
-                console.log("3");
+                //console.log("3");
             }
-            if (result[0].img3 == "" && insertField != "") {
+            if (result[0].img3 == "" && insertField == "") {
                 insertField = "img3";
-                console.log("4");
+                //console.log("4");
             }
-            if (result[0].im4 == "" && insertField != "") {
+            if (result[0].im4 == "" && insertField == "") {
                 insertField = "img4";
-                console.log("5");
+              //  console.log("5");
             }
-            console.log("dfsadf"+insertField);
-            // new formidable.IncomingForm().parse(req)
-            //     .on('field', (name, field) => {
+          //  console.log("dfsadf"+insertField);
+            new formidable.IncomingForm().parse(req)
+                .on('field', (name, field) => {
 
-            //         // if (name === "username") {
-            //         //     ename = field;
-            //         // }
-            //     })
-            //     .on('file', (name, file) => {
-            //         // console.log('Uploaded file', name)
-            //         // fs.rename(file.path,__dirname+"a")
-            //     })
-            //     .on('fileBegin', function (name, file) {
+                    // if (name === "username") {
+                    //     ename = field;
+                    // }
+                })
+                .on('file', (name, file) => {
+                    // console.log('Uploaded file', name)
+                    // fs.rename(file.path,__dirname+"a")
+                })
+                .on('fileBegin', function (name, file) {
 
-            //         var fileType = file.type.split('/').pop();
+                    var fileType = file.type.split('/').pop();
 
-            //         if (fileType == 'jpg' || fileType == 'png' || fileType == 'jpeg') {
+                    if (fileType == 'jpg' || fileType == 'png' || fileType == 'jpeg') {
 
-            //             a = path.join(__dirname, '../')
+                        a = path.join(__dirname, '../')
 
-            //             if (name === "image") {
-            //                 imgPath = (req.session.mail + insertField + "." + fileType);
-            //             }
-            //             imgPath = '/images/shop/shopImg/' + (req.session.mail + insertField + "." + fileType)
-            //             file.path = a + '/public/images/shop/shopImg/' + (req.session.mail + insertField + "." + fileType); // __dirname
+                        if (name === "image") {
+                            imgPath = (req.session.mail + insertField + "." + fileType);
+                        }
+                        imgPath = '/images/shop/shopImg/' + (req.session.mail + insertField + "." + fileType)
+                        file.path = a + '/public/images/shop/shopImg/' + (req.session.mail + insertField + "." + fileType); // __dirname
 
-            //         } else {
-            //             console.log("Wrong File type")
-            //             wrong = 1;
-            //             // res.render('admin/addhotel', { msg: "", err: "Wrong File type" });
-            //         }
-            //     })
-            //     .on('aborted', () => {
-            //         console.error('Request aborted by the user')
-            //     })
-            //     .on('error', (err) => {
-            //         console.error('Error', err)
-            //         throw err
-            //     })
-            //     .on('end', () => {
+                    } else {
+                        console.log("Wrong File type")
+                        wrong = 1;
+                        // res.render('admin/addhotel', { msg: "", err: "Wrong File type" });
+                    }
+                })
+                .on('aborted', () => {
+                    console.error('Request aborted by the user')
+                })
+                .on('error', (err) => {
+                    console.error('Error', err)
+                    throw err
+                })
+                .on('end', () => {
 
-            //         // console.log(addCategory);
-            //         if (wrong == 1) {
-            //             console.log("Error")
-            //             return;
-            //         }
-            //         else {
+                    // console.log(addCategory);
+                    if (wrong == 1) {
+                        console.log("Error")
+                        return;
+                    }
+                    else {
 
-            //             let inserData = " UPDATE `shopadmin` " +
-            //                 " SET `'" + insertField + "'`= '"+imgPath+"' " +
-            //                 +" WHERE `businessName` = " + mysql.escape(req.session.mail)
+                        let inserData = " UPDATE `shopadmin` " +
+                            " SET " + insertField + " = '"+imgPath+"' " +
+                            " WHERE `businessMail` = " + mysql.escape(req.session.mail)
 
-            //             connectDB.query(inserData, (err, result) => {
-            //                 if (err) {
-            //                     throw err;
-            //                 }
-            //                 else {
-            //                     return res.redirect("/shop/portfolio");
-            //                 }
-            //             })
+                        connectDB.query(inserData, (err, result) => {
+                            if (err) {
+                                throw err;
+                            }
+                            else {
+                                return res.redirect("/shop/portfolio");
+                            }
+                        })
 
-            //         }
-            //     })
+                    }
+                })
 
 
 
