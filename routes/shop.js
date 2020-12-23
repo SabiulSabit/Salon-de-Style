@@ -132,6 +132,7 @@ router.route('/updatepackage')
 ///portfolio
 router.route('/portfolio')
       .get(shopController.isAuthentic,shopController.getPortfolio) 
+      .post(shopController.isAuthentic,shopController.postPortfolio)
 
 ///email
 router.route('/email')

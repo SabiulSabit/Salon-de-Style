@@ -1778,12 +1778,27 @@ exports.getPortfolio = (req, res, next) => {
             throw err;
         }
         else{
-            console.log(result[0]);
+            //console.log(result[0]);
             return res.render('shop/portfolio',{
                 data: result[0]
             })
         }
     })            
+}
+
+//add img to portfolio
+exports.postPortfolio =(req,res,next)=>{
+    console.log("asdf");
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    //let data = ""
+    
 }
 
 //get Email 
