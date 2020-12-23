@@ -94,8 +94,8 @@ exports.getShowShop = (req, res, next) => {
         " FROM `healthandsafety` " +
         " WHERE businessMail = " + mysql.escape(req.params.mail) + " ; ";
 
-    let gift = "SELECT  `giftCardName`, `description`, `price`, `tax`, `serviceName`, `endDate` " +
-        " FROM `egiftcard` " +
+    let gift = "SELECT  `packageName`, `description`, `service`, `tax`, `amount`, `price`, `endDate`, `token` " +
+        " FROM `package` " +
         " WHERE `businessMail` = " + mysql.escape(req.params.mail) + " ; ";
 
     let rating = "SELECT * ,count(*) as total" +
@@ -697,8 +697,8 @@ exports.getPayment = (req, res, next) => {
             throw err;
         }
         else {
-           // console.log(result)
-            for (i in result) {           
+            // console.log(result)
+            for (i in result) {
                 let b = result[i].day
                 b = b.toString()
                 result[i].day = b.slice(0, 15);

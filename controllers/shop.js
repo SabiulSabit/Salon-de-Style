@@ -1842,6 +1842,14 @@ exports.getInventory = (req, res, next) => {
 
 //get Review and Rating 
 exports.getReviewandRating = (req, res, next) => {
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
     return res.render('shop/reviewandRating')
 }
 
