@@ -56,12 +56,8 @@ router.route('/updateprofile')
 router.route('/report/:shopmail')
       .post(userController.isAuthentic,userController.setLocals,userController.postReport)      
     
-router.route('/giftorder')
-      .post(userController.isAuthentic,userController.setLocals,userController.giftOrderForMe)
-
-////giftorderfriend      
-router.route('/giftorderfriend')
-      .post(userController.isAuthentic,userController.setLocals,userController.giftOrderForFriend)
+router.route('/order/package/:token')
+      .post(userController.isAuthentic,userController.postOrderPackage)
 
 //dashbord
 router.route('/dashbord')

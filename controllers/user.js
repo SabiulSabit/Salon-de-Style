@@ -931,81 +931,9 @@ exports.postReport = (req, res, next) => {
 
 }
 
-exports.giftOrderForMe = (req, res, next) => {
-    // console.log(req.body);
-
-    let connectDB = mysql.createConnection({
-        host: hostNameDB,
-        user: userNameDB,
-        password: passwordDB,
-        database: databaseName,
-        multipleStatements: true
-    });
-
-    let data = "INSERT INTO `egiftcardorder` " +
-        " (`businessMail`, `userMail`, `giftName`, `date`) " +
-        " VALUES ('" + req.body.shopemail[0] + "','" + req.session.user + "','" + req.body.giftCard + "',CURDATE() ) "
-
-    let shopName = "SELECT `businessName` " +
-        " FROM `shopadmin` " +
-        " WHERE `businessMail` = " + mysql.escape(req.body.shopemail[0])
-
-    connectDB.query(data, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        else {
-            connectDB.query(shopName, (err1, result1) => {
-                if (err1) {
-                    throw err1;
-                }
-                else {
-                    //console.log('/details/' + result1[0].businessName + '/' + req.body.shopemail[0])
-                    return res.redirect('/details/' + result1[0].businessName + '/' + req.body.shopemail[0])
-                }
-            })
-
-        }
-    })
-}
-
-//giftOrderForFriend
-exports.giftOrderForFriend = (req, res, next) => {
-
-    console.log(req.body);
-    let connectDB = mysql.createConnection({
-        host: hostNameDB,
-        user: userNameDB,
-        password: passwordDB,
-        database: databaseName,
-        multipleStatements: true
-    });
-
-    let data = "INSERT INTO `egiftcardorder` " +
-        " (`businessMail`, `userMail`, `giftName`, `friendMail`, `friendName`,`date`) " +
-        " VALUES ('" + req.body.shopemail[0] + "','" + req.session.user + "','" + req.body.giftCard + "','" + req.body.friendMail + "','" + req.body.name + "',CURDATE() ) "
-
-    let shopName = "SELECT `businessName` " +
-        " FROM `shopadmin` " +
-        " WHERE `businessMail` = " + mysql.escape(req.body.shopemail[0])
-
-    connectDB.query(data, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        else {
-            connectDB.query(shopName, (err1, result1) => {
-                if (err1) {
-                    throw err1;
-                }
-                else {
-                    console.log('/details/' + result1[0].businessName + '/' + req.body.shopemail[0])
-                    return res.redirect('/details/' + result1[0].businessName + '/' + req.body.shopemail[0])
-                }
-            })
-
-        }
-    })
+//order package
+exports.postOrderPackage =(req,res,next)=>{
+    console.log("postOrderPackage");
 }
 
 //getDashbord

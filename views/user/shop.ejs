@@ -4,7 +4,9 @@
 
 	<!-- Basic Page Needs
 ================================================== -->
-	<title><%=shopInfo.businessName%></title>
+	<title>
+		<%=shopInfo.businessName%>
+	</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -310,9 +312,6 @@
 			background-color: aliceblue;
 			margin-bottom: 10px;
 		}
-
-
-
 	</style>
 </head>
 
@@ -321,996 +320,990 @@
 
 
 	<% if(user){ %>
-	<%- include('./loginNavbar.ejs') %>
-	<% } else{ %>
-	<%- include('./navbar.ejs') %>
-	<% }  %>
+		<%- include('./loginNavbar.ejs') %>
+			<% } else{ %>
+				<%- include('./navbar.ejs') %>
+					<% } %>
 
-	<!-- Slider -->
-
-
-	<section id="demos">
-		<div class="roww">
-		  <div class="large-12 columns">
-			<div class="owl-carousel owl-theme">
-			<% for(let i=0; i<2; i++) { %>
-				<div class="item">
-					<img src="<%=shopInfo.img%>" alt="">
-				  </div>
-				  <div class="item">
-					<img src="<%=shopInfo.img1%>" alt="">
-				  </div>
-				  <div class="item">
-					<img src="<%=shopInfo.img2%>" alt="">
-				  </div>
-				  <div class="item">
-					<img src="<%=shopInfo.img3%>" alt="">
-				  </div>
-				  <div class="item">
-					<img src="<%=shopInfo.img4%>" alt="">
-				  </div>
-			<% } %>
-			
-			  
-			</div>
-		  </div>
-		</div>
-	  </section>
+						<!-- Slider -->
 
 
-	<input type="hidden" value="<%=shopInfo.lat%>" id="lat">
-	<input type="hidden" value="<%=shopInfo.lon%>" id="lon">
-	<input type="hidden" value="<%=shopInfo.address%>" id="address">
+						<section id="demos">
+							<div class="roww">
+								<div class="large-12 columns">
+									<div class="owl-carousel owl-theme">
+										<% for(let i=0; i<2; i++) { %>
+											<div class="item">
+												<img src="<%=shopInfo.img%>" alt="">
+											</div>
+											<div class="item">
+												<img src="<%=shopInfo.img1%>" alt="">
+											</div>
+											<div class="item">
+												<img src="<%=shopInfo.img2%>" alt="">
+											</div>
+											<div class="item">
+												<img src="<%=shopInfo.img3%>" alt="">
+											</div>
+											<div class="item">
+												<img src="<%=shopInfo.img4%>" alt="">
+											</div>
+											<% } %>
 
 
-	<!-- Content ================================================== -->
-	<div class="container">
-		<div class="row sticky-wrapper">
-			<div class="col-lg-8 col-md-8 padding-right-30">
-
-				<!-- Titlebar -->
-				<div id="titlebar" class="listing-titlebar">
-					<div class="listing-titlebar-title">
-						<h2><%=shopInfo.businessName%><span class="listing-tag">Rondvou</span></h2>
-						<span>
-							<a href="#listing-location" class="listing-address">
-								<i class="fa fa-map-marker"></i>
-								<%=shopInfo.address%>
-							</a>
-						</span>
-						<div class="star-rating" data-rating="<%=avrgRating%>">
-							<div class="rating-counter"><a href="#listing-reviews">(<%=totalRating%> reviews)</a></div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Listing Nav -->
-				<div id="listing-nav" class="listing-nav-container">
-					<ul class="listing-nav">
-						<li><a href="#listing-pricing-list" class="active">Service</a></li>
-						<li><a href="#listing-overview">Overview</a></li>
-						<li><a href="#listing-location">Location</a></li>
-						<li><a href="#listing-reviews">Reviews</a></li>
-						<li><a href="#add-review">Add Review</a></li>
-					</ul>
-				</div>
-
-
-
-
-				<!-- Food Menu -->
-				<div id="listing-pricing-list" class="listing-section">
-
-					<div class="show-more">
-						<div class="pricing-list-container">
-
-							<!-- Food List -->
-							<h3>Service List</h3>
-							<ul>
-								<% for(i=0;i<service.length; i++){ %>
-								<li>
-									<h5><%=service[i].name%></h5>
-									<p>Price: <%=service[i].price%> (<%=service[i].hour%><strong>h </strong><%=service[i].min%><strong>min</strong>) </p>
-									<span><a href="/service/<%=shopInfo.businessMail%>/<%=service[i].name%>/<%=service[i].price%>"
-											class="button book-now">BOOK NOW</a></span>
-
-								</li>
-								<%  } %>
-
-
-							</ul>
-
-						</div>
-					</div>
-					<a href="#" class="show-more-button" data-more-title="Show More" data-less-title="Show Less"><i
-							class="fa fa-angle-down"></i></a>
-				</div>
-				<!-- Food Menu / End -->
-
-
-
-				<!-- Overview -->
-				<div id="listing-overview" class="listing-section">
-
-					<!-- Description -->
-
-					<p><%=shopInfo.description%></p>
-
-
-				</div>
-
-
-				<!-- Location -->
-				<div id="listing-location" class="listing-section">
-					<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
-
-					<div class="well mt-3">
-						<div id="maparea" style="width: 100%; height: 500px;"></div>
-					</div>
-				</div>
-
-				<!-- Reviews -->
-				<div id="listing-reviews" class="listing-section">
-					<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews
-						<span>(<%=totalRating%>)</span></h3>
-					<p>Reviews are no joke! <strong>Rondvou</strong> values authentic reviews and only verifies them if
-						we know the reviewer has visited this business. </p>
-					<!-- Rating Overview -->
-					<div class="rating-overview">
-						<div class="rating-overview-box">
-							<span class="rating-overview-box-total"><%=avrgRating%></span>
-							<span class="rating-overview-box-percent">out of 5.0</span>
-							<div class="star-rating" data-rating="<%=avrgRating%>"></div>
-						</div>
-
-
-						<div class="rating-bars">
-							<div class="rating-bars-item">
-								<span class="rating-bars-inner">
-									<strong>5 <i class="fa fa-star starColor"></i></strong>
-									<span class="rating-bars-rating" data-rating="<%=star5%>">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong><%=star5%></strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-inner">
-									<strong>4 <i class="fa fa-star starColor"></i></strong>
-									<span class="rating-bars-rating" data-rating="<%=star4%>">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong><%=star4%></strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-inner">
-									<strong>3 <i class="fa fa-star starColor"></i></strong>
-									<span class="rating-bars-rating" data-rating="<%=star3%>">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong><%=star3%></strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-inner">
-									<strong>2 <i class="fa fa-star starColor"></i></strong>
-									<span class="rating-bars-rating" data-rating="<%=star2%>">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong><%=star2%></strong>
-								</span>
-							</div>
-							<div class="rating-bars-item">
-								<span class="rating-bars-inner">
-									<strong>1 <i class="fa fa-star starColor"></i></strong>
-									<span class="rating-bars-rating" data-rating="<%=star1%>">
-										<span class="rating-bars-rating-inner"></span>
-									</span>
-									<strong><%=star1%></strong>
-								</span>
-							</div>
-
-						</div>
-
-					</div>
-					<!-- Rating Overview / End -->
-
-
-					<div class="clearfix"></div>
-
-					<!-- Reviews -->
-					<section class="comments listing-reviews">
-						<ul>
-							<% if(totalRating > 0) { %>
-
-							<% for( let j =0;j<allRating.length;j++ ) { %>
-							<li>
-								<div class="avatar"><img src="<%=allRating[j].reviewrDP%>" alt="" /></div>
-
-								<div class="comment-content">
-									<div class="arrow-comment"></div>
-									<div class="comment-by"><%=allRating[j].reviewrName%> <i class="tip"
-											data-tip-content="Person who left this review actually was a customer"></i>
-										<span class="date"><%=allRating[j].date%> </span>
-										<div class="star-rating" data-rating="<%=allRating[j].rating%>"></div>
-									</div>
-									<p><%=allRating[j].review%></p>
-
-									<div class="review-images mfp-gallery-container">
-										<a href="<%=allRating[j].img%>" class="mfp-gallery"></a>
-									</div>
-
-								</div>
-							</li>
-							<% } %>
-							<%	} %>
-
-
-						</ul>
-					</section>
-
-
-					<div class="clearfix"></div>
-
-				</div>
-
-
-				<!-- Add Review Box -->
-				<div id="add-review" class="add-review-box">
-
-					<!-- Add Review -->
-					<h3 class="listing-desc-headline margin-bottom-10">Add Review</h3>
-					<p class="comment-notes">Your email address will not be published.</p>
-
-					<!-- Subratings Container -->
-					<form action="/setReview" method="post" id="add-comment" class="add-comment"
-						enctype="multipart/form-data">
-						<input type="hidden" name="shop" value="<%=shopInfo.businessMail%>">
-						<div class="sub-ratings-container">
-							<div class="add-sub-rating">
-								<div class="sub-rating-title">Service <i class="tip"
-										data-tip-content="Quality of customer service and attitude to work with you"></i>
-								</div>
-								<div class="sub-rating-stars">
-									<!-- Leave Rating -->
-									<div class="clearfix"></div>
-									<div class="leave-rating">
-										<input type="radio" name="rating" id="rating-1" value="5" />
-										<label for="rating-1" class="fa fa-star"></label>
-										<input type="radio" name="rating" id="rating-2" value="4" />
-										<label for="rating-2" class="fa fa-star"></label>
-										<input type="radio" name="rating" id="rating-3" value="3" />
-										<label for="rating-3" class="fa fa-star"></label>
-										<input type="radio" name="rating" id="rating-4" value="2" />
-										<label for="rating-4" class="fa fa-star"></label>
-										<input type="radio" name="rating" id="rating-5" value="1" />
-										<label for="rating-5" class="fa fa-star"></label>
 									</div>
 								</div>
 							</div>
-							<!-- Uplaod Photos -->
-							<div class="uploadButton margin-top-15">
-								<input class="uploadButton-input" type="file" name="image" id="upload" multiple />
-								<label class="uploadButton-button ripple-effect" for="upload">Add Photos</label>
-								<span class="uploadButton-file-name"></span>
-							</div>
-							<!-- Uplaod Photos / End -->
-
-						</div>
+						</section>
 
 
-						<fieldset>
-							<div>
-								<label>Review:</label>
-								<textarea name="riview" cols="40" rows="3"></textarea>
-							</div>
-
-						</fieldset>
-
-						<button type="submit" class="button">Submit Review</button>
-						<div class="clearfix"></div>
-					</form>
-
-				</div>
-				<!-- Add Review Box / End -->
+						<input type="hidden" value="<%=shopInfo.lat%>" id="lat">
+						<input type="hidden" value="<%=shopInfo.lon%>" id="lon">
+						<input type="hidden" value="<%=shopInfo.address%>" id="address">
 
 
-			</div>
+						<!-- Content ================================================== -->
+						<div class="container">
+							<div class="row sticky-wrapper">
+								<div class="col-lg-8 col-md-8 padding-right-30">
 
-
-			<!-- Sidebar
-		================================================== -->
-			<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-
-
-				<!-- Verified Badge -->
-				<div class="verified-badge with-tip"
-					data-tip-content="Listing has been verified and belongs the business owner or manager.">
-					<i class="sl sl-icon-check"></i> Verified Listing
-				</div>
-
-				<% if(gift.length > 0) { %>
-				<div class="giftCard">
-				
-					<p class="text-center">Order a Package!</p>
-					<a class="cardShow" data-toggle="modal" data-target="#exampleModal"> <i
-						class="fa fa-medkit pr-3">Show Package</a>
-				
-						<div id="giftModal" class="zoom-anim-dialog mfp-hide">
-							<div class="small-dialog-header">
-								<h3>Health Rules</h3>
-							</div>
-							<!--Tabs -->
-							<div class="sign-in-form style-1">
-								<div class="tabs-container alt">
-	
-									<% for(let i=0;i<gift.length;i++){ %>
-										<div class="modal-body">
-											<div class="giftBox text-center">
-												<span class="text-info">Gift Card Name: <%=gift[i].giftCardName%></span>
-												<br>
-												<span class="text-success">Price: $ <span
-														style="font-size: 22px;"><%=gift[i].price%>.00</span> </span>
-												<br>
-												<button class="btn btn-danger orderBtn" data-toggle="modal" data-target="#<%=gift[i].giftCardName%>">Order</button>
-													<button onclick="giftShow('<%=gift[i].giftCardName%>')" href="#giftShowModal" class="sign-in popup-with-zoom-anim"><i class="fa fa-medkit pr-3"></i>Show Gift card</button>
+									<!-- Titlebar -->
+									<div id="titlebar" class="listing-titlebar">
+										<div class="listing-titlebar-title">
+											<h2>
+												<%=shopInfo.businessName%><span class="listing-tag">Rondvou</span>
+											</h2>
+											<span>
+												<a href="#listing-location" class="listing-address">
+													<i class="fa fa-map-marker"></i>
+													<%=shopInfo.address%>
+												</a>
+											</span>
+											<div class="star-rating" data-rating="<%=avrgRating%>">
+												<div class="rating-counter"><a href="#listing-reviews">(<%=totalRating%>
+															reviews)</a></div>
 											</div>
 										</div>
-										<% } %>
-	
-								</div>
-							</div>
-						</div>
-			
-
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-						aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Gift Card</h5>
-									<button type="button" class="close popcloseBtn firstBack" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<% for(let i=0;i<gift.length;i++){ %>
-								<div class="modal-body">
-									<div class="giftBox text-center">
-										<span class="text-info">Gift Card Name: <%=gift[i].giftCardName%></span>
-										<br>
-										<span class="text-success">Price: $ <span
-												style="font-size: 22px;"><%=gift[i].price%>.00</span> </span>
-										<br>
-										<button class="btn btn-danger orderBtn" data-toggle="modal"
-											data-target="#<%=gift[i].giftCardName%>">Order</button>
 									</div>
-								</div>
-								<% } %>
 
-							</div>
-						</div>
-					</div>
-					<% for(let i=0;i<gift.length;i++) { %>
-					<form action="/giftorder" method="post" id="forME">
-						<input type="hidden" name="shopemail" value="<%=shopInfo.businessMail%>">
-						<input type="hidden" name="giftCard" value="<%=gift[i].giftCardName%>">
-						<div class="modal fade exampleModal2" id="<%=gift[i].giftCardName%>" tabindex="-1" role="dialog"
-							aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-scrollable" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Gift Card Order </h5>
-										<button type="button" class="close popcloseBtn firstBack" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-arrow-left"></i></span>
-										</button>
+									<!-- Listing Nav -->
+									<div id="listing-nav" class="listing-nav-container">
+										<ul class="listing-nav">
+											<li><a href="#listing-pricing-list" class="active">Service</a></li>
+											<li><a href="#listing-overview">Overview</a></li>
+											<li><a href="#listing-location">Location</a></li>
+											<li><a href="#listing-reviews">Reviews</a></li>
+											<li><a href="#add-review">Add Review</a></li>
+										</ul>
 									</div>
-									<div class="modal-body">
-										<div class="giftBox2">
-											<table class="table table-bordered">
-												<tbody>
-													<tr>
-														<td scope="col">E-gift Card</td>
-														<td scope="col">Price</td>
-														<td scope="col">Expire After</td>
-													</tr>
-													<tr>
-														<td scope="row"><%=gift[i].giftCardName%></td>
-														<td scope="row"> <span>$</span> <%=gift[i].price%></td>
-														<td scope="row"><%=gift[i].endDate%></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="giftBox3">
 
-											<h3><%=shopInfo.businessName%></h3>
-											<p>Address</p>
-											<div class="paymentgift">
-												<h4 class="text-center text-uppercase">Payment Detail</h4>
-												<p><%=gift[i].description%></p>
+
+
+
+									<!-- Food Menu -->
+									<div id="listing-pricing-list" class="listing-section">
+
+										<div class="show-more">
+											<div class="pricing-list-container">
+
+												<!-- Food List -->
+												<h3>Service List</h3>
+												<ul>
+													<% for(i=0;i<service.length; i++){ %>
+														<li>
+															<h5>
+																<%=service[i].name%>
+															</h5>
+															<p>Price: <%=service[i].price%> (<%=service[i].hour%>
+																		<strong>h </strong>
+																		<%=service[i].min%><strong>min</strong>) </p>
+															<span><a href="/service/<%=shopInfo.businessMail%>/<%=service[i].name%>/<%=service[i].price%>"
+																	class="button book-now">BOOK NOW</a></span>
+
+														</li>
+														<% } %>
+
+
+												</ul>
+
 											</div>
 										</div>
-										<div class="giftoffer mt-3">
+										<a href="#" class="show-more-button" data-more-title="Show More"
+											data-less-title="Show Less"><i class="fa fa-angle-down"></i></a>
+									</div>
+									<!-- Food Menu / End -->
 
-											<table class="table text-center">
-												<thead>
-													<tr>
-														<td colspan="2">
-															<h2>Who is this Gift card for ?</h2>
-														</td>
-													</tr>
-												</thead>
-												<tbody>
-													<tr class="text-center">
-														<th><button onclick="submitForm('forME')"
-																class="btn btn-success orderNowBtn">For Me</button></th>
-													</tr>
-													<tr class="text-center friendDesign">
-														<th>
-															<div class="toggle-wrap">
-																<span class="trigger "><a
-																		onclick="friendFunction('<%=gift[i].giftCardName%>')">
-																		<p class="text-white">For my friend</p> <i
-																			class="sl sl-icon-plus"></i>
-																	</a></span>
-																<div class="toggle-container">
-																	<form action="/giftorderfriend" method="post"
-																		id="forFriend">
-																		<input type="hidden" name="shopemail"
-																			value="<%=shopInfo.businessMail%>">
-																		<input type="hidden" name="giftCard"
-																			value="<%=gift[i].giftCardName%>">
 
-																		<div id="<%=gift[i].giftCardName%>">
 
-																			<h4>We will send a gift card directly
-																				them</h4>
-																			<label>Email</label>
-																			<input type="text" name="friendMail"
-																				class="form-control" required>
-																			<label>First Name</label>
-																			<input type="text" name="name"
-																				class="form-control" required>
-																			<button onclick="submitForm('forFriend')"
-																				class="btn btn-success lastOrder">ORDER
-																				NOW</button>
+									<!-- Overview -->
+									<div id="listing-overview" class="listing-section">
 
+										<!-- Description -->
+
+										<p>
+											<%=shopInfo.description%>
+										</p>
+
+
+									</div>
+
+
+									<!-- Location -->
+									<div id="listing-location" class="listing-section">
+										<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
+
+										<div class="well mt-3">
+											<div id="maparea" style="width: 100%; height: 500px;"></div>
+										</div>
+									</div>
+
+									<!-- Reviews -->
+									<div id="listing-reviews" class="listing-section">
+										<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews
+											<span>(<%=totalRating%>)</span>
+										</h3>
+										<p>Reviews are no joke! <strong>Rondvou</strong> values authentic reviews and
+											only verifies them if
+											we know the reviewer has visited this business. </p>
+										<!-- Rating Overview -->
+										<div class="rating-overview">
+											<div class="rating-overview-box">
+												<span class="rating-overview-box-total">
+													<%=avrgRating%>
+												</span>
+												<span class="rating-overview-box-percent">out of 5.0</span>
+												<div class="star-rating" data-rating="<%=avrgRating%>"></div>
+											</div>
+
+
+											<div class="rating-bars">
+												<div class="rating-bars-item">
+													<span class="rating-bars-inner">
+														<strong>5 <i class="fa fa-star starColor"></i></strong>
+														<span class="rating-bars-rating" data-rating="<%=star5%>">
+															<span class="rating-bars-rating-inner"></span>
+														</span>
+														<strong>
+															<%=star5%>
+														</strong>
+													</span>
+												</div>
+												<div class="rating-bars-item">
+													<span class="rating-bars-inner">
+														<strong>4 <i class="fa fa-star starColor"></i></strong>
+														<span class="rating-bars-rating" data-rating="<%=star4%>">
+															<span class="rating-bars-rating-inner"></span>
+														</span>
+														<strong>
+															<%=star4%>
+														</strong>
+													</span>
+												</div>
+												<div class="rating-bars-item">
+													<span class="rating-bars-inner">
+														<strong>3 <i class="fa fa-star starColor"></i></strong>
+														<span class="rating-bars-rating" data-rating="<%=star3%>">
+															<span class="rating-bars-rating-inner"></span>
+														</span>
+														<strong>
+															<%=star3%>
+														</strong>
+													</span>
+												</div>
+												<div class="rating-bars-item">
+													<span class="rating-bars-inner">
+														<strong>2 <i class="fa fa-star starColor"></i></strong>
+														<span class="rating-bars-rating" data-rating="<%=star2%>">
+															<span class="rating-bars-rating-inner"></span>
+														</span>
+														<strong>
+															<%=star2%>
+														</strong>
+													</span>
+												</div>
+												<div class="rating-bars-item">
+													<span class="rating-bars-inner">
+														<strong>1 <i class="fa fa-star starColor"></i></strong>
+														<span class="rating-bars-rating" data-rating="<%=star1%>">
+															<span class="rating-bars-rating-inner"></span>
+														</span>
+														<strong>
+															<%=star1%>
+														</strong>
+													</span>
+												</div>
+
+											</div>
+
+										</div>
+										<!-- Rating Overview / End -->
+
+
+										<div class="clearfix"></div>
+
+										<!-- Reviews -->
+										<section class="comments listing-reviews">
+											<ul>
+												<% if(totalRating> 0) { %>
+
+													<% for( let j=0;j<allRating.length;j++ ) { %>
+														<li>
+															<div class="avatar"><img src="<%=allRating[j].reviewrDP%>"
+																	alt="" /></div>
+
+															<div class="comment-content">
+																<div class="arrow-comment"></div>
+																<div class="comment-by">
+																	<%=allRating[j].reviewrName%> <i class="tip"
+																			data-tip-content="Person who left this review actually was a customer"></i>
+																		<span class="date">
+																			<%=allRating[j].date%>
+																		</span>
+																		<div class="star-rating"
+																			data-rating="<%=allRating[j].rating%>">
 																		</div>
+																</div>
+																<p>
+																	<%=allRating[j].review%>
+																</p>
 
-																	</form>
+																<div class="review-images mfp-gallery-container">
+																	<a href="<%=allRating[j].img%>"
+																		class="mfp-gallery"></a>
+																</div>
+
+															</div>
+														</li>
+														<% } %>
+															<% } %>
+
+
+											</ul>
+										</section>
+
+
+										<div class="clearfix"></div>
+
+									</div>
+
+
+									<!-- Add Review Box -->
+									<div id="add-review" class="add-review-box">
+
+										<!-- Add Review -->
+										<h3 class="listing-desc-headline margin-bottom-10">Add Review</h3>
+										<p class="comment-notes">Your email address will not be published.</p>
+
+										<!-- Subratings Container -->
+										<form action="/setReview" method="post" id="add-comment" class="add-comment"
+											enctype="multipart/form-data">
+											<input type="hidden" name="shop" value="<%=shopInfo.businessMail%>">
+											<div class="sub-ratings-container">
+												<div class="add-sub-rating">
+													<div class="sub-rating-title">Service <i class="tip"
+															data-tip-content="Quality of customer service and attitude to work with you"></i>
+													</div>
+													<div class="sub-rating-stars">
+														<!-- Leave Rating -->
+														<div class="clearfix"></div>
+														<div class="leave-rating">
+															<input type="radio" name="rating" id="rating-1" value="5" />
+															<label for="rating-1" class="fa fa-star"></label>
+															<input type="radio" name="rating" id="rating-2" value="4" />
+															<label for="rating-2" class="fa fa-star"></label>
+															<input type="radio" name="rating" id="rating-3" value="3" />
+															<label for="rating-3" class="fa fa-star"></label>
+															<input type="radio" name="rating" id="rating-4" value="2" />
+															<label for="rating-4" class="fa fa-star"></label>
+															<input type="radio" name="rating" id="rating-5" value="1" />
+															<label for="rating-5" class="fa fa-star"></label>
+														</div>
+													</div>
+												</div>
+												<!-- Uplaod Photos -->
+												<div class="uploadButton margin-top-15">
+													<input class="uploadButton-input" type="file" name="image"
+														id="upload" multiple />
+													<label class="uploadButton-button ripple-effect" for="upload">Add
+														Photos</label>
+													<span class="uploadButton-file-name"></span>
+												</div>
+												<!-- Uplaod Photos / End -->
+
+											</div>
+
+
+											<fieldset>
+												<div>
+													<label>Review:</label>
+													<textarea name="riview" cols="40" rows="3"></textarea>
+												</div>
+
+											</fieldset>
+
+											<button type="submit" class="button">Submit Review</button>
+											<div class="clearfix"></div>
+										</form>
+
+									</div>
+									<!-- Add Review Box / End -->
+
+
+								</div>
+
+
+								<!-- Sidebar
+		================================================== -->
+								<div class="col-lg-4 col-md-4 margin-top-75 sticky">
+
+
+									<!-- Verified Badge -->
+									<div class="verified-badge with-tip"
+										data-tip-content="Listing has been verified and belongs the business owner or manager.">
+										<i class="sl sl-icon-check"></i> Verified Listing
+									</div>
+
+									<% if(gift.length> 0) { %>
+										<div class="giftCard">
+
+											<p class="text-center">Order a Package!</p>
+											<a class="cardShow" data-toggle="modal" data-target="#exampleModal"> <i
+													class="fa fa-medkit pr-3">Show Package</a>
+
+											<div id="giftModal" class="zoom-anim-dialog mfp-hide">
+												<div class="small-dialog-header">
+													<h3>Health Rules</h3>
+												</div>
+												<!--Tabs -->
+												<div class="sign-in-form style-1">
+													<div class="tabs-container alt">
+
+														<% for(let i=0;i<gift.length;i++){ %>
+															<div class="modal-body">
+																<div class="giftBox text-center">
+																	<span class="text-info">Gift Card Name:
+																		<%=gift[i].packageName%></span>
+																	<br>
+																	<span class="text-success">Price: $ <span
+																			style="font-size: 22px;">
+																			<%=gift[i].price%>
+																		</span> </span>
+																	<br>
+																	<button class="btn btn-danger orderBtn"
+																		data-toggle="modal"
+																		data-target="#<%=gift[i].giftCardName%>">Order</button>
+																	<button
+																		onclick="giftShow('<%=gift[i].giftCardName%>')"
+																		href="#giftShowModal"
+																		class="sign-in popup-with-zoom-anim"><i
+																			class="fa fa-medkit pr-3"></i>Show Gift
+																		card</button>
 																</div>
 															</div>
-													
-														</th>
+															<% } %>
+
+													</div>
+												</div>
+											</div>
+
+
+											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Gift Card
+															</h5>
+															<button type="button" class="close popcloseBtn firstBack"
+																data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<% for(let i=0;i<gift.length;i++){ %>
+															<div class="modal-body">
+																<form action="/order/package/<%=gift[i].token%>"
+																	method="post">
+																	<div class="giftBox text-center">
+																		<span class="text-info">Gift Card Name:
+																			<%=gift[i].packageName%></span>
+																		<br>
+																		<span class="text-success">Price: $ <span
+																				style="font-size: 22px;">
+																				<%=gift[i].price%>.00
+																			</span> </span>
+																		<br>
+																		<button class="btn btn-danger orderBtn"
+																			type="submit">Order</button>
+																	</div>
+																</form>
+															</div>
+															<% } %>
+
+													</div>
+												</div>
+											</div>
 
 
 
-													</tr>
-												</tbody>
-											</table>
 										</div>
-									</div>
+										<% } %>
+
+											<!-- Opening Hours -->
+											<div class="boxed-widget opening-hours margin-top-35">
+												<div class="listing-badge now-open">Now Open</div>
+												<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
+												<ul>
+													<li>Monday <span>
+															<% if(mon.length){ %>
+																<% for(i=0;i<mon.length;i++) { %>
+																	<p class="boldText">
+
+																		<span>PM</span><span>
+																			<%=mon[i].close%>
+																		</span>
+																		<span>-</span>
+																		<span>AM</span><span>
+																			<%=mon[i].open%>
+																		</span>
+
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+													<li>Tuesday <span>
+															<% if(tue.length){ %>
+																<% for(i=0;i<tue.length;i++) { %>
+																	<p>
+																		<span><span>PM</span><span>
+																				<%=tue[i].close%>
+																			</span></span>
+																		<span>-</span>
+																		<span><span>AM</span><span>
+																				<%=tue[i].open%>
+																			</span></span>
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+													<li>Wednesday <span>
+															<% if(wed.length){ %>
+																<% for(i=0;i<wed.length;i++) { %>
+																	<p>
+																		<span><span>PM</span><span>
+																				<%=wed[i].close%>
+																			</span></span>
+																		<span>-</span>
+																		<span><span>AM</span><span>
+																				<%=wed[i].open%>
+																			</span></span>
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+													<li>Thursday <span>
+															<% if(thu.length){ %>
+																<% for(i=0;i<thu.length;i++) { %>
+																	<p>
+																		<span>PM</span><span>
+																			<%=thu[i].close%>
+																		</span>
+																		<span>-</span>
+																		<span>AM</span><span>
+																			<%=thu[i].open%>
+																		</span>
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+													<li>Friday <span>
+															<% if(fri.length){ %>
+																<% for(i=0;i<fri.length;i++) { %>
+																	<p>
+																		<span><span>PM</span> <span>
+																				<%=fri[i].close%>
+																			</span></span>
+																		<span>-</span>
+																		<span><span>AM</span> <span>
+																				<%=fri[i].open%>
+																			</span></span>
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+													<li>Saturday <span>
+															<% if(sat.length){ %>
+																<% for(i=0;i<sat.length;i++) { %>
+																	<p>
+																		<span><span>PM</span><span>
+																				<%=sat[i].close%>
+																			</span></span>
+																		<span>-</span>
+																		<span><span>AM</span><span>
+																				<%=sat[i].open%>
+																			</span></span>
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+													<li>Sunday <span>
+															<% if(sun.length){ %>
+																<% for(i=0;i<sun.length;i++) { %>
+																	<p>
+																		<span><span>PM</span><span>
+																				<%=sun[i].close%>
+																			</span></span>
+																		<span>-</span>
+																		<span><span>AM</span><span>
+																				<%=sun[i].open%>
+																			</span></span>
+																	</p>
+																	<% } %>
+																		<% } else { %>
+																			<p><span>Close</span></p>
+																			<% } %>
+														</span>
+													</li>
+												</ul>
+											</div>
+											<!-- Opening Hours / End -->
+
+
+											<!-- Contact -->
+											<div class="boxed-widget margin-top-35">
+												<p>Contact Info:</p>
+												<ul class="listing-details-sidebar">
+													<li><i class="sl sl-icon-phone"></i>
+														<%=shopInfo.businessNumber%>
+													</li>
+													<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
+													<li><i class="fa fa-envelope-o"></i> <a href="#">tom@example.com</a>
+													</li>
+												</ul>
+
+												<ul class="listing-details-sidebar social-profiles">
+													<li><a href="#" class="facebook-profile"><i
+																class="fa fa-facebook-square"></i> Facebook</a>
+													</li>
+													<li><a href="#" class="twitter-profile"><i
+																class="fa fa-twitter"></i> Twitter</a></li>
+													<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
+												</ul>
+
+												<!-- Reply to review popup -->
+												<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+													<div class="small-dialog-header">
+														<h3>Send Message</h3>
+													</div>
+													<div class="message-reply margin-top-0">
+														<textarea cols="40" rows="3"
+															placeholder="Your message to Tom"></textarea>
+														<button class="button">Send Message</button>
+													</div>
+												</div>
+
+												<a href="#small-dialog"
+													class="send-message-to-owner button popup-with-zoom-anim"><i
+														class="sl sl-icon-envelope-open"></i> Send Message</a>
+											</div>
+											<!-- Contact / End-->
+
+
+											<!-- Share / Like -->
+											<div class="listing-share margin-top-40 margin-bottom-40 no-border">
+												<button class="like-button"><span class="like-icon"></span> Bookmark
+													this listing</button>
+												<span>159 people bookmarked this place</span>
+
+												<!-- Share Buttons -->
+												<ul class="share-buttons margin-top-40 margin-bottom-0">
+													<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i>
+															Share</a></li>
+													<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i>
+															Tweet</a></li>
+													<li><a class="gplus-share" href="#"><i
+																class="fa fa-google-plus"></i> Share</a></li>
+													<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
+												</ul>
+												<div class="clearfix"></div>
+
+											</div>
+
+											<div class="listing-share margin-top-40 margin-bottom-40 no-border">
+												<h3>Heath Polisy and Report</h3>
+												<button href="#reportModal"
+													class="sign-in popup-with-zoom-anim report"><i
+														class="fa fa-medkit pr-3"></i>Report</button>
+												<button href="#healthModal"
+													class="sign-in popup-with-zoom-anim health-rules"><i
+														class="fa fa-medkit pr-3"></i>Health Rules</button>
+
+												<div class="clearfix"></div>
+
+											</div>
+											<div id="healthModal" class="zoom-anim-dialog mfp-hide">
+												<div class="small-dialog-header">
+													<h3>Health Rules</h3>
+												</div>
+												<!--Tabs -->
+												<div class="sign-in-form style-1">
+													<div class="tabs-container alt">
+
+														<% for(j=0;j<health.length;j++){ %>
+															<h4><i class="list-box-icon text-info fa fa-medkit"></i>
+																<%=health[j]%>
+															</h4>
+															<% } %>
+
+													</div>
+												</div>
+											</div>
+											<div id="reportModal" class="zoom-anim-dialog mfp-hide">
+												<div class="small-dialog-header">
+													<h3>Report</h3>
+												</div>
+												<!--Tabs -->
+												<div class="sign-in-form style-1">
+													<div class="tabs-container alt">
+
+														<form action="/report/<%=shopInfo.businessMail%>" method="post">
+
+															<div class="report10">
+																<input class="material-inputs" type="checkbox"
+																	name="SexualContent" value="Sexual content"
+																	id="one">
+																<label for="one">Sexual content</label>
+															</div>
+															<div class="report10">
+																<input class="material-inputs" type="checkbox"
+																	name="ViolentorRepulsiveContent"
+																	value="Violent or repulsive content" id="two">
+																<label for="two">Violent or repulsive content</label>
+															</div>
+															<div class="report10">
+																<input class="material-inputs" type="checkbox"
+																	name="HatefulorAbusiveContent"
+																	value="Hateful or abusive content" id="three">
+																<label for="three">Hateful or abusive content</label>
+															</div>
+															<div class="report10">
+																<input class="material-inputs" type="checkbox"
+																	name="HarmfulDangerousActs"
+																	value="Harmful dangerous acts" id="five">
+																<label for="five">Harmful dangerous acts</label>
+															</div>
+															<div class="report10">
+																<input class="material-inputs" type="checkbox"
+																	name="ChildAbuse" value="Child abuse" id="six">
+																<label for="six">Child abuse</label>
+															</div>
+
+															<div class="report10">
+																<input class="material-inputs" name="InfringesMyRights"
+																	value="Infringes my rights" type="checkbox"
+																	id="seven">
+																<label for="seven">Infringes my rights</label>
+															</div>
+															<div class="report10">
+																<input class="material-inputs" name="PromotesTerrorism"
+																	value="Promotes terrorism" type="checkbox"
+																	id="eight">
+																<label for="eight">Promotes terrorism</label>
+															</div>
+															<div class="report10">
+																<input class="material-inputs" name="SpamorMisleading"
+																	value="Spam or misleading" type="checkbox"
+																	id="nine">
+																<label for="nine">Spam or misleading</label>
+															</div>
+
+
+															<div class="modal-footer">
+																<button type="submit"
+																	class="btn btn-success save-report btn-lg">Report</button>
+															</div>
+														</form>
+
+													</div>
+												</div>
+											</div>
+
+
 
 								</div>
-							</div>
-						</div>
-					</form>
-
-					<%}%>
-					
-	
-				</div>
-				<% } %>
-
-					<!-- Opening Hours -->
-					<div class="boxed-widget opening-hours margin-top-35">
-						<div class="listing-badge now-open">Now Open</div>
-						<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
-						<ul>
-							<li>Monday <span>
-									<% if(mon.length){ %>
-									<% for(i=0;i<mon.length;i++) { %>
-									<p class="boldText">
-									
-											<span>PM</span><span><%=mon[i].close%></span>
-										<span>-</span>
-										<span>AM</span><span><%=mon[i].open%></span>
-										
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-							<li>Tuesday <span>
-									<% if(tue.length){ %>
-									<% for(i=0;i<tue.length;i++) { %>
-									<p>
-										<span><span>PM</span><span><%=tue[i].close%></span></span>
-										<span>-</span>
-										<span><span>AM</span><span><%=tue[i].open%></span></span>
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-							<li>Wednesday <span>
-									<% if(wed.length){ %>
-									<% for(i=0;i<wed.length;i++) { %>
-									<p>
-										<span><span>PM</span><span><%=wed[i].close%></span></span>
-										<span>-</span>
-										<span><span>AM</span><span><%=wed[i].open%></span></span>
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-							<li>Thursday <span>
-									<% if(thu.length){ %>
-									<% for(i=0;i<thu.length;i++) { %>
-									<p>
-										<span>PM</span><span><%=thu[i].close%></span>
-										<span>-</span>
-										<span>AM</span><span><%=thu[i].open%></span>
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-							<li>Friday <span>
-									<% if(fri.length){ %>
-									<% for(i=0;i<fri.length;i++) { %>
-									<p>
-										<span><span>PM</span> <span><%=fri[i].close%></span></span>
-										<span>-</span>
-										<span><span>AM</span> <span><%=fri[i].open%></span></span>
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-							<li>Saturday <span>
-									<% if(sat.length){ %>
-									<% for(i=0;i<sat.length;i++) { %>
-									<p>
-										<span><span>PM</span><span><%=sat[i].close%></span></span>
-										<span>-</span>
-										<span><span>AM</span><span><%=sat[i].open%></span></span>
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-							<li>Sunday <span>
-									<% if(sun.length){ %>
-									<% for(i=0;i<sun.length;i++) { %>
-									<p>
-										<span><span>PM</span><span><%=sun[i].close%></span></span>
-										<span>-</span>
-										<span><span>AM</span><span><%=sun[i].open%></span></span>
-									</p>
-									<% } %>
-									<% } else { %>
-									<p><span>Close</span></p>
-									<% } %>
-								</span>
-							</li>
-						</ul>
-					</div>
-					<!-- Opening Hours / End -->
-
-
-					<!-- Contact -->
-					<div class="boxed-widget margin-top-35">
-						<p>Contact Info:</p>
-						<ul class="listing-details-sidebar">
-							<li><i class="sl sl-icon-phone"></i><%=shopInfo.businessNumber%></li>
-							<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
-							<li><i class="fa fa-envelope-o"></i> <a href="#">tom@example.com</a></li>
-						</ul>
-
-						<ul class="listing-details-sidebar social-profiles">
-							<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a>
-							</li>
-							<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
-							<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
-						</ul>
-
-						<!-- Reply to review popup -->
-						<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-							<div class="small-dialog-header">
-								<h3>Send Message</h3>
-							</div>
-							<div class="message-reply margin-top-0">
-								<textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-								<button class="button">Send Message</button>
-							</div>
-						</div>
-
-						<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i
-								class="sl sl-icon-envelope-open"></i> Send Message</a>
-					</div>
-					<!-- Contact / End-->
-
-
-					<!-- Share / Like -->
-					<div class="listing-share margin-top-40 margin-bottom-40 no-border">
-						<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button>
-						<span>159 people bookmarked this place</span>
-
-						<!-- Share Buttons -->
-						<ul class="share-buttons margin-top-40 margin-bottom-0">
-							<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
-							<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
-							<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
-							<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
-						</ul>
-						<div class="clearfix"></div>
-
-					</div>
-
-					<div class="listing-share margin-top-40 margin-bottom-40 no-border">
-						<h3>Heath Polisy and Report</h3>
-						<button href="#reportModal" class="sign-in popup-with-zoom-anim report"><i
-								class="fa fa-medkit pr-3"></i>Report</button>
-						<button href="#healthModal" class="sign-in popup-with-zoom-anim health-rules"><i
-								class="fa fa-medkit pr-3"></i>Health Rules</button>
-
-						<div class="clearfix"></div>
-
-					</div>
-					<div id="healthModal" class="zoom-anim-dialog mfp-hide">
-						<div class="small-dialog-header">
-							<h3>Health Rules</h3>
-						</div>
-						<!--Tabs -->
-						<div class="sign-in-form style-1">
-							<div class="tabs-container alt">
-
-								<% for(j=0;j<health.length;j++){ %>
-								<h4><i class="list-box-icon text-info fa fa-medkit"></i> <%=health[j]%></h4>
-								<% } %>
+								<!-- Sidebar / End -->
 
 							</div>
 						</div>
-					</div>
-					<div id="reportModal" class="zoom-anim-dialog mfp-hide">
-						<div class="small-dialog-header">
-							<h3>Report</h3>
-						</div>
-						<!--Tabs -->
-						<div class="sign-in-form style-1">
-							<div class="tabs-container alt">
 
-								<form action="/report/<%=shopInfo.businessMail%>" method="post">
-								
-										<div class="report10">
-											<input class="material-inputs" type="checkbox" name="SexualContent"
-												value="Sexual content" id="one">
-											<label for="one">Sexual content</label>
-										</div>
-										<div class="report10">
-											<input class="material-inputs" type="checkbox"
-												name="ViolentorRepulsiveContent" value="Violent or repulsive content"
-												id="two">
-											<label for="two">Violent or repulsive content</label>
-										</div>
-										<div class="report10">
-											<input class="material-inputs" type="checkbox"
-												name="HatefulorAbusiveContent" value="Hateful or abusive content"
-												id="three">
-											<label for="three">Hateful or abusive content</label>
-										</div>
-										<div class="report10">
-											<input class="material-inputs" type="checkbox" name="HarmfulDangerousActs"
-												value="Harmful dangerous acts" id="five">
-											<label for="five">Harmful dangerous acts</label>
-										</div>
-										<div class="report10">
-											<input class="material-inputs" type="checkbox" name="ChildAbuse"
-												value="Child abuse" id="six">
-											<label for="six">Child abuse</label>
-										</div>
-										
-										<div class="report10">
-											<input class="material-inputs" name="InfringesMyRights"
-												value="Infringes my rights" type="checkbox" id="seven">
-											<label for="seven">Infringes my rights</label>
-										</div>
-										<div class="report10">
-											<input class="material-inputs" name="PromotesTerrorism"
-												value="Promotes terrorism" type="checkbox" id="eight">
-											<label for="eight">Promotes terrorism</label>
-										</div>
-										<div class="report10">
-											<input class="material-inputs" name="SpamorMisleading"
-												value="Spam or misleading" type="checkbox" id="nine">
-											<label for="nine">Spam or misleading</label>
-										</div>
+						<!-- Footer -->
 
-								
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-success save-report btn-lg">Report</button>
-									</div>
-								</form>
+						<%- include('./footer.ejs') %>
 
-							</div>
-						</div>
-					</div>
+							<!-- Footer -->
 
-
-
-				</div>
-				<!-- Sidebar / End -->
-
-			</div>
-		</div>
-
-		<!-- Footer -->
-
-		<%- include('./footer.ejs') %>
-
-		<!-- Footer -->
-
-		<!-- Scripts
+							<!-- Scripts
 ================================================== -->
-		<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
-			integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
-			crossorigin="anonymous"></script>
-		<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
-		<!-- Maps -->
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-		<script type="text/javascript" src="/js/user/scripts/infobox.min.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/markerclusterer.js"></script>
-		<script type="text/javascript" src="/js/user/scripts/maps.js"></script>
-		<script type="text/javascript" src="/js/user/imagescroll.js"></script>
-		<!-- Map -->
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
+							<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+							<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+								integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+								crossorigin="anonymous"></script>
+							<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+							<!-- Maps -->
+							<script type="text/javascript"
+								src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+							<script type="text/javascript" src="/js/user/scripts/infobox.min.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/markerclusterer.js"></script>
+							<script type="text/javascript" src="/js/user/scripts/maps.js"></script>
+							<script type="text/javascript" src="/js/user/imagescroll.js"></script>
+							<!-- Map -->
+							<script
+								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
 
 
-		<!-- Booking Widget - Quantity Buttons -->
-		<script src="/js/user/scripts/quantityButtons.js"></script>
+							<!-- Booking Widget - Quantity Buttons -->
+							<script src="/js/user/scripts/quantityButtons.js"></script>
 
-		<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-		<script src="/js/user/scripts/moment.min.js"></script>
-		<script src="/js/user/scripts/daterangepicker.js"></script>
-
-
-		<!-- <script src="/js/user/owljquery.js"></script> -->
-		<script src="/js/user/owl.js"></script>
-		<script src="/js/user/owlhighlight.js"></script>
-		<script src="/js/user/owlapp.js"></script>
-	
-		<script>
-			// Calendar Init
-			$(function () {
-				$('#date-picker').daterangepicker({
-					"opens": "left",
-					singleDatePicker: true,
-
-					// Disabling Date Ranges
-					isInvalidDate: function (date) {
-						// Disabling Date Range
-						var disabled_start = moment('09/02/2018', 'MM/DD/YYYY');
-						var disabled_end = moment('09/06/2018', 'MM/DD/YYYY');
-						return date.isAfter(disabled_start) && date.isBefore(disabled_end);
-
-						// Disabling Single Day
-						// if (date.format('MM/DD/YYYY') == '08/08/2018') {
-						//     return true; 
-						// }
-					}
-				});
-			});
-
-			// Calendar animation
-			$('#date-picker').on('showCalendar.daterangepicker', function (ev, picker) {
-				$('.daterangepicker').addClass('calendar-animated');
-			});
-			$('#date-picker').on('show.daterangepicker', function (ev, picker) {
-				$('.daterangepicker').addClass('calendar-visible');
-				$('.daterangepicker').removeClass('calendar-hidden');
-			});
-			$('#date-picker').on('hide.daterangepicker', function (ev, picker) {
-				$('.daterangepicker').removeClass('calendar-visible');
-				$('.daterangepicker').addClass('calendar-hidden');
-			});
-		</script>
+							<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
+							<script src="/js/user/scripts/moment.min.js"></script>
+							<script src="/js/user/scripts/daterangepicker.js"></script>
 
 
-		<!-- Replacing dropdown placeholder with selected time slot -->
-		<script>
-			$(".time-slot").each(function () {
-				var timeSlot = $(this);
-				$(this).find('input').on('change', function () {
-					var timeSlotVal = timeSlot.find('strong').text();
+							<!-- <script src="/js/user/owljquery.js"></script> -->
+							<script src="/js/user/owl.js"></script>
+							<script src="/js/user/owlhighlight.js"></script>
+							<script src="/js/user/owlapp.js"></script>
 
-					$('.panel-dropdown.time-slots-dropdown a').html(timeSlotVal);
-					$('.panel-dropdown').removeClass('active');
-				});
-			});
+							<script>
+								// Calendar Init
+								$(function () {
+									$('#date-picker').daterangepicker({
+										"opens": "left",
+										singleDatePicker: true,
 
-			$(".save-health").click(function () {
-				$("#healthModalLong").modal('hide');
-			});
-			$(".save-report").click(function () {
-				$("#reportModalLong").modal('hide');
-			});
+										// Disabling Date Ranges
+										isInvalidDate: function (date) {
+											// Disabling Date Range
+											var disabled_start = moment('09/02/2018', 'MM/DD/YYYY');
+											var disabled_end = moment('09/06/2018', 'MM/DD/YYYY');
+											return date.isAfter(disabled_start) && date.isBefore(disabled_end);
 
+											// Disabling Single Day
+											// if (date.format('MM/DD/YYYY') == '08/08/2018') {
+											//     return true; 
+											// }
+										}
+									});
+								});
 
-			$(".orderBtn").click(function () {
-				$("#exampleModal").modal('hide');
-				$("#exampleModal2").modal('show');
-			});
-
-			$(".orderNowBtn").click(function () {
-				$("#exampleModal2").modal('hide');
-			});
-
-
-			$(".lastOrder").click(function () {
-				$("#exampleModal3").modal('hide');
-				$("#orderModal").modal('show');
-			});
-
-			$(".firstBack").click(function () {
-				$("#exampleModal2").modal('hide');
-				$("#exampleModal").modal('show');
-			});
-			$(".backFirst").click(function () {
-				$("#giftShowModal").style.display('hide');
-				$("#giftModal").style.display('show');
-			});
-			function friendFunction(a) {
-				var x = document.getElementById(a);
-				//console.log(x)
-				if (x.style.display === "block") {
-					x.style.display = "none";
-					console.log("asd")
-				} else {
-					x.style.display = "block";
-				}
-			}
-
-		</script>
-		<script src="/js/shop/map.js"></script>
-		<script>
-
-			let lat, lon;
-			function setMap() {
-
-				lat = document.getElementById('lat').value;
-				lon = document.getElementById('lon').value;
-				let address = document.getElementById('address').value;
+								// Calendar animation
+								$('#date-picker').on('showCalendar.daterangepicker', function (ev, picker) {
+									$('.daterangepicker').addClass('calendar-animated');
+								});
+								$('#date-picker').on('show.daterangepicker', function (ev, picker) {
+									$('.daterangepicker').addClass('calendar-visible');
+									$('.daterangepicker').removeClass('calendar-hidden');
+								});
+								$('#date-picker').on('hide.daterangepicker', function (ev, picker) {
+									$('.daterangepicker').removeClass('calendar-visible');
+									$('.daterangepicker').addClass('calendar-hidden');
+								});
+							</script>
 
 
-				//console.log(lat,lon);
+							<!-- Replacing dropdown placeholder with selected time slot -->
+							<script>
+								$(".time-slot").each(function () {
+									var timeSlot = $(this);
+									$(this).find('input').on('change', function () {
+										var timeSlotVal = timeSlot.find('strong').text();
 
-				document.getElementById('us2-lat').value = lat;
-				document.getElementById('us2-lon').value = lon;
-				document.getElementById('us2-address').value = address;
+										$('.panel-dropdown.time-slots-dropdown a').html(timeSlotVal);
+										$('.panel-dropdown').removeClass('active');
+									});
+								});
 
-			}
+								$(".save-health").click(function () {
+									$("#healthModalLong").modal('hide');
+								});
+								$(".save-report").click(function () {
+									$("#reportModalLong").modal('hide');
+								});
 
-			$(document).ready(function () {
 
-				// lat = document.getElementById('lat').value;
-				// lon = document.getElementById('lon').value;
-				$('#maparea').locationpicker({
-					inputBinding: {
-						latitudeInput: $('#us2-lat'),
-						longitudeInput: $('#us2-lon'),
-						locationNameInput: $('#us2-address')
-					},
-					enableAutocomplete: true,
-					onchanged: function (currentLocation) {
-						console.log(currentLocation)
-						var placeType = ["atm", "pharmacy"];
-						var sep = ',';
-						var request = [], resultset,
-							lat = currentLocation.latitude,
-							lan = currentLocation.longitude;
-						for (var i = 0; i < placeType.length; i++) {
-							request = {
-								location: new google.maps.LatLng(lat, lon),
-								types: [placeType[i]],
-								rankBy: google.maps.places.RankBy.DISTANCE
+								$(".orderBtn").click(function () {
+									$("#exampleModal").modal('hide');
+									$("#exampleModal2").modal('show');
+								});
 
-							};
-							var container = document.getElementById(placeType[i]);
-							//console.log(container);
-							var service = new google.maps.places.PlacesService(container);
-							service.nearbySearch(request, callback);
-							//console.log(placeType[i]);
-							function callback(results, status) {
-								if (status == google.maps.places.PlacesServiceStatus.OK) {
-									for (var j = 0; j < 3; j++) {
-										resultset += results[j].name + sep + results[j].vicinity + '.<br>'
+								$(".orderNowBtn").click(function () {
+									$("#exampleModal2").modal('hide');
+								});
 
+
+								$(".lastOrder").click(function () {
+									$("#exampleModal3").modal('hide');
+									$("#orderModal").modal('show');
+								});
+
+								$(".firstBack").click(function () {
+									$("#exampleModal2").modal('hide');
+									$("#exampleModal").modal('show');
+								});
+								$(".backFirst").click(function () {
+									$("#giftShowModal").style.display('hide');
+									$("#giftModal").style.display('show');
+								});
+								function friendFunction(a) {
+									var x = document.getElementById(a);
+									//console.log(x)
+									if (x.style.display === "block") {
+										x.style.display = "none";
+										console.log("asd")
+									} else {
+										x.style.display = "block";
 									}
+								}
+
+							</script>
+							<script src="/js/shop/map.js"></script>
+							<script>
+
+								let lat, lon;
+								function setMap() {
+
+									lat = document.getElementById('lat').value;
+									lon = document.getElementById('lon').value;
+									let address = document.getElementById('address').value;
+
+
+									//console.log(lat,lon);
+
+									document.getElementById('us2-lat').value = lat;
+									document.getElementById('us2-lon').value = lon;
+									document.getElementById('us2-address').value = address;
 
 								}
-							}
 
-						}
-					}
+								$(document).ready(function () {
 
-				});
-			});
+									// lat = document.getElementById('lat').value;
+									// lon = document.getElementById('lon').value;
+									$('#maparea').locationpicker({
+										inputBinding: {
+											latitudeInput: $('#us2-lat'),
+											longitudeInput: $('#us2-lon'),
+											locationNameInput: $('#us2-address')
+										},
+										enableAutocomplete: true,
+										onchanged: function (currentLocation) {
+											console.log(currentLocation)
+											var placeType = ["atm", "pharmacy"];
+											var sep = ',';
+											var request = [], resultset,
+												lat = currentLocation.latitude,
+												lan = currentLocation.longitude;
+											for (var i = 0; i < placeType.length; i++) {
+												request = {
+													location: new google.maps.LatLng(lat, lon),
+													types: [placeType[i]],
+													rankBy: google.maps.places.RankBy.DISTANCE
 
-			function submitForm(id) {
-				document.getElementById(id).submit();
-			}
-			function giftShow(giftValue){
-				console.log('sdsd');
-				let a = document.getElementById(giftValue);
- document.getElementById('giftShowModal') = "";
- document.getElementById('giftShowModal') = a;
-			}
-		</script>
+												};
+												var container = document.getElementById(placeType[i]);
+												//console.log(container);
+												var service = new google.maps.places.PlacesService(container);
+												service.nearbySearch(request, callback);
+												//console.log(placeType[i]);
+												function callback(results, status) {
+													if (status == google.maps.places.PlacesServiceStatus.OK) {
+														for (var j = 0; j < 3; j++) {
+															resultset += results[j].name + sep + results[j].vicinity + '.<br>'
+
+														}
+
+													}
+												}
+
+											}
+										}
+
+									});
+								});
+
+								function submitForm(id) {
+									document.getElementById(id).submit();
+								}
+								function giftShow(giftValue) {
+									console.log('sdsd');
+									let a = document.getElementById(giftValue);
+									document.getElementById('giftShowModal') = "";
+									document.getElementById('giftShowModal') = a;
+								}
+							</script>
 
 
-		<script>
-			$(document).ready(function () {
-				var owl = $('.owl-carousel');
-				owl.owlCarousel({
-					loop: true,
-					margin: 10,
-					autoplay: true,
-					autoplayTimeout: 1000,
-					autoplayHoverPause: true,
-					responsive: {
-						0: {
-							items: 1
-		
-						},
-						600: {
-							items: 2
+							<script>
+								$(document).ready(function () {
+									var owl = $('.owl-carousel');
+									owl.owlCarousel({
+										loop: true,
+										margin: 10,
+										autoplay: true,
+										autoplayTimeout: 1000,
+										autoplayHoverPause: true,
+										responsive: {
+											0: {
+												items: 1
 
-						},
-						1000: {
-							items: 3
-		
-						}
-					}
-					
-				})
-				$('.play').on('click', function() {
-                owl.trigger('play.owl.autoplay', [1000])
-              })
-              $('.stop').on('click', function() {
-                owl.trigger('stop.owl.autoplay')
-              })
+											},
+											600: {
+												items: 2
 
-			})
-		</script>
+											},
+											1000: {
+												items: 3
+
+											}
+										}
+
+									})
+									$('.play').on('click', function () {
+										owl.trigger('play.owl.autoplay', [1000])
+									})
+									$('.stop').on('click', function () {
+										owl.trigger('stop.owl.autoplay')
+									})
+
+								})
+							</script>
 </body>
 
 </html>
