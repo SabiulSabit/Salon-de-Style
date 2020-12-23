@@ -1771,15 +1771,16 @@ exports.getPortfolio = (req, res, next) => {
     
     let data = "SELECT `img`, `img1`, `img2`, `img3`, `img4` "+
                 " FROM `shopadmin` "+
-                " WHERE `businessName` = "+mysql.escape(req.session.mail);
+                " WHERE `businessMail` = "+mysql.escape(req.session.mail);
 
     connectDB.query(data,(err,result)=>{
         if(err){
             throw err;
         }
         else{
+            console.log(result[0]);
             return res.render('shop/portfolio',{
-                data: result
+                data: result[0]
             })
         }
     })            
