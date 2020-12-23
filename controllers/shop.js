@@ -1862,11 +1862,11 @@ exports.getReviewandRating = (req, res, next) => {
 
             for(let i=0; i<result.length; i++){
                 let a =  result[i].date;
-                result[i].data = a.toString().slice(0, 15);
+                result[i].date = a.toString().slice(0, 15);
             }
-
+            //console.log(result);
             return res.render('shop/reviewandRating',{
-                data: result
+                data: result,
             })
         }
     })            

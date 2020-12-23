@@ -22,11 +22,12 @@
     <!-- Custom CSS -->
     <link href="/dist/css/style.min.css" rel="stylesheet">
     <style>
-        .reviewBox{
+        .reviewBox {
             border: 2px solid #222;
             padding: 10px;
         }
-        .reviewBox ul li{
+
+        .reviewBox ul li {
             float: left;
             list-style: none;
         }
@@ -38,83 +39,78 @@
 
     <%- include('./sideBar.ejs') %>
 
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper">
-        <div class="heath-information">
-            <div class="container">
-                <h1 class="text-center">Review Rating</h1>
-                <div class="row">
-                   <div class="col-md-6">
-                   <div class="reviewBox">
-                       <h5>Client Name</h5>
-                       <ul>
-                           <li><i class="fa fa-star"></i></li>
-                           <li><i class="fa fa-star"></i></li>
-                           <li><i class="fa fa-star"></i></li>
-                           <li><i class="fa fa-star"></i></li>
-                           <li><i class="fa fa-star"></i></li>
-                       </ul>
-                       <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque libero consequatur modi sunt necessitatibus veniam illo recusandae voluptatem sed ipsum. Architecto eius in, tempore aspernatur autem enim. Vitae, dolores similique!</p>
-                       </div>
-                   </div>
-                   </div>
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <div class="heath-information">
+                <div class="container">
+                    <h1 class="text-center">Review Rating</h1>
+                    <div class="row">
+                        <% for(let i=0; i< data.length; i++ ) { %>
+                            <h5>
+                                <%=data[i].reviewrName%>
+                            </h5>
+                            <img src="<%=data[i].reviewrDP%>" alt="">
 
-                   <div class="col-md-6">
-                    <div class="reviewBox">
-                        <h5>Client Name</h5>
-                        <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <div>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque libero consequatur modi sunt necessitatibus veniam illo recusandae voluptatem sed ipsum. Architecto eius in, tempore aspernatur autem enim. Vitae, dolores similique!</p>
-                        </div>
+                            <div class="col-md-6">
+                                <div class="reviewBox">
+
+                                    <ul>
+                                    
+                                            <li> </li>
+                                            <% for(let j=0 ;j < data[i].rating ; j++ ) { %>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <% } %>
+                                    </ul>
+                                    <div>
+                                        <p>
+                                            <%=data[i].review %> <span>
+                                                    <%=data[i].date%>
+                                                </span>
+                                        </p>
+                                        <img src="<%=data[i].img%>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
                     </div>
-                    </div>
-                  
                 </div>
             </div>
         </div>
-    </div>
 
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
 
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
-    <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- apps -->
-    <script src="/dist/js/app.min.js"></script>
-    <script src="/dist/js/app.init.dark.js"></script>
-    <script src="/dist/js/app-style-switcher.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
-    <script src="/dist/js/pages/invoice/invoice.js"></script>
-    <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+        <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- apps -->
+        <script src="/dist/js/app.min.js"></script>
+        <script src="/dist/js/app.init.dark.js"></script>
+        <script src="/dist/js/app-style-switcher.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+        <!--Wave Effects -->
+        <script src="/dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="/dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="/dist/js/custom.min.js"></script>
+        <!--This page JavaScript -->
+        <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+        <script src="/dist/js/pages/invoice/invoice.js"></script>
+        <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
 
 </body>
 
