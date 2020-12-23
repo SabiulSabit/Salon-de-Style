@@ -1768,27 +1768,27 @@ exports.getPortfolio = (req, res, next) => {
         password: passwordDB,
         database: databaseName,
     });
-    
-    let data = "SELECT `img`, `img1`, `img2`, `img3`, `img4` "+
-                " FROM `shopadmin` "+
-                " WHERE `businessMail` = "+mysql.escape(req.session.mail);
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    let data = "SELECT `img`, `img1`, `img2`, `img3`, `img4` " +
+        " FROM `shopadmin` " +
+        " WHERE `businessMail` = " + mysql.escape(req.session.mail);
+
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
+        else {
             //console.log(result[0]);
-            return res.render('shop/portfolio',{
+            return res.render('shop/portfolio', {
                 data: result[0]
             })
         }
-    })            
+    })
 }
 
 //add img to portfolio
-exports.postPortfolio =(req,res,next)=>{
-    console.log("asdf");
+exports.postPortfolio = (req, res, next) => {
+    // console.log("asdf");
 
     let connectDB = mysql.createConnection({
         host: hostNameDB,
@@ -1797,8 +1797,110 @@ exports.postPortfolio =(req,res,next)=>{
         database: databaseName,
     });
 
-    //let data = ""
-    
+    let data = "SELECT `img`, `img1`, `img2`, `img3`, `img4` " +
+        " FROM `shopadmin` " +
+        " WHERE `businessMail` = " + mysql.escape(req.session.mail);
+
+    let i_0 = 0, i_1 = 0, i_2 = 0, i_3 = 0, i_4 = 0;
+
+    let insertField = "";
+    let wrong = 0;
+
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            if (result[0].img == "") {
+                insertField = "img";
+                console.log("1");
+            }
+            if (result[0].img1 == "" && insertField != "") {
+                insertField = "img1";
+                console.log("2");
+            }
+            if (result[0].img2 == "" && insertField != "") {
+                insertField = "img2";
+                console.log("3");
+            }
+            if (result[0].img3 == "" && insertField != "") {
+                insertField = "img3";
+                console.log("4");
+            }
+            if (result[0].im4 == "" && insertField != "") {
+                insertField = "img4";
+                console.log("5");
+            }
+            console.log("dfsadf"+insertField);
+            // new formidable.IncomingForm().parse(req)
+            //     .on('field', (name, field) => {
+
+            //         // if (name === "username") {
+            //         //     ename = field;
+            //         // }
+            //     })
+            //     .on('file', (name, file) => {
+            //         // console.log('Uploaded file', name)
+            //         // fs.rename(file.path,__dirname+"a")
+            //     })
+            //     .on('fileBegin', function (name, file) {
+
+            //         var fileType = file.type.split('/').pop();
+
+            //         if (fileType == 'jpg' || fileType == 'png' || fileType == 'jpeg') {
+
+            //             a = path.join(__dirname, '../')
+
+            //             if (name === "image") {
+            //                 imgPath = (req.session.mail + insertField + "." + fileType);
+            //             }
+            //             imgPath = '/images/shop/shopImg/' + (req.session.mail + insertField + "." + fileType)
+            //             file.path = a + '/public/images/shop/shopImg/' + (req.session.mail + insertField + "." + fileType); // __dirname
+
+            //         } else {
+            //             console.log("Wrong File type")
+            //             wrong = 1;
+            //             // res.render('admin/addhotel', { msg: "", err: "Wrong File type" });
+            //         }
+            //     })
+            //     .on('aborted', () => {
+            //         console.error('Request aborted by the user')
+            //     })
+            //     .on('error', (err) => {
+            //         console.error('Error', err)
+            //         throw err
+            //     })
+            //     .on('end', () => {
+
+            //         // console.log(addCategory);
+            //         if (wrong == 1) {
+            //             console.log("Error")
+            //             return;
+            //         }
+            //         else {
+
+            //             let inserData = " UPDATE `shopadmin` " +
+            //                 " SET `'" + insertField + "'`= '"+imgPath+"' " +
+            //                 +" WHERE `businessName` = " + mysql.escape(req.session.mail)
+
+            //             connectDB.query(inserData, (err, result) => {
+            //                 if (err) {
+            //                     throw err;
+            //                 }
+            //                 else {
+            //                     return res.redirect("/shop/portfolio");
+            //                 }
+            //             })
+
+            //         }
+            //     })
+
+
+
+        }
+    })
+
+
 }
 
 //get Email 
@@ -1887,26 +1989,26 @@ exports.getReviewandRating = (req, res, next) => {
         database: databaseName,
     });
 
-    let data = " SELECT  `reviewrMail`, `reviewrName`, `reviewrDP`, `review`, `date`, `rating`, `img` "+
-                "  FROM `review` "+
-                " WHERE `businessMail`  = " +mysql.escape(req.session.mail);
+    let data = " SELECT  `reviewrMail`, `reviewrName`, `reviewrDP`, `review`, `date`, `rating`, `img` " +
+        "  FROM `review` " +
+        " WHERE `businessMail`  = " + mysql.escape(req.session.mail);
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
+        else {
 
-            for(let i=0; i<result.length; i++){
-                let a =  result[i].date;
+            for (let i = 0; i < result.length; i++) {
+                let a = result[i].date;
                 result[i].date = a.toString().slice(0, 15);
             }
             //console.log(result);
-            return res.render('shop/reviewandRating',{
+            return res.render('shop/reviewandRating', {
                 data: result,
             })
         }
-    })            
+    })
 
 }
 
@@ -2085,7 +2187,7 @@ exports.getDeleteServices = (req, res, next) => {
 }
 
 //update package data
-exports.postPackageUpdate = (req,res,next) =>{
+exports.postPackageUpdate = (req, res, next) => {
     //console.log(req.body);
     let connectDB = mysql.createConnection({
         host: hostNameDB,
@@ -2094,23 +2196,23 @@ exports.postPackageUpdate = (req,res,next) =>{
         database: databaseName,
     });
 
-    let data = " UPDATE `package` "+
-                " SET `packageName`= '"+req.body.name+"' ,`description`= '"+req.body.des+"' ,`service`= '"+req.body.service+"' ,`tax`= '"+parseFloat(req.body.tax) +"' ,`amount`= '"+ parseInt(req.body.amount) +"' ,`price`= '"+parseFloat(req.body.price)+"' ,`endDate`= " + " DATE_ADD(CURDATE(), INTERVAL '" + parseInt(req.body.validity) + "' DAY) " +
-                " WHERE `businessMail` = "+mysql.escape(req.session.mail) +  " AND `packageName` = "+mysql.escape(req.body.prevName)
+    let data = " UPDATE `package` " +
+        " SET `packageName`= '" + req.body.name + "' ,`description`= '" + req.body.des + "' ,`service`= '" + req.body.service + "' ,`tax`= '" + parseFloat(req.body.tax) + "' ,`amount`= '" + parseInt(req.body.amount) + "' ,`price`= '" + parseFloat(req.body.price) + "' ,`endDate`= " + " DATE_ADD(CURDATE(), INTERVAL '" + parseInt(req.body.validity) + "' DAY) " +
+        " WHERE `businessMail` = " + mysql.escape(req.session.mail) + " AND `packageName` = " + mysql.escape(req.body.prevName)
 
 
-   connectDB.query(data,(err,result)=>{
-       if(err){
-           throw err;
-       }
-       else{
-         return res.redirect('/shop/package');
-       }
-   })             
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            return res.redirect('/shop/package');
+        }
+    })
 }
 
 //show package orders
-exports.getPackageOrders = (req,res,next) => {
-    
+exports.getPackageOrders = (req, res, next) => {
+
     return res.render('shop/packageOrders');
 }

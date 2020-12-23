@@ -33,9 +33,9 @@
                 <div class="container">
                     <h1 class="text-center">Upload Images</h1>
                     <div class="row">
-                        <form action="/shop/portfolio" method="post">
+                        <form action="/shop/portfolio" enctype="multipart/form-data" method="post">
                             <div class="col-md-12">
-                                <input type="file">
+                                <input type="file" name="image" required>
                                 <input type="submit" class="btn btn-danger" value="Save">
                             </div>
                             <div class="col-md-12">
