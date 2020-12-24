@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2020 at 05:47 PM
+-- Generation Time: Dec 24, 2020 at 02:43 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -257,8 +257,17 @@ CREATE TABLE `packageorder` (
   `packageToken` int(11) NOT NULL,
   `userMail` varchar(50) NOT NULL,
   `date` date NOT NULL,
-  `token` int(11) NOT NULL
+  `tokenOrder` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `packageorder`
+--
+
+INSERT INTO `packageorder` (`packageToken`, `userMail`, `date`, `tokenOrder`, `status`) VALUES
+(45353, 'iamsabit99@gmail.com', '2020-12-24', 2, 1),
+(45351, 'iamsabit99@gmail.com', '2020-12-24', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -600,7 +609,7 @@ ALTER TABLE `package`
 -- Indexes for table `packageorder`
 --
 ALTER TABLE `packageorder`
-  ADD PRIMARY KEY (`token`);
+  ADD PRIMARY KEY (`tokenOrder`);
 
 --
 -- Indexes for table `report`
@@ -678,7 +687,7 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `packageorder`
 --
 ALTER TABLE `packageorder`
-  MODIFY `token` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tokenOrder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

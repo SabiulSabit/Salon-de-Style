@@ -932,7 +932,7 @@ exports.postReport = (req, res, next) => {
 }
 
 //order package
-exports.postOrderPackage =(req,res,next)=>{
+exports.postOrderPackage = (req, res, next) => {
     //console.log("postOrderPackage");
     let connectDB = mysql.createConnection({
         host: hostNameDB,
@@ -941,18 +941,18 @@ exports.postOrderPackage =(req,res,next)=>{
         database: databaseName,
     });
 
-    let data = " INSERT INTO `packageorder`  "+
-                " (`packageToken`, `userMail`, `date`) "+
-                " VALUES ( '"+req.params.token+"' , '"+req.session.user+"' , CURDATE() )"
+    let data = " INSERT INTO `packageorder`  " +
+        " (`packageToken`, `userMail`, `date`) " +
+        " VALUES ( '" + req.params.token + "' , '" + req.session.user + "' , CURDATE() )"
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
+        else {
             return res.redirect('/egiftcard')
         }
-    })            
+    })
 }
 
 
@@ -977,12 +977,12 @@ exports.getEGiftCard = (req, res, next) => {
     let data = "SELECT * " +
         " FROM `packageorder` as po " +
         " JOIN " +
-        " package as p "+
-        " on p.token = po.packageToken "+
-        " JOIN "+
-        " shopadmin as s "+
-        " on s.businessMail = p.businessMail "
+        " package as p " +
+        " on p.token = po.packageToken " +
         " JOIN " +
+        " shopadmin as s " +
+        " on s.businessMail = p.businessMail "
+    " JOIN " +
         "userinfo as u " +
         " on u.email  = po.userMail " +
         " WHERE u.email  = " + mysql.escape(req.session.user);
@@ -993,7 +993,7 @@ exports.getEGiftCard = (req, res, next) => {
             throw err;
         }
         else {
-           // console.log(result);
+            // console.log(result);
             for (i in result) {
                 let a = result[i].endDate
                 let b = result[i].date
@@ -1282,7 +1282,7 @@ exports.postSearch = (req, res, next) => {
             throw err;
         }
         else {
-          //  console.log(result)
+            //  console.log(result)
             return res.render('user/searchResult', {
                 shop: result,
                 search: req.body.name,
