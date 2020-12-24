@@ -943,14 +943,14 @@ exports.postOrderPackage =(req,res,next)=>{
 
     let data = " INSERT INTO `packageorder`  "+
                 " (`packageToken`, `userMail`, `date`) "+
-                " VALUES ([value-1],[value-2],[value-3])"
+                " VALUES ( '"+req.params.token+"' , '"+req.session.user+"' , CURDATE() )"
 
     connectDB.query(data,(err,result)=>{
         if(err){
             throw err;
         }
         else{
-            
+            return res.redirect('/egiftcard')
         }
     })            
 }
