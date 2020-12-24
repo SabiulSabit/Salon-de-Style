@@ -975,14 +975,17 @@ exports.getEGiftCard = (req, res, next) => {
 
 
     let data = "SELECT * " +
-        " FROM `egiftcardorder` as eg " +
+        " FROM `packageorder` as po " +
         " JOIN " +
-        " egiftcard as e " +
-        " on e.businessMail = eg.businessMail AND e.giftCardName = eg.giftName " +
-        "JOIN " +
-        "shopadmin as s " +
-        " on s.businessMail = eg.businessMail " +
-        " WHERE eg.userMail = " + mysql.escape(req.session.user);
+        " package as p "+
+        " on p.token = po.packageToken "+
+        " JOIN "+
+        " shopadmin as s "+
+        " on s.businessMail = p.businessMail "
+        " JOIN " +
+        "userinfo as u " +
+        " on u.email  = po.userMail " +
+        " WHERE u.email  = " + mysql.escape(req.session.user);
 
 
     connectDB.query(data, (err, result) => {
@@ -990,7 +993,7 @@ exports.getEGiftCard = (req, res, next) => {
             throw err;
         }
         else {
-            //console.log(result);
+           // console.log(result);
             for (i in result) {
                 let a = result[i].endDate
                 let b = result[i].date
