@@ -2255,3 +2255,8 @@ exports.getPackageOrders = (req, res, next) => {
      })
     
 }
+
+//approve packge order
+exports.getApprovePackage  = (req,res,next )=>{
+    console.log("getApprovePackage");
+}

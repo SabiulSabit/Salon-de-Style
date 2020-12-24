@@ -118,8 +118,8 @@
                                         <th> <%=data[i].tax %> </th>
                                         <th> <%=data[i].date %> </th>
                                         <th> <%=data[i].endDate %> </th>
-                                        <th class="text-center"><a href=""><i class="fa fa-check"></i></a> </th>  
-                                        <th class="text-center"><a href=""><i class="fa fa-trash"></i></a> </th>  
+                                        <th class="text-center"><a href="/shop/approve/package/<%=data[i].tokenOrder%>"><i class="fa fa-check"></i></a> </th>  
+                                        <th class="text-center"><a href="/shop/delete/package/<%=data[i].tokenOrder%>"><i class="fa fa-trash"></i></a> </th>  
                                     </tr>
                                 <% } %>
                             </tbody>

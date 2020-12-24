@@ -125,6 +125,9 @@ router.route('/packagedetail')
 router.route('/packageOrders')
       .get(shopController.isAuthentic,shopController.getPackageOrders)      
 
+router.route('/approve/package/:id')
+      .get(shopController.isAuthentic,shopController.getApprovePackage)      
+
 //update pacakge data
 router.route('/updatepackage')      
       .post(shopController.isAuthentic,shopController.postPackageUpdate)
