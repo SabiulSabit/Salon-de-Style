@@ -1814,11 +1814,11 @@ exports.postPortfolio = (req, res, next) => {
         else {
             if (result[0].img == "") {
                 insertField = "img";
-              //  console.log("1");
+                //  console.log("1");
             }
             if (result[0].img1 == "" && insertField == "") {
                 insertField = "img1";
-              //  console.log("2");
+                //  console.log("2");
             }
             if (result[0].img2 == "" && insertField == "") {
                 insertField = "img2";
@@ -1830,9 +1830,9 @@ exports.postPortfolio = (req, res, next) => {
             }
             if (result[0].im4 == "" && insertField == "") {
                 insertField = "img4";
-              //  console.log("5");
+                //  console.log("5");
             }
-          //  console.log("dfsadf"+insertField);
+            //  console.log("dfsadf"+insertField);
             new formidable.IncomingForm().parse(req)
                 .on('field', (name, field) => {
 
@@ -1881,7 +1881,7 @@ exports.postPortfolio = (req, res, next) => {
                     else {
 
                         let inserData = " UPDATE `shopadmin` " +
-                            " SET " + insertField + " = '"+imgPath+"' " +
+                            " SET " + insertField + " = '" + imgPath + "' " +
                             " WHERE `businessMail` = " + mysql.escape(req.session.mail)
 
                         connectDB.query(inserData, (err, result) => {
@@ -2214,7 +2214,7 @@ exports.postPackageUpdate = (req, res, next) => {
 
 //show package orders
 exports.getPackageOrders = (req, res, next) => {
-  
+
     let connectDB = mysql.createConnection({
         host: hostNameDB,
         user: userNameDB,
@@ -2226,20 +2226,20 @@ exports.getPackageOrders = (req, res, next) => {
     let data = "SELECT * " +
         " FROM `packageorder` as po " +
         " JOIN " +
-        " package as p "+
-        " on p.token = po.packageToken "+
+        " package as p " +
+        " on p.token = po.packageToken " +
         " JOIN " +
         "userinfo as u " +
         " on u.email  = po.userMail " +
-        " WHERE p.businessMail  = " + mysql.escape(req.session.mail);
+        " WHERE p.businessMail  = " + mysql.escape(req.session.mail) + " AND po.status = 0 ";
 
-     connectDB.query(data,(err,result)=>{
-         if(err){
-             throw err;
-         }
-         else{
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
             // console.log(result);
-             for (i in result) {
+            for (i in result) {
                 let a = result[i].endDate
                 let b = result[i].date
                 a = a.toString()
@@ -2248,20 +2248,40 @@ exports.getPackageOrders = (req, res, next) => {
                 result[i].endDate = a.slice(0, 15);
                 result[i].date = b.slice(0, 15);
             }
-             return res.render('shop/packageOrders',{
-                 data: result,
-             });
-         }
-     })
-    
+            return res.render('shop/packageOrders', {
+                data: result,
+            });
+        }
+    })
+
 }
 
 //approve packge order
-exports.getApprovePackage  = (req,res,next )=>{
+exports.getApprovePackage = (req, res, next) => {
     console.log("getApprovePackage");
 }
 
 //delete package order
-exports.getDeletePackage =(req,res,next) => {
-    console.log("getDeletePackage");
+exports.getDeletePackage = (req, res, next) => {
+
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = "UPDATE `packageorder` " +
+        "  SET `status`= -1 " +
+        " WHERE `tokenOrder` = " + mysql.escape(req.params.id)
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+          return res.redirect('/shop/packageOrders')
+        }
+    })    
+
 }
