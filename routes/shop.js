@@ -125,8 +125,14 @@ router.route('/packagedetail')
 router.route('/packageOrders')
       .get(shopController.isAuthentic,shopController.getPackageOrders)      
 
+//package order approve      
 router.route('/approve/package/:id')
-      .get(shopController.isAuthentic,shopController.getApprovePackage)      
+      .get(shopController.isAuthentic,shopController.getApprovePackage)    
+
+//package order delete
+router.route('/delete/package/:id')   
+      .get(shopController.isAuthentic,shopController.getDeletePackage)
+
 
 //update pacakge data
 router.route('/updatepackage')      

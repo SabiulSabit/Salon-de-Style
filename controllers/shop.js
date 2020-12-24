@@ -2260,3 +2260,8 @@ exports.getPackageOrders = (req, res, next) => {
 exports.getApprovePackage  = (req,res,next )=>{
     console.log("getApprovePackage");
 }
+
+//delete package order
+exports.getDeletePackage =(req,res,next) => {
+    console.log("getDeletePackage");
+}
