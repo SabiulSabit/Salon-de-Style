@@ -1282,7 +1282,7 @@ exports.postSearch = (req, res, next) => {
             throw err;
         }
         else {
-            // console.log(result)
+          //  console.log(result)
             return res.render('user/searchResult', {
                 shop: result,
                 search: req.body.name,
