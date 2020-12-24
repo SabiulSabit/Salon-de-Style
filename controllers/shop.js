@@ -2258,7 +2258,26 @@ exports.getPackageOrders = (req, res, next) => {
 
 //approve packge order
 exports.getApprovePackage = (req, res, next) => {
-    console.log("getApprovePackage");
+   
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = " UPDATE `packageorder` " +
+        "  SET `status`= 1 " +
+        " WHERE `tokenOrder` = " + mysql.escape(req.params.id)
+
+    connectDB.query(data,(err,result)=>{
+        if(err){
+            throw err;
+        }
+        else{
+          return res.redirect('/shop/packageOrders')
+        }
+    })    
 }
 
 //delete package order
@@ -2271,7 +2290,7 @@ exports.getDeletePackage = (req, res, next) => {
         database: databaseName,
     });
 
-    let data = "UPDATE `packageorder` " +
+    let data = " UPDATE `packageorder` " +
         "  SET `status`= -1 " +
         " WHERE `tokenOrder` = " + mysql.escape(req.params.id)
 
