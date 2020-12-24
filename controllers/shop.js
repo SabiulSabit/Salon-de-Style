@@ -2214,6 +2214,44 @@ exports.postPackageUpdate = (req, res, next) => {
 
 //show package orders
 exports.getPackageOrders = (req, res, next) => {
+  
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
 
-    return res.render('shop/packageOrders');
+
+    let data = "SELECT * " +
+        " FROM `packageorder` as po " +
+        " JOIN " +
+        " package as p "+
+        " on p.token = po.packageToken "+
+        " JOIN " +
+        "userinfo as u " +
+        " on u.email  = po.userMail " +
+        " WHERE p.businessMail  = " + mysql.escape(req.session.mail);
+
+     connectDB.query(data,(err,result)=>{
+         if(err){
+             throw err;
+         }
+         else{
+            // console.log(result);
+             for (i in result) {
+                let a = result[i].endDate
+                let b = result[i].date
+                a = a.toString()
+                b = b.toString()
+
+                result[i].endDate = a.slice(0, 15);
+                result[i].date = b.slice(0, 15);
+            }
+             return res.render('shop/packageOrders',{
+                 data: result,
+             });
+         }
+     })
+    
 }

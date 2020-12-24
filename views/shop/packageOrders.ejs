@@ -50,7 +50,7 @@
             padding: 0px;
             margin-bottom: 0px;
             margin-right: 5px;
-            
+
         }
 
         td:last-child .button .fa {
@@ -64,97 +64,109 @@
 
 
     <%- include('./sideBar.ejs') %>
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper">
+        <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="row page-titles">
-            <div class="col-md-5 col-12 align-self-center">
-                <h3 class="text-themecolor mb-0">Package Orders</h3>
-                <ol class="breadcrumb mb-0 p-0 bg-transparent">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Packages Orders</li>
-                </ol>
-            </div>
-
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-
-
-  
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-bordered" id="editableTable">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Packages Token</th>
-                                <th>Package Service</th>
-                                <th>Package Amount</th>
-                                <th>Package Price</th>
-                                <th>Tax</th>
-                                <th>Valid till</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           
-                           
-                           
-                        </tbody>
-                    </table>
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 col-12 align-self-center">
+                    <h3 class="text-themecolor mb-0">Package Orders</h3>
+                    <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Packages Orders</li>
+                    </ol>
                 </div>
-            </div>
 
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered" id="editableTable">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>User Mail</th>
+                                    <th>Packages Name</th>
+                                    <th>Package Token</th>
+                                    <th>service</th>
+                                    <th>Price</th>
+                                    <th>Tax</th>
+                                    <th>Order Date</th>
+                                    <th>Valid till</th>
+                                    <th class="text-center">Approve</th>
+                                    <th class="text-center">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=0; i< data.length; i++) { %>
+                                    <tr class="text-center">
+                                        <th> <%=data[i].userMail %> </th>
+                                        <th> <%=data[i].packageName %> </th>
+                                        <th> <%=data[i].packageToken %> </th>
+                                        <th> <%=data[i].service %> </th>
+                                        <th> <%=data[i].price %> </th>
+                                        <th> <%=data[i].tax %> </th>
+                                        <th> <%=data[i].date %> </th>
+                                        <th> <%=data[i].endDate %> </th>
+                                        <th class="text-center"><a href=""><i class="fa fa-check"></i></a> </th>  
+                                        <th class="text-center"><a href=""><i class="fa fa-trash"></i></a> </th>  
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Container fluid  -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
 
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- apps -->
+        <script src="/dist/js/app.min.js"></script>
+        <script src="/dist/js/app.init.dark.js"></script>
+        <script src="/dist/js/app-style-switcher.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+        <!--Wave Effects -->
+        <script src="/dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="/dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="/dist/js/custom.min.js"></script>
+        <!-- This Page JS -->
+        <script src="/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+        <script src="/assets/libs/magnific-popup/meg.init.js"></script>
+        <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- apps -->
-    <script src="/dist/js/app.min.js"></script>
-    <script src="/dist/js/app.init.dark.js"></script>
-    <script src="/dist/js/app-style-switcher.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="/dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/dist/js/custom.min.js"></script>
-    <!-- This Page JS -->
-    <script src="/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-    <script src="/assets/libs/magnific-popup/meg.init.js"></script>
-    <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-  
 
 </body>
 
