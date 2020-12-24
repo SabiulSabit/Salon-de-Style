@@ -72,7 +72,13 @@
                             <i class="list-box-icon fa fa-gift"></i>
                             <h4>E-gift Card Name: <span><%=gift[i].packageName%></span> <div class="comission-taken">Offer Price: <strong>$ <%=gift[i].price%></strong></div></h4>
                             <h4> <span class="text-danger">Shop Name: <%=gift[i].businessName%></span> <div class="comission-taken"> <a href="/details/<%=gift[i].businessName%>/<%=gift[i].businessMail%>" class="btn btn-info">View Shop</a> </div></h4>
-                            <h4>Service: Hair cutter</h4>
+                            <h4>Service: <%=gift[i].service%> <div class="comission-taken">  <% if(gift[i].status == 0) { %>
+								Available
+							<% } else if(gift[i].status == 1) {  %>
+								Used
+							<% } else { %>
+								Cancled
+							<% } %>  </h4>
                             <ul>
 								<li class="paid">Booking Date: <%=gift[i].date%></li>
 								<li class="unpaid">Valid Till: <%=gift[i].endDate%></li>
