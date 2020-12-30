@@ -32,57 +32,63 @@
             <div class="heath-information">
                 <div class="container">
                     <h1 class="text-center">Upload Images</h1>
-                    <div class="row">
-                        <form action="/shop/portfolio" enctype="multipart/form-data" method="post">
-                            <div class="col-md-12">
-                                <input type="file" name="image" required>
-                                <input type="submit" class="btn btn-danger" value="Save">
+                    <% if(total==5) { %>
+                        <div class="col-md-12">
+                            <h4 class="text-center text-danger">You Have Maximum Number of Image Uploaded. Please delete
+                                one to add another.</h4>
+                        </div>
+                        <% } else { %>
+                            <div class="row">
+                                <form action="/shop/portfolio" enctype="multipart/form-data" method="post">
+                                    <div class="col-md-12">
+                                        <input type="file" name="image" required>
+                                        <input type="submit" class="btn btn-danger" value="Save">
+                                    </div>
+                                </form>
                             </div>
-   
-                        </form>
-                    </div>
+                       <% } %>
                 </div>
 
-                <div class="portfolio_img mt-4"> 
+                <div class="portfolio_img mt-4">
                     <div class="container">
                         <div class="row">
-                                <div class="col-md-4 col-sm-12">
-                                    <img src="<%=data.img%>" alt="">
-                                    <div class="text-center">
-                                        <a href="/shop/portfolio/deleteimg/img"> <i class="fa fa-trash"></i> </a>
-                                    </div>   
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <img src="<%=data.img1%>" alt="">
-                                    <div class="text-center">
-                                        <a href="/shop/portfolio/deleteimg/img1"> <i class="fa fa-trash"></i> </a>
-                                    </div>   
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <img src="<%=data.img2%>" alt="">
-                                    <div class="text-center">
-                                        <a href="/shop/portfolio/deleteimg/img2"> <i class="fa fa-trash"></i> </a>
-                                    </div>   
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <img src="<%=data.img3%>" alt="">
-                                    <div class="text-center">
-                                        <a href="/shop/portfolio/deleteimg/img3"> <i class="fa fa-trash"></i> </a>
-                                    </div>   
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <img src="<%=data.img4%>" alt="">
-                                    <div class="text-center">
-                                        <a href="/shop/portfolio/deleteimg/img4"> <i class="fa fa-trash"></i> </a>
-                                    </div>   
+                            <div class="col-md-4 col-sm-12">
+                                <img src="<%=data.img%>" alt="">
+                                <div class="text-center">
+                                    <a href="/shop/portfolio/deleteimg/img"> <i class="fa fa-trash"></i> </a>
                                 </div>
                             </div>
-                           
+                            <div class="col-md-4 col-sm-12">
+                                <img src="<%=data.img1%>" alt="">
+                                <div class="text-center">
+                                    <a href="/shop/portfolio/deleteimg/img1"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <img src="<%=data.img2%>" alt="">
+                                <div class="text-center">
+                                    <a href="/shop/portfolio/deleteimg/img2"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <img src="<%=data.img3%>" alt="">
+                                <div class="text-center">
+                                    <a href="/shop/portfolio/deleteimg/img3"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <img src="<%=data.img4%>" alt="">
+                                <div class="text-center">
+                                    <a href="/shop/portfolio/deleteimg/img4"> <i class="fa fa-trash"></i> </a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
+                </div>
             </div>
         </div>
-        
+
 
         </div>
         <!-- ============================================================== -->

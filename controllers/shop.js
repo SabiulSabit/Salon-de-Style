@@ -1780,26 +1780,32 @@ exports.getPortfolio = (req, res, next) => {
         }
         else {
             // console.log(result[0]);
-
+            let total = 5;
             if (result[0].img == "") {
-                result[0].img = "/images/shop/image.svg"
+                result[0].img = "/images/shop/image.svg";
+                total--;
             }
             if (result[0].img1 == "") {
-                result[0].img1 = "/images/shop/image.svg"
+                result[0].img1 = "/images/shop/image.svg";
+                total--;
             }
             if (result[0].img2 == "") {
-                result[0].img2 = "/images/shop/image.svg"
+                result[0].img2 = "/images/shop/image.svg";
+                total--;
             }
             if (result[0].img3 == "") {
-                result[0].img3 = "/images/shop/image.svg"
+                result[0].img3 = "/images/shop/image.svg";
+                total--;
             }
             if (result[0].img4 == "") {
-                result[0].img4 = "/images/shop/image.svg"
+                result[0].img4 = "/images/shop/image.svg";
+                total--;
             }
 
 
             return res.render('shop/portfolio', {
-                data: result[0]
+                data: result[0],
+                total: total,
             })
         }
     })
