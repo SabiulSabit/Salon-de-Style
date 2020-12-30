@@ -17,9 +17,15 @@ const databaseName = "rondvou";
 
 exports.isAuthentic = (req, res, next) => {
     if (req.session.user == undefined) {
+        //console.log("userController.isAuthentic")
+        // req.session.err = "";
+        // req.session.success = "";
         return res.redirect('/')
     }
-    else {
+    else if(req.session.user){
+        req.session.err = "";
+        req.session.success = "";
+       // console.log("here");
         next();
     }
 }
@@ -65,6 +71,7 @@ exports.getHome = (req, res, next) => {
             // console.log(req.session.user
             //    ,req.session.name
             //     ,req.session.userAll)
+       //     console.log(req.session.err);
             return res.render('user/index', { shop: result, });
         }
     })
@@ -301,7 +308,9 @@ exports.postLogin = (req, res, next) => {
                     throw err1;
                 }
                 else if (!isMatch) {
-                    res.locals.err = "Password doesn't match!"
+                    req.session.err = ""
+                    req.session.success = ""
+                    req.session.err = "Password doesn't match!"
                     return res.redirect('/')
                 }
                 else {
@@ -309,12 +318,17 @@ exports.postLogin = (req, res, next) => {
                     req.session.name = result[0].name;
                     req.session.userAll = result[0];
                     //console.log(req.body)
+                    req.session.success = ""
+                    req.session.err = ""
+                    req.session.success = "Login Successful !"
                     return res.redirect('/');
                 }
             });
         }
         else {
-            console.log("Email Is Not registered");
+            req.session.err = ""
+            req.session.success = ""
+            req.session.err = "Email Is Not registered";
             return res.redirect('/');
         }
     })
