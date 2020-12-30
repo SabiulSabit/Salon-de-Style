@@ -1778,7 +1778,25 @@ exports.getPortfolio = (req, res, next) => {
             throw err;
         }
         else {
-           // console.log(result[0]);
+            // console.log(result[0]);
+
+            if (result[0].img == "") {
+                result[0].img = "/images/shop/image.svg"
+            }
+            if (result[0].img1 == "") {
+                result[0].img1 = "/images/shop/image.svg"
+            }
+            if (result[0].img2 == "") {
+                result[0].img2 = "/images/shop/image.svg"
+            }
+            if (result[0].img3 == "") {
+                result[0].img3 = "/images/shop/image.svg"
+            }
+            if (result[0].img4 == "") {
+                result[0].img4 = "/images/shop/image.svg"
+            }
+
+
             return res.render('shop/portfolio', {
                 data: result[0]
             })
@@ -2258,7 +2276,7 @@ exports.getPackageOrders = (req, res, next) => {
 
 //approve packge order
 exports.getApprovePackage = (req, res, next) => {
-   
+
     let connectDB = mysql.createConnection({
         host: hostNameDB,
         user: userNameDB,
@@ -2270,14 +2288,14 @@ exports.getApprovePackage = (req, res, next) => {
         "  SET `status`= 1 " +
         " WHERE `tokenOrder` = " + mysql.escape(req.params.id)
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
-          return res.redirect('/shop/packageOrders')
+        else {
+            return res.redirect('/shop/packageOrders')
         }
-    })    
+    })
 }
 
 //delete package order
@@ -2294,13 +2312,13 @@ exports.getDeletePackage = (req, res, next) => {
         "  SET `status`= -1 " +
         " WHERE `tokenOrder` = " + mysql.escape(req.params.id)
 
-    connectDB.query(data,(err,result)=>{
-        if(err){
+    connectDB.query(data, (err, result) => {
+        if (err) {
             throw err;
         }
-        else{
-          return res.redirect('/shop/packageOrders')
+        else {
+            return res.redirect('/shop/packageOrders')
         }
-    })    
+    })
 
 }
