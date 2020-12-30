@@ -27,11 +27,20 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/public')));
 
+
+app.use(function(req, res, next) {
+  res.locals.err = req.session.err;
+  res.locals.success = req.session.success;
+ // console.log(res.locals.err);
+  next();
+});
+
 app.use(userRouter);
 app.use("/shop" ,shopRouter);
 
 app.use((req, res, next) => {
   res.status(404).render('user/404');
 });
+
 
 app.listen(3000, () => console.log("Server is Running..."));

@@ -18,6 +18,17 @@
                 <div class="logo">
                     <h3 class="box-title mb-3">Sign In</h3>
                 </div>
+               
+                <% if(locals.err){ %>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<%=locals.err%>
+					</div>
+					<% } %>
+					<% if(locals.success){ %>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<%=locals.success%>
+					</div>
+					<% } %>
                 <form id="login-form" class="form" action="/shop/dashboard" method="post">
                 <div class="row">
                     <div class="col-12">
@@ -37,7 +48,7 @@
                                         <label id="remember-me" name="remember-me" for="checkbox-signup"> Remember me </label>
                                     </div> 
                                     <div class="ml-auto">
-                                        <a href="javascript:void(0)" id="to-recover" class="text-muted float-right"><i class="fa fa-lock mr-1"></i> Forgot pwd?</a>
+                                        <a href="/shop/createaccount" id="to-recover" class="text-muted float-right"><i class="fa fa-lock mr-1"></i>Have an Account?</a>
                                     </div>
                                 </div>
                             </div>

@@ -41,7 +41,9 @@ exports.isAuthentic = (req, res, next) => {
     if (req.session.mail == undefined) {
         return res.redirect('/shop/login')
     }
-    else {
+    else if(req.session.mail) {
+       req.session.err = "";
+       req.session.success = "";
         next();
     }
 }
@@ -49,7 +51,8 @@ exports.isAuthentic = (req, res, next) => {
 
 //get login page
 exports.getLogin = (req, res, next) => {
-    res.render('shop/login', { err: "" });
+    // console.log(req.session.err);
+    return res.render('shop/login');
 }
 
 //post request for login
@@ -73,7 +76,8 @@ exports.postLogin = (req, res, next) => {
                     throw err;
                 }
                 else if (!isMatch) {
-                    res.locals.err = "Password doesn't match!"
+                    req.session.err = "Password doesn't match!"
+                   // console.log(req.session.err);
                     return res.redirect('/shop/login')
                 }
                 else {
@@ -84,7 +88,7 @@ exports.postLogin = (req, res, next) => {
             // else if()
         }
         else {
-            res.locals.err = "Email is not Registered"
+            req.session.err = "Email is not Registered"
             return res.redirect('/shop/login')
         }
     })
@@ -207,7 +211,8 @@ exports.postCreateAccount = (req, res, next) => {
                                 throw err1
                             }
                             else {
-                                res.redirect('/shop/login')
+                                req.session.success = "Account Create Successfuly !!"
+                               return res.redirect('/shop/login')
                             }
                         })
                     }
@@ -1927,50 +1932,50 @@ exports.postPortfolio = (req, res, next) => {
 }
 
 //delete portfolio image
-exports.getDeletePortfolioImg = (req,res,next)=>{
-   // console.log("getDeletePortfolioImg");
-   let connectDB = mysql.createConnection({
-    host: hostNameDB,
-    user: userNameDB,
-    password: passwordDB,
-    database: databaseName,
-});
+exports.getDeletePortfolioImg = (req, res, next) => {
+    // console.log("getDeletePortfolioImg");
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
 
-let data = "SELECT `"+req.params.img+"` as dlt "+
-            " FROM `shopadmin` "+
-            " WHERE `businessMail` = "+mysql.escape(req.session.mail)
+    let data = "SELECT `" + req.params.img + "` as dlt " +
+        " FROM `shopadmin` " +
+        " WHERE `businessMail` = " + mysql.escape(req.session.mail)
 
- //console.log(data);         
+    //console.log(data);         
 
- connectDB.query(data,(err,result)=>{
-     if(err){
-         throw err;
-     }
-     else{
-         
-        if(result[0].dlt != ""){
-            let deleteFile = "public" +result[0].dlt 
-            //  console.log(deleteFile);
-              fs.unlinkSync(deleteFile);
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
         }
-       
+        else {
 
-         let data1 = "UPDATE `shopadmin` SET "+
-                   " `"+req.params.img+"` = '' " + 
-                   " WHERE `businessMail` = "+mysql.escape(req.session.mail)
-
-         connectDB.query(data1,(err1,result1)=>{
-             if(err1){
-                 throw err1;
-             }
-             else{
-                 return res.redirect('/shop/portfolio');
-             }
-         })          
+            if (result[0].dlt != "") {
+                let deleteFile = "public" + result[0].dlt
+                //  console.log(deleteFile);
+                fs.unlinkSync(deleteFile);
+            }
 
 
-     }
- })           
+            let data1 = "UPDATE `shopadmin` SET " +
+                " `" + req.params.img + "` = '' " +
+                " WHERE `businessMail` = " + mysql.escape(req.session.mail)
+
+            connectDB.query(data1, (err1, result1) => {
+                if (err1) {
+                    throw err1;
+                }
+                else {
+                    return res.redirect('/shop/portfolio');
+                }
+            })
+
+
+        }
+    })
     //fs.unlinkSync(filePath)
 }
 
@@ -2074,7 +2079,7 @@ exports.getReviewandRating = (req, res, next) => {
                 let a = result[i].date;
                 result[i].date = a.toString().slice(0, 15);
             }
-           // console.log(result);
+            // console.log(result);
             return res.render('shop/reviewandRating', {
                 data: result,
             })
