@@ -2,6 +2,7 @@
 var mysql = require('mysql');
 var formidable = require('formidable');
 const nodeMailer = require('nodemailer');
+let fs = require('fs')
 const path = require('path');
 const bcrypt = require('bcrypt');
 const { connect } = require('http2');
@@ -1921,7 +1922,50 @@ exports.postPortfolio = (req, res, next) => {
 
 //delete portfolio image
 exports.getDeletePortfolioImg = (req,res,next)=>{
-    console.log("getDeletePortfolioImg");
+   // console.log("getDeletePortfolioImg");
+   let connectDB = mysql.createConnection({
+    host: hostNameDB,
+    user: userNameDB,
+    password: passwordDB,
+    database: databaseName,
+});
+
+let data = "SELECT `"+req.params.img+"` as dlt "+
+            " FROM `shopadmin` "+
+            " WHERE `businessMail` = "+mysql.escape(req.session.mail)
+
+ //console.log(data);         
+
+ connectDB.query(data,(err,result)=>{
+     if(err){
+         throw err;
+     }
+     else{
+         
+        if(result[0].dlt != ""){
+            let deleteFile = "public" +result[0].dlt 
+            //  console.log(deleteFile);
+              fs.unlinkSync(deleteFile);
+        }
+       
+
+         let data1 = "UPDATE `shopadmin` SET "+
+                   " `"+req.params.img+"` = '' " + 
+                   " WHERE `businessMail` = "+mysql.escape(req.session.mail)
+
+         connectDB.query(data1,(err1,result1)=>{
+             if(err1){
+                 throw err1;
+             }
+             else{
+                 return res.redirect('/shop/portfolio');
+             }
+         })          
+
+
+     }
+ })           
+    //fs.unlinkSync(filePath)
 }
 
 //get Email 
