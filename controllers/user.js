@@ -29,6 +29,12 @@ exports.isAuthentic = (req, res, next) => {
         next();
     }
 }
+exports.isAuthentic1 = (req, res, next) =>{
+    req.session.err = "";
+    req.session.success = "";
+   // console.log("here");
+    next();
+}
 
 exports.setLocals = (req, res, next) => {
 

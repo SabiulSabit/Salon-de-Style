@@ -14,7 +14,7 @@ router.route('/')
  
 //show shop info
 router.route('/details/:name/:mail')
-      .get(userController.isAuthentic,userController.setLocals,userController.getShowShop);
+      .get(userController.isAuthentic1,userController.setLocals,userController.getShowShop);
 
 //login 
 router.route('/login')      
