@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2020 at 02:43 PM
+-- Generation Time: Dec 30, 2020 at 04:53 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -52,13 +52,13 @@ INSERT INTO `booking` (`businessMail`, `userMail`, `userPhone`, `userAddress`, `
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-15', '2020-10-17', '11:10:00', '11:40:00', 'Hand Cash', 1, 45680, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 1, 45683, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 1, 45685, 0),
-('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-19', '2020-10-19', '01:05:00', '01:35:00', 'Hand Cash', 0, 45687, 0),
+('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-19', '2020-10-19', '01:05:00', '01:35:00', 'Hand Cash', 1, 45687, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-10-27', '2020-10-27', '09:00:00', '09:30:00', 'Hand Cash', 0, 45689, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Hair Cut', 123, '2020-12-15', '2020-12-15', '10:00:00', '10:30:00', 'Hand Cash', 0, 45690, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-08', '2020-10-08', '11:10:00', '11:40:00', 'Hand Cash', -1, 45681, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 1, 45683, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-18', '2020-10-18', '16:30:00', '17:00:00', 'Hand Cash', 0, 45685, 0),
-('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-19', '2020-10-19', '01:05:00', '01:35:00', 'Hand Cash', 0, 45687, 0),
+('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Cut', 22, '2020-10-19', '2020-10-19', '01:05:00', '01:35:00', 'Hand Cash', 1, 45687, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Put', 15, '2020-10-15', '2020-10-17', '11:10:00', '11:40:00', 'Hand Cash', 1, 45680, 0),
 ('iamsabit99@gmail.com', 'iamsabit99@gmail.com', '12345678', 'Dhaka, Bangladesh', 'Nail Put', 15, '2020-10-18', '2020-10-18', '17:30:00', '18:00:00', 'Hand Cash', 1, 45682, 0);
 
@@ -349,7 +349,7 @@ CREATE TABLE `shopadmin` (
 INSERT INTO `shopadmin` (`businessName`, `businessWebsite`, `ownerName`, `businessMail`, `businessNumber`, `password`, `img`, `img1`, `img2`, `img3`, `img4`, `ecom`, `fb`, `insta`, `officialName`, `description`, `address`, `lat`, `lon`) VALUES
 ('Cool Hairdresser', '', 'Sabiul Sabit', 'abc@gmail.com', '01744248058', '$2b$10$9DygGZMGodT1hB3RqUz34uF7fOVBcwp4Y2g8L.MksphlawqWSb.WG', '/images/shop/shopImg/abc.jpeg', '', '', '', '', '', '', '', '', '', '182 Bashundhara Rd, Dhaka, Bangladesh', 23.8136, 90.4235),
 ('sabit hair dress123', 'www.ad123.com', 'Sabit', 'iamsabit98@gmail.com', '12345', '$2b$10$ZnR6hxspC0guySJhjGMwE.yk4SSk3.T00V.NjcflOT7S08/CKz7wi', '/images/shop/shopImg/iamsabit98@gmail.com.jpeg', '', '', '', '', '', '', '', '', '', '', 0, 0),
-('sabit hair dress', 'www.ad.com', 'sabit', 'iamsabit99@gmail.com', '123456', '$2b$10$YgzWXVxyt2or966pKCjxP.l6PjyrjTuhaUjruLz4YCImQbSUu44Ii', '/images/shop/shopImg/iamsabit99@gmail.com.jpeg', '/images/shop/shopImg/iamsabit99@gmail.comimg1.png', '/images/shop/shopImg/iamsabit99@gmail.comimg2.png', '', '', 'ecom.com', 'fb.com', '', 'ABC', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Dhaka 1205, Bangladesh', 23.7489, 90.4034);
+('sabit hair dress', 'www.ad.com', 'sabit', 'iamsabit99@gmail.com', '123456', '$2b$10$YgzWXVxyt2or966pKCjxP.l6PjyrjTuhaUjruLz4YCImQbSUu44Ii', '/images/shop/shopImg/iamsabit99@gmail.comimg.jpeg', '/images/shop/shopImg/iamsabit99@gmail.comimg1.jpeg', '/images/shop/shopImg/iamsabit99@gmail.comimg2.png', '', '', 'ecom.com', 'fb.com', '', 'ABC', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'Dhaka 1205, Bangladesh', 23.7489, 90.4034);
 
 -- --------------------------------------------------------
 
