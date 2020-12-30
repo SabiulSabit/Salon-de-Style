@@ -1778,7 +1778,7 @@ exports.getPortfolio = (req, res, next) => {
             throw err;
         }
         else {
-            //console.log(result[0]);
+           // console.log(result[0]);
             return res.render('shop/portfolio', {
                 data: result[0]
             })
@@ -1812,7 +1812,7 @@ exports.postPortfolio = (req, res, next) => {
             throw err;
         }
         else {
-            if (result[0].img == "") {
+            if (result[0].img == "" && insertField == "") {
                 insertField = "img";
                 //  console.log("1");
             }
@@ -1828,7 +1828,7 @@ exports.postPortfolio = (req, res, next) => {
                 insertField = "img3";
                 //console.log("4");
             }
-            if (result[0].im4 == "" && insertField == "") {
+            if (result[0].img4 == "" && insertField == "") {
                 insertField = "img4";
                 //  console.log("5");
             }
