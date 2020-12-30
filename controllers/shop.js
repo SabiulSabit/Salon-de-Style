@@ -41,9 +41,9 @@ exports.isAuthentic = (req, res, next) => {
     if (req.session.mail == undefined) {
         return res.redirect('/shop/login')
     }
-    else if(req.session.mail) {
-       req.session.err = "";
-       req.session.success = "";
+    else if (req.session.mail) {
+        req.session.err = "";
+        req.session.success = "";
         next();
     }
 }
@@ -77,7 +77,7 @@ exports.postLogin = (req, res, next) => {
                 }
                 else if (!isMatch) {
                     req.session.err = "Password doesn't match!"
-                   // console.log(req.session.err);
+                    // console.log(req.session.err);
                     return res.redirect('/shop/login')
                 }
                 else {
@@ -212,7 +212,7 @@ exports.postCreateAccount = (req, res, next) => {
                             }
                             else {
                                 req.session.success = "Account Create Successfuly !!"
-                               return res.redirect('/shop/login')
+                                return res.redirect('/shop/login')
                             }
                         })
                     }
@@ -2129,24 +2129,19 @@ exports.postProcessed = (req, res, next) => {
 
     let data = ""
     let mailInfo = ""
-    console.log(req.body)
+    //console.log(req.body)
     if (req.body.paymentType === "Hand Cash") {
         let dis = req.body.discount;
-        if (!Array.isArray(dis)) {
+        if(dis ==  undefined) {
+            data = "UPDATE `booking` " +
+            " SET `status`= 1  "  +
+            " WHERE bookingID =  " + mysql.escape(req.body.id) + " AND businessMail = " + mysql.escape(req.session.mail) + " AND userMail = " + mysql.escape(req.body.user);
+        }
+        else if (!Array.isArray(dis)) {
             data = "UPDATE `booking` " +
                 " SET `status`= 1 ,`discount`= " + parseInt(req.body.discount) +
                 " WHERE bookingID =  " + mysql.escape(req.body.id) + " AND businessMail = " + mysql.escape(req.session.mail) + " AND userMail = " + mysql.escape(req.body.user);
 
-            mailInfo = `
-                <tr>
-                <td style="font-family: 'arial'; font-size: 14px; vertical-align: middle; margin: 0; padding: 9px 0;">${req.body.serviceName}</td>
-                <td style="font-family: 'arial'; font-size: 14px; vertical-align: middle; margin: 0; padding: 9px 0;" align="right">$ ${req.body.servicePrice}(-${req.body.discount})</td>
-            </tr>
-            <tr class="total">
-            <td style="font-family: 'arial'; font-size: 14px; vertical-align: middle; border-top-width: 1px; border-top-color: #f6f6f6; border-top-style: solid; margin: 0; padding: 9px 0; font-weight:bold;" width="80%">Total</td>
-            <td style="font-family: 'arial'; font-size: 14px; vertical-align: middle; border-top-width: 1px; border-top-color: #f6f6f6; border-top-style: solid; margin: 0; padding: 9px 0; font-weight:bold;" align="right">$ ${req.body.servicePrice - req.body.discount}</td>
-        </tr>
-            `
 
         }
         else {
@@ -2158,6 +2153,15 @@ exports.postProcessed = (req, res, next) => {
             }
 
         }
+
+        connectDB.query(data,(err,result)=>{
+            if(err){
+                throw err;
+            }
+            else{
+                return res.redirect('/shop/invoicedetail');
+            }
+        })
 
 
     }
