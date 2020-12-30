@@ -333,24 +333,33 @@
 								<div class="large-12 columns">
 									<div class="owl-carousel owl-theme">
 										<% for(let i=0; i<2; i++) { %>
-											<div class="item">
-												<img src="<%=shopInfo.img%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img1%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img2%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img3%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img4%>" alt="">
-											</div>
-											<% } %>
-
-
+											<% if(shopInfo.img !="" ) { %>
+												<div class="item">
+													<img src="<%=shopInfo.img%>" alt="">
+												</div>
+												<% } %>
+												<% if(shopInfo.img1 !="" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img1%>" alt="">
+													</div>
+												<% } %>
+												<% if(shopInfo.img2 != "" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img2%>" alt="">
+													</div>
+												<% } %>
+												<% if(shopInfo.img3 !="" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img3%>" alt="">
+													</div>
+												<% } %>
+												<% if(shopInfo.img4 !="" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img4%>" alt="">
+													</div>
+												<% } %>
+												
+								        <% } %>
 									</div>
 								</div>
 							</div>
@@ -667,7 +676,8 @@
 										<div class="giftCard">
 
 											<p class="text-center">Order a Package!</p>
-											<a class="cardShow" data-toggle="modal" data-target="#exampleModal">Show Package</a>
+											<a class="cardShow" data-toggle="modal" data-target="#exampleModal">Show
+												Package</a>
 
 											<div id="giftModal" class="zoom-anim-dialog mfp-hide">
 												<div class="small-dialog-header">
@@ -681,7 +691,8 @@
 															<div class="modal-body">
 																<div class="giftBox text-center">
 																	<span class="text-info">Gift Card Name:
-																		<%=gift[i].packageName%></span>
+																		<%=gift[i].packageName%>
+																	</span>
 																	<br>
 																	<span class="text-success">Price: $ <span
 																			style="font-size: 22px;">
@@ -724,7 +735,8 @@
 																	method="post">
 																	<div class="giftBox text-center">
 																		<span class="text-info">Gift Card Name:
-																			<%=gift[i].packageName%></span>
+																			<%=gift[i].packageName%>
+																		</span>
 																		<br>
 																		<span class="text-success">Price: $ <span
 																				style="font-size: 22px;">
