@@ -1,5 +1,6 @@
 //required paclage 
 const express = require('express');
+const { get } = require('http');
 const path = require('path');
 const { rootCertificates } = require('tls');
 
@@ -142,6 +143,10 @@ router.route('/updatepackage')
 router.route('/portfolio')
       .get(shopController.isAuthentic,shopController.getPortfolio) 
       .post(shopController.isAuthentic,shopController.postPortfolio)
+
+//delete portfolio image
+router.route('/portfolio/deleteimg/:img')
+      .get(shopController.isAuthentic,shopController.getDeletePortfolioImg)      
 
 ///email
 router.route('/email')

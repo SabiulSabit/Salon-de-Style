@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const { connect } = require('http2');
 const { info } = require('console');
 const { INSPECT_MAX_BYTES } = require('buffer');
-const { use } = require('../routes/shop');
+const { use, route } = require('../routes/shop');
 
 
 //global const
@@ -1914,12 +1914,14 @@ exports.postPortfolio = (req, res, next) => {
                     }
                 })
 
-
-
         }
     })
 
+}
 
+//delete portfolio image
+exports.getDeletePortfolioImg = (req,res,next)=>{
+    console.log("getDeletePortfolioImg");
 }
 
 //get Email 
