@@ -32,8 +32,9 @@
         <div class="heath-information">
             <div class="container">
                 <h1 class="text-center">Category of your Business</h1>
-                <div class="row">
+                
                     <form action="/shop/categorieslist" method="post">
+                        <div class="row"> 
                         <div class="col-sm-12 col-lg-6 col-md-6">
                             <h3 class="text-center">Service List</h3>
                             <% for(i=0;i<data.length;i++){ %>
@@ -50,12 +51,15 @@
                         <div class="col-sm-12 col-lg-6 col-md-6">
                             <h3>Selected service list</h3>
                             <h4 class="text-danger" id="show"></h4>
-                            <button type="submit" class="btn btn-info">Submit</button>
                             <input type="text" name="newVal" placeholder="Add New" id="newVal">
                             <p class="btn btn-info" onclick="addNew()">Addnew</p>
+                           <div class="text-center">
+                            <button type="submit" class="btn btn-warning text-center center-block mt-5">Confirm</button>
+                           </div>
                         </div>
+                    </div>
                     </form>
-                </div>
+                
             </div>
         </div>
     </div>

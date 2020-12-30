@@ -10129,7 +10129,7 @@ body .notification strong { border: none; }
 	color: #a0a0a0;
 	position: absolute;
 	left: 15px;
-	bottom: 13px;
+	bottom: 27px;
 }
 
 .sign-in-form .button {
@@ -18543,34 +18543,34 @@ body .category-box-btn:hover {
 	#style-switcher { display: none; }
 
 	.report{
-		color: #C0C52A;
+		color: #f91942;
 	padding: 10px 75px;
 	border-radius: 25px;
 	margin-bottom: 9px;
-	border: 2px solid #C0C52A;
+	border: 2px solid #f91942;
 		}
 	
 		.report:hover{
-			background-color: #C0C52A;
+			background-color: #f91942;
 			color: white;
 	padding: 10px 75px;
 	border-radius: 25px;
 	margin-bottom: 9px;
-	border: 2px solid #C0C52A;
+	border: 2px solid #f91942;
 		}
 		.health-rules{
-			color: #64BC36;
+			color: #f91942;
 	padding: 10px 75px;
 	border-radius: 25px;
 	margin-bottom: 9px;
-	border: 2px solid #64BC36;
+	border: 2px solid #f91942;
 		}
 	
 		.health-rules:hover{
-			background-color: #64BC36;
+			background-color: #f91942;
 			color: white;
 	padding: 10px 75px;
 	border-radius: 25px;
 	margin-bottom: 9px;
-	border: 2px solid #64BC36;
+	border: 2px solid #f91942;
 		}

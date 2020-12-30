@@ -20,121 +20,129 @@
     <!-- Custom CSS -->
     <link href="/dist/css/style.min.css" rel="stylesheet">
 
+   
+
+
 </head>
 
 <body>
 
     <%- include('./sideBar.ejs') %>
 
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <div class="heath-information">
-                <div class="container">
-                    <h1 class="text-center">Service of your Business</h1>
-                    <form action="/shop/addservices" method="post">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <select class="form-control" name="cat" required>
-                                    <option value="" disabled selected hidden>Selecet Category</option>
-                                    <% for(let i=0; i< category.length; i++ ) { %>
-                                        <option>
-                                            <%=category[i].name%>
-                                        </option>
-                                        <% } %>
-                                </select>
-                            </div>
-                            <input class="col-md-2 form-control" name="name" type="text" placeholder="Service Name"
-                                required>
-                            <input class="col-md-2 form-control" name="hour" type="text" placeholder="Hour" required>
-                            <input class="col-md-2 form-control" name="min" type="text" placeholder="Minute" required>
-                            <input class="col-md-2 form-control" name="price" type="text" placeholder="Price" required>
-                            <div class="col-md-2" required>
-                                <select class="form-control" name="priceType" required>
-                                    <option value="" disabled selected hidden>Price Type</option>
-                                    <option>Fixed</option>
-                                    <option>Negotiable</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <button type="submit" class="btn btn-info mt-3">ADD</button>
-                        </div>
-                    </form>
-                </div>
-
-
-
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Hour</th>
-                                <th scope="col">Minute</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Price Type</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% for(let i=0; i < data.length ; i++ ) { %>
-                                <tr>
-                                    <th><%=data[i].name%></th>
-                                    <th><%=data[i].category%></th>
-                                    <th><%=data[i].hour%></th>
-                                    <th><%=data[i].min%></th>
-                                    <th><%=data[i].price%></th>
-                                    <th><%=data[i].priceType%></th>
-                                    <th> <a href="/shop/deleteservice/<%=data[i].name%>"> <i class="fa fa-trash"></i> </a></th>
-                                </tr>
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <div class="heath-information">
+            <div class="container mt-4">
+                <h1 class="text-center mt-2 mb-4">Service of your Business</h1>
+                <form action="/shop/addservices" method="post">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <select class="form-control" name="cat" required>
+                                <option value="" disabled selected hidden>Category</option>
+                                <% for(let i=0; i< category.length; i++ ) { %>
+                                <option>
+                                    <%=category[i].name%>
+                                </option>
                                 <% } %>
-                        </tbody>
-                    </table>
-                </div>
+                            </select>
+                        </div>
+                        <input class="col-md-2 form-control" name="name" type="text" placeholder="Service Name"
+                            required>
+                        <input class="col-md-2 form-control" name="hour" type="text" placeholder="Hour" required>
+                        <input class="col-md-2 form-control" name="min" type="text" placeholder="Minute" required>
+                        <input class="col-md-2 form-control" name="price" type="text" placeholder="Price" required>
+                        <div class="col-md-2" required>
+                            <select class="form-control" name="priceType" required>
+                                <option value="" disabled selected hidden>Price Type</option>
+                                <option>Fixed</option>
+                                <option>Negotiable</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                       <div class="col-md-12">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info mt-3 mb-3 center-block col-md-3 p-3">ADD</button>
+                        </div>
+                       </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+     
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Hour</th>
+                            <th scope="col">Minute</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Price Type</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i=0; i < data.length ; i++ ) { %>
+                        <tr>
+                            <th><%=data[i].name%></th>
+                            <th><%=data[i].category%></th>
+                            <th><%=data[i].hour%></th>
+                            <th><%=data[i].min%></th>
+                            <th><%=data[i].price%></th>
+                            <th><%=data[i].priceType%></th>
+                            <th> <a href="/shop/deleteservice/<%=data[i].name%>"> <i class="fa fa-trash"></i> </a></th>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+</div>
+</div>
 
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Wrapper -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
 
-        <!-- All Jquery -->
-        <!-- ============================================================== -->
-        <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-        <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
-        <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
-        <!-- Bootstrap tether Core JavaScript -->
-        <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-        <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- apps -->
-        <script src="/dist/js/app.min.js"></script>
-        <script src="/dist/js/app.init.dark.js"></script>
-        <script src="/dist/js/app-style-switcher.js"></script>
-        <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-        <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
-        <!--Wave Effects -->
-        <script src="/dist/js/waves.js"></script>
-        <!--Menu sidebar -->
-        <script src="/dist/js/sidebarmenu.js"></script>
-        <!--Custom JavaScript -->
-        <script src="/dist/js/custom.min.js"></script>
-        <!--This page JavaScript -->
-        <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
-        <script src="/dist/js/pages/invoice/invoice.js"></script>
-        <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+    <script src="/assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="/dist/js/app.min.js"></script>
+    <script src="/dist/js/app.init.dark.js"></script>
+    <script src="/dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="/dist/js/pages/samplepages/jquery.PrintArea.js"></script>
+    <script src="/dist/js/pages/invoice/invoice.js"></script>
+    <script src="/assets/extra-libs/jquery.repeater/dff.js"></script>
 
 
 
