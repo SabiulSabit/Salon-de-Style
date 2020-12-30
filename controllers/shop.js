@@ -2074,7 +2074,7 @@ exports.getReviewandRating = (req, res, next) => {
                 let a = result[i].date;
                 result[i].date = a.toString().slice(0, 15);
             }
-            //console.log(result);
+           // console.log(result);
             return res.render('shop/reviewandRating', {
                 data: result,
             })
