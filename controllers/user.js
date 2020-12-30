@@ -18,8 +18,9 @@ const databaseName = "rondvou";
 exports.isAuthentic = (req, res, next) => {
     if (req.session.user == undefined) {
         //console.log("userController.isAuthentic")
-        // req.session.err = "";
-        // req.session.success = "";
+        req.session.err = "";
+        req.session.success = "";
+        req.session.err = "Please Login First ! ";
         return res.redirect('/')
     }
     else if(req.session.user){
@@ -1352,6 +1353,7 @@ exports.getSearchByCategory = (req, res, next) => {
 // getLogout getLogout
 exports.getLogout = (req, res, next) => {
 
+  
     req.session.destroy();
     return res.redirect('/')
 }
