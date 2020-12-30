@@ -9,13 +9,13 @@ const { connect } = require('http2');
 const { info } = require('console');
 const { INSPECT_MAX_BYTES } = require('buffer');
 const { use, route } = require('../routes/shop');
-
+require("dotenv").config();
 
 //global const
-const hostNameDB = "localhost";
-const userNameDB = "root";
-const passwordDB = "";
-const databaseName = "rondvou";
+const hostNameDB =  process.env.hostNameDB;
+const userNameDB = process.env.userNameDB;
+const passwordDB = process.env.passwordDB;
+const databaseName = process.env.databaseName;
 
 let send = nodeMailer.createTransport({
     service: 'gmail',

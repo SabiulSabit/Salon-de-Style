@@ -6,13 +6,13 @@ const bcrypt = require('bcrypt');
 const { time } = require('console');
 const e = require('express');
 const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
-
+require("dotenv").config();
 
 //global const
-const hostNameDB = "localhost";
-const userNameDB = "root";
-const passwordDB = "";
-const databaseName = "rondvou";
+const hostNameDB =  process.env.hostNameDB;
+const userNameDB = process.env.userNameDB;
+const passwordDB = process.env.passwordDB;
+const databaseName = process.env.databaseName;
 
 
 exports.isAuthentic = (req, res, next) => {
