@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-	
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/user/css/style.css">
 	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
@@ -16,167 +16,183 @@
 
 
 	<% if(user){ %>
-	<%- include('./include/loginNavbar.ejs') %>
-	<% } else{ %>
-	<%- include('./include/navbar.ejs') %>
-	<% }  %>
+		<%- include('./include/loginNavbar.ejs') %>
+			<% } else{ %>
+				<%- include('./include/navbar.ejs') %>
+					<% } %>
 
 
-	<% if(locals.err){ %>
-		<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			<%=locals.err%>
-		</div>
-		<% } %>
-		<% if(locals.success){ %>
-		<div class="alert alert-success alert-dismissible fade show" role="alert">
-			<%=locals.success%>
-		</div>
-		<% } %>
-
-
-	<!-- Banner
-================================================== -->
-	<div class="main-search-container centered">
-
-	
-
-		<div class="main-search-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>
-							Find Nearby
-							<span class="typed-words"></span>
-						</h2>
-						<h4>Discover and book beauty & wellness professionals near you</h4>
-						<form action="/search" method="post">
-							<div class="main-search-input">
-
-								<div class="main-search-input-item">
-									<input type="text" placeholder="What are you looking for?" value="" name="name"
-										required />
-								</div>
-
-								<div class="main-search-input-item location">
-									<div id="autocomplete-container">
-										<input id="autocomplete-input" type="text" placeholder="Location"
-											name="location">
-									</div>
-									<a href="#"><i class="fa fa-map-marker"></i></a>
-								</div>
-
-
-								<button type="submit" class="button">Search</button>
-
+						<% if(locals.err){ %>
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								<%=locals.err%>
 							</div>
-						</form>
-					</div>
-				</div>
-
-				<!-- Features Categories -->
-				<div class="row">
-					<div class="col-md-12">
-						<h5 class="highlighted-categories-headline">Popular searching category</h5>
-
-						<div class="highlighted-categories">
-							<!-- Box -->
-							<a href="/search/category/Hair Salon" class="highlighted-category">
-
-								<h4>Hair Salon</h4>
-							</a>
-
-							<!-- Box -->
-							<a href="/search/category/Beauty Salon" class="highlighted-category">
-
-								<h4>Beauty Salon</h4>
-							</a>
-
-							<!-- Box -->
-							<a href="/search/category/Tattoo Shop" class="highlighted-category">
-
-								<h4>Tattoo Shop</h4>
-							</a>
-
-							<!-- Box -->
-							<a href="/search/category/Massage" class="highlighted-category">
-
-								<h4>Massage</h4>
-							</a>
-						</div>
-
-					</div>
-				</div>
-				<!-- Featured Categories - End -->
-
-			</div>
-
-		</div>
-
-		<div class="video-container">
-			<video poster="images/main-search-video-poster.jpg" loop autoplay muted>
-				<source src="/video/user/US.mp4" type="video/mp4">
-			</video>
-		</div>
-	</div>
-
-
-
-	<!-- Fullwidth Section -->
-	<section class="fullwidth margin-top-65 padding-bottom-70" data-background-color="#f8f8f8">
-
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-12">
-					<h3 class="headline centered margin-bottom-45">
-						<strong class="headline-with-separator">Recommended</strong>
-
-					</h3>
-				</div>
-
-				<div class="col-md-12">
-					<div class="simple-slick-carousel dots-nav">
-						<% for(i=0;i<shop.length;i++) { %>
-						<!-- Listing Item -->
-						<div class="carousel-item">
-							<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
-								class="listing-item-container">
-								<div class="listing-item">
-									<img src="<%=shop[i].img%>" alt="">
-
-									<div class="listing-badge now-open">Now Open</div>
-
-									<div class="listing-item-content">
-										<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
-										<span><%=shop[i].address%></span>
+							<% } %>
+								<% if(locals.success){ %>
+									<div class="alert alert-success alert-dismissible fade show" role="alert">
+										<%=locals.success%>
 									</div>
-								</div>
-								<div class="star-rating" data-rating="<%=shop[i].rating%>">
-									<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
-								</div>
-							</a>
-						</div>
-						<!-- Listing Item / End -->
-						<% } %>
-					</div>
+									<% } %>
 
-				</div>
-				
-			</div>
 
-	</section>
-	<!-- Fullwidth Section / End -->
+										<!-- Banner
+================================================== -->
+										<div class="main-search-container centered">
 
-	<!-- Footer -->
 
-	<%- include('./include/footer.ejs') %>
 
-	<!-- Footer -->
+											<div class="main-search-inner">
+												<div class="container">
+													<div class="row">
+														<div class="col-md-12">
+															<h2>
+																Find Nearby
+																<span class="typed-words"></span>
+															</h2>
+															<h4>Discover and book beauty & wellness professionals near
+																you</h4>
+															<form action="/search" method="post">
+																<div class="main-search-input">
 
- <!-- JS Include Start -->
- <%- include('./include/js.ejs') %>
- <script src="/js/user/eachPage/index.js"></script>
- <!-- JS Include End -->
+																	<div class="main-search-input-item">
+																		<input type="text"
+																			placeholder="What are you looking for?"
+																			value="" name="name" required />
+																	</div>
+
+																	<div class="main-search-input-item location">
+																		<div id="autocomplete-container">
+																			<input id="autocomplete-input" type="text"
+																				placeholder="Location" name="location">
+																		</div>
+																		<a href="#"><i class="fa fa-map-marker"></i></a>
+																	</div>
+
+
+																	<button type="submit" class="button">Search</button>
+
+																</div>
+															</form>
+														</div>
+													</div>
+
+													<!-- Features Categories -->
+													<div class="row">
+														<div class="col-md-12">
+															<h5 class="highlighted-categories-headline">Popular
+																searching category</h5>
+
+															<div class="highlighted-categories">
+																<!-- Box -->
+																<a href="/search/category/Hair Salon"
+																	class="highlighted-category">
+
+																	<h4>Hair Salon</h4>
+																</a>
+
+																<!-- Box -->
+																<a href="/search/category/Beauty Salon"
+																	class="highlighted-category">
+
+																	<h4>Beauty Salon</h4>
+																</a>
+
+																<!-- Box -->
+																<a href="/search/category/Tattoo Shop"
+																	class="highlighted-category">
+
+																	<h4>Tattoo Shop</h4>
+																</a>
+
+																<!-- Box -->
+																<a href="/search/category/Massage"
+																	class="highlighted-category">
+
+																	<h4>Massage</h4>
+																</a>
+															</div>
+
+														</div>
+													</div>
+													<!-- Featured Categories - End -->
+
+												</div>
+
+											</div>
+
+											<div class="video-container">
+												<video poster="images/main-search-video-poster.jpg" loop autoplay muted>
+													<source src="/video/user/US.mp4" type="video/mp4">
+												</video>
+											</div>
+										</div>
+
+
+
+										<!-- Fullwidth Section -->
+										<section class="fullwidth margin-top-65 padding-bottom-70"
+											data-background-color="#f8f8f8">
+
+											<div class="container">
+												<div class="row">
+
+													<div class="col-md-12">
+														<h3 class="headline centered margin-bottom-45">
+															<strong class="headline-with-separator">Recommended</strong>
+
+														</h3>
+													</div>
+
+													<div class="col-md-12">
+														<div class="simple-slick-carousel dots-nav">
+															<% for(i=0;i<shop.length;i++) { %>
+																<!-- Listing Item -->
+																<div class="carousel-item">
+																	<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
+																		class="listing-item-container">
+																		<div class="listing-item">
+																			<img src="<%=shop[i].img%>" alt="">
+
+																			<div class="listing-badge now-open">Now Open
+																			</div>
+
+																			<div class="listing-item-content">
+																				<h3>
+																					<%=shop[i].businessName%> <i
+																							class="verified-icon"></i>
+																				</h3>
+																				<span>
+																					<%=shop[i].address%>
+																				</span>
+																			</div>
+																		</div>
+																		<div class="star-rating"
+																			data-rating="<%=shop[i].rating%>">
+																			<div class="rating-counter">(
+																				<%=shop[i].total%> reviews)</div>
+																		</div>
+																	</a>
+																</div>
+																<!-- Listing Item / End -->
+																<% } %>
+														</div>
+
+													</div>
+
+												</div>
+
+										</section>
+										<!-- Fullwidth Section / End -->
+
+										<!-- Footer -->
+
+										<%- include('./include/footer.ejs') %>
+
+											<!-- Footer -->
+
+											<!-- JS Include Start -->
+											<%- include('./include/js.ejs') %>
+												<script src="/js/user/eachPage/index.js"></script>
+												<!-- JS Include End -->
 
 
 

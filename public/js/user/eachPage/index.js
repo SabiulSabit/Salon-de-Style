@@ -11,8 +11,8 @@ function validatePassword() {
 
 var typed = new Typed('.typed-words', {
     strings: [" Tattoo shop", " Salon"," Attractions"],
-    typeSpeed: 80,
-    backSpeed: 80,
+    typeSpeed: 100,
+    backSpeed: 100,
     backDelay: 4000,
     startDelay: 1000,
     loop: true,

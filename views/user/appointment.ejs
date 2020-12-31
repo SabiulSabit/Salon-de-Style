@@ -53,166 +53,194 @@
 			<!-- Header -->
 
 			<% if(user){ %>
-			<%- include('./include/loginNavbar.ejs') %>
-			<% } else{ %>
-			<%- include('./include/navbar.ejs') %>
-			<% }  %>
-			<!-- Header / End -->
-			<!-- side Navbar -->
-			<%- include('./include/sideNavbar.ejs') %>
-			<!-- side Navbar -->
+				<%- include('./include/loginNavbar.ejs') %>
+					<% } else{ %>
+						<%- include('./include/navbar.ejs') %>
+							<% } %>
+								<!-- Header / End -->
+								<!-- side Navbar -->
+								<%- include('./include/sideNavbar.ejs') %>
+									<!-- side Navbar -->
 
-			<!-- Content
+									<!-- Content
 	================================================== -->
-			<div class="dashboard-content">
+									<div class="dashboard-content">
 
-				<!-- Titlebar -->
-				<div id="titlebar">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Appointment</h2>
-							<!-- Breadcrumbs -->
-							<nav id="breadcrumbs">
-								<ul>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Dashboard</a></li>
-									<li>Appointment</li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-
-					<!-- Listings -->
-					<div class="col-lg-12 col-md-12">
-						<div class="dashboard-list-box margin-top-0">
-							  
-							<% if(booking.length) { %>
-								<ul>
-
-									<%  for(let i =0 ; i<booking.length; i++ ){ %>
-									<li class="pending-booking">
-										<div class="list-box-listing bookings">
-											<div class="list-box-listing-img"><img src="<%=booking[i].img%>" alt=""></div>
-											<div class="list-box-listing-content">
-												<div class="inner">
-													<h3><%=booking[i].businessName%>
-														<%  if(booking[i].status == 0){ %>
-														<span class="booking-status pending">Pending</span>
-														<% } else if(booking[i].status == 1) { %>
-														<span class="approveBtn">Approved</span>
-														<% } else if(booking[i].status == -1) { %>
-														<span class="cancelBtn">Canceled</span>
-														<% } %>
-	
-													</h3>
-													<div class="inner-booking-list">
-														<h5>Booking Service:</h5>
-														<ul class="booking-list">
-															<li class="highlighted"><%=booking[i].serviceName%></li>
+										<!-- Titlebar -->
+										<div id="titlebar">
+											<div class="row">
+												<div class="col-md-12">
+													<h2>Appointment</h2>
+													<!-- Breadcrumbs -->
+													<nav id="breadcrumbs">
+														<ul>
+															<li><a href="#">Home</a></li>
+															<li><a href="#">Dashboard</a></li>
+															<li>Appointment</li>
 														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Price:</h5>
-														<ul class="booking-list">
-															<li class="highlighted">$<%=booking[i].servicePrice%></li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Booking Date:</h5>
-														<ul class="booking-list">
-															<li class="highlighted"><%=booking[i].day%> -
-																(<%=booking[i].timeSlotStart%> -
-																<%=booking[i].timeSlotEnd%>)</li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Address:</h5>
-														<ul class="booking-list">
-															<li>New york</li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Contact:</h5>
-														<ul class="booking-list">
-															<li><%=booking[i].businessMail%></li>
-														</ul>
-													</div>
+													</nav>
 												</div>
 											</div>
 										</div>
-										<div class="buttons-to-right">
-											<%  if(booking[i].status == 0){ %>
-	
-											<form action="/delete/appoinment" method="post">
-												<input type="hidden" name="id" value="<%=booking[i].bookingID%>">
-												<input type="hidden" name="shopMail" value="<%=booking[i].businessMail%>">
-												<button type="submit" class="button gray reject pb-5">
-													<i class="sl sl-icon-close"></i>Cancel
-												</button>
-											</form>
-	
-											<a class="button gray approve"
-												href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
-													class="sl sl-icon-check"></i>Book Again</a>
-											<% } else if(booking[i].status == 1) { %>
-											<form action="/delete/appoinment" method="post">
-												<input type="hidden" name="id" value="<%=booking[i].bookingID%>">
-												<input type="hidden" name="shopMail" value="<%=booking[i].businessMail%>">
-												<button type="submit" class="button gray reject pb-5">
-													<i class="sl sl-icon-close"></i>Cancel
-												</button>
-											</form>
-											<a class="button gray approve"
-												href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
-													class="sl sl-icon-check"></i>Book Again</a>
-											<% } else if(booking[i].status == -1) { %>
-											<a class="button gray approve"><i class="sl sl-icon-check"></i>Book Again</a>
-											<% } %>
-	
+
+										<div class="row">
+
+											<!-- Listings -->
+											<div class="col-lg-12 col-md-12">
+												<div class="dashboard-list-box margin-top-0">
+
+													<% if(booking.length) { %>
+														<ul>
+
+															<% for(let i=0 ; i<booking.length; i++ ){ %>
+																<li class="pending-booking">
+																	<div class="list-box-listing bookings">
+																		<div class="list-box-listing-img"><img
+																				src="<%=booking[i].img%>" alt=""></div>
+																		<div class="list-box-listing-content">
+																			<div class="inner">
+																				<h3>
+																					<%=booking[i].businessName%>
+																						<% if(booking[i].status==0){ %>
+																							<span
+																								class="booking-status pending">Pending</span>
+																							<% } else
+																								if(booking[i].status==1)
+																								{ %>
+																								<span
+																									class="approveBtn">Approved</span>
+																								<% } else
+																									if(booking[i].status==-1)
+																									{ %>
+																									<span
+																										class="cancelBtn">Canceled</span>
+																									<% } %>
+
+																				</h3>
+																				<div class="inner-booking-list">
+																					<h5>Booking Service:</h5>
+																					<ul class="booking-list">
+																						<li class="highlighted">
+																							<%=booking[i].serviceName%>
+																						</li>
+																					</ul>
+																				</div>
+																				<div class="inner-booking-list">
+																					<h5>Price:</h5>
+																					<ul class="booking-list">
+																						<li class="highlighted">$
+																							<%=booking[i].servicePrice%>
+																						</li>
+																					</ul>
+																				</div>
+																				<div class="inner-booking-list">
+																					<h5>Booking Date:</h5>
+																					<ul class="booking-list">
+																						<li class="highlighted">
+																							<%=booking[i].day%> -
+																								(
+																								<%=booking[i].timeSlotStart%>
+																									-
+																									<%=booking[i].timeSlotEnd%>
+																										)
+																						</li>
+																					</ul>
+																				</div>
+																				<div class="inner-booking-list">
+																					<h5>Address:</h5>
+																					<ul class="booking-list">
+																						<li>New york</li>
+																					</ul>
+																				</div>
+																				<div class="inner-booking-list">
+																					<h5>Contact:</h5>
+																					<ul class="booking-list">
+																						<li>
+																							<%=booking[i].businessMail%>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="buttons-to-right">
+																		<% if(booking[i].status==0){ %>
+
+																			<form action="/delete/appoinment"
+																				method="post">
+																				<input type="hidden" name="id"
+																					value="<%=booking[i].bookingID%>">
+																				<input type="hidden" name="shopMail"
+																					value="<%=booking[i].businessMail%>">
+																				<button type="submit"
+																					class="button gray reject pb-5">
+																					<i
+																						class="sl sl-icon-close"></i>Cancel
+																				</button>
+																			</form>
+
+																			<a class="button gray approve"
+																				href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
+																					class="sl sl-icon-check"></i>Book
+																				Again</a>
+																			<% } else if(booking[i].status==1) { %>
+																				<form action="/delete/appoinment"
+																					method="post">
+																					<input type="hidden" name="id"
+																						value="<%=booking[i].bookingID%>">
+																					<input type="hidden" name="shopMail"
+																						value="<%=booking[i].businessMail%>">
+																					<button type="submit"
+																						class="button gray reject pb-5">
+																						<i
+																							class="sl sl-icon-close"></i>Cancel
+																					</button>
+																				</form>
+																				<a class="button gray approve"
+																					href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
+																						class="sl sl-icon-check"></i>Book
+																					Again</a>
+																				<% } else if(booking[i].status==-1) { %>
+																					<a class="button gray approve"><i
+																							class="sl sl-icon-check"></i>Book
+																						Again</a>
+																					<% } %>
+
+																	</div>
+																</li>
+																<% } %>
+
+
+														</ul>
+
+														<% } else{ %>
+
+															<div class="container">
+																<div class="row">
+																	<div class="col-12">
+																		<h3>No Data Found</h3>
+																	</div>
+																</div>
+															</div>
+															<% } %>
+
+												</div>
+											</div>
+
+
 										</div>
-									</li>
-									<% } %>
-	
-	
-								</ul>
- 
-							<% } else{  %>
-									 
-							<div class="container">
-								<div class="row">
-									<div class="col-12">
-										<h3>No Data Found</h3>
+
 									</div>
-								</div>
-							</div>
-							<%  } %>
-
-				
-						</div>
-					</div>
-
-
-				</div>
-
-			</div>
-			<!-- Content / End -->
-
-
+									<!-- Content / End -->
 	</div>
 	<!-- Dashboard / End -->
-
 
 	</div>
 	<!-- Wrapper / End -->
 
-							
- <!-- JS Include Start -->
- <%- include('./include/js.ejs') %>
- <!-- JS Include End -->
-
+	<!-- JS Include Start -->
+	<%- include('./include/js.ejs') %>
+		<!-- JS Include End -->
 
 
 </body>

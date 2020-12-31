@@ -1,60 +1,57 @@
 <!DOCTYPE html>
+
 <head>
 
-<title>Checkout</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Checkout</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<!-- CSS -->
-<link rel="stylesheet" href="/css/user/css/style.css">
-<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+	<!-- CSS -->
+	<link rel="stylesheet" href="/css/user/css/style.css">
+	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
 </head>
 
 <body>
 	<% if(user){ %>
-        <%- include('./include/loginNavbar.ejs') %>
-      <% } else{ %>
-        <%- include('./include/navbar.ejs') %>
-      <% }  %>
+		<%- include('./include/loginNavbar.ejs') %>
+			<% } else{ %>
+				<%- include('./include/navbar.ejs') %>
+					<% } %>
 
 
-<!-- Container -->
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
+						<!-- Container -->
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
 
-			<div class="booking-confirmation-page">
-				<i class="fa fa-check-circle"></i>
-				<h2 class="margin-top-30">Thanks for your booking!</h2>
-				<p>Check your appointment in Dashboard</p>
-				<form action="/cart" method="post">
-					<input type="hidden" name="token" value="<%=toekn%>">
-				    <input type="submit" class="button margin-top-30" value="View Invoice">
-				</form>
-			
-			</div>
+									<div class="booking-confirmation-page">
+										<i class="fa fa-check-circle"></i>
+										<h2 class="margin-top-30">Thanks for your booking!</h2>
+										<p>Check your appointment in Dashboard</p>
+										<form action="/cart" method="post">
+											<input type="hidden" name="token" value="<%=toekn%>">
+											<input type="submit" class="button margin-top-30" value="View Invoice">
+										</form>
 
-		</div>
-	</div>
-</div>
-<!-- Container / End -->
+									</div>
 
+								</div>
+							</div>
+						</div>
+						<!-- Container / End -->
 
+						<!-- Footer -->
 
-<!-- Footer -->
+						<%- include('./include/footer.ejs') %>
 
-<%- include('./include/footer.ejs') %>
+							<!-- Footer -->
 
-<!-- Footer -->
-
-							
- <!-- JS Include Start -->
- <%- include('./include/js.ejs') %>
- <!-- JS Include End -->
-
-
+							<!-- JS Include Start -->
+							<%- include('./include/js.ejs') %>
+								<!-- JS Include End -->
 
 
 </body>
+
 </html>
