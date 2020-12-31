@@ -299,8 +299,8 @@ body .user-menu ul li a:hover {
 
 #navigation.style-1>ul>li:hover>a,
 #navigation.style-1>ul>li>a.current {
-    background: rgba(249, 25, 66, .06);
-    color: #f91942
+    background: #f91942;
+    color: #fff;
 }
 
 .category-box:hover .category-box-content span,

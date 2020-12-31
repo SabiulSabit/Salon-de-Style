@@ -1,103 +1,17 @@
 @charset "UTF-8";
 
-/*
-* Author: Vasterad
-* URL: http://purethemes.net
-*/
-
-/* ------------------------------------------------------------------- */
-/* Table of Contents
-----------------------------------------------------------------------
-
-	01. Import Section ...................... Imported variables.
-
-	02. Layout Components ................... Generic layout elements.
-		# Forms Reset & Styles
-		# Header
-		# Sticky Header
-		# Back to top
-		# Navigation
-		# User Menu
-		# mmenu.js - mobile menu
-		# Main Search Container
-		# Range Slider
-		# Chosen Plugin
-		# Sort by custom select
-		# Custom Chosen Dropdown
-		# Input with dropdown
-		# Panel Dropdown
-		# Booking Page
-		# Single Listing Page
-		# Contact Page
-		# Coming Soon Page
-		# Blog Styles
-		# Listing Item Layout Style
-		# Small Category Boxes
-		# Titlebar
-
-	03. Shortcodes .......................... Template elements.
-		# Buttons
-		# Tables
-		# Accordion / Toggles
-		# Share Buttons
-		# Post Navigation
-		# Pricing Tables
-		# List Styles
-		# Tooltips
-		# Info Box
-		# Notification Boxes
-		# Testimonials
-		# Tabs
-		# Login Register
-		# Social Icons
-		# Custom Checkboxes
-
-	04. Dashboard ........................... User panel styles
-		# Dashboard Navigation
-		# Dashboard Titlebar
-		# Dashboard Stats Boxes
-		# Dashboard Pagination
-		# Dashboard List Box
-		# Add Listing
-		# Opening Hours
-		# Pricing
-
-	05. Script Styles ....................... jQuery add-ons CSS.
-		# Leaflet Maps
-		# Google Maps
-		# Dropzone
-		# Magnific Popup
-		# Parallax Background
-		# Slick Carousel
-
-	05. Others .............................. CSS helper classes etc.
-		# Common Styles
-		# Offsets
-
-	06. Media Queries ....................... Mobile style sheets.
-
-*/
-
-
-/* ------------------------------------------------------------------- */
-/* 01. Import Section
----------------------------------------------------------------------- */
-@import url("bootstrap-grid.css");					/* Default Reset, Typography, Forms, Responsive Grid etc. */
-@import url("icons.css");							/* Webfont Icons: FontAwesome, Line, Simple Line */
-@import url("plugins/revolutionslider.css");		/* Revolution Slider Style Sheets */
+@import url("bootstrap-grid.css");					
+@import url("icons.css");							
+@import url("plugins/revolutionslider.css");		
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:500,600,700');
 
-
-
-/* ------------------------------------------------------------------- */
-/*  02. Layout Components
----------------------------------------------------------------------- */
-
-/* ---------------------------------- */
-/* Forms Reset & Styles
-------------------------------------- */
-
+.login .form-row label{
+	width: 100%;
+}
+.register .form-row label{
+	width: 100%;
+}
 
 input,
 input[type="text"],
@@ -2099,7 +2013,9 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out{
 }
 
 .transparent-header #header:not(.cloned) {
-    background: rgba(51,51,51,0);
+	/* background: rgba(51,51,51,0); */
+	background-color: #fff;
+	color: #222;
     position: absolute;
     width: 100%;
     box-shadow: none;
@@ -2110,26 +2026,26 @@ body .typed-cursor.typed-cursor--blink.typed-fade-out{
 .transparent-header .highlighted-categories-headline,
 .transparent-header .main-search-container h2 { color: #fff; }
 
-.transparent-header #header:not(.cloned) #navigation.style-1 > ul > li > a { color: #fff; }
+.transparent-header #header:not(.cloned) #navigation.style-1 > ul > li > a { color: #222; }
 .transparent-header #header:not(.cloned) #navigation.style-1 > ul > li > a.current, 
 .transparent-header #header:not(.cloned) #navigation.style-1 > ul > li:hover > a {
     background: #66676b;
     color: #fff;
 }
 .transparent-header .main-search-container h4 { color: rgba(255,255,255,0.65); }
-.transparent-header .highlighted-category h4 { color: #fff; }
+.transparent-header .highlighted-category h4 { color: #222; }
 .transparent-header .header-widget .sign-in:hover,
-.transparent-header .header-widget .sign-in { color: #fff; }
+.transparent-header .header-widget .sign-in { color: #222; }
 
-.transparent-header #header:not(.cloned) .user-menu .user-name:after {color: rgba(255,255,255,0.7) !important; }
+.transparent-header #header:not(.cloned) .user-menu .user-name:after {color: #222 !important; }
 .transparent-header #header:not(.cloned) .user-menu.active .user-name,
 .transparent-header #header:not(.cloned) .user-menu:hover .user-name,
-.transparent-header #header:not(.cloned) .user-menu .user-name { color: #fff !important; }
+.transparent-header #header:not(.cloned) .user-menu .user-name { color: #222 !important; }
 
 .transparent-header #header:not(.cloned) .header-widget .button,
 .transparent-header #header:not(.cloned) .header-widget .button.border {
-    background: rgba(255,255,255,0.15);
-    color: #fff;
+    background: rgba(219, 32, 32, 0.15);
+    color: #222;
     border: none;
     padding: 9px 20px;
 }
@@ -7127,7 +7043,6 @@ body .comment-content p { padding: 5px 0; font-size: 15px; }
 	padding: 36px;
 	padding-bottom: 40px;
 	margin-bottom: 55px;
-	margin-top: 70px;
 	display: inline-block;
 	width: 100%;
 	position: relative;
@@ -7686,6 +7601,7 @@ a.rate-review:hover {
 		padding: 0px; 
 		padding-right: 110px;
 		position: relative;
+		margin-bottom: 15px;
 	}
 	.pricing-list-container p {
 		color: #777;
