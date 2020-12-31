@@ -2,14 +2,11 @@
 
 <head>
 
-	<!-- Basic Page Needs
-================================================== -->
 	<title>Search Results</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-================================================== -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="/css/user/css/style.css">
 	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
@@ -18,9 +15,9 @@
 <body>
 
 	<% if(user){ %>
-	<%- include('./loginNavbar.ejs') %>
+	<%- include('./include/loginNavbar.ejs') %>
 	<% } else{ %>
-	<%- include('./navbar.ejs') %>
+	<%- include('./include/navbar.ejs') %>
 	<% }  %>
 
 	<!-- Titlebar
@@ -72,7 +69,7 @@
 								<!-- Image -->
 								<div class="listing-item-image">
 									<img src="<%=shop[i].img%>" alt="">
-									<span class="tag">RONDVOU</span>
+									<span class="tag">Salon de Style</span>
 								</div>
 
 								<!-- Content -->
@@ -86,32 +83,12 @@
 											<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
 										</div>
 									</div>
-
-									<span class="like-icon"></span>
 								</div>
 							</a>
 						</div>
 					</div>
 					<% } %>
 					<!-- Listing Item / End -->
-							<!-- Pagination -->
-				
-				<div class="row">
-					<div class="col-md-12">
-						<!-- Pagination -->
-						<div class="pagination-container margin-top-20 margin-bottom-40">
-							<nav class="pagination">
-								<ul>
-									<li><a href="#" class="current-page">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-				<!-- Pagination / End -->
 					<% } %>
 
 
@@ -130,25 +107,15 @@
 
 	<!-- Footer -->
 
-	<%- include('./footer.ejs') %>
+	<%- include('./include/footer.ejs') %>
 
 	<!-- Footer -->
 
 
 
-	<!-- Scripts
-================================================== -->
+	<!-- Scripts -->
 	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
 
 

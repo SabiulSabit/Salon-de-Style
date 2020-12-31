@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 
 <head>
-
-	<!-- Basic Page Needs
-================================================== -->
-	<title>Listeo</title>
+	<title>Salon de Style</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-================================================== -->
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+	
+	<!-- CSS -->
 	<link rel="stylesheet" href="/css/user/css/style.css">
 	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
@@ -19,9 +16,9 @@
 
 
 	<% if(user){ %>
-	<%- include('./loginNavbar.ejs') %>
+	<%- include('./include/loginNavbar.ejs') %>
 	<% } else{ %>
-	<%- include('./navbar.ejs') %>
+	<%- include('./include/navbar.ejs') %>
 	<% }  %>
 
 
@@ -142,7 +139,6 @@
 						<% for(i=0;i<shop.length;i++) { %>
 						<!-- Listing Item -->
 						<div class="carousel-item">
-
 							<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
 								class="listing-item-container">
 								<div class="listing-item">
@@ -154,7 +150,6 @@
 										<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
 										<span><%=shop[i].address%></span>
 									</div>
-									<span class="like-icon"></span>
 								</div>
 								<div class="star-rating" data-rating="<%=shop[i].rating%>">
 									<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
@@ -162,14 +157,11 @@
 							</a>
 						</div>
 						<!-- Listing Item / End -->
-
 						<% } %>
-
-
-
 					</div>
 
 				</div>
+				
 			</div>
 
 	</section>
@@ -177,44 +169,24 @@
 
 	<!-- Footer -->
 
-	<%- include('./footer.ejs') %>
+	<%- include('./include/footer.ejs') %>
 
 	<!-- Footer -->
 
 	<!-- Scripts
 ================================================== -->
 	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
-
-
-	<!-- Leaflet // Docs: https://leafletjs.com/ -->
-	<script src="/js/user/scripts/leaflet.min.js"></script>
-
-	<!-- Leaflet Maps Scripts -->
-	<script src="/js/user/scripts/leaflet-markercluster.min.js"></script>
-	<script src="/js/user/scripts/leaflet-gesture-handling.min.js"></script>
-	<script src="/js/user/scripts/leaflet-listeo.js"></script>
-
-	<!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
-	<script src="/js/user/scripts/leaflet-autocomplete.js"></script>
-	<script src="/js/user/scripts/leaflet-control-geocoder.js"></script>
-
 
 	<!-- Typed Script -->
 	<script type="text/javascript" src="/js/user/scripts/typed.js"></script>
 	<script>
 		var typed = new Typed('.typed-words', {
-			strings: ["Attractions", " Restaurants", " Hotels"],
+			strings: [" Tattoo shop", " Salon"," Attractions"],
 			typeSpeed: 80,
 			backSpeed: 80,
 			backDelay: 4000,
@@ -226,8 +198,6 @@
 
 
 	<script>
-	
-
 		function validatePassword() {
 			let password = document.getElementById("abc_password")
 			let confirm_password = document.getElementById("confirm_password");

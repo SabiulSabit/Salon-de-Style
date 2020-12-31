@@ -2,14 +2,11 @@
 
 <head>
 
-	<!-- Basic Page Needs
-================================================== -->
-	<title>Listeo</title>
+	<title>Appointment</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-================================================== -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="/css/user/css/style.css">
 	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
@@ -56,13 +53,13 @@
 			<!-- Header -->
 
 			<% if(user){ %>
-			<%- include('./loginNavbar.ejs') %>
+			<%- include('./include/loginNavbar.ejs') %>
 			<% } else{ %>
-			<%- include('./navbar.ejs') %>
+			<%- include('./include/navbar.ejs') %>
 			<% }  %>
 			<!-- Header / End -->
 			<!-- side Navbar -->
-			<%- include('./sideNavbar.ejs') %>
+			<%- include('./include/sideNavbar.ejs') %>
 			<!-- side Navbar -->
 
 			<!-- Content
@@ -198,10 +195,6 @@
 					</div>
 
 
-					<!-- Copyrights -->
-					<div class="col-md-12">
-						<div class="copyrights">© 2019 Listeo. All Rights Reserved.</div>
-					</div>
 				</div>
 
 			</div>
@@ -220,20 +213,8 @@
 ================================================== -->
 	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
 	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
-
-	<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-	<script src="/js/user/scripts/moment.min.js"></script>
-	<script src="/js/user/scripts/daterangepicker.js"></script>
 
 
 

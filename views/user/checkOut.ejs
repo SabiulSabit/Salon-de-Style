@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <head>
 
-<!-- Basic Page Needs
-================================================== -->
-<title>Listeo</title>
+<title>Checkout</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<!-- CSS
-================================================== -->
+<!-- CSS -->
 <link rel="stylesheet" href="/css/user/css/style.css">
 <link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
@@ -16,35 +13,11 @@
 
 <body>
 	<% if(user){ %>
-        <%- include('./loginNavbar.ejs') %>
+        <%- include('./include/loginNavbar.ejs') %>
       <% } else{ %>
-        <%- include('./navbar.ejs') %>
+        <%- include('./include/navbar.ejs') %>
       <% }  %>
-<!-- Titlebar
-================================================== -->
-<div id="titlebar">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
 
-				<h2>Booking Processed</h2>
-
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Booking Processed</li>
-					</ul>
-				</nav>
-
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<!-- Content
-================================================== -->
 
 <!-- Container -->
 <div class="container">
@@ -54,7 +27,7 @@
 			<div class="booking-confirmation-page">
 				<i class="fa fa-check-circle"></i>
 				<h2 class="margin-top-30">Thanks for your booking!</h2>
-				<p>You'll receive a confirmation email at mail@example.com</p>
+				<p>Check your appointment in Dashboard</p>
 				<form action="/cart" method="post">
 					<input type="hidden" name="token" value="<%=toekn%>">
 				    <input type="submit" class="button margin-top-30" value="View Invoice">
@@ -71,23 +44,14 @@
 
 <!-- Footer -->
 
-<%- include('./footer.ejs') %>
+<%- include('./include/footer.ejs') %>
 
 <!-- Footer -->
 
 <!-- Scripts
 ================================================== -->
 <script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
 <script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
 <script type="text/javascript" src="/js/user/scripts/custom.js"></script>
 
 

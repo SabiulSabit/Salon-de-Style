@@ -5,7 +5,7 @@
     <header id="header-container">
     
         <!-- Header -->
-        <div id="header" class="not-sticky">
+        <div id="header">
             <div class="container-fluid">
                 
                 <!-- Left Side Content -->
@@ -13,7 +13,7 @@
                     
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="/"><img src="images/logo.png" alt=""></a>
+                        <a href="/"><img src="../../../assets/images/favicon.png" alt=""></a>
                     </div>
     
                     <!-- Mobile Navigation -->
@@ -28,7 +28,7 @@
                     <!-- Main Navigation -->
                     <nav id="navigation" class="style-1">
                         <ul id="responsive">
-                            <li><a href="/">Home</a></li>
+                            <li><a href="/"><img src="../../assets/images/logo.PNG" alt="logo" height="40px" width="40px"></a></li>
                             <li><a href="/search/category/Hair Salon">Hair Salon</a></li>
                             <li><a href="/search/category/Nail Salon">Nail Salon</a></li>
                             <li><a href="/search/category/Eyebrows & Lashes">Eyebrows & Lashes</a></li>
@@ -87,11 +87,23 @@
                 </div>
                 <!-- Left Side Content / End -->
     
+    
                 <!-- Right Side Content / End -->
                 <div class="right-side">
                     <div class="header-widget">
-                        <a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
-                        <a href="/" class="button border with-icon">Business<i class="sl sl-icon-plus"></i></a>
+                        <!-- User Menu -->
+                        <div class="user-menu">
+                            <div class="user-name"><span><img src="<%=userAll.img%>" alt=""></span>Hi, <%=name%> !</div>
+                            <ul>
+                                <li><a href="/profile"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                                
+                                <li><a href="/appointment"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
+                                <li><a href="/logout"><i class="sl sl-icon-power"></i> Logout</a></li>
+                            </ul>
+                        </div>
+    
+    
+                        <a href="/shop/login" class="button border with-icon">Business<i class="sl sl-icon-plus"></i></a>
                     </div>
                 </div>
                 <!-- Right Side Content / End -->
@@ -114,8 +126,8 @@
                         <div class="tabs-container alt">
     
                             <!-- Login -->
-                            <div class="tab-content" id="tab1" style="display: none;">
-                                <form method="post" action="/login" class="login">
+                            <div class="tab-content login" id="tab1" style="display: none;">
+                                <form method="post" class="login">
     
                                     <p class="form-row form-row-wide">
                                         <label for="username">Username:
@@ -129,10 +141,9 @@
                                             <i class="im im-icon-Lock-2"></i>
                                             <input class="input-text" type="password" name="password" id="password"/>
                                         </label>
-                                    
-                                        
-                                            
-                                        
+                                        <span class="lost_password">
+                                            <a href="#">Lost Your Password?</a>
+                                        </span>
                                     </p>
     
                                     <div class="form-row">
@@ -147,48 +158,35 @@
                             </div>
     
                             <!-- Register -->
-                            <div class="tab-content" id="tab2" style="display: none;">
+                            <div class="tab-content register" id="tab2" style="display: none;">
     
-                                <form method="post" action="/createaccount"  enctype="multipart/form-data"  class="register">
+                                <form method="post" class="register">
                                     
                                 <p class="form-row form-row-wide">
                                     <label for="username2">Username:
                                         <i class="im im-icon-Male"></i>
-                                        <input type="text" class="input-text" name="username" id="username2" value="" required />
+                                        <input type="text" class="input-text" name="username" id="username2" value="" />
                                     </label>
                                 </p>
                                     
                                 <p class="form-row form-row-wide">
                                     <label for="email2">Email Address:
                                         <i class="im im-icon-Mail"></i>
-                                        <input type="text" class="input-text" name="email" id="email2" value=""  required/>
-                                    </label>
-                                </p>
-                                <p class="form-row form-row-wide">
-                                    <label for="username2">Address:
-                                        <i class="im im-icon-Male"></i>
-                                        <input type="text" class="input-text" name="address" id="address" value="" required />
+                                        <input type="text" class="input-text" name="email" id="email2" value="" />
                                     </label>
                                 </p>
     
                                 <p class="form-row form-row-wide">
                                     <label for="password1">Password:
                                         <i class="im im-icon-Lock-2"></i>
-                                        <input class="input-text" type="password" name="password1" id="abc_password" required/>
+                                        <input class="input-text" type="password" name="password1" id="password1"/>
                                     </label>
                                 </p>
     
                                 <p class="form-row form-row-wide">
                                     <label for="password2">Repeat Password:
                                         <i class="im im-icon-Lock-2"></i>
-                                        <input class="input-text" type="password" name="password2" onkeyup="validatePassword()" id="confirm_password" required/>
-                                    </label>
-                                </p>
-                                
-                                <p class="form-row form-row-wide">
-                                    <label for="password2">Upload Image:
-                                        <i class="im im-icon-Lock-2"></i>
-                                        <input class="input-text" type="file" name="image" id="image" required />
+                                        <input class="input-text" type="password" name="password2" id="password2"/>
                                     </label>
                                 </p>
     
@@ -209,3 +207,4 @@
     </header>
     <div class="clearfix"></div>
     <!-- Header Container / End -->
+    
