@@ -531,23 +531,31 @@ exports.getService = (req, res, next) => {
         password: passwordDB,
         database: databaseName,
     });
-
-    console.log(req.params.name)
+   
+    //console.log(req.params.name)
+    // if(req.params.name == "assets"){
+    //    req.session.prevUrl = "iamsabit99@gmail.com"
+    // }
+    // else{
+    //     req.session.prevUrl =  req.params.name
+    // }
+  
+   
     let userData = "SELECT `email`, `name`, `phone`, `address` " +
         " FROM `userinfo` " +
         " WHERE email = " + mysql.escape(req.session.user);
 
     let shopInfo = "SELECT * " +
         " FROM `shopadmin` " +
-        " WHERE businessMail = " + mysql.escape(req.params.name)
+        " WHERE businessMail = " + mysql.escape(req.params.prevUrl)
 
     let timeSlot = "SELECT * " +
         " FROM `shoptime` " +
-        " WHERE businessMail = " + mysql.escape(req.params.name)
+        " WHERE businessMail = " + mysql.escape(req.params.prevUrl)
 
     let allService = "SELECT `name`, `hour`, `min`, `price` " +
         " FROM `shopservice` " +
-        " WHERE businessMail = " + mysql.escape(req.params.name)
+        " WHERE businessMail = " + mysql.escape(req.params.prevUrl)
 
     // console.log(userData)
     connectDB.query(userData, (err, result) => {
