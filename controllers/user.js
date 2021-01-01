@@ -532,7 +532,7 @@ exports.getService = (req, res, next) => {
         database: databaseName,
     });
 
-    //console.log(req.params)
+    console.log(req.params.name)
     let userData = "SELECT `email`, `name`, `phone`, `address` " +
         " FROM `userinfo` " +
         " WHERE email = " + mysql.escape(req.session.user);
