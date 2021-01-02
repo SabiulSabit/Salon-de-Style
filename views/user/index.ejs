@@ -38,12 +38,12 @@
 					<% if(locals.err){ %>
 						<div class="alert alert-danger alert-dismissible fade show">
 							
-							<h1 class="text-danger p-3" style="font-weight: 600;"><%=locals.err%></h1>
+							<h3 class="text-danger p-3" style="font-weight: 600;"><%=locals.err%></h3>
 						</div>
 						<% } %>
 							<% if(locals.success){ %>
 								<div class="alert alert-success alert-dismissible fade show">
-									<h1 class="text-success p-3" style="font-weight: 600;"><%=locals.success%></h1>
+									<h3 class="text-success p-3" style="font-weight: 600;"><%=locals.success%></h3>
 								</div>
 								<% } %>
 					<div class="col-md-12">
@@ -172,6 +172,56 @@
 			</div>
 
 	</section>
+
+
+		<!-- Fullwidth Section -->
+		<section class="fullwidth margin-top-65 padding-bottom-70" data-background-color="#f8f8f8">
+
+			<div class="container">
+				<div class="row">
+	
+					<div class="col-md-12">
+						<h3 class="headline centered margin-bottom-45">
+							<strong class="headline-with-separator">Top Rated</strong>
+	
+						</h3>
+					</div>
+	
+					<div class="col-md-12">
+						<div class="simple-slick-carousel dots-nav">
+							<% for(i=shop.length-1;i>=0;i--) { %>
+							<!-- Listing Item -->
+							<div class="carousel-item">
+	
+								<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
+									class="listing-item-container">
+									<div class="listing-item">
+										<img src="<%=shop[i].img%>" alt="">
+	
+										<div class="listing-badge now-open">Now Open</div>
+	
+										<div class="listing-item-content">
+											<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
+											<span><%=shop[i].address%></span>
+										</div>
+									</div>
+									<div class="star-rating" data-rating="<%=shop[i].rating%>">
+										<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
+									</div>
+								</a>
+							</div>
+							<!-- Listing Item / End -->
+	
+							<% } %>
+	
+	
+	
+						</div>
+	
+					</div>
+				</div>
+	
+		</section>
 	<!-- Fullwidth Section / End -->
 
 	<!-- Footer -->
