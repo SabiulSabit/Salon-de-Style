@@ -21,8 +21,8 @@
 
 	<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-	<link rel="stylesheet" href="/css/user/css/owl.css">
-	<link rel="stylesheet" href="/css/user/css/owlcarosel.css">
+	
+	<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.css">
 
 
 	<style>
@@ -333,24 +333,33 @@
 								<div class="large-12 columns">
 									<div class="owl-carousel owl-theme">
 										<% for(let i=0; i<2; i++) { %>
-											<div class="item">
-												<img src="<%=shopInfo.img%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img1%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img2%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img3%>" alt="">
-											</div>
-											<div class="item">
-												<img src="<%=shopInfo.img4%>" alt="">
-											</div>
-											<% } %>
-
-
+											<% if(shopInfo.img !="" ) { %>
+												<div class="item">
+													<img src="<%=shopInfo.img%>" alt="">
+												</div>
+												<% } %>
+												<% if(shopInfo.img1 !="" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img1%>" alt="">
+													</div>
+												<% } %>
+												<% if(shopInfo.img2 != "" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img2%>" alt="">
+													</div>
+												<% } %>
+												<% if(shopInfo.img3 !="" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img3%>" alt="">
+													</div>
+												<% } %>
+												<% if(shopInfo.img4 !="" ) { %>
+													<div class="item">
+														<img src="<%=shopInfo.img4%>" alt="">
+													</div>
+												<% } %>
+												
+								        <% } %>
 									</div>
 								</div>
 							</div>
