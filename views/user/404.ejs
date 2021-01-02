@@ -1,60 +1,95 @@
+<!DOCTYPE html>
+<head>
 
-	<!-- Header -->
-	<%- include('./include/header.ejs') %>
-	<!-- Header -->
+<!-- Basic Page Needs
+================================================== -->
+<title>Listeo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="/css/user/css/style.css">
+<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+
 </head>
 
 <body>
 
-	<!-- Titlebar
+
+
+<!-- Titlebar
 ================================================== -->
-	<div id="titlebar">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-
-					<h2>404 Not Found</h2>
-
-					<!-- Breadcrumbs -->
-					<nav id="breadcrumbs">
-						<ul>
-							<li><a href="/">Home</a></li>
-							<li>404 Not Found</li>
-						</ul>
-					</nav>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Content
-================================================== -->
-
-	<!-- Container -->
+<div id="titlebar">
 	<div class="container">
-
 		<div class="row">
 			<div class="col-md-12">
-				<section id="not-found" class="center">
-					<h2>404 <i class="fa fa-question-circle"></i></h2>
-					<p>We're sorry, but the page you were looking for doesn't exist.</p>
-         		</section>
+
+				<h2>404 Not Found</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li>404 Not Found</li>
+					</ul>
+				</nav>
+
 			</div>
 		</div>
-
 	</div>
-	<!-- Container / End -->
+</div>
 
-	<!-- Footer -->
-	<%- include('./include/footer.ejs') %>
-	<!-- Footer -->
+<!-- Content
+================================================== -->
 
-	<!-- JS Include Start -->
-	<%- include('./include/js.ejs') %>
-	<!-- JS Include End -->
+<!-- Container -->
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<section id="not-found" class="center">
+				<h2>404 <i class="fa fa-question-circle"></i></h2>
+				<p>We're sorry, but the page you were looking for doesn't exist.</p>
+
+
+
+			</section>
+
+		</div>
+	</div>
+
+</div>
+<!-- Container / End -->
+
+
+
+<!-- Footer -->
+
+<%- include('./footer.ejs') %>
+
+<!-- Footer -->
+
+
+
+<!-- Scripts
+================================================== -->
+<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+
+
 
 
 </body>
-
 </html>

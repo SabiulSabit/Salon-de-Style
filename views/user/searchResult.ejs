@@ -1,109 +1,158 @@
+<!DOCTYPE html>
 
-	<!-- Header -->
-	<%- include('./include/header.ejs') %>
-	<!-- Header -->
+<head>
+
+	<!-- Basic Page Needs
+================================================== -->
+	<title>Search Results</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+================================================== -->
+	<link rel="stylesheet" href="/css/user/css/style.css">
+	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
 </head>
 
 <body>
 
 	<% if(user){ %>
-		<%- include('./include/loginNavbar.ejs') %>
-			<% } else{ %>
-				<%- include('./include/navbar.ejs') %>
+	<%- include('./loginNavbar.ejs') %>
+	<% } else{ %>
+	<%- include('./navbar.ejs') %>
+	<% }  %>
+
+	<!-- Titlebar
+================================================== -->
+	<div id="titlebar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<h2>Search Results  For: "<%=search%>" </h2>
+
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li>Search Results</li>
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Content
+================================================== -->
+
+	<!-- Container -->
+	<div class="container">
+		<div class="row">
+
+
+
+			<div class="col-md-12">
+
+
+				<div class="row">
+
+					<% if(shop.length==0){ %>
+					<h1 class="text-center">No Shop Found</h1>
+					<% } else{ %>
+					<!-- Listing Item -->
+					<% for(i=0;i<shop.length;i++) { %>
+					<div class="col-lg-12 col-md-12">
+						<div class="listing-item-container list-layout">
+							<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>" class="listing-item">
+
+								<!-- Image -->
+								<div class="listing-item-image">
+									<img src="<%=shop[i].img%>" alt="">
+									<span class="tag">RONDVOU</span>
+								</div>
+
+								<!-- Content -->
+								<div class="listing-item-content">
+									<div class="listing-badge now-open">Now Open</div>
+
+									<div class="listing-item-inner">
+										<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
+										<span><%=shop[i].address%> </span>
+										<div class="star-rating" data-rating="<%=shop[i].rating%>">
+											<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
+										</div>
+									</div>
+
+									<span class="like-icon"></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<% } %>
+					<!-- Listing Item / End -->
+							<!-- Pagination -->
+				
+				<div class="row">
+					<div class="col-md-12">
+						<!-- Pagination -->
+						<div class="pagination-container margin-top-20 margin-bottom-40">
+							<nav class="pagination">
+								<ul>
+									<li><a href="#" class="current-page">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<!-- Pagination / End -->
 					<% } %>
 
-						<!-- Titlebar
+
+				</div>
+
+		
+
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Container / End -->
+
+
+
+	<!-- Footer -->
+
+	<%- include('./footer.ejs') %>
+
+	<!-- Footer -->
+
+
+
+	<!-- Scripts
 ================================================== -->
-						<div id="titlebar">
-							<div class="container">
-								<div class="row">
-									<div class="col-md-12">
-										<h2>Search Results For: "<%=search%>" </h2>
-										<!-- Breadcrumbs -->
-										<nav id="breadcrumbs">
-											<ul>
-												<li><a href="#">Home</a></li>
-												<li>Search Results</li>
-											</ul>
-										</nav>
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Content
-================================================== -->
-						<!-- Container -->
-						<div class="container">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="row">
-
-										<% if(shop.length==0){ %>
-											<h1 class="text-center">No Shop Found</h1>
-											<% } else{ %>
-												<!-- Listing Item -->
-												<% for(i=0;i<shop.length;i++) { %>
-													<div class="col-lg-12 col-md-12">
-														<div class="listing-item-container list-layout">
-															<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
-																class="listing-item">
-
-																<!-- Image -->
-																<div class="listing-item-image">
-																	<img src="<%=shop[i].img%>" alt="">
-																	<span class="tag">Salon de Style</span>
-																</div>
-
-																<!-- Content -->
-																<div class="listing-item-content">
-																	<div class="listing-badge now-open">Now Open</div>
-
-																	<div class="listing-item-inner">
-																		<h3>
-																			<%=shop[i].businessName%> <i
-																					class="verified-icon"></i>
-																		</h3>
-																		<span>
-																			<%=shop[i].address%>
-																		</span>
-																		<div class="star-rating"
-																			data-rating="<%=shop[i].rating%>">
-																			<div class="rating-counter">(
-																				<%=shop[i].total%> reviews)</div>
-																		</div>
-																	</div>
-																</div>
-															</a>
-														</div>
-													</div>
-													<% } %>
-														<!-- Listing Item / End -->
-														<% } %>
-
-
-									</div>
+	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
 
 
 
-								</div>
-
-							</div>
-						</div>
-
-						<!-- Container / End -->
-
-						<!-- Footer -->
-
-						<%- include('./include/footer.ejs') %>
-
-							<!-- Footer -->
-
-							<!-- JS Include Start -->
-							<%- include('./include/js.ejs') %>
-								<!-- JS Include End -->
 
 </body>
 

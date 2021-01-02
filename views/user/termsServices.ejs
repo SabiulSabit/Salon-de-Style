@@ -1,7 +1,16 @@
+<!DOCTYPE html>
+<head>
 
-	<!-- Header -->
-	<%- include('./include/header.ejs') %>
-	<!-- Header -->
+<!-- Basic Page Needs
+================================================== -->
+<title>Listeo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="/css/user/css/style.css">
+<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
 </head>
 
@@ -17,15 +26,16 @@
 			<!-- Header -->
 			
 			<% if(user){ %>
-				<%- include('./include/loginNavbar.ejs') %>
+				<%- include('./loginNavbar.ejs') %>
 			  <% } else{ %>
-				<%- include('./include/navbar.ejs') %>
+				<%- include('./navbar.ejs') %>
 			  <% }  %>
 			<!-- Header / End -->
 	<!-- side Navbar -->
-	<%- include('./include/sideNavbar.ejs') %>
+	<%- include('./sideNavbar.ejs') %>
 	<!-- side Navbar -->
 
+	
 	<!-- Content
 	================================================== -->
 	<div class="dashboard-content">
@@ -59,20 +69,35 @@
             </p>
 			</div>
 
+
 		</div>
 
 	</div>
 	<!-- Content / End -->
 
+
 </div>
 <!-- Dashboard / End -->
 
+
 </div>
 <!-- Wrapper / End -->
-						
- <!-- JS Include Start -->
- <%- include('./include/js.ejs') %>
- <!-- JS Include End -->
+
+
+<!-- Scripts
+================================================== -->
+<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
 
 
 </body>

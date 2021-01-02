@@ -547,15 +547,15 @@ exports.getService = (req, res, next) => {
 
     let shopInfo = "SELECT * " +
         " FROM `shopadmin` " +
-        " WHERE businessMail = " + mysql.escape(req.params.prevUrl)
+        " WHERE businessMail = " + mysql.escape(req.params.name)
 
     let timeSlot = "SELECT * " +
         " FROM `shoptime` " +
-        " WHERE businessMail = " + mysql.escape(req.params.prevUrl)
+        " WHERE businessMail = " + mysql.escape(req.params.name)
 
     let allService = "SELECT `name`, `hour`, `min`, `price` " +
         " FROM `shopservice` " +
-        " WHERE businessMail = " + mysql.escape(req.params.prevUrl)
+        " WHERE businessMail = " + mysql.escape(req.params.name)
 
     // console.log(userData)
     connectDB.query(userData, (err, result) => {
