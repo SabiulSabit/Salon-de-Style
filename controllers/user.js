@@ -532,14 +532,7 @@ exports.getService = (req, res, next) => {
         database: databaseName,
     });
    
-    //console.log(req.params.name)
-    // if(req.params.name == "assets"){
-    //    req.session.prevUrl = "iamsabit99@gmail.com"
-    // }
-    // else{
-    //     req.session.prevUrl =  req.params.name
-    // }
-  
+
    
     let userData = "SELECT `email`, `name`, `phone`, `address` " +
         " FROM `userinfo` " +
@@ -629,7 +622,7 @@ exports.postCheckOut = (req, res, next) => {
     let countData = "SELECT COUNT(*) as c " +
         " FROM `booking` "
 
-    console.log(req.body)
+   // console.log(req.body)
 
     let ex = req.session.extra;
     //console.log(ex);
@@ -1361,7 +1354,6 @@ exports.getSearchByCategory = (req, res, next) => {
 // getLogout getLogout
 exports.getLogout = (req, res, next) => {
 
-  
     req.session.destroy();
     return res.redirect('/')
 }
