@@ -9,6 +9,7 @@ const router = express.Router();
 
 const shopController = require('../controllers/shop/shop');
 const shopAuthentication = require('../controllers/shop/authentication');
+const shopStaff = require('../controllers/shop/staff');
 
 
 router.route('/')
@@ -50,17 +51,16 @@ router.route('/workschedule')
 
 
 router.route('/staffmember')
-      .get(shopAuthentication.isAuthentic,shopController.getStaffMember)      
-      .post(shopAuthentication.isAuthentic,shopController.postStaffMember)
+      .get(shopAuthentication.isAuthentic,shopStaff.getStaffMember)      
       
 
  // add new stuff
  router.route('/addstaffmember')
-      .post(shopAuthentication.isAuthentic,shopController.addNewStaff)     
+      .post(shopAuthentication.isAuthentic,shopStaff.addNewStaff)     
  
 //delete employee data
 router.route('/deleteemployee')
-      .post(shopAuthentication.isAuthentic,shopController.delelteEmployee)      
+      .post(shopAuthentication.isAuthentic,shopStaff.delelteEmployee)      
 
 
 //add service to employee
