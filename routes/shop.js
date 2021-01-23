@@ -64,14 +64,6 @@ router.route('/deleteemployee')
       .post(shopAuthentication.isAuthentic,shopStaff.delelteEmployee)      
 
 
-// /addstafftime
-router.route('/addstafftime')
-      .post(shopAuthentication.isAuthentic,shopController.getAddStaffTime)         
-      
-//appointment
-router.route('/appointment')
-      .get(shopAuthentication.isAuthentic,shopController.getAppointment);      
-
 ///saleshistory
 router.route('/saleshistory')
       .get(shopAuthentication.isAuthentic,shopController.getSalesHistory);
@@ -80,10 +72,7 @@ router.route('/saleshistory')
 router.route('/saleslist')
       .get(shopAuthentication.isAuthentic,shopController.getSalesList)
       .post(shopAuthentication.isAuthentic,shopController.postSalesList)
-
-///invoicelist
-router.route('/invoicelist')
-      .get(shopAuthentication.isAuthentic,shopController.getInvoiceList)      
+ 
 
 ///invoicedetail
 router.route('/invoicedetail')

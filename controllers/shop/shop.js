@@ -462,146 +462,6 @@ exports.getWorkSchedule = (req, res, next) => {
 }
 
 
-//getAddStaffTime getAddStaffTime
-
-exports.getAddStaffTime = (req, res, next) => {
-
-    //console.log(req.body);
-    var connectDB = mysql.createConnection({
-        host: hostNameDB,
-        user: userNameDB,
-        password: passwordDB,
-        database: databaseName,
-        multipleStatements: true
-    });
-
-    data = " ";
-    dataDelete = "DELETE FROM `stafftime` " +
-        " WHERE mail = " + mysql.escape(req.body.mail);
-
-    if (req.body.monday != undefined) {
-        if (Array.isArray(req.body.mondayStartTime) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','monday','" + req.body.mondayStartTime + "','" + req.body.mondayEndTime + "'); "
-        }
-        else {
-            for (i = 0; i < req.body.mondayStartTime.length; i++) {
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','monday','" + req.body.mondayStartTime[i] + "','" + req.body.mondayEndTime[i] + "'); "
-            }
-        }
-
-    }
-    if (req.body.tuesday != undefined) {
-        if (Array.isArray(req.body.tuesdayStartTime) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','tuesday','" + req.body.tuesdayStartTime + "','" + req.body.tuesdayEndTime + "'); "
-        }
-        else {
-
-            for (i = 0; i < req.body.tuesdayStartTime.length; i++) {
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','tuesday','" + req.body.tuesdayStartTime[i] + "','" + req.body.tuesdayEndTime[i] + "'); "
-            }
-        }
-    }
-    if (req.body.wednesday != undefined) {
-        if (Array.isArray(req.body.wednesdayStartTime) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','wednesday','" + req.body.wednesdayStartTime + "','" + req.body.wednesdayEndTime + "'); "
-        }
-        else {
-            for (i = 0; i < req.body.wednesdayStartTime.length; i++) {
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','wednesday','" + req.body.wednesdayStartTime[i] + "','" + req.body.wednesdayEndTime[i] + "'); "
-            }
-        }
-
-    }
-    if (req.body.thrusday != undefined) {
-        if (Array.isArray(req.body.thrusdayStartTime) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','thrusday','" + req.body.thrusdayStartTime + "','" + req.body.thrusdayEndTime + "'); "
-        }
-        else {
-            for (i = 0; i < req.body.thrusdayStartTime.length; i++) {
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','thrusday','" + req.body.thrusdayStartTime[i] + "','" + req.body.thrusdayEndTime[i] + "'); "
-            }
-        }
-
-    }
-    if (req.body.friday != undefined) {
-        if (Array.isArray(req.body.friday) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','friday','" + req.body.fridayStartTime + "','" + req.body.fridayEndTime + "'); "
-        }
-        else {
-            for (i = 0; i < req.body.fridayStartTime.length; i++) {
-                //console.log(req.body.fridayStartTime[i]);
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','friday','" + req.body.fridayStartTime[i] + "','" + req.body.fridayEndTime[i] + "'); "
-            }
-        }
-
-    }
-    if (req.body.saturday != undefined) {
-        if (Array.isArray(req.body.saturday) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','saturday','" + req.body.saturdayStartTime + "','" + req.body.saturdayEndTime + "'); "
-        }
-        else {
-            for (i = 0; i < req.body.saturdayStartTime.length; i++) {
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','saturday','" + req.body.saturdayStartTime[i] + "','" + req.body.saturdayEndTime[i] + "'); "
-            }
-        }
-
-    }
-    if (req.body.sunday != undefined) {
-        if (Array.isArray(req.body.sunday) == false) {
-            data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                " VALUES ('" + req.session.mail + "','" + req.body.mail + "','sunday','" + req.body.sundayStartTime + "','" + req.body.sundayEndTime + "'); "
-        }
-        else {
-            for (i = 0; i < req.body.sundayStartTime.length; i++) {
-                data += "INSERT INTO `stafftime`(`businessMail`, `mail`, `dayName`, `start`, `end`) " +
-                    " VALUES ('" + req.session.mail + "','" + req.body.mail + "','sunday','" + req.body.sundayStartTime[i] + "','" + req.body.sundayEndTime[i] + "'); "
-            }
-        }
-
-    }
-    // console.log(req.body);
-    // console.log(data);
-
-
-    connectDB.query(dataDelete, (err1, result1) => {
-        if (err1) {
-            throw err1;
-        }
-        else {
-            connectDB.query(data, (err, result) => {
-                if (err) {
-                    throw err;
-                }
-                else {
-                    return res.redirect('/shop/staffinfo');
-                }
-            })
-        }
-    })
-
-
-}
-
-
-// get Appointment page
-
-exports.getAppointment = (req, res, next) => {
-
-    return res.render('shop/appointment')
-}
-
 //get  sales history page
 exports.getSalesHistory = (req, res, next) => {
 
@@ -760,10 +620,6 @@ exports.postSalesList = (req, res, next) => {
 }
 
 
-//get Invoice List
-exports.getInvoiceList = (req, res, next) => {
-    return res.render('shop/invoiceList')
-}
 
 // get Invoice Detail
 exports.getInvoiceDetail = (req, res, next) => {
@@ -1117,13 +973,7 @@ exports.postHealthSafety = (req, res, next) => {
         }
     })
 
-
-
 }
-
-
-
-
 
 
 //get Package 
@@ -1182,8 +1032,6 @@ exports.postPackage = (req, res, next) => {
 
     let c = "SELECT count(*) as count " +
         " FROM `package`"
-
-
 
     connectDB.query(c, (err1, result1) => {
         if (err1) {
