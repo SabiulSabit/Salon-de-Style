@@ -9,6 +9,7 @@ const userController = require('../controllers/user/user');
 const userAuthentication = require('../controllers/user/authentication');
 const userProfile = require('../controllers/user/profile');
 const userSearch = require('../controllers/user/search');
+const userBooking = require('../controllers/user/booking');
 
 
 router.route('/')
@@ -29,15 +30,15 @@ router.route('/createaccount')
 
 ///cart      
 router.route('/cart')
-      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getCart)      
+      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userBooking.getCart)      
 
 //Service
 router.route('/service/:name/:catName/:price')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getService)
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userBooking.getService)
 
 //Check out     
 router.route('/checkout')
-      .post(userAuthentication.isAuthentic,userAuthentication.setLocals, userController.postCheckOut)
+      .post(userAuthentication.isAuthentic,userAuthentication.setLocals, userBooking.postCheckOut)
 
 //Payment 
 router.route('/payment')
@@ -60,7 +61,7 @@ router.route('/report/:shopmail')
       .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.postReport)      
     
 router.route('/order/package/:token')
-      .post(userAuthentication.isAuthentic,userController.postOrderPackage)
+      .post(userAuthentication.isAuthentic,userBooking.postOrderPackage)
 
 
 ///egiftcard
