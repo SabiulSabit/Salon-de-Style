@@ -7,6 +7,7 @@ const router = express.Router();
 
 const userController = require('../controllers/user/user');
 const userAuthentication = require('../controllers/user/authentication');
+const userProfile = require('../controllers/user/profile');
 
 
 router.route('/')
@@ -39,19 +40,19 @@ router.route('/checkout')
 
 //Payment 
 router.route('/payment')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getPayment)  
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.getPayment)  
       
 
 //Profile   
 router.route('/profile')
-      .get(userAuthentication.setLocals,userAuthentication.isAuthentic,userController.getProfile)    
+      .get(userAuthentication.setLocals,userAuthentication.isAuthentic,userProfile.getProfile)    
       
 router.route('/updateprofile')
-      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.updateProfile)     
+      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.updateProfile)     
       
  ///chnagepassword   
  router.route('/chnagepassword')
-      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.chnagePassword)       
+      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.chnagePassword)       
 
 //report
 router.route('/report/:shopmail')
@@ -60,29 +61,26 @@ router.route('/report/:shopmail')
 router.route('/order/package/:token')
       .post(userAuthentication.isAuthentic,userController.postOrderPackage)
 
-//dashbord
-router.route('/dashbord')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getDashbord)
 
 ///egiftcard
 router.route('/egiftcard')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getEGiftCard)
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.getEGiftCard)
 
 ////appointment
 router.route('/appointment')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getAppointment)
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.getAppointment)
   
 ////review&favourites      
 router.route('/review&favourites')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getReviewFavourites)
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.getReviewFavourites)
 
 //terms&services
 router.route('/terms&services')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getTermsServices)     
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.getTermsServices)     
 
 ///privacy
 router.route('/privacy')
-      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.getPrivacy)    
+      .get(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.getPrivacy)    
 
 ///setReview      
 router.route('/setReview')
