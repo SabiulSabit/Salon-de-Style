@@ -1,241 +1,243 @@
+<!-- Header Start-->
+<%- include('./include/header.ejs') %>
+    <!-- Header End-->
+    </head>
 
- <!-- Header Start-->
- <%- include('./include/header.ejs') %>
-  <!-- Header End-->
-</head>
+    <body>
 
-<body>
-
-    <%- include('./sideBar.ejs') %>
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="row page-titles">
-            <div class="col-md-5 col-12 align-self-center">
-                <h3 class="text-themecolor mb-0">Contacts</h3>
-                <ol class="breadcrumb mb-0 p-0 bg-transparent">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Contacts</li>
-                </ol>
-            </div>
-
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
+        <%- include('./sideBar.ejs') %>
+            <!-- Page wrapper  -->
             <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-            <div class="widget-content searchable-container list">
-                <div class="card card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <form>
-                                <input type="text" class="form-control product-search" id="input-search"
-                                    placeholder="Search Contacts...">
-                            </form>
-                        </div>
-                        <div
-                            class="col-md-8 text-right d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#createmodel"
-                                class="btn btn-info"><i class="mdi mdi-account-multiple-plus font-16 mr-1"></i> Add
-                                Contact</a>
-                        </div>
+            <div class="page-wrapper">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 col-12 align-self-center">
+                        <h3 class="text-themecolor mb-0">Contacts</h3>
+                        <ol class="breadcrumb mb-0 p-0 bg-transparent">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Contacts</li>
+                        </ol>
                     </div>
+
                 </div>
 
+                <div class="container-fluid">
 
-                <div class="card card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped search-table v-middle">
-                            <thead class="header-item">
-                                <th>
-                                    <div class="n-chk align-self-center text-center">
-                                        <div class="checkbox checkbox-info">
-                                            <input type="checkbox" class="material-inputs" id="contact-check-all">
-                                            <label class="" for="contact-check-all"></label>
-                                            <span class="new-control-indicator"></span>
-                                        </div>
-                                    </div>
-                                </th>
-                                <th class="text-dark font-weight-bold">Name</th>
-                                <th class="text-dark font-weight-bold">Email</th>
-                                <th class="text-dark font-weight-bold">Phone</th>
-                                <th class="text-center">
-                                    <div class="action-btn">
-                                        <a href="javascript:void(0)" class="delete-multiple  text-danger"><i
-                                                class="fas fa-trash font-20 font-medium"></i> Delete Row</a>
-                                    </div>
-                                </th>
-                            </thead>
-                            <tbody>
-                                <!-- row -->
-                                <% for(i=0;i<data.length;i++){  %>
-
-
-                                <tr class="search-items">
-                                    <td>
-                                        <div class="n-chk align-self-center text-center">
-                                            <div class="checkbox checkbox-info">
-                                                <input type="checkbox" class="material-inputs contact-chkbox"
-                                                    id="checkbox1">
-                                                <label class="" for="checkbox1"></label>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <!-- ../assets/images/users/1.jpg -->
-                                            <% if(data[i].img == "") {  %>
-                                            <img src="../assets/images/users/1.jpg" alt="avatar" class="rounded-circle"
-                                                width="35">
-                                            <% } else {  %>
-                                            <img src="<%=data[i].img%>" alt="avatar" class="rounded-circle" width="35">
-                                            <% }  %>
-
-                                            <div class="ml-2">
-                                                <div class="user-meta-info">
-                                                    <h5 class="user-name mb-0" data-name="<%=data[i].stuffName%>">
-                                                        <%=data[i].stuffName%></h5>
-                                                    <span class="user-work text-muted"
-                                                        data-occupation="<%=data[i].position%>">
-                                                        <%=data[i].position%></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="usr-email-addr"
-                                            data-email="<%=data[i].email%>"><%=data[i].email%></span>
-                                    </td>
-
-                                    <td>
-                                        <span class="usr-ph-no"
-                                            data-phone="<%=data[i].phone%>"><%=data[i].phone%></span>
-                                    </td>
-                                    <td class="text-center">
-                                        <form id="dltEmp" action="/shop/deleteemployee" method="post">
-                                            <div class="action-btn">
-                                                <a href="javascript:void(0)" class="text-info edit"><i
-                                                        class="mdi mdi-account-edit font-20"></i></a>
-
-                                                <input type="text" value="<%=data[i].email%>" name="mail" hidden>
-                                                <a data-toggle="modal" data-target="#warning-alert-modal" href="javascript:void(0)"
-                                                    class="text-dark  ml-2"><i
-                                                        class="fa fa-trash font-20"></i></a>
-                                                <!--  -->
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <!-- /.row -->
-                                <% } %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- Share Modal -->
-
-        <!-- Create Modal -->
-        <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="/shop/addstaffmember" enctype="multipart/form-data" method="POST">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt mr-2"></i> Create
-                                New Contact</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <input type="text" name="name" class="form-control" placeholder="Enter Name Here"
-                                    aria-label="name">
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <input type="text" name="phone" class="form-control"
-                                    placeholder="Enter Mobile Number Here" aria-label="no">
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <input type="text" class="form-control" name="mail" placeholder="Enter Email Here"
-                                    aria-label="no">
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <input type="text" class="form-control" name="position"
-                                    placeholder="Enter Possition Here" aria-label="no">
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-import text-white"></i></button>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="imgDP" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                    <div class="widget-content searchable-container list">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <form>
+                                        <input type="text" class="form-control product-search" id="input-search"
+                                            placeholder="Search Contacts...">
+                                    </form>
+                                </div>
+                                <div
+                                    class="col-md-8 text-right d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#createmodel"
+                                        class="btn btn-info"><i class="mdi mdi-account-multiple-plus font-16 mr-1"></i>
+                                        Add
+                                        Contact</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" type="submit"><i class="ti-save"></i>
-                                Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Delete Confirm Modal  Start-->
-        <div id="warning-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content modal-filled bg-danger">
-                    <div class="modal-body p-4">
-                        <div class="text-center">
-                            <i class="dripicons-warning h1 text-warning"></i>
-                            <h4 class="mt-2 text-white">Delete Confermation !!!</h4>
-                            <p class="mt-3 op-7">Do you really want to delete this employee information ?</p>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-light my-2" data-dismiss="modal"  onclick="deleteEmp()">Yes</button>
+
+
+                        <div class="card card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped search-table v-middle">
+                                    <thead class="header-item">
+                                        <th>
+                                            <div class="n-chk align-self-center text-center">
+                                                <div class="checkbox checkbox-info">
+                                                    <input type="checkbox" class="material-inputs"
+                                                        id="contact-check-all">
+                                                    <label class="" for="contact-check-all"></label>
+                                                    <span class="new-control-indicator"></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="text-dark font-weight-bold">Name</th>
+                                        <th class="text-dark font-weight-bold">Email</th>
+                                        <th class="text-dark font-weight-bold">Phone</th>
+                                        <th class="text-center">
+                                            <div class="action-btn">
+                                                <a href="javascript:void(0)" class="delete-multiple  text-danger"><i
+                                                        class="fas fa-trash font-20 font-medium"></i> Delete Row</a>
+                                            </div>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <!-- row -->
+                                        <% for(i=0;i<data.length;i++){ %>
+
+
+                                            <tr class="search-items">
+                                                <td>
+                                                    <div class="n-chk align-self-center text-center">
+                                                        <div class="checkbox checkbox-info">
+                                                            <input type="checkbox"
+                                                                class="material-inputs contact-chkbox" id="checkbox1">
+                                                            <label class="" for="checkbox1"></label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- ../assets/images/users/1.jpg -->
+                                                        <% if(data[i].img=="" ) { %>
+                                                            <img src="../assets/images/users/1.jpg" alt="avatar"
+                                                                class="rounded-circle" width="35">
+                                                            <% } else { %>
+                                                                <img src="<%=data[i].img%>" alt="avatar"
+                                                                    class="rounded-circle" width="35">
+                                                                <% } %>
+
+                                                                    <div class="ml-2">
+                                                                        <div class="user-meta-info">
+                                                                            <h5 class="user-name mb-0"
+                                                                                data-name="<%=data[i].stuffName%>">
+                                                                                <%=data[i].stuffName%>
+                                                                            </h5>
+                                                                            <span class="user-work text-muted"
+                                                                                data-occupation="<%=data[i].position%>">
+                                                                                <%=data[i].position%>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="usr-email-addr" data-email="<%=data[i].email%>">
+                                                        <%=data[i].email%>
+                                                    </span>
+                                                </td>
+
+                                                <td>
+                                                    <span class="usr-ph-no" data-phone="<%=data[i].phone%>">
+                                                        <%=data[i].phone%>
+                                                    </span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <form id="dltEmp" action="/shop/deleteemployee" method="post">
+                                                        <div class="action-btn">
+                                                            <a href="javascript:void(0)" class="text-info edit"><i
+                                                                    class="mdi mdi-account-edit font-20"></i></a>
+
+                                                            <input type="text" value="<%=data[i].email%>" name="mail"
+                                                                hidden>
+                                                            <a data-toggle="modal" data-target="#warning-alert-modal"
+                                                                href="javascript:void(0)" class="text-dark  ml-2"><i
+                                                                    class="fa fa-trash font-20"></i></a>
+                                                            <!--  -->
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <!-- /.row -->
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div>
+                </div>
+                <!-- Share Modal -->
 
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
+                <!-- Create Modal -->
+                <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form action="/shop/addstaffmember" enctype="multipart/form-data" method="POST">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt mr-2"></i>
+                                        Create
+                                        New Contact</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group mb-3">
+                                        <button type="button" class="btn btn-info"><i
+                                                class="ti-user text-white"></i></button>
+                                        <input type="text" name="name" class="form-control"
+                                            placeholder="Enter Name Here" aria-label="name">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <button type="button" class="btn btn-info"><i
+                                                class="ti-more text-white"></i></button>
+                                        <input type="text" name="phone" class="form-control"
+                                            placeholder="Enter Mobile Number Here" aria-label="no">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <button type="button" class="btn btn-info"><i
+                                                class="ti-more text-white"></i></button>
+                                        <input type="text" class="form-control" name="mail"
+                                            placeholder="Enter Email Here" aria-label="no">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <button type="button" class="btn btn-info"><i
+                                                class="ti-more text-white"></i></button>
+                                        <input type="text" class="form-control" name="position"
+                                            placeholder="Enter Possition Here" aria-label="no">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <button type="button" class="btn btn-info"><i
+                                                class="ti-import text-white"></i></button>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="imgDP"
+                                                id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success" type="submit"><i class="ti-save"></i>
+                                        Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Delete Confirm Modal  Start-->
+                <div id="warning-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content modal-filled bg-danger">
+                            <div class="modal-body p-4">
+                                <div class="text-center">
+                                    <i class="dripicons-warning h1 text-warning"></i>
+                                    <h4 class="mt-2 text-white">Delete Confermation !!!</h4>
+                                    <p class="mt-3 op-7">Do you really want to delete this employee information ?</p>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-light my-2" data-dismiss="modal"
+                                        onclick="deleteEmp()">Yes</button>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
 
- <!-- JS Plugin Start-->
- <%- include('./include/js.ejs') %>
-  <!-- JS Plugin End-->
+            </div>
+            </div>
 
-  <script>
-    function submitThis() {
-        document.getElementById("updateInfo").submit();
-    }
-    function deleteEmp() {
-        document.getElementById("dltEmp").submit();
-    }
-</script>
-</body>
 
-</html>
+            <!-- JS Plugin Start-->
+            <%- include('./include/js.ejs') %>
+                <!-- JS Plugin End-->
+
+                <script>
+                    function submitThis() {
+                        document.getElementById("updateInfo").submit();
+                    }
+                    function deleteEmp() {
+                        document.getElementById("dltEmp").submit();
+                    }
+                </script>
+    </body>
+
+    </html>
