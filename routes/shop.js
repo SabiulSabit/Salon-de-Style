@@ -150,34 +150,6 @@ router.route('/portfolio/deleteimg/:img')
       .get(shopAuthentication.isAuthentic,shopController.getDeletePortfolioImg)      
 
 
-///productscart    
-router.route('/productscart')
-      .get(shopAuthentication.isAuthentic,shopController.getProductsCart)    
-
-///productsedit
-router.route('/productsedit')
-      .get(shopAuthentication.isAuthentic,shopController.getProductsEdit) 
-
-///productsdetails
-router.route('/productsdetails')
-      .get(shopAuthentication.isAuthentic,shopController.getProductsDetails) 
-
-///productsorders
-router.route('/productsorders')
-      .get(shopAuthentication.isAuthentic,shopController.getProductsOrders) 
-
-///productscheckout
-router.route('/productscheckout')
-      .get(shopAuthentication.isAuthentic,shopController.getProductsCheckout)      
-
-///bookingsetting
-router.route('/bookingsetting')
-      .get(shopAuthentication.isAuthentic,shopController.getBookingSetting)      
-
-///staffcommission     
-router.route('/staffcommission')
-      .get(shopAuthentication.isAuthentic,shopController.getStaffCommission)   
-
 // inventory
 router.route('/inventory')
       .get(shopAuthentication.isAuthentic,shopController.getInventory)      

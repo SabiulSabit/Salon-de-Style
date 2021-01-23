@@ -1531,42 +1531,6 @@ exports.getDeletePortfolioImg = (req, res, next) => {
 }
 
 
-
-//getProductsCart 
-exports.getProductsCart = (req, res, next) => {
-    return res.render('shop/productsCart')
-}
-
-//get Products Edit 
-exports.getProductsEdit = (req, res, next) => {
-    return res.render('shop/productsEdit')
-}
-
-//get Products Details 
-exports.getProductsDetails = (req, res, next) => {
-    return res.render('shop/productsDetails')
-}
-
-//get Products Orders 
-exports.getProductsOrders = (req, res, next) => {
-    return res.render('shop/productsOrders')
-}
-
-//getProductsCheckout 
-exports.getProductsCheckout = (req, res, next) => {
-    return res.render('shop/productsCheckout')
-}
-
-//get Booking Setting 
-exports.getBookingSetting = (req, res, next) => {
-    return res.render('shop/bookingSetting')
-}
-
-//get Staff Commission 
-exports.getStaffCommission = (req, res, next) => {
-    return res.render('shop/staffCommission')
-}
-
 //getInventory 
 exports.getInventory = (req, res, next) => {
 
