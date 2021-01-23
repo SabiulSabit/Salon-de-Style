@@ -18,138 +18,107 @@
 <body>
 
 	<% if(user){ %>
-	<%- include('./loginNavbar.ejs') %>
-	<% } else{ %>
-	<%- include('./navbar.ejs') %>
-	<% }  %>
+		<%- include('./loginNavbar.ejs') %>
+			<% } else{ %>
+				<%- include('./navbar.ejs') %>
+					<% } %>
 
-	<!-- Titlebar
-================================================== -->
-	<div id="titlebar">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-
-					<h2>Search Results  For: "<%=search%>" </h2>
-
-					<!-- Breadcrumbs -->
-					<nav id="breadcrumbs">
-						<ul>
-							<li><a href="#">Home</a></li>
-							<li>Search Results</li>
-						</ul>
-					</nav>
-
-				</div>
-			</div>
-		</div>
-	</div>
+						<!-- Titlebar -->
+						<section class="page-content">
 
 
-	<!-- Content
-================================================== -->
+							<!-- content -->
+							<div class="container">
+								<div class="row">
+									<div class="col-md-12">
 
-	<!-- Container -->
-	<div class="container">
-		<div class="row">
+										<div class="row">
+
+											<% if(shop.length==0){ %>
+												<h1 class="text-center">No Shop Found</h1>
+												<% } else{ %>
+													<!-- Listing Item -->
+													<h3>Serach Result:</h3>
+													<hr>
+													<% for(i=0;i<shop.length;i++) { %>
+														<div class="col-lg-12 col-md-12 searchresult">
+
+															<a
+																href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>">
+																
+																<div class="row">
+																	<div class="col-md-5 col-12">
+																		<img class="align-self-center mr-3"
+																			src="<%=shop[i].img%>" alt="search img"
+																			width="90%" height="250px">
+																	</div>
+																	<div class="col-md-7 col-12">
+																		<div class="media-body">
+																			<h5 class="mt-0">
+																				<%=shop[i].businessName%>
+																			</h5>
+																			<h6>
+																				<%=shop[i].address%>
+																			</h6>
+																			<div class="rating"
+																				data-rating="<%=shop[i].rating%>">
+																				<div class="star"></div>
+																				<div class="star"></div>
+																				<div class="star"></div>
+																				<div class="star"></div>
+																				<div class="star"></div>
+																				<span class="text-dark">(
+																					<%=shop[i].total%> reviews)
+																				</span>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+																
+															</a>
+
+														</div>
+														<% } %>
+															<% } %>
 
 
-
-			<div class="col-md-12">
-
-
-				<div class="row">
-
-					<% if(shop.length==0){ %>
-					<h1 class="text-center">No Shop Found</h1>
-					<% } else{ %>
-					<!-- Listing Item -->
-					<% for(i=0;i<shop.length;i++) { %>
-					<div class="col-lg-12 col-md-12">
-						<div class="listing-item-container list-layout">
-							<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>" class="listing-item">
-
-								<!-- Image -->
-								<div class="listing-item-image">
-									<img src="<%=shop[i].img%>" alt="">
-									<span class="tag">RONDVOU</span>
-								</div>
-
-								<!-- Content -->
-								<div class="listing-item-content">
-									<div class="listing-badge now-open">Now Open</div>
-
-									<div class="listing-item-inner">
-										<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
-										<span><%=shop[i].address%> </span>
-										<div class="star-rating" data-rating="<%=shop[i].rating%>">
-											<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
 										</div>
+
+
+
 									</div>
 
-									<span class="like-icon"></span>
 								</div>
-							</a>
-						</div>
-					</div>
-					<% } %>
-					<!-- Listing Item / End -->
-							<!-- Pagination -->
-				
-				<div class="row">
-					<div class="col-md-12">
-						<!-- Pagination -->
-						<div class="pagination-container margin-top-20 margin-bottom-40">
-							<nav class="pagination">
-								<ul>
-									<li><a href="#" class="current-page">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-				<!-- Pagination / End -->
-					<% } %>
+							</div>
 
-
-				</div>
-
-		
-
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Container / End -->
+							<!-- Container / End -->
 
 
 
-	<!-- Footer -->
+							<!-- Footer -->
 
-	<%- include('./footer.ejs') %>
+							<%- include('./footer.ejs') %>
 
-	<!-- Footer -->
+								<!-- Footer -->
 
 
 
-	<!-- Scripts
+								<!-- Scripts
 ================================================== -->
-	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
+								<script type="text/javascript"
+									src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
+								<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
 
 
 

@@ -46,12 +46,7 @@
 
 <body>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
 
-		<!-- Header Container
-================================================== -->
-		<header id="header-container" class="fixed fullwidth dashboard">
 
 			<!-- Header -->
 
@@ -65,125 +60,67 @@
 			<%- include('./sideNavbar.ejs') %>
 			<!-- side Navbar -->
 
-			<!-- Content
-	================================================== -->
-			<div class="dashboard-content">
-
-				<!-- Titlebar -->
-				<div id="titlebar">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>Appointment</h2>
-							<!-- Breadcrumbs -->
-							<nav id="breadcrumbs">
-								<ul>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Dashboard</a></li>
-									<li>Appointment</li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</div>
-
+			<div class="content">
 				<div class="row">
-
-					<!-- Listings -->
-					<div class="col-lg-12 col-md-12">
-						<div class="dashboard-list-box margin-top-0">
-							  
-							<% if(booking.length) { %>
-								<ul>
-
-									<%  for(let i =0 ; i<booking.length; i++ ){ %>
-									<li class="pending-booking">
-										<div class="list-box-listing bookings">
-											<div class="list-box-listing-img"><img src="<%=booking[i].img%>" alt=""></div>
-											<div class="list-box-listing-content">
-												<div class="inner">
-													<h3><%=booking[i].businessName%>
-														<%  if(booking[i].status == 0){ %>
-														<span class="booking-status pending">Pending</span>
-														<% } else if(booking[i].status == 1) { %>
-														<span class="approveBtn">Approved</span>
-														<% } else if(booking[i].status == -1) { %>
-														<span class="cancelBtn">Canceled</span>
-														<% } %>
+					<div class="col-md-12">
+						<h3>Appointment</h3>
+						<hr>
+					</div>
+					<div class="col-md-12">
+						<% if(booking.length) { %>
+							<%  for(let i =0 ; i<booking.length; i++ ){ %>
+						<div class="appointment">
+							<div class="media">
+								<img src="<%=booking[i].img%>" alt="">
+								<div class="media-body">
+									<h5 class=""><%=booking[i].businessName%> <span class=""><%  if(booking[i].status == 0){ %>
+										<span class="badge badge-warning">Pending</span>
+										<% } else if(booking[i].status == 1) { %>
+										<span class="badge badge-info">Approved</span>
+										<% } else if(booking[i].status == -1) { %>
+										<span class="badge badge-danger">Canceled</span>
+										<% } %></span></h5>
+									<p> Booking Service: <%=booking[i].serviceName%> </p>
+									<p> Price: $ <%=booking[i].servicePrice%> </p>
+									<p> Booking Date: <%=booking[i].day%> - (<%=booking[i].timeSlotStart%> - <%=booking[i].timeSlotEnd%>) </p>
+									<p> Address: New york </p>
+									<p> Contact: <%=booking[i].businessMail%> </p>
+								</div>
+								<div class="buttons-to-right">
+									<%  if(booking[i].status == 0){ %>
 	
-													</h3>
-													<div class="inner-booking-list">
-														<h5>Booking Service:</h5>
-														<ul class="booking-list">
-															<li class="highlighted"><%=booking[i].serviceName%></li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Price:</h5>
-														<ul class="booking-list">
-															<li class="highlighted">$<%=booking[i].servicePrice%></li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Booking Date:</h5>
-														<ul class="booking-list">
-															<li class="highlighted"><%=booking[i].day%> -
-																(<%=booking[i].timeSlotStart%> -
-																<%=booking[i].timeSlotEnd%>)</li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Address:</h5>
-														<ul class="booking-list">
-															<li>New york</li>
-														</ul>
-													</div>
-													<div class="inner-booking-list">
-														<h5>Contact:</h5>
-														<ul class="booking-list">
-															<li><%=booking[i].businessMail%></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="buttons-to-right">
-											<%  if(booking[i].status == 0){ %>
+									<form action="/delete/appoinment" method="post">
+										<input type="hidden" name="id" value="<%=booking[i].bookingID%>">
+										<input type="hidden" name="shopMail" value="<%=booking[i].businessMail%>">
+										<button type="submit" class="btn btn-danger mb-3">
+											<i class="sl sl-icon-close"></i>Cancel
+										</button>
+									</form>
 	
-											<form action="/delete/appoinment" method="post">
-												<input type="hidden" name="id" value="<%=booking[i].bookingID%>">
-												<input type="hidden" name="shopMail" value="<%=booking[i].businessMail%>">
-												<button type="submit" class="button gray reject pb-5">
-													<i class="sl sl-icon-close"></i>Cancel
-												</button>
-											</form>
-	
-											<a class="button gray approve"
-												href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
-													class="sl sl-icon-check"></i>Book Again</a>
-											<% } else if(booking[i].status == 1) { %>
-											<form action="/delete/appoinment" method="post">
-												<input type="hidden" name="id" value="<%=booking[i].bookingID%>">
-												<input type="hidden" name="shopMail" value="<%=booking[i].businessMail%>">
-												<button type="submit" class="button gray reject pb-5">
-													<i class="sl sl-icon-close"></i>Cancel
-												</button>
-											</form>
-											<a class="button gray approve"
-												href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
-													class="sl sl-icon-check"></i>Book Again</a>
-											<% } else if(booking[i].status == -1) { %>
-											<a class="button gray approve"><i class="sl sl-icon-check"></i>Book Again</a>
-											<% } %>
-	
-										</div>
-									</li>
+									<a class="bg-success p-2 mt-3"
+										href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
+											class="sl sl-icon-check"></i>Book Again</a>
+									<% } else if(booking[i].status == 1) { %>
+									<form action="/delete/appoinment" method="post">
+										<input type="hidden" name="id" value="<%=booking[i].bookingID%>">
+										<input type="hidden" name="shopMail" value="<%=booking[i].businessMail%>">
+										<button type="submit" class="btn btn-danger mb-3">
+											<i class="sl sl-icon-close"></i>Cancel
+										</button>
+									</form>
+									<a class="bg-success p-2 mt-3"
+										href="/details/<%=booking[i].businessName%>/<%=booking[i].businessMail%>"><i
+											class="sl sl-icon-check"></i>Book Again</a>
+									<% } else if(booking[i].status == -1) { %>
+									<a class="bg-success p-2 mt-3"><i class="sl sl-icon-check"></i>Book Again</a>
 									<% } %>
 	
-	
-								</ul>
- 
-							<% } else{  %>
-									 
+								</div>
+							</div>
+						</div>
+						<% } %>
+						<% } else{  %>
+								 
 							<div class="container">
 								<div class="row">
 									<div class="col-12">
@@ -192,46 +129,26 @@
 								</div>
 							</div>
 							<%  } %>
-
-				
-						</div>
+						
 					</div>
-
-
 				</div>
-
 			</div>
-			<!-- Content / End -->
-
-
+		</div>
 	</div>
-	<!-- Dashboard / End -->
 
-
-	</div>
+</section>
 	<!-- Wrapper / End -->
 
 
-	<!-- Scripts
-================================================== -->
-	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
-
-	<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
-	<script src="/js/user/scripts/moment.min.js"></script>
-	<script src="/js/user/scripts/daterangepicker.js"></script>
-
-
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+	integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+	crossorigin="anonymous"></script>
 
 </body>
 

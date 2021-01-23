@@ -1,135 +1,115 @@
 <!DOCTYPE html>
+
 <head>
 
-<!-- Basic Page Needs
+	<!-- Basic Page Needs
 ================================================== -->
-<title>Salon De Style</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Salon De Style</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<!-- CSS
+	<!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="/css/user/css/style.css">
-<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+	<link rel="stylesheet" href="/css/user/css/style.css">
+	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
 
 </head>
 
 <body>
 
-   <!-- Wrapper -->
-   <div id="wrapper">
-
-    <!-- Header Container
-================================================== -->
-    <header id="header-container" class="fixed fullwidth dashboard">
-
-        <!-- Header -->
-        
-   <% if(user){ %>
-	<%- include('./loginNavbar.ejs') %>
-  <% } else{ %>
-	<%- include('./navbar.ejs') %>
-  <% }  %>
-        <!-- Header / End -->
-<!-- side Navbar -->
-<%- include('./sideNavbar.ejs') %>
-<!-- side Navbar -->
 
 
-	<!-- Content
-	================================================== -->
-	<div class="dashboard-content">
+	<!-- Header -->
 
-		<!-- Titlebar -->
-		<div id="titlebar">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Package</h2>
-					<!-- Breadcrumbs -->
-					<nav id="breadcrumbs">
-						<ul>
-							<li><a href="#">Home</a></li>
-							<li>Dashboard</li>
-							<li>Wallet</li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
+	<% if(user){ %>
+		<%- include('./loginNavbar.ejs') %>
+			<% } else{ %>
+				<%- include('./navbar.ejs') %>
+					<% } %>
+						<!-- Header / End -->
+						<!-- side Navbar -->
+						<%- include('./sideNavbar.ejs') %>
+							<!-- side Navbar -->
 
-	
 
-		<div class="row">
-			
-			<!-- Invoices -->
-			<div class="col-lg-12 col-md-12">
-				<div class="dashboard-list-box invoices with-icons margin-top-20">
-					<% if(gift.length) { %>
-					<ul>
-						<% for(i=0;i<gift.length;i++) { %>
 
-                        <li>
-                            <i class="list-box-icon fa fa-gift"></i>
-                            <h4>E-gift Card Name: <span><%=gift[i].packageName%></span> <div class="comission-taken">Offer Price: <strong>$ <%=gift[i].price%></strong></div></h4>
-                            <h4> <span class="text-danger">Shop Name: <%=gift[i].businessName%></span> <div class="comission-taken"> <a href="/details/<%=gift[i].businessName%>/<%=gift[i].businessMail%>" class="btn btn-info">View Shop</a> </div></h4>
-                            <h4>Service: <%=gift[i].service%> <div class="comission-taken">  <% if(gift[i].status == 0) { %>
-								Available
-							<% } else if(gift[i].status == 1) {  %>
-								Used
-							<% } else { %>
-								Cancled
-							<% } %>  </h4>
-                            <ul>
-								<li class="paid">Booking Date: <%=gift[i].date%></li>
-								<li class="unpaid">Valid Till: <%=gift[i].endDate%></li>
-								<li> <strong>Token: #<%=gift[i].token%></strong> </li>
-							</ul>
-                        </li>
-                    
-						<% } %>
-					</ul>
-					<% } else{  %>
-									 
-						<div class="container">
-							<div class="row">
-								<div class="col-12">
-									<h3 class="text-center">No Data Found</h3>
+							<div class="content">
+								<div class="row">
+									<div class="col-md-12">
+										<h3>E-gift Card List</h3>
+										<hr>
+									</div>
+									<div class="col-md-12">
+										<% if(gift.length) { %>
+											<ul class="list-group">
+												<li
+													class="list-group-item d-flex justify-content-between align-items-center">
+													<h5>E-gift Card Name: <%=gift[i].packageName%>
+													</h5>
+													<span class="badge-pill">Offer Price: $ <%=gift[i].price%></span>
+												</li>
+												<li
+													class="list-group-item d-flex justify-content-between align-items-center">
+													<h5>Shop Name: <%=gift[i].businessName%>
+													</h5>
+													<span class="badge-pill"><a
+															href="/details/<%=gift[i].businessName%>/<%=gift[i].businessMail%>">View
+															shop</a></span>
+												</li>
+												<li
+													class="list-group-item d-flex justify-content-between align-items-center">
+													<h5>Service: <%=gift[i].service%>
+													</h5>
+													<span class="badge-pill">
+														<% if(gift[i].status==0) { %>
+															Available
+															<% } else if(gift[i].status==1) { %>
+																Used
+																<% } else { %>
+																	Cancled
+																	<% } %>
+													</span>
+												</li>
+												<li
+													class="list-group-item d-flex justify-content-between align-items-center">
+													<p>Booking Date: <%=gift[i].date%>
+													</p>
+													<p>Valid Till: <%=gift[i].endDate%>
+													</p>
+													<span class="badge-pill"> Token: #<%=gift[i].token%> </span>
+												</li>
+											</ul>
+											<% } else{ %>
+												<div class="container">
+													<div class="row">
+														<div class="col-md-12">
+															<h3 class="text-center">No Data Found</h3>
+														</div>
+													</div>
+												</div>
+												<% } %>
+									</div>
 								</div>
 							</div>
-						</div>
-						<%  } %>
-				</div>
-			</div>
-	
-		</div>
+							</div>
+							</div>
 
-	</div>
-	<!-- Content / End -->
+							</section>
 
 
-</div>
-<!-- Dashboard / End -->
 
 
-</div>
-<!-- Wrapper / End -->
-
-
-<!-- Scripts
-================================================== -->
-<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+							<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+							integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+							crossorigin="anonymous"></script>
+						<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+							integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+							crossorigin="anonymous"></script>
+						<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+							integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+							crossorigin="anonymous"></script>
 
 
 </body>
+
 </html>

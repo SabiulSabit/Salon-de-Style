@@ -11,7 +11,7 @@
 	<!-- CSS
 ================================================== -->
 	<link rel="stylesheet" href="/css/user/css/style.css">
-	<link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+
 
 </head>
 
@@ -25,204 +25,121 @@
 	<% }  %>
 
 
-
-
-	<!-- Banner
-================================================== -->
-	<div class="main-search-container centered">
-
-
-		<div class="main-search-inner">
-			<div class="container">
-				<div class="row">
-					<% if(locals.err){ %>
-						<div class="alert alert-danger alert-dismissible fade show">
-							
-							<h3 class="text-danger p-3" style="font-weight: 600;"><%=locals.err%></h3>
-						</div>
-						<% } %>
-							<% if(locals.success){ %>
-								<div class="alert alert-success alert-dismissible fade show">
-									<h3 class="text-success p-3" style="font-weight: 600;"><%=locals.success%></h3>
-								</div>
-								<% } %>
-					<div class="col-md-12">
-						<h2>
-							Find Nearby
-							<span class="typed-words"></span>
-						</h2>
-						<h4>Discover and book beauty & wellness professionals near you</h4>
-						<form action="/search" method="post">
-							<div class="main-search-input">
-
-								<div class="main-search-input-item">
-									<input type="text" placeholder="What are you looking for?" value="" name="name"
-										required />
-								</div>
-
-								<div class="main-search-input-item location">
-									<div id="autocomplete-container">
-										<input id="autocomplete-input" type="text" placeholder="Location"
-											name="location">
-									</div>
-									<a href="#"><i class="fa fa-map-marker"></i></a>
-								</div>
-
-
-								<button type="submit" class="button">Search</button>
-
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<!-- Features Categories -->
-				<div class="row">
-					<div class="col-md-12">
-						<h5 class="highlighted-categories-headline">Popular searching category</h5>
-
-						<div class="highlighted-categories">
-							<!-- Box -->
-							<a href="/search/category/Hair Salon" class="highlighted-category">
-
-								<h4>Hair Salon</h4>
-							</a>
-
-							<!-- Box -->
-							<a href="/search/category/Beauty Salon" class="highlighted-category">
-
-								<h4>Beauty Salon</h4>
-							</a>
-
-							<!-- Box -->
-							<a href="/search/category/Tattoo Shop" class="highlighted-category">
-
-								<h4>Tattoo Shop</h4>
-							</a>
-
-							<!-- Box -->
-							<a href="/search/category/Massage" class="highlighted-category">
-
-								<h4>Massage</h4>
-							</a>
-						</div>
-
-					</div>
-				</div>
-				<!-- Featured Categories - End -->
-
-			</div>
-
-		</div>
-
-		<div class="video-container">
-			<video poster="images/main-search-video-poster.jpg" loop autoplay muted>
-				<source src="/video/user/US.mp4" type="video/mp4">
+	<section class="page-content">
+        <div class="video-section mt-5">
+            <video poster="images/main-search-video-poster.jpg" loop autoplay muted>
+                <source src="/video/user/US.mp4" type="video/mp4" />
 			</video>
-		</div>
-	</div>
-
-
-
-	<!-- Fullwidth Section -->
-	<section class="fullwidth margin-top-65 padding-bottom-70" data-background-color="#f8f8f8">
-
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-12">
-					<h3 class="headline centered margin-bottom-45">
-						<strong class="headline-with-separator">Recommended</strong>
-
-					</h3>
-				</div>
-
-				<div class="col-md-12">
-					<div class="simple-slick-carousel dots-nav">
-						<% for(i=0;i<shop.length;i++) { %>
-						<!-- Listing Item -->
-						<div class="carousel-item">
-
-							<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
-								class="listing-item-container">
-								<div class="listing-item">
-									<img src="<%=shop[i].img%>" alt="">
-
-									<div class="listing-badge now-open">Now Open</div>
-
-									<div class="listing-item-content">
-										<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
-										<span><%=shop[i].address%></span>
-									</div>
-								</div>
-								<div class="star-rating" data-rating="<%=shop[i].rating%>">
-									<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
-								</div>
-							</a>
-						</div>
-						<!-- Listing Item / End -->
-
-						<% } %>
-
-
-
+			<div class="loginmsg">
+				<% if(locals.err){ %>
+					<div class="alert alert-danger alert-dismissible fade show">
+						<h6 class="text-danger" style="font-weight: 600;"><%=locals.err%></h6>
 					</div>
-
-				</div>
-			</div>
-
-	</section>
-
-
-		<!-- Fullwidth Section -->
-		<section class="fullwidth margin-top-65 padding-bottom-70" data-background-color="#f8f8f8">
-
-			<div class="container">
-				<div class="row">
-	
-					<div class="col-md-12">
-						<h3 class="headline centered margin-bottom-45">
-							<strong class="headline-with-separator">Top Rated</strong>
-	
-						</h3>
-					</div>
-	
-					<div class="col-md-12">
-						<div class="simple-slick-carousel dots-nav">
-							<% for(i=shop.length-1;i>=0;i--) { %>
-							<!-- Listing Item -->
-							<div class="carousel-item">
-	
-								<a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>"
-									class="listing-item-container">
-									<div class="listing-item">
-										<img src="<%=shop[i].img%>" alt="">
-	
-										<div class="listing-badge now-open">Now Open</div>
-	
-										<div class="listing-item-content">
-											<h3><%=shop[i].businessName%> <i class="verified-icon"></i></h3>
-											<span><%=shop[i].address%></span>
-										</div>
-									</div>
-									<div class="star-rating" data-rating="<%=shop[i].rating%>">
-										<div class="rating-counter">(<%=shop[i].total%> reviews)</div>
-									</div>
-								</a>
+					<% } %>
+						<% if(locals.success){ %>
+							<div class="alert alert-success alert-dismissible fade show">
+								<h6 class="text-success" style="font-weight: 600;"><%=locals.success%></h6>
 							</div>
-							<!-- Listing Item / End -->
-	
 							<% } %>
-	
-	
-	
-						</div>
-	
-					</div>
-				</div>
-	
+			</div>
+			
+            <div class="overlay">
+				
+                <h2 class="text-center mb-3 text-light">Discover and book beauty & wellness professional near you</h2>
+                <div class="search-option">
+                    <form action="/search" method="post">
+                    <input type="text" class="categorysearch" placeholder="what are you loking for?" name="name">
+                    <input type="text" class="locationsearch" id="autocomplete-input" placeholder="Search Location" name="location">
+                    <button type="submit" class="btn searchBtn btn-danger rounded-pill">Submit</button>
+                        </form>
+                </div>
+                <div class="cearch-categpry mt-3">
+                    <h5 class="text-center text-white">Popular searching category</h5>
+                    <ul>
+                        <li><a href="/search/category/Hair Salon">Hair Salon</a></li>
+                        <li><a href="/search/category/Beauty Salon">Beauty Salon</a></li>
+                        <li><a href="/search/category/Tattoo Shop">Tattoo Shop</a></li>
+                        <li><a href="/search/category/Massage">Massage</a></li>
+                    </ul>
+                </div>
+    
+            </div>
+		</div>
+		<section class="product-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Recommended</h1>
+                    </div>
+                    <div class="col-sm-12">
+                        <div id="customers-testimonials" class="owl-carousel">
+							<% for(i=0;i<shop.length;i++) { %>
+                            <div class="item">
+                                    <a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>" class="card bg-white text-dark">
+                                        <img src="<%=shop[i].img%>"
+                                            class="card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=shop[i].businessName%></h5>
+                                            <p class="card-text"><%=shop[i].address%></p>
+                                            <div class="rating" data-rating="<%=shop[i].rating%>">
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <span class="text-dark">(<%=shop[i].total%> reviews)</span>
+                                            </div>
+                                        </div>
+                                    </a>
+							</div>
+							<% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</section>
-	<!-- Fullwidth Section / End -->
+		
+		<section class="product-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Top Trending</h1>
+                    </div>
+                    <div class="col-sm-12">
+                        <div id="customers-testimonials1" class="owl-carousel">
+							<% for(i=shop.length-1;i>=0;i--) { %>
+                            <div class="item">
+                                    <a href="/details/<%=shop[i].businessName%>/<%=shop[i].businessMail%>" class="card bg-white text-dark">
+                                        <img src="<%=shop[i].img%>"
+                                            class="card-img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=shop[i].businessName%></h5>
+                                            <p class="card-text"><%=shop[i].address%></p>
+                                            <div class="rating" data-rating="<%=shop[i].rating%>">
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                                <span class="text-dark">(<%=shop[i].total%> reviews)</span>
+                                            </div>
+                                        </div>
+                                    </a>
+							</div>
+							<% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+		</section>
+
+
+
 
 	<!-- Footer -->
 
@@ -230,37 +147,58 @@
 
 	<!-- Footer -->
 
-	<!-- Scripts
-================================================== -->
-	<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/mmenu.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/chosen.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/slick.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/rangeslider.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/magnific-popup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/waypoints.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/counterup.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/tooltips.min.js"></script>
-	<script type="text/javascript" src="/js/user/scripts/custom.js"></script>
+
+<script>
+	jQuery(document).ready(function ($) {
+		"use strict";
+		$('#customers-testimonials').owlCarousel({
+			loop: true,
+			center: true,
+			items: 3,
+			margin: 30,
+			autoplay: true,
+			dots: true,
+			autoplayTimeout: 5000,
+			smartSpeed: 10,
+			responsive: {
+				0: {
+					items: 1
+				},
+				768: {
+					items: 2
+				},
+				1170: {
+					items: 3
+				}
+			}
+		});
+		$('#customers-testimonials1').owlCarousel({
+			loop: true,
+			center: true,
+			items: 3,
+			margin: 30,
+			autoplay: true,
+			dots: true,
+			autoplayTimeout: 3000,
+			smartSpeed: 10,
+			responsive: {
+				0: {
+					items: 1
+				},
+				768: {
+					items: 2
+				},
+				1170: {
+					items: 3
+				}
+			}
+		});
+	});
+</script>
+	
 
 
-	<!-- Leaflet // Docs: https://leafletjs.com/ -->
-	<script src="/js/user/scripts/leaflet.min.js"></script>
 
-	<!-- Leaflet Maps Scripts -->
-	<script src="/js/user/scripts/leaflet-markercluster.min.js"></script>
-	<script src="/js/user/scripts/leaflet-gesture-handling.min.js"></script>
-	<script src="/js/user/scripts/leaflet-listeo.js"></script>
-
-	<!-- Leaflet Geocoder + Search Autocomplete // Docs: https://github.com/perliedman/leaflet-control-geocoder -->
-	<script src="/js/user/scripts/leaflet-autocomplete.js"></script>
-	<script src="/js/user/scripts/leaflet-control-geocoder.js"></script>
-
-
-	<!-- Typed Script -->
-	<script type="text/javascript" src="/js/user/scripts/typed.js"></script>
 	<script>
 		var typed = new Typed('.typed-words', {
 			strings: ["Tattoo", " Salon", " Attractions"],

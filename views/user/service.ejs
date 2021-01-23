@@ -11,7 +11,7 @@
     <!-- CSS
 ================================================== -->
     <link rel="stylesheet" href="/css/user/css/style.css">
-    <link rel="stylesheet" href="/css/user/css/main-color.css" id="colors">
+
     <style>
         /* The container */
         .serviceCheck {
@@ -40,7 +40,6 @@
         /* Create a custom checkbox */
         .checkmark {
             position: absolute;
-            top: 18px;
             left: 4px;
             height: 25px;
             width: 25px;
@@ -124,120 +123,44 @@
     <!-- Header Container / End -->
 
   
-    <!-- Content
-================================================== -->
+    <!-- Content -->
+    <section class="page-content"> 
     <form action="/checkout" method="post" id="mainForm">
         <div class="container">
             <div class="row sticky-wrapper">
 
-                <div class="col-lg-8 col-md-8 padding-right-30">
-
-                    <!-- Add Review Box -->
-                    <div id="add-review" class="add-review-box">
-
-                        <!-- Add Review -->
-                        <h3 class="listing-desc-headline margin-bottom-10">Personal Details</h3>
-
-                        <div id="add-comment" class="add-comment">
-                            <fieldset>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Full Name:</label>
-                                        <input type="text" id="name" name="name" value="<%=user.name%>">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label>Email:</label>
-                                        <input type="text" id="email" name="email" value="<%=user.email%>">
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Phone:</label>
-                                        <input type="text"  id="phone" name="phone" value="<%=user.phone%>">
-
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label>Address:</label>
-                                        <input type="text" id="address" name="address" value="<%=user.address%>">
-                                        <i class="im im-icon-address"></i>
-                                    </div>
-                                </div>
-
-
-                            </fieldset>
-
-                            <div class="clearfix"></div>
-                        </div>
-
+                <div class="col-md-8">
+                    <h3>Personal Details</h3>
+                    <hr>
+                    <p>Full Name</p>
+                    <input type="text" class="form-control" id="name" name="name" value="<%=user.name%>">
+                    <div class="row">
+                      <div class="col-md-6">
+                          <p>Email</p>
+                          <input type="text" class="form-control" id="email" name="email" value="<%=user.email%>">
+                      </div>
+                      <div class="col-md-6">
+                        <p>Phone Number</p>
+                        <input type="text" class="form-control" id="phone" name="phone" value="<%=user.phone%>">
                     </div>
-                    <!-- Add Review Box / End -->
-
-                    <div class="toggle-wrap">
-                        <span class="trigger ">
-                            <a href="#">Hand Cash<i class="sl sl-icon-plus"></i></a></span>
-                        <div class="toggle-container">
-                            <label class="serviceCheck" >
-                                <p>Hand Cash</p>
-                                <input type="checkbox" name="handcash" id="handcash" value="Hand Cash">
-                                <span class="checkmark" id="handCashChekMark"></span>
-                                <p>You will be redirected to hand cash to complete payment.</p>
-                            </label>
-                        </div>
-
+                    </div>
+                  <p>Address</p>
+                  <input type="text" class="form-control" id="address" name="address" value="<%=user.address%>">
+                  
+                  <div class="toggle-wrap">
+                    <span class="trigger">
+                        <a href="#"><i class="fa fa-plus-circle ml-3 mr-3"></i>Hand Cash</a></span>
+                    <div class="toggle-container">
+                        <label class="serviceCheck">
+                            <hr>
+                            <span>Hand Cash</span>
+                            <input type="checkbox" name="handcash" id="handcash" value="Hand Cash">
+                            <span class="checkmark" id="handCashChekMark"></span>
+                            <span>You will be redirected to hand cash to complete payment.</span>
+                        </label>
                     </div>
 
-                    <!-- <div class="toggle-wrap">
-                        <span class="trigger ">
-                            <a href="#">Paypal<i class="sl sl-icon-plus"></i></a></span>
-                        <div class="toggle-container">
-                            <label class="serviceCheck">
-                                <p>Paypal</p>
-                                <input type="checkbox" name="pypal" id="pypal" value="Palypal">
-                                <span class="checkmark"></span>
-                                <h4>You will be redirected to hand cash to complete payment.</h4>
-                            </label>
-
-                        </div>
-
-                    </div>
-                    <div class="toggle-wrap">
-                        <span class="trigger ">
-                            <a href="#">Credit card<i class="sl sl-icon-plus"></i></a></span>
-                        <div class="toggle-container">
-
-                            <label class="serviceCheck">
-                                <label for="credit">Credit Card</label>
-                                <p>Credit Card</p>
-                                <input type="checkbox" name="credit" id="credit" value="Credit Card">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                    </div>
-                    <div class="toggle-wrap">
-                        <span class="trigger ">
-                            <a href="#">Home Reservation<i class="sl sl-icon-plus"></i></a></span>
-                        <div class="toggle-container">
-
-                            <label class="serviceCheck">
-                                <label for="home">Home Reservation</label>
-                                <h4 class="text-center">Enter your full Address</h4>
-                                <input type="checkbox" name="home" id="home" value="Home Reservation">
-                                <span class="checkmark"></span>
-                            </label>
-                            <p>Flat no:</p>
-                            <input type="text" class="form-control" placeholder="Flat No">
-                            <p>House no:</p>
-                            <input type="text" class="form-control" placeholder="House No">
-                            <p>Location:</p>
-                            <input type="text" class="form-control" placeholder="Location">
-                            <p>Address:</p>
-                            <input type="text" class="form-control" placeholder="Address">
-                        </div>
-                    </div> -->
-
-
+                </div>
                 </div>
  
                 <div class="col-lg-4 col-md-4 margin-top-75 sticky">
@@ -248,8 +171,7 @@
                         <div class="listing-item">
                             <img src="<%=shop.img%>" alt="">
 
-                            <div class="listing-item-content">
-                                <div class="numerical-rating" data-rating="5.0"></div>
+                            <div class="listing-item-content text-center">
                                 <h3><%=shop.businessName%></h3>
                                 <span>2726 Shinn Street, New York</span>
                             </div>
@@ -257,7 +179,7 @@
                     </div>
 
                     <!-- Book Now -->
-                    <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
+                    <div id="booking-widget-anchor" class="boxed-widget booking-widget mt-3">
                         <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
                         <div class="row with-forms  margin-top-0">
 
@@ -303,14 +225,14 @@
                                         <div class="toggle-container">
                                             <% for(let k=0;k<otherService.length;k++) { %>
                                             <label class="serviceCheck moreservice">
-                                                <p> <strong><%=otherService[k].name%></strong> </p>
+                                                <span> <strong><%=otherService[k].name%></strong> </span>
                                                 <input type="checkbox" name="extra" value="<%=otherService[k].name%>">
                                                 <input type="hidden" name="exServicename"
                                                     value="<%=otherService[k].name%>">
                                                 <span class="checkmark"></span>
-                                                <p>( <strong><%=otherService[k].hour%></strong>h<strong> :
+                                                <span>( <strong><%=otherService[k].hour%></strong>h<strong> :
                                                     </strong><strong><%=otherService[k].min%></strong>m)
-                                                    <strong>$<%=otherService[k].price%></strong></p>
+                                                    <strong>$<%=otherService[k].price%></strong></span>
                                             </label>
                                             <%} %>
 
@@ -345,6 +267,7 @@
         </div>
     </form>
 
+</section>
 
 
     <!-- Footer -->
