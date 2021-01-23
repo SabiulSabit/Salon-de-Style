@@ -8,6 +8,7 @@ const router = express.Router();
 const userController = require('../controllers/user/user');
 const userAuthentication = require('../controllers/user/authentication');
 const userProfile = require('../controllers/user/profile');
+const userSearch = require('../controllers/user/search');
 
 
 router.route('/')
@@ -93,11 +94,11 @@ router.route('/delete/appoinment')
 
 // /search
 router.route('/search')
-      .post(userAuthentication.setLocals,userController.postSearch)
+      .post(userAuthentication.setLocals,userSearch.postSearch)
 
 ///search/category/
 router.route('/search/category/:name')
-      .get(userAuthentication.setLocals,userController.getSearchByCategory)     
+      .get(userAuthentication.setLocals,userSearch.getSearchByCategory)     
           
 
 ///logout

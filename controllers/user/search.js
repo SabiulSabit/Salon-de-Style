@@ -1,3 +1,12 @@
+var mysql = require('mysql');
+require("dotenv").config();
+
+//global const
+const hostNameDB =  process.env.hostNameDB;
+const userNameDB = process.env.userNameDB;
+const passwordDB = process.env.passwordDB;
+const databaseName = process.env.databaseName;
+
 ///postSearchpostSearch
 exports.postSearch = (req, res, next) => {
     //console.log(req.body)
