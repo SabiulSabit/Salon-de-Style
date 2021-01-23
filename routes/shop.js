@@ -10,6 +10,7 @@ const router = express.Router();
 const shopController = require('../controllers/shop/shop');
 const shopAuthentication = require('../controllers/shop/authentication');
 const shopStaff = require('../controllers/shop/staff');
+const shopService = require('../controllers/shop/service');
 
 
 router.route('/')
@@ -62,10 +63,6 @@ router.route('/staffmember')
 router.route('/deleteemployee')
       .post(shopAuthentication.isAuthentic,shopStaff.delelteEmployee)      
 
-
-//add service to employee
-router.route('/addservicestaff')
-      .post(shopAuthentication.isAuthentic,shopController.addServiceToEmployee)    
 
 // /addstafftime
 router.route('/addstafftime')
@@ -173,11 +170,11 @@ router.route('/deletepackage')
 
 //add new services
 router.route('/addservices')    
-      .get(shopAuthentication.isAuthentic,shopController.getAddServices)
-      .post(shopAuthentication.isAuthentic,shopController.postAddServices)
+      .get(shopAuthentication.isAuthentic,shopService.getAddServices)
+      .post(shopAuthentication.isAuthentic,shopService.postAddServices)
 
 router.route('/deleteservice/:name')
-      .get(shopAuthentication.isAuthentic,shopController.getDeleteServices)      
+      .get(shopAuthentication.isAuthentic,shopService.getDeleteServices)      
 ///logout
 router.route('/logout')
       .get(shopAuthentication.isAuthentic,shopAuthentication.getLogout)       

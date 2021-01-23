@@ -462,58 +462,6 @@ exports.getWorkSchedule = (req, res, next) => {
 }
 
 
-
-
-
-
-//add new service to emplpyee
-exports.addServiceToEmployee = (req, res, next) => {
-
-    var connectDB = mysql.createConnection({
-        host: hostNameDB,
-        user: userNameDB,
-        password: passwordDB,
-        database: databaseName,
-        multipleStatements: true
-    });
-
-    //console.log(req.body);
-    //console.log(req.session.service);
-
-    data = " "
-    for (i = 0; i < req.session.service.length; i++) {
-
-        //console.log(req.session.service[i].name)
-        // console.log(req.body[req.session.service[i].name])
-        if (req.body[req.session.service[i].name] != undefined) {
-            data += " INSERT INTO `staffservices`(`businessMail`, `staffMail`, `serviceName`) VALUES ('" + req.session.mail + "','" + req.body.mail + "','" + req.body[req.session.service[i].name] + "') ;  "
-
-        }
-    }
-
-    deleteData = "DELETE FROM `staffservices` " +
-        " WHERE staffMail = " + mysql.escape(req.body.mail);
-
-    //console.log(data,deleteData);             
-
-    connectDB.query(deleteData, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        else {
-            connectDB.query(data, (err1, result1) => {
-                if (err1) {
-                    throw err1;
-                }
-                else {
-                    return res.redirect('/shop/staffinfo');
-                }
-            })
-        }
-    })
-
-}
-
 //getAddStaffTime getAddStaffTime
 
 exports.getAddStaffTime = (req, res, next) => {
