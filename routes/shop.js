@@ -11,6 +11,7 @@ const shopController = require('../controllers/shop/shop');
 const shopAuthentication = require('../controllers/shop/authentication');
 const shopStaff = require('../controllers/shop/staff');
 const shopService = require('../controllers/shop/service');
+const shopPackage = require('../controllers/shop/package');
 
 
 router.route('/')
@@ -102,29 +103,29 @@ router.route('/health&safety')
 
 ///package     
 router.route('/package')
-      .get(shopAuthentication.isAuthentic,shopController.getPackage) 
-      .post(shopAuthentication.isAuthentic,shopController.postPackage) 
+      .get(shopAuthentication.isAuthentic,shopPackage.getPackage) 
+      .post(shopAuthentication.isAuthentic,shopPackage.postPackage) 
 
 ///packagedetail 
 router.route('/packagedetail')
-      .get(shopAuthentication.isAuthentic,shopController.getPackageDetail) 
+      .get(shopAuthentication.isAuthentic,shopPackage.getPackageDetail) 
 
 //show package orders 
 router.route('/packageOrders')
-      .get(shopAuthentication.isAuthentic,shopController.getPackageOrders)      
+      .get(shopAuthentication.isAuthentic,shopPackage.getPackageOrders)      
 
 //package order approve      
 router.route('/approve/package/:id')
-      .get(shopAuthentication.isAuthentic,shopController.getApprovePackage)    
+      .get(shopAuthentication.isAuthentic,shopPackage.getApprovePackage)    
 
 //package order delete
 router.route('/delete/package/:id')   
-      .get(shopAuthentication.isAuthentic,shopController.getDeletePackage)
+      .get(shopAuthentication.isAuthentic,shopPackage.getDeletePackage)
 
 
 //update pacakge data
 router.route('/updatepackage')      
-      .post(shopAuthentication.isAuthentic,shopController.postPackageUpdate)
+      .post(shopAuthentication.isAuthentic,shopPackage.postPackageUpdate)
 
 ///portfolio
 router.route('/portfolio')
@@ -154,7 +155,7 @@ router.route('/processed')
 
 ///deletepackage
 router.route('/deletepackage')
-      .post(shopAuthentication.isAuthentic,shopController.postDeletePackage) 
+      .post(shopAuthentication.isAuthentic,shopPackage.postDeletePackage) 
       
 
 //add new services
