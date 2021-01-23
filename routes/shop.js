@@ -149,17 +149,6 @@ router.route('/portfolio')
 router.route('/portfolio/deleteimg/:img')
       .get(shopAuthentication.isAuthentic,shopController.getDeletePortfolioImg)      
 
-///email
-router.route('/email')
-      .get(shopAuthentication.isAuthentic,shopController.getEmail) 
-
-//emaildetail      
-router.route('/emaildetail')
-      .get(shopAuthentication.isAuthentic,shopController.getEmailDetail) 
-
-///emailcompose    
-router.route('/emailcompose')
-      .get(shopAuthentication.isAuthentic,shopController.getEmailCompose)   
 
 ///productscart    
 router.route('/productscart')

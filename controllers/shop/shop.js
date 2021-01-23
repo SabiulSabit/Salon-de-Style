@@ -1530,20 +1530,7 @@ exports.getDeletePortfolioImg = (req, res, next) => {
     //fs.unlinkSync(filePath)
 }
 
-//get Email 
-exports.getEmail = (req, res, next) => {
-    return res.render('shop/email')
-}
 
-//get Email Detail 
-exports.getEmailDetail = (req, res, next) => {
-    return res.render('shop/emailDetail')
-}
-
-//get Email Compose 
-exports.getEmailCompose = (req, res, next) => {
-    return res.render('shop/emailCompose')
-}
 
 //getProductsCart 
 exports.getProductsCart = (req, res, next) => {
