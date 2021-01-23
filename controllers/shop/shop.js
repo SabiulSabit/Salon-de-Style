@@ -8,11 +8,11 @@ const bcrypt = require('bcrypt');
 const { connect } = require('http2');
 const { info } = require('console');
 const { INSPECT_MAX_BYTES } = require('buffer');
-const { use, route } = require('../routes/shop');
+///const { use, route } = require('../routes/shop');
 require("dotenv").config();
 
 //global const
-const hostNameDB =  process.env.hostNameDB;
+const hostNameDB = process.env.hostNameDB;
 const userNameDB = process.env.userNameDB;
 const passwordDB = process.env.passwordDB;
 const databaseName = process.env.databaseName;
@@ -2132,10 +2132,10 @@ exports.postProcessed = (req, res, next) => {
     //console.log(req.body)
     if (req.body.paymentType === "Hand Cash") {
         let dis = req.body.discount;
-        if(dis ==  undefined) {
+        if (dis == undefined) {
             data = "UPDATE `booking` " +
-            " SET `status`= 1  "  +
-            " WHERE bookingID =  " + mysql.escape(req.body.id) + " AND businessMail = " + mysql.escape(req.session.mail) + " AND userMail = " + mysql.escape(req.body.user);
+                " SET `status`= 1  " +
+                " WHERE bookingID =  " + mysql.escape(req.body.id) + " AND businessMail = " + mysql.escape(req.session.mail) + " AND userMail = " + mysql.escape(req.body.user);
         }
         else if (!Array.isArray(dis)) {
             data = "UPDATE `booking` " +
@@ -2154,11 +2154,11 @@ exports.postProcessed = (req, res, next) => {
 
         }
 
-        connectDB.query(data,(err,result)=>{
-            if(err){
+        connectDB.query(data, (err, result) => {
+            if (err) {
                 throw err;
             }
-            else{
+            else {
                 return res.redirect('/shop/invoicedetail');
             }
         })

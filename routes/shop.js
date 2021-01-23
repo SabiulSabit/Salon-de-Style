@@ -7,7 +7,7 @@ const { rootCertificates } = require('tls');
 const router = express.Router();
 
 
-const shopController = require('../controllers/shop');
+const shopController = require('../controllers/shop/shop');
 
 
 router.route('/')
