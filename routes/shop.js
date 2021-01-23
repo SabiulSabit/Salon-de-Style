@@ -8,217 +8,218 @@ const router = express.Router();
 
 
 const shopController = require('../controllers/shop/shop');
+const shopAuthentication = require('../controllers/shop/authentication');
 
 
 router.route('/')
       .get(shopController.getHome);
 //login page show routing 
 router.route('/login')
-      .get(shopController.getLogin)
+      .get(shopAuthentication.getLogin)
 //login request routing
 router.route('/dashboard')
-      .post(shopController.postLogin)      
+      .post(shopAuthentication.postLogin)      
 
 router.route('/createaccount')
-    .get(shopController.getCreateAccount) 
-    .post(shopController.postCreateAccount)     
+    .get(shopAuthentication.getCreateAccount) 
+    .post(shopAuthentication.postCreateAccount)     
 
 //show company information
 
 router.route('/companyinfo')
-      .get(shopController.isAuthentic,shopController.getCompanyInfo)
-      .post(shopController.isAuthentic,shopController.postCompanyInfo)
+      .get(shopAuthentication.isAuthentic,shopController.getCompanyInfo)
+      .post(shopAuthentication.isAuthentic,shopController.postCompanyInfo)
 
 
 //save tax data
 router.route('/savetax')
-      .post(shopController.isAuthentic,shopController.postSaveTax)
+      .post(shopAuthentication.isAuthentic,shopController.postSaveTax)
 
  //show shop open and close hours
  
  router.route('/openinghours')
-      .get(shopController.isAuthentic,shopController.getOpeningHours)
+      .get(shopAuthentication.isAuthentic,shopController.getOpeningHours)
 
 router.route('/savedate')
-       .post(shopController.isAuthentic,shopController.saveNewDate)           
+       .post(shopAuthentication.isAuthentic,shopController.saveNewDate)           
 
 
 router.route('/workschedule')
-      .get(shopController.isAuthentic,shopController.getWorkSchedule)  
+      .get(shopAuthentication.isAuthentic,shopController.getWorkSchedule)  
       
 
 
 router.route('/staffmember')
-      .get(shopController.isAuthentic,shopController.getStaffMember)      
-      .post(shopController.isAuthentic,shopController.postStaffMember)
+      .get(shopAuthentication.isAuthentic,shopController.getStaffMember)      
+      .post(shopAuthentication.isAuthentic,shopController.postStaffMember)
       
 
  // add new stuff
  router.route('/addstaffmember')
-      .post(shopController.isAuthentic,shopController.addNewStaff)     
+      .post(shopAuthentication.isAuthentic,shopController.addNewStaff)     
  
 //delete employee data
 router.route('/deleteemployee')
-      .post(shopController.isAuthentic,shopController.delelteEmployee)      
+      .post(shopAuthentication.isAuthentic,shopController.delelteEmployee)      
 
 
 //add service to employee
 router.route('/addservicestaff')
-      .post(shopController.isAuthentic,shopController.addServiceToEmployee)    
+      .post(shopAuthentication.isAuthentic,shopController.addServiceToEmployee)    
 
 // /addstafftime
 router.route('/addstafftime')
-      .post(shopController.isAuthentic,shopController.getAddStaffTime)         
+      .post(shopAuthentication.isAuthentic,shopController.getAddStaffTime)         
       
 //appointment
 router.route('/appointment')
-      .get(shopController.isAuthentic,shopController.getAppointment);      
+      .get(shopAuthentication.isAuthentic,shopController.getAppointment);      
 
 ///saleshistory
 router.route('/saleshistory')
-      .get(shopController.isAuthentic,shopController.getSalesHistory);
+      .get(shopAuthentication.isAuthentic,shopController.getSalesHistory);
 
 ///saleslist
 router.route('/saleslist')
-      .get(shopController.isAuthentic,shopController.getSalesList)
-      .post(shopController.isAuthentic,shopController.postSalesList)
+      .get(shopAuthentication.isAuthentic,shopController.getSalesList)
+      .post(shopAuthentication.isAuthentic,shopController.postSalesList)
 
 ///invoicelist
 router.route('/invoicelist')
-      .get(shopController.isAuthentic,shopController.getInvoiceList)      
+      .get(shopAuthentication.isAuthentic,shopController.getInvoiceList)      
 
 ///invoicedetail
 router.route('/invoicedetail')
-      .get(shopController.isAuthentic,shopController.getInvoiceDetail)
+      .get(shopAuthentication.isAuthentic,shopController.getInvoiceDetail)
 
 ///clientdetail      
 router.route('/clientdetail')
-      .get(shopController.isAuthentic,shopController.getClientDetail)
-      .post(shopController.isAuthentic,shopController.postClientDetail)
+      .get(shopAuthentication.isAuthentic,shopController.getClientDetail)
+      .post(shopAuthentication.isAuthentic,shopController.postClientDetail)
 
 ///clientinvoice
 router.route('/clientinvoice')
-      .get(shopController.isAuthentic,shopController.getClientInvoice)
+      .get(shopAuthentication.isAuthentic,shopController.getClientInvoice)
       
 
 ///categorieslist
 router.route('/categorieslist')
-      .get(shopController.isAuthentic,shopController.getCategoriesList)
-      .post(shopController.isAuthentic,shopController.postCategoriesList)
+      .get(shopAuthentication.isAuthentic,shopController.getCategoriesList)
+      .post(shopAuthentication.isAuthentic,shopController.postCategoriesList)
 
 ///health&safety    
 router.route('/health&safety')
-      .get(shopController.isAuthentic,shopController.getHealthSafety)
-      .post(shopController.isAuthentic,shopController.postHealthSafety)
+      .get(shopAuthentication.isAuthentic,shopController.getHealthSafety)
+      .post(shopAuthentication.isAuthentic,shopController.postHealthSafety)
 
 
 
 ///package     
 router.route('/package')
-      .get(shopController.isAuthentic,shopController.getPackage) 
-      .post(shopController.isAuthentic,shopController.postPackage) 
+      .get(shopAuthentication.isAuthentic,shopController.getPackage) 
+      .post(shopAuthentication.isAuthentic,shopController.postPackage) 
 
 ///packagedetail 
 router.route('/packagedetail')
-      .get(shopController.isAuthentic,shopController.getPackageDetail) 
+      .get(shopAuthentication.isAuthentic,shopController.getPackageDetail) 
 
 //show package orders 
 router.route('/packageOrders')
-      .get(shopController.isAuthentic,shopController.getPackageOrders)      
+      .get(shopAuthentication.isAuthentic,shopController.getPackageOrders)      
 
 //package order approve      
 router.route('/approve/package/:id')
-      .get(shopController.isAuthentic,shopController.getApprovePackage)    
+      .get(shopAuthentication.isAuthentic,shopController.getApprovePackage)    
 
 //package order delete
 router.route('/delete/package/:id')   
-      .get(shopController.isAuthentic,shopController.getDeletePackage)
+      .get(shopAuthentication.isAuthentic,shopController.getDeletePackage)
 
 
 //update pacakge data
 router.route('/updatepackage')      
-      .post(shopController.isAuthentic,shopController.postPackageUpdate)
+      .post(shopAuthentication.isAuthentic,shopController.postPackageUpdate)
 
 ///portfolio
 router.route('/portfolio')
-      .get(shopController.isAuthentic,shopController.getPortfolio) 
-      .post(shopController.isAuthentic,shopController.postPortfolio)
+      .get(shopAuthentication.isAuthentic,shopController.getPortfolio) 
+      .post(shopAuthentication.isAuthentic,shopController.postPortfolio)
 
 //delete portfolio image
 router.route('/portfolio/deleteimg/:img')
-      .get(shopController.isAuthentic,shopController.getDeletePortfolioImg)      
+      .get(shopAuthentication.isAuthentic,shopController.getDeletePortfolioImg)      
 
 ///email
 router.route('/email')
-      .get(shopController.isAuthentic,shopController.getEmail) 
+      .get(shopAuthentication.isAuthentic,shopController.getEmail) 
 
 //emaildetail      
 router.route('/emaildetail')
-      .get(shopController.isAuthentic,shopController.getEmailDetail) 
+      .get(shopAuthentication.isAuthentic,shopController.getEmailDetail) 
 
 ///emailcompose    
 router.route('/emailcompose')
-      .get(shopController.isAuthentic,shopController.getEmailCompose)   
+      .get(shopAuthentication.isAuthentic,shopController.getEmailCompose)   
 
 ///productscart    
 router.route('/productscart')
-      .get(shopController.isAuthentic,shopController.getProductsCart)    
+      .get(shopAuthentication.isAuthentic,shopController.getProductsCart)    
 
 ///productsedit
 router.route('/productsedit')
-      .get(shopController.isAuthentic,shopController.getProductsEdit) 
+      .get(shopAuthentication.isAuthentic,shopController.getProductsEdit) 
 
 ///productsdetails
 router.route('/productsdetails')
-      .get(shopController.isAuthentic,shopController.getProductsDetails) 
+      .get(shopAuthentication.isAuthentic,shopController.getProductsDetails) 
 
 ///productsorders
 router.route('/productsorders')
-      .get(shopController.isAuthentic,shopController.getProductsOrders) 
+      .get(shopAuthentication.isAuthentic,shopController.getProductsOrders) 
 
 ///productscheckout
 router.route('/productscheckout')
-      .get(shopController.isAuthentic,shopController.getProductsCheckout)      
+      .get(shopAuthentication.isAuthentic,shopController.getProductsCheckout)      
 
 ///bookingsetting
 router.route('/bookingsetting')
-      .get(shopController.isAuthentic,shopController.getBookingSetting)      
+      .get(shopAuthentication.isAuthentic,shopController.getBookingSetting)      
 
 ///staffcommission     
 router.route('/staffcommission')
-      .get(shopController.isAuthentic,shopController.getStaffCommission)   
+      .get(shopAuthentication.isAuthentic,shopController.getStaffCommission)   
 
 // inventory
 router.route('/inventory')
-      .get(shopController.isAuthentic,shopController.getInventory)      
+      .get(shopAuthentication.isAuthentic,shopController.getInventory)      
 
 ///reviewandrating
 router.route('/reviewandrating')
-      .get(shopController.isAuthentic,shopController.getReviewandRating)      
+      .get(shopAuthentication.isAuthentic,shopController.getReviewandRating)      
 
 ///reports
 router.route('/reports')
-      .get(shopController.isAuthentic,shopController.getReports) 
+      .get(shopAuthentication.isAuthentic,shopController.getReports) 
 
 ///processed
 router.route('/processed')
-      .post(shopController.isAuthentic,shopController.postProcessed)       
+      .post(shopAuthentication.isAuthentic,shopController.postProcessed)       
 
 ///deletepackage
 router.route('/deletepackage')
-      .post(shopController.isAuthentic,shopController.postDeletePackage) 
+      .post(shopAuthentication.isAuthentic,shopController.postDeletePackage) 
       
 
 //add new services
 router.route('/addservices')    
-      .get(shopController.isAuthentic,shopController.getAddServices)
-      .post(shopController.isAuthentic,shopController.postAddServices)
+      .get(shopAuthentication.isAuthentic,shopController.getAddServices)
+      .post(shopAuthentication.isAuthentic,shopController.postAddServices)
 
 router.route('/deleteservice/:name')
-      .get(shopController.isAuthentic,shopController.getDeleteServices)      
+      .get(shopAuthentication.isAuthentic,shopController.getDeleteServices)      
 ///logout
 router.route('/logout')
-      .get(shopController.isAuthentic,shopController.getLogout)       
+      .get(shopAuthentication.isAuthentic,shopAuthentication.getLogout)       
  //export
 module.exports = router;     
 
