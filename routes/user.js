@@ -89,7 +89,7 @@ router.route('/setReview')
 
 ///delete/appoinment
 router.route('/delete/appoinment')
-      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userController.postDeleteAppoinment)
+      .post(userAuthentication.isAuthentic,userAuthentication.setLocals,userProfile.postDeleteAppoinment)
 
 
 // /search

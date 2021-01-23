@@ -325,6 +325,32 @@ exports.getPayment = (req, res, next) => {
 }
 
 
+//postDeleteAppoinment
+exports.postDeleteAppoinment = (req, res, next) => {
+    //console.log(req.body);
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = "UPDATE `booking` " +
+        "  SET `status`= -1 " +
+        " WHERE businessMail =" + mysql.escape(req.body.shopMail) + " AND userMail = " + mysql.escape(req.session.user) + " AND bookingID = " + mysql.escape(req.body.id)
+
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            return res.redirect('/appointment');
+        }
+    })
+
+}
+
+
 //chnagePassword 
 exports.chnagePassword = (req, res, next) => {
     console.log(req.body);
