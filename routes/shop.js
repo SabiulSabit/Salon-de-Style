@@ -15,6 +15,7 @@ const shopPackage = require('../controllers/shop/package');
 const shopPortfolio = require('../controllers/shop/portfolio');
 const shopClient = require('../controllers/shop/client');
 const shopHealthSafety = require('../controllers/shop/healthSafety');
+const shopSales = require('../controllers/shop/sales');
 
 
 
@@ -63,12 +64,12 @@ router.route('/deleteemployee')
 
 ///saleshistory
 router.route('/saleshistory')
-      .get(shopAuthentication.isAuthentic,shopController.getSalesHistory);
+      .get(shopAuthentication.isAuthentic,shopSales.getSalesHistory);
 
 ///saleslist
 router.route('/saleslist')
-      .get(shopAuthentication.isAuthentic,shopController.getSalesList)
-      .post(shopAuthentication.isAuthentic,shopController.postSalesList)
+      .get(shopAuthentication.isAuthentic,shopSales.getSalesList)
+      .post(shopAuthentication.isAuthentic,shopSales.postSalesList)
  
 
 ///invoicedetail
@@ -94,7 +95,6 @@ router.route('/categorieslist')
 router.route('/health&safety')
       .get(shopAuthentication.isAuthentic,shopHealthSafety.getHealthSafety)
       .post(shopAuthentication.isAuthentic,shopHealthSafety.postHealthSafety)
-
 
 
 ///package     
