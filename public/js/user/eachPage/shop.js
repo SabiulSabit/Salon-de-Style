@@ -80,6 +80,8 @@ function friendFunction(a) {
 
 let lat, lon;
 function setMap() {
+    let preLoader = document.getElementById('loader');
+    preLoader.style.display = 'none';
 
     lat = document.getElementById('lat').value;
     lon = document.getElementById('lon').value;

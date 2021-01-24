@@ -1,7 +1,8 @@
 <%- include('./include/header.ejs') %>
 </head> 
 
-<body>
+<body  onload="loader()">
+	<div id="loader"> </div>
 	<% if(user){ %>
 		<%- include('./loginNavbar.ejs') %>
 	  <% } else{ %>

@@ -1,8 +1,8 @@
 <%- include('./include/header.ejs') %>
 </head>
 
-<body>
-
+<body  onload="loader()">
+	<div id="loader"> </div>
 	<% if(user){ %>
 		<%- include('./loginNavbar.ejs') %>
 			<% } else{ %>
@@ -11,8 +11,6 @@
 
 						<!-- Titlebar -->
 						<section class="page-content">
-
-
 							<!-- content -->
 							<div class="container">
 								<div class="row">
