@@ -1,107 +1,109 @@
+<!-- Header Start-->
+<%- include('./include/header.ejs') %>
+    <!-- Header End-->
 
- <!-- Header Start-->
- <%- include('./include/header.ejs') %>
-  <!-- Header End-->
+    <body>
+        <%- include('./sideBar.ejs') %>
 
+            <div class="page-wrapper">
+                <div class="heath-information">
+                    <div class="container mt-4">
+                        <h1 class="text-center mt-2 mb-4">Service of your Business</h1>
+                        <form action="/shop/addservices" method="post">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <select class="form-control" name="cat" required>
+                                        <option value="" disabled selected hidden>Category</option>
+                                        <% for(let i=0; i< category.length; i++ ) { %>
+                                            <option>
+                                                <%=category[i].name%>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                </div>
+                                <input class="col-md-2 form-control" name="name" type="text" placeholder="Service Name"
+                                    required>
+                                <input class="col-md-2 form-control" name="hour" type="text" placeholder="Hour"
+                                    required>
+                                <input class="col-md-2 form-control" name="min" type="text" placeholder="Minute"
+                                    required>
+                                <input class="col-md-2 form-control" name="price" type="text" placeholder="Price"
+                                    required>
+                                <div class="col-md-2" required>
+                                    <select class="form-control" name="priceType" required>
+                                        <option value="" disabled selected hidden>Price Type</option>
+                                        <option>Fixed</option>
+                                        <option>Negotiable</option>
+                                    </select>
+                                </div>
 
-<body>
-
-    <%- include('./sideBar.ejs') %>
-
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
-    <div class="page-wrapper">
-        <div class="heath-information">
-            <div class="container mt-4">
-                <h1 class="text-center mt-2 mb-4">Service of your Business</h1>
-                <form action="/shop/addservices" method="post">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <select class="form-control" name="cat" required>
-                                <option value="" disabled selected hidden>Category</option>
-                                <% for(let i=0; i< category.length; i++ ) { %>
-                                <option>
-                                    <%=category[i].name%>
-                                </option>
-                                <% } %>
-                            </select>
-                        </div>
-                        <input class="col-md-2 form-control" name="name" type="text" placeholder="Service Name"
-                            required>
-                        <input class="col-md-2 form-control" name="hour" type="text" placeholder="Hour" required>
-                        <input class="col-md-2 form-control" name="min" type="text" placeholder="Minute" required>
-                        <input class="col-md-2 form-control" name="price" type="text" placeholder="Price" required>
-                        <div class="col-md-2" required>
-                            <select class="form-control" name="priceType" required>
-                                <option value="" disabled selected hidden>Price Type</option>
-                                <option>Fixed</option>
-                                <option>Negotiable</option>
-                            </select>
-                        </div>
-
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <button type="submit"
+                                            class="btn btn-info mt-3 mb-3 center-block col-md-3 p-3">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                       <div class="col-md-12">
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-info mt-3 mb-3 center-block col-md-3 p-3">ADD</button>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 mt-5">
+                                <table class="table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Hour</th>
+                                            <th scope="col">Minute</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Price Type</th>
+                                            <th scope="col">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(let i=0; i < data.length ; i++ ) { %>
+                                            <tr>
+                                                <th>
+                                                    <%=data[i].name%>
+                                                </th>
+                                                <th>
+                                                    <%=data[i].category%>
+                                                </th>
+                                                <th>
+                                                    <%=data[i].hour%>
+                                                </th>
+                                                <th>
+                                                    <%=data[i].min%>
+                                                </th>
+                                                <th>
+                                                    <%=data[i].price%>
+                                                </th>
+                                                <th>
+                                                    <%=data[i].priceType%>
+                                                </th>
+                                                <th> <a href="/shop/deleteservice/<%=data[i].name%>"> <i
+                                                            class="fa fa-trash"></i> </a></th>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                       </div>
                     </div>
-                </form>
+                </div>
             </div>
 
-
-
-     
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mt-5">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Hour</th>
-                            <th scope="col">Minute</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Price Type</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for(let i=0; i < data.length ; i++ ) { %>
-                        <tr>
-                            <th><%=data[i].name%></th>
-                            <th><%=data[i].category%></th>
-                            <th><%=data[i].hour%></th>
-                            <th><%=data[i].min%></th>
-                            <th><%=data[i].price%></th>
-                            <th><%=data[i].priceType%></th>
-                            <th> <a href="/shop/deleteservice/<%=data[i].name%>"> <i class="fa fa-trash"></i> </a></th>
-                        </tr>
-                        <% } %>
-                    </tbody>
-                </table>
             </div>
-        </div>
-    </div>
-</div>
-</div>
+            </div>
 
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
+            <!-- JS Plugin Start-->
+            <%- include('./include/js.ejs') %>
+                <!-- JS Plugin End-->
 
- <!-- JS Plugin Start-->
- <%- include('./include/js.ejs') %>
-  <!-- JS Plugin End-->
+    </body>
 
-
-</body>
-
-</html>
+    </html>
