@@ -242,7 +242,13 @@ ul {
 .rating[data-rating="1"] .star:first-child:before {
     content: "";
 }
-
+#loader {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: whitesmoke url('/images/assets/loader.gif') no-repeat center;
+  z-index: 100;
+}
 .fa-star-o:before,
 .rating[data-rating="4"] .star:last-child:before,
 .star:before {
