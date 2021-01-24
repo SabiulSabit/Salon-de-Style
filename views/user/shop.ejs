@@ -23,299 +23,10 @@
 
 	<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.css">
 
-
-	<style>
-		[type=checkbox]:checked[class*=material-inputs],
-		[type=checkbox]:not(:checked)[class*=material-inputs] {
-			position: absolute;
-			left: -9999px;
-			opacity: 0
-		}
-
-		[type=checkbox]+label {
-			position: relative;
-			padding-left: 26px;
-			cursor: pointer;
-			display: inline-block;
-			height: 16px;
-			line-height: 21px;
-			/* font-size: 18px; */
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-khtml-user-select: none;
-			-ms-user-select: none
-		}
-
-		[type=checkbox]+label:before,
-		[type=checkbox]:not(.filled-in)+label:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 18px;
-			height: 18px;
-			z-index: 0;
-			border: 2px solid #5a5a5a;
-			border-radius: 1px;
-			margin-top: 2px;
-			transition: .2s
-		}
-
-		[type=checkbox]:not(.filled-in)+label:after {
-			border: 0;
-			-webkit-transform: scale(0);
-			transform: scale(0)
-		}
-
-		[type=checkbox]:not(:checked):disabled+label:before {
-			border: none;
-			background-color: rgba(0, 0, 0, .26)
-		}
-
-		[type=checkbox].tabbed:focus+label:after {
-			-webkit-transform: scale(1);
-			transform: scale(1);
-			border: 0;
-			border-radius: 50%;
-			box-shadow: 0 0 0 10px rgba(0, 0, 0, .1);
-			background-color: rgba(0, 0, 0, .1)
-		}
-
-		[type=checkbox]:checked+label:before {
-			top: -4px;
-			left: -5px;
-			width: 12px;
-			height: 22px;
-			border-top: 2px solid transparent;
-			border-left: 2px solid transparent;
-			border-right: 2px solid #26a69a;
-			border-bottom: 2px solid #26a69a;
-			-webkit-transform: rotate(40deg);
-			transform: rotate(40deg);
-			-webkit-backface-visibility: hidden;
-			backface-visibility: hidden;
-			-webkit-transform-origin: 100% 100%;
-			transform-origin: 100% 100%
-		}
-
-		[type=checkbox]:checked:disabled+label:before {
-			border-right: 2px solid rgba(0, 0, 0, .26);
-			border-bottom: 2px solid rgba(0, 0, 0, .26)
-		}
-
-		[type=checkbox]:indeterminate+label:before {
-			top: -11px;
-			left: -12px;
-			width: 10px;
-			height: 22px;
-			border-top: none;
-			border-left: none;
-			border-right: 2px solid #26a69a;
-			border-bottom: none;
-			-webkit-transform: rotate(90deg);
-			transform: rotate(90deg);
-			-webkit-backface-visibility: hidden;
-			backface-visibility: hidden;
-			-webkit-transform-origin: 100% 100%;
-			transform-origin: 100% 100%;
-		}
-
-		[type=checkbox]:indeterminate:disabled+label:before {
-			border-right: 2px solid rgba(0, 0, 0, .26);
-			background-color: transparent
-		}
-
-		[type=checkbox].filled-in+label:after {
-			border-radius: 2px
-		}
-
-		[type=checkbox].filled-in+label:after,
-		[type=checkbox].filled-in+label:before {
-			content: '';
-			left: 0;
-			position: absolute;
-			transition: border .25s, background-color .25s, width .2s .1s, height .2s .1s, top .2s .1s, left .2s .1s;
-			z-index: 1
-		}
-
-		[type=checkbox].filled-in:not(:checked)+label:before {
-			width: 0;
-			height: 0;
-			border: 3px solid transparent;
-			left: 6px;
-			top: 10px;
-			-webkit-transform: rotateZ(37deg);
-			transform: rotateZ(37deg);
-			-webkit-transform-origin: 20% 40%;
-			transform-origin: 100% 100%
-		}
-
-		[type=checkbox].filled-in:not(:checked)+label:after {
-			height: 20px;
-			width: 20px;
-			background-color: transparent;
-			border: 2px solid #5a5a5a;
-			top: 0;
-			z-index: 0
-		}
-
-		[type=checkbox].filled-in:checked+label:before {
-			top: 0;
-			left: 1px;
-			width: 8px;
-			height: 13px;
-			border-top: 2px solid transparent;
-			border-left: 2px solid transparent;
-			border-right: 2px solid #fff;
-			border-bottom: 2px solid #fff;
-			-webkit-transform: rotateZ(37deg);
-			transform: rotateZ(37deg);
-			-webkit-transform-origin: 100% 100%;
-			transform-origin: 100% 100%
-		}
-
-		[type=checkbox].filled-in:checked+label:after {
-			top: 0;
-			width: 20px;
-			height: 20px;
-			border: 2px solid #26a69a;
-			background-color: #26a69a;
-			z-index: 0
-		}
-
-		[type=checkbox].filled-in.tabbed:focus+label:after {
-			border-radius: 2px;
-			border-color: #5a5a5a;
-			background-color: rgba(0, 0, 0, .1)
-		}
-
-		[type=checkbox].filled-in.tabbed:checked:focus+label:after {
-			border-radius: 2px;
-			background-color: #26a69a;
-			border-color: #26a69a
-		}
-
-		[type=checkbox].filled-in:disabled:not(:checked)+label:before {
-			background-color: transparent;
-			border: 2px solid transparent
-		}
-
-		[type=checkbox].filled-in:disabled:not(:checked)+label:after {
-			border-color: transparent;
-			background-color: #bdbdbd
-		}
-
-		[type=checkbox].filled-in:disabled:checked+label:before {
-			background-color: transparent
-		}
-
-		[type=checkbox].filled-in:disabled:checked+label:after {
-			background-color: #bdbdbd;
-			border-color: #bdbdbd
-		}
-
-
-
-		html[dir=rtl] [type=checkbox]:checked[class*=material-inputs],
-		html[dir=rtl] [type=checkbox]:not(:checked)[class*=material-inputs] {
-			position: absolute;
-			left: auto;
-			right: -9999px;
-			opacity: 0
-		}
-
-		.giftCard {
-			text-align: center;
-			width: 100%;
-			margin-top: 10px;
-			padding: 10px;
-			border: 5px dotted #54ba1d;
-			background-color: rgb(241, 241, 241);
-		}
-
-		.giftCard .popcloseBtn {
-			font-size: 30px;
-		}
-
-		.giftCard .cardShow {
-			width: 100%;
-			text-align: center;
-			padding: 9px 10px;
-			cursor: pointer;
-			font-weight: 700;
-			border-radius: 5px;
-			color: white;
-			background-color: red;
-		}
-
-		.giftBox {
-			border-radius: 15px;
-			padding: 15px;
-			box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, .40);
-			color: #484848;
-			font-weight: 700;
-		}
-
-		.giftBox button {
-			font-size: 15px;
-			padding: 5px 25px;
-		}
-
-		.lastOrder {
-			font-size: 15px;
-			padding: 5px 25px;
-		}
-
-		.modal-body {
-			padding: 10px 50px;
-
-		}
-
-		.giftBox3 {
-			border-radius: 15px;
-			padding: 15px;
-			box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, .20);
-			color: #484848;
-			font-weight: 700;
-		}
-
-		.orderNowBtn {
-			width: 100%;
-			padding: 10px;
-			font-size: 18px;
-			font-weight: 700;
-		}
-
-		.friendDesign a {
-			cursor: pointer;
-			display: inline-block;
-			color: white;
-			width: 100%;
-			padding: 10px;
-			font-size: 18px;
-			font-weight: 700;
-			background-color: red;
-		}
-
-		.starColor {
-			font-size: 15px;
-			color: #ffc600;
-		}
-
-		/* #friendModal {
-			 display: none; 
-		} */
-		.report10 {
-			width: 100%;
-			padding: 10px;
-			background-color: aliceblue;
-			margin-bottom: 10px;
-		}
-	</style>
+	<link rel="stylesheet" href="/css/user/css/shop.css">
 </head>
 
 <body onload="setMap()">
-
 
 
 	<% if(user){ %>
@@ -394,7 +105,8 @@
 										<div class="col-md-8">
 											<div class="shop-info">
 												<h3>
-													<%=shopInfo.businessName%> <span class="shopname" style="font-size: 15px;">SALON DE
+													<%=shopInfo.businessName%> <span class="shopname"
+															style="font-size: 15px;">SALON DE
 															STYLE</span>
 												</h3>
 												<p><i class="fa fa-street-view"></i> Adress: <%=shopInfo.address%>
@@ -412,11 +124,21 @@
 												<nav class="navbar navbar-expand-lg navbar-light bg-light">
 													<div class="" id="navbarNavAltMarkup">
 														<div class="navbar-nav">
-															<a class="nav-item nav-link active" href="#service"><p>Service</p></a>
-															<a class="nav-item nav-link" href="#overview"><p>Overview</p></a>
-															<a class="nav-item nav-link" href="#location"><p>Location</p></a>
-															<a class="nav-item nav-link" href="#review"><p>Review</p></a>
-															<a class="nav-item nav-link" href="#addreview"><p>Add Review</p></a>
+															<a class="nav-item nav-link active" href="#service">
+																<p>Service</p>
+															</a>
+															<a class="nav-item nav-link" href="#overview">
+																<p>Overview</p>
+															</a>
+															<a class="nav-item nav-link" href="#location">
+																<p>Location</p>
+															</a>
+															<a class="nav-item nav-link" href="#review">
+																<p>Review</p>
+															</a>
+															<a class="nav-item nav-link" href="#addreview">
+																<p>Add Review</p>
+															</a>
 														</div>
 													</div>
 												</nav>
@@ -604,7 +326,8 @@
 																<h6>
 																	<%=allRating[j].review%>
 																</h6>
-																<img src="<%=allRating[j].img%>" alt="" class="reviewPicShow">
+																<img src="<%=allRating[j].img%>" alt=""
+																	class="reviewPicShow">
 															</div>
 															<div class="rating" data-rating="<%=allRating[j].rating%>">
 																<div class="star"></div>
@@ -613,7 +336,7 @@
 																<div class="star"></div>
 																<div class="star"></div>
 															</div>
-															
+
 														</div>
 														<% } %>
 															<% } %>
@@ -632,26 +355,36 @@
 																<div class="sub-rating-stars">
 																	<!-- Leave Rating -->
 																	<div class="leave-rating">
-																		<input type="radio" name="rating" id="rating-1" value="5" />
-																		<label for="rating-1" class="fa fa-star"></label>
-																		<input type="radio" name="rating" id="rating-2" value="4" />
-																		<label for="rating-2" class="fa fa-star"></label>
-																		<input type="radio" name="rating" id="rating-3" value="3" />
-																		<label for="rating-3" class="fa fa-star"></label>
-																		<input type="radio" name="rating" id="rating-4" value="2" />
-																		<label for="rating-4" class="fa fa-star"></label>
-																		<input type="radio" name="rating" id="rating-5" value="1" />
-																		<label for="rating-5" class="fa fa-star"></label>
+																		<input type="radio" name="rating" id="rating-1"
+																			value="5" />
+																		<label for="rating-1"
+																			class="fa fa-star"></label>
+																		<input type="radio" name="rating" id="rating-2"
+																			value="4" />
+																		<label for="rating-2"
+																			class="fa fa-star"></label>
+																		<input type="radio" name="rating" id="rating-3"
+																			value="3" />
+																		<label for="rating-3"
+																			class="fa fa-star"></label>
+																		<input type="radio" name="rating" id="rating-4"
+																			value="2" />
+																		<label for="rating-4"
+																			class="fa fa-star"></label>
+																		<input type="radio" name="rating" id="rating-5"
+																			value="1" />
+																		<label for="rating-5"
+																			class="fa fa-star"></label>
 																	</div>
 																</div>
-		
+
 															</div>
 														</div>
 														<div class="col-md-12">
-															
+
 															<div class="uploadreviewpic">
-																<input class="reviewPic" type="file" name="image" id="upload"
-																multiple>
+																<input class="reviewPic" type="file" name="image"
+																	id="upload" multiple>
 															</div>
 															<textarea name="riview" class="reviewTextarea"></textarea>
 															<input type="submit" class="btn btn-danger reviewSubmit"
@@ -662,7 +395,7 @@
 										</div>
 
 										<div class="col-lg-4 col-md-4 margin-top-75 sticky">
-										
+
 											<div class="package-show text-center">
 												<% if(gift.length> 0) { %>
 													<h5 class="text-center text-info">Show Package</h5>
@@ -675,7 +408,8 @@
 														<div class="modal-dialog" role="document">
 															<div class="modal-content">
 																<div class="modal-header">
-																	<h5 class="modal-title" id="exampleModalLabel">Package</h5>
+																	<h5 class="modal-title" id="exampleModalLabel">
+																		Package</h5>
 																	<button type="button" class="close"
 																		data-dismiss="modal" aria-label="Close">
 																		<span aria-hidden="true">&times;</span>
@@ -811,9 +545,6 @@
 																		<p><span>Close</span></p>
 																		<% } %>
 													</div>
-
-
-
 												</div>
 											</div>
 											<div class="contact-info">
@@ -922,8 +653,6 @@
 													</div>
 												</div>
 
-												<!-- Heath rules -->
-
 												<div class="modal fade" id="healthModalCenter" tabindex="-1"
 													role="dialog" aria-labelledby="exampleModalLongTitle"
 													aria-hidden="true">
@@ -959,221 +688,17 @@
 						</section>
 
 						<!-- Footer -->
-
 						<%- include('./footer.ejs') %>
+						<!-- Footer -->
 
-							<!-- Footer -->
-						
-							
 							<script type="text/javascript" src="/js/user/scripts/jquery-3.4.1.min.js"></script>
-							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
+							<script
+								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
 							<script src="/js/user/owl.js"></script>
 							<script src="/js/user/map.js"></script>
+							<script src="/js/user/eachPage/shop.js"></script>
 
 
-
-
-
-							<script>
-								jQuery(document).ready(function ($) {
-									"use strict";
-									$('#customers-testimonials').owlCarousel({
-										loop: true,
-										center: true,
-										items: 3,
-										margin: 30,
-										autoplay: true,
-										dots: true,
-										autoplayTimeout: 1000,
-										smartSpeed: 10,
-										responsive: {
-											0: {
-												items: 1
-											},
-											768: {
-												items: 2
-											},
-											1170: {
-												items: 3
-											}
-										}
-									});
-								
-								});
-							</script>
-							<!-- <script>
-								// Calendar Init
-								$(function () {
-									$('#date-picker').daterangepicker({
-										"opens": "left",
-										singleDatePicker: true,
-
-										// Disabling Date Ranges
-										isInvalidDate: function (date) {
-											// Disabling Date Range
-											var disabled_start = moment('09/02/2018', 'MM/DD/YYYY');
-											var disabled_end = moment('09/06/2018', 'MM/DD/YYYY');
-											return date.isAfter(disabled_start) && date.isBefore(disabled_end);
-
-											// Disabling Single Day
-											// if (date.format('MM/DD/YYYY') == '08/08/2018') {
-											//     return true; 
-											// }
-										}
-									});
-								});
-
-								// Calendar animation
-								$('#date-picker').on('showCalendar.daterangepicker', function (ev, picker) {
-									$('.daterangepicker').addClass('calendar-animated');
-								});
-								$('#date-picker').on('show.daterangepicker', function (ev, picker) {
-									$('.daterangepicker').addClass('calendar-visible');
-									$('.daterangepicker').removeClass('calendar-hidden');
-								});
-								$('#date-picker').on('hide.daterangepicker', function (ev, picker) {
-									$('.daterangepicker').removeClass('calendar-visible');
-									$('.daterangepicker').addClass('calendar-hidden');
-								});
-							</script> -->
-
-
-							<!-- Replacing dropdown placeholder with selected time slot -->
-							<script>
-								$(".time-slot").each(function () {
-									var timeSlot = $(this);
-									$(this).find('input').on('change', function () {
-										var timeSlotVal = timeSlot.find('strong').text();
-
-										$('.panel-dropdown.time-slots-dropdown a').html(timeSlotVal);
-										$('.panel-dropdown').removeClass('active');
-									});
-								});
-
-								$(".save-health").click(function () {
-									$("#healthModalLong").modal('hide');
-								});
-								$(".save-report").click(function () {
-									$("#reportModalLong").modal('hide');
-								});
-
-
-								$(".orderBtn").click(function () {
-									$("#exampleModal").modal('hide');
-									$("#exampleModal2").modal('show');
-								});
-
-								$(".orderNowBtn").click(function () {
-									$("#exampleModal2").modal('hide');
-								});
-
-
-								$(".lastOrder").click(function () {
-									$("#exampleModal3").modal('hide');
-									$("#orderModal").modal('show');
-								});
-
-								$(".firstBack").click(function () {
-									$("#exampleModal2").modal('hide');
-									$("#exampleModal").modal('show');
-								});
-								$(".backFirst").click(function () {
-									$("#giftShowModal").style.display('hide');
-									$("#giftModal").style.display('show');
-								});
-								function friendFunction(a) {
-									var x = document.getElementById(a);
-									//console.log(x)
-									if (x.style.display === "block") {
-										x.style.display = "none";
-										console.log("asd")
-									} else {
-										x.style.display = "block";
-									}
-								}
-
-							</script>
-
-							<script>
-
-								let lat, lon;
-								function setMap() {
-
-									lat = document.getElementById('lat').value;
-									lon = document.getElementById('lon').value;
-									let address = document.getElementById('address').value;
-
-
-									//console.log(lat,lon);
-
-									document.getElementById('us2-lat').value = lat;
-									document.getElementById('us2-lon').value = lon;
-									document.getElementById('us2-address').value = address;
-
-								}
-
-								$(document).ready(function () {
-
-									// lat = document.getElementById('lat').value;
-									// lon = document.getElementById('lon').value;
-									$('#maparea').locationpicker({
-										inputBinding: {
-											latitudeInput: $('#us2-lat'),
-											longitudeInput: $('#us2-lon'),
-											locationNameInput: $('#us2-address')
-										},
-										enableAutocomplete: false,
-
-										onchanged: function (currentLocation) {
-											console.log(currentLocation)
-											var placeType = ["atm", "pharmacy"];
-											var sep = ',';
-											var request = [], resultset,
-												lat = currentLocation.latitude,
-												lan = currentLocation.longitude;
-											for (var i = 0; i < placeType.length; i++) {
-												request = {
-													location: new google.maps.LatLng(lat, lon),
-													types: [placeType[i]],
-													rankBy: google.maps.places.RankBy.DISTANCE
-
-												};
-												var container = document.getElementById(placeType[i]);
-												//console.log(container);
-												var service = new google.maps.places.PlacesService(container);
-												service.nearbySearch(request, callback);
-												//console.log(placeType[i]);
-												function callback(results, status) {
-													if (status == google.maps.places.PlacesServiceStatus.OK) {
-														for (var j = 0; j < 3; j++) {
-															resultset += results[j].name + sep + results[j].vicinity + '.<br>'
-
-														}
-
-													}
-												}
-
-											}
-										}
-
-
-									});
-
-								});
-
-								function submitForm(id) {
-									document.getElementById(id).submit();
-								}
-								function giftShow(giftValue) {
-									console.log('sdsd');
-									let a = document.getElementById(giftValue);
-									document.getElementById('giftShowModal') = "";
-									document.getElementById('giftShowModal') = a;
-								}
-							</script>
-
-
-							
 </body>
 
 </html>

@@ -1,35 +1,29 @@
-$(function () {
-    $('#date-picker').daterangepicker({
-        "opens": "left",
-        singleDatePicker: true,
-
-        // Disabling Date Ranges
-        isInvalidDate: function (date) {
-            // Disabling Date Range
-            var disabled_start = moment('09/02/2018', 'MM/DD/YYYY');
-            var disabled_end = moment('09/06/2018', 'MM/DD/YYYY');
-            return date.isAfter(disabled_start) && date.isBefore(disabled_end);
-
-            // Disabling Single Day
-            // if (date.format('MM/DD/YYYY') == '08/08/2018') {
-            //     return true; 
-            // }
+jQuery(document).ready(function ($) {
+    "use strict";
+    $('#customers-testimonials').owlCarousel({
+        loop: true,
+        center: true,
+        items: 3,
+        margin: 30,
+        autoplay: true,
+        dots: true,
+        autoplayTimeout: 1000,
+        smartSpeed: 10,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
         }
     });
+
 });
 
-// Calendar animation
-$('#date-picker').on('showCalendar.daterangepicker', function (ev, picker) {
-    $('.daterangepicker').addClass('calendar-animated');
-});
-$('#date-picker').on('show.daterangepicker', function (ev, picker) {
-    $('.daterangepicker').addClass('calendar-visible');
-    $('.daterangepicker').removeClass('calendar-hidden');
-});
-$('#date-picker').on('hide.daterangepicker', function (ev, picker) {
-    $('.daterangepicker').removeClass('calendar-visible');
-    $('.daterangepicker').addClass('calendar-hidden');
-});
 
 $(".time-slot").each(function () {
     var timeSlot = $(this);
@@ -83,6 +77,7 @@ function friendFunction(a) {
     }
 }
 
+
 let lat, lon;
 function setMap() {
 
@@ -109,7 +104,8 @@ $(document).ready(function () {
             longitudeInput: $('#us2-lon'),
             locationNameInput: $('#us2-address')
         },
-        enableAutocomplete: true,
+        enableAutocomplete: false,
+
         onchanged: function (currentLocation) {
             console.log(currentLocation)
             var placeType = ["atm", "pharmacy"];
@@ -142,7 +138,9 @@ $(document).ready(function () {
             }
         }
 
+
     });
+
 });
 
 function submitForm(id) {
@@ -154,35 +152,3 @@ function giftShow(giftValue) {
     document.getElementById('giftShowModal') = "";
     document.getElementById('giftShowModal') = a;
 }
-
-$(document).ready(function () {
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 1000,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1
-
-            },
-            600: {
-                items: 2
-
-            },
-            1000: {
-                items: 3
-
-            }
-        }
-
-    })
-    $('.play').on('click', function () {
-        owl.trigger('play.owl.autoplay', [1000])
-    })
-    $('.stop').on('click', function () {
-        owl.trigger('stop.owl.autoplay')
-    })
-})
