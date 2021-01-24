@@ -138,10 +138,6 @@ router.route('/portfolio/deleteimg/:img')
       .get(shopAuthentication.isAuthentic, shopPortfolio.getDeletePortfolioImg)      
 
 
-// inventory
-router.route('/inventory')
-      .get(shopAuthentication.isAuthentic,shopController.getInventory)      
-
 ///reviewandrating
 router.route('/reviewandrating')
       .get(shopAuthentication.isAuthentic,shopController.getReviewandRating)      

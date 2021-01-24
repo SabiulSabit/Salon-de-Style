@@ -924,14 +924,6 @@ exports.postHealthSafety = (req, res, next) => {
 
 
 
-
-
-//getInventory 
-exports.getInventory = (req, res, next) => {
-
-
-}
-
 //get Review and Rating 
 exports.getReviewandRating = (req, res, next) => {
 
