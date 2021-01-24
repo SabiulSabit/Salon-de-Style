@@ -194,13 +194,6 @@ document.getElementById("shop-infobtn").onclick = function () {
 
 
 
-
-
-
-
-
-
-
 // add category
 
 let addCategory = document.getElementById("addCategory").value;
@@ -263,6 +256,26 @@ function closeDay(dayId){
   }
 }
 
+
+function hiddenAdd() {
+  //get all checkbox info
+  sun = document.getElementById('sundayChecked').checked;
+  mon = document.getElementById('mondayChecked').checked;
+  tue = document.getElementById('tuesdayChecked').checked;
+  wed = document.getElementById('wednesdayChecked').checked;
+  thu = document.getElementById('thrusdayChecked').checked;
+  fri = document.getElementById('fridayChecked').checked;
+  sat = document.getElementById('saturdayChecked').checked;
+
+  //set all hidden input value
+  document.getElementById("sunChecked").value = sun;
+  document.getElementById("monChecked").value = mon;
+  document.getElementById("tueChecked").value = tue;
+  document.getElementById("wedChecked").value = wed;
+  document.getElementById("thuChecked").value = thu;
+  document.getElementById("friChecked").value = fri;
+  document.getElementById("satChecked").value = sat;
+}
 
 
 

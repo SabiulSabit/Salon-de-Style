@@ -50,7 +50,7 @@
 
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let sunC="" if(sun.length==1){ sunC="checked" } %>
+                  <% let sunC="" ; if(sun.length==1){ sunC="checked" } %>
                     <input type="checkbox" id="sundayChecked" class="material-inputs chk-col-green" <%=sunC%>
                     onchange="closeDay('sunday');" />
                     <label for="sundayChecked">Sunday</label>
@@ -68,11 +68,7 @@
                           <%=sun[0].open%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+
                     </select>
                   </div>
                 </div>
@@ -84,11 +80,7 @@
                           <%=sun[0].close%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+
                     </select>
                   </div>
                 </div>
@@ -102,12 +94,10 @@
             <div class="day">
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let monC="" if(mon.length==1){ monC="checked" } %>
+                  <% let monC="" ; if(mon.length==1){ monC="checked" } %>
                     <input type="checkbox" id="mondayChecked" class="material-inputs chk-col-green" <%=monC%>
                     onchange="closeDay('monday');" />
                     <label for="mondayChecked">Monday</label>
-
-
                 </div>
                 <div class="col-lg-4">
                   <div class="closeTime1" id="mondayClose">
@@ -120,11 +110,7 @@
                           <%=mon[0].open%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionOpen.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -136,11 +122,7 @@
                           <%=mon[0].close%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionClose.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -153,7 +135,7 @@
             <div class="day">
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let tueC="" if(tue.length==1){ tueC="checked" } %>
+                  <% let tueC="" ; if(tue.length==1){ tueC="checked" } %>
                     <input type="checkbox" id="tuesdayChecked" class="material-inputs chk-col-green" <%=tueC%>
                     onchange="closeDay('tuesday');" />
                     <label for="tuesdayChecked">Tuesday</label>
@@ -170,11 +152,7 @@
                           <%=tue[0].open%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionOpen.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -186,11 +164,7 @@
                           <%=tue[0].close%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionClose.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -200,11 +174,10 @@
 
             </div>
 
-
             <div class="day">
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let wedC="" if(wed.length==1){ wedC="checked" } %>
+                  <% let wedC="" ; if(wed.length==1){ wedC="checked" } %>
                     <input type="checkbox" id="wednesdayChecked" class="material-inputs chk-col-green" <%=wedC%>
                     onchange="closeDay('wednesday');" />
                     <label for="wednesdayChecked">Wednesday</label>
@@ -221,11 +194,7 @@
                           <%=wed[0].open%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionOpen.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -237,11 +206,7 @@
                           <%=wed[0].close%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionClose.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -251,11 +216,10 @@
 
             </div>
 
-
             <div class="day">
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let thuC="" if(thu.length==1){ thuC="checked" } %>
+                  <% let thuC="" ; if(thu.length==1){ thuC="checked" } %>
                     <input type="checkbox" id="thrusdayChecked" class="material-inputs chk-col-green" <%=thuC%>
                     onchange="closeDay('thrusday');" />
                     <label for="thrusdayChecked">Thursday</label>
@@ -272,11 +236,7 @@
                           <%=thu[0].open%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionOpen.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -288,11 +248,7 @@
                           <%=thu[0].close%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionClose.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -305,7 +261,7 @@
             <div class="day">
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let friC="" if(fri.length==1){ friC="checked" } %>
+                  <% let friC="" ; if(fri.length==1){ friC="checked" } %>
                     <input type="checkbox" id="fridayChecked" class="material-inputs chk-col-green" <%=friC%>
                     onchange="closeDay('friday');" />
                     <label for="fridayChecked">Friday</label>
@@ -322,7 +278,7 @@
                           <%=fri[0].open%>
                         </option>
                         <% } %>
-                         
+                          <%- include('./include/timeOptionOpen.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -334,25 +290,22 @@
                           <%=fri[0].close%>
                         </option>
                         <% } %>
-                        
+                          <%- include('./include/timeOptionClose.ejs') %>
                     </select>
                   </div>
                 </div>
 
               </div>
               <div id="fridayNewSlot"></div>
-
             </div>
 
             <div class="day">
               <div class="row mb-3">
                 <div class="col-lg-2">
-                  <% let satC="" if(sat.length==1){ satC="checked" } %>
+                  <% let satC="" ; if(sat.length==1){ satC="checked" } %>
                     <input type="checkbox" id="saturdayChecked" class="material-inputs chk-col-green" <%=satC%>
                     onchange="closeDay('saturday');" />
                     <label for="saturdayChecked">Saturday</label>
-
-
                 </div>
                 <div class="col-lg-4">
                   <div class="closeTime6" id="saturdayClose">
@@ -365,11 +318,7 @@
                           <%=sat[0].open%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionOpen.ejs') %>
                     </select>
                   </div>
                 </div>
@@ -381,20 +330,14 @@
                           <%=sat[0].close%>
                         </option>
                         <% } %>
-                          <option value="10:00">10:00 AM</option>
-                          <option value="10:05">10:05 AM</option>
-                          <option value="10:10">10:10 AM</option>
-                          <option value="10:15">10:15 AM</option>
-                          <option value="10:20">10:20 AM</option>
+                          <%- include('./include/timeOptionClose.ejs') %>
                     </select>
                   </div>
                 </div>
-
               </div>
               <div id="saturdayNewSlot"></div>
 
             </div>
-
 
             <div class="row">
               <div class="col-lg-12">
@@ -403,7 +346,6 @@
                 <div class="form-group">
                   <textarea name="descrip" class="form-control" rows="6" placeholder="Text Here..."></textarea>
                 </div>
-
 
               </div>
             </div>
@@ -421,32 +363,8 @@
       <%- include('./include/js.ejs') %>
         <!-- JS Plugin End-->
 
-        <!-- custom js -->
+      <script src="/js/shop/script.js"></script>
 
-        <script src="/js/shop/script.js"></script>
-
-        <!-- <script src="calender.js"></script> -->
-        <script>
-          function hiddenAdd() {
-            //get all checkbox info
-            sun = document.getElementById('sundayChecked').checked;
-            mon = document.getElementById('mondayChecked').checked;
-            tue = document.getElementById('tuesdayChecked').checked;
-            wed = document.getElementById('wednesdayChecked').checked;
-            thu = document.getElementById('thrusdayChecked').checked;
-            fri = document.getElementById('fridayChecked').checked;
-            sat = document.getElementById('saturdayChecked').checked;
-
-            //set all hidden input value
-            document.getElementById("sunChecked").value = sun;
-            document.getElementById("monChecked").value = mon;
-            document.getElementById("tueChecked").value = tue;
-            document.getElementById("wedChecked").value = wed;
-            document.getElementById("thuChecked").value = thu;
-            document.getElementById("friChecked").value = fri;
-            document.getElementById("satChecked").value = sat;
-          }
-        </script>
   </body>
 
   </html>
