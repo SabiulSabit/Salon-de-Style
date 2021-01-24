@@ -36,47 +36,7 @@ $(".time-slot").each(function () {
     });
 });
 
-function dateInfo() {
-    //console.log("ajksdf");
-    let temp = '<%- JSON.stringify(time) %>';
-    let time = JSON.parse(temp);
-    //console.log(time);
 
-    let selectedDate = document.getElementById('date-picker').value;
-    let dayName = getDayName(selectedDate, "en-US")
-    dayName = dayName.toLowerCase().slice(0, 3);
-    let slot = 0
-
-    for (i = 0; i < time.length; i++) {
-        if (time[i].dayName == dayName) {
-            slot = parseInt(time[i].close) - parseInt(time[i].open)
-
-            let a = makeTimeIntervals(time[i].open, time[i].close, 30);
-
-            document.getElementById('showSlot').innerHTML = "";
-            document.getElementById('slot').innerHTML = "Select Time";
-            document.getElementById('showSlotDropDown').style.display = "block";
-            for (let j = 0; j < a.length; j++) {
-                document.getElementById('showSlot').innerHTML += `<div class="time-slot">
-                                                                <input type="radio"   name="timeSlot" value="${a[j]}" id="time-slot-${j}">
-                                                                <label onclick="boxOff('time-slot-${j}')" for="time-slot-${j}">
-                                                                <strong>${a[j]}</strong>
-                                                                </label>
-                                                            </div>`;
-            }
-            //console.log(a);
-        }
-    }
-
-    if (slot == 0) {
-        document.getElementById('slot').innerHTML = "";
-        document.getElementById('slot').innerHTML = "Closed";
-        document.getElementById('showSlotDropDown').style.display = "none";
-
-        return;
-    }
-
-}
 
 function getDayName(dateStr, locale) {
     var date = new Date(dateStr);
