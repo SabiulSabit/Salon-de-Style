@@ -14,8 +14,7 @@ const shopService = require('../controllers/shop/service');
 const shopPackage = require('../controllers/shop/package');
 
 
-router.route('/')
-      .get(shopController.getHome);
+
 //login page show routing 
 router.route('/login')
       .get(shopAuthentication.getLogin)

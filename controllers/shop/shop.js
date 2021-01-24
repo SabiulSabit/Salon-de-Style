@@ -17,12 +17,6 @@ const passwordDB = process.env.passwordDB;
 const databaseName = process.env.databaseName;
 
 
-//render home page 
-exports.getHome = (req, res, next) => {
-    console.log("Shop Home")
-    // res.render('shop/openinghour');
-}
-
 
 //show company info
 exports.getCompanyInfo = (req, res, next) => {
