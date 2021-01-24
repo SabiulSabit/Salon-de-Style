@@ -12,6 +12,7 @@ const shopAuthentication = require('../controllers/shop/authentication');
 const shopStaff = require('../controllers/shop/staff');
 const shopService = require('../controllers/shop/service');
 const shopPackage = require('../controllers/shop/package');
+const shopPortfolio = require('../controllers/shop/portfolio');
 
 
 
@@ -128,12 +129,12 @@ router.route('/updatepackage')
 
 ///portfolio
 router.route('/portfolio')
-      .get(shopAuthentication.isAuthentic,shopController.getPortfolio) 
-      .post(shopAuthentication.isAuthentic,shopController.postPortfolio)
+      .get(shopAuthentication.isAuthentic, shopPortfolio.getPortfolio) 
+      .post(shopAuthentication.isAuthentic, shopPortfolio.postPortfolio)
 
 //delete portfolio image
 router.route('/portfolio/deleteimg/:img')
-      .get(shopAuthentication.isAuthentic,shopController.getDeletePortfolioImg)      
+      .get(shopAuthentication.isAuthentic, shopPortfolio.getDeletePortfolioImg)      
 
 
 // inventory

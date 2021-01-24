@@ -130,7 +130,7 @@ exports.postPortfolio = (req, res, next) => {
 
                     if (fileType == 'jpg' || fileType == 'png' || fileType == 'jpeg') {
 
-                        a = path.join(__dirname, '../')
+                        a = path.join(__dirname, '../../')
 
                         if (name === "image") {
                             imgPath = (req.session.mail + insertField + "." + fileType);
