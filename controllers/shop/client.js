@@ -51,6 +51,26 @@ exports.postClientDetail = (req, res, next) => {
 
 //get Client Invoice 
 exports.getClientInvoice = (req, res, next) => {
-    return res.render('shop/clientInvoice')
+    let connectDB = mysql.createConnection({
+        host: hostNameDB,
+        user: userNameDB,
+        password: passwordDB,
+        database: databaseName,
+    });
+
+    let data = "SELECT `name`, `useremail`,  `phone`, `address`, `discount`, `description`, `id` " +
+        " FROM `client` " +
+        " WHERE `shopMail` = " + mysql.escape(req.session.mail);
+
+    connectDB.query(data, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            return res.render('shop/inventory', {
+                data: result
+            });
+        }
+    })
 }
 

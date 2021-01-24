@@ -929,27 +929,7 @@ exports.postHealthSafety = (req, res, next) => {
 //getInventory 
 exports.getInventory = (req, res, next) => {
 
-    let connectDB = mysql.createConnection({
-        host: hostNameDB,
-        user: userNameDB,
-        password: passwordDB,
-        database: databaseName,
-    });
 
-    let data = "SELECT `name`, `useremail`,  `phone`, `address`, `discount`, `description`, `id` " +
-        " FROM `client` " +
-        " WHERE `shopMail` = " + mysql.escape(req.session.mail);
-
-    connectDB.query(data, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        else {
-            return res.render('shop/inventory', {
-                data: result
-            });
-        }
-    })
 }
 
 //get Review and Rating 

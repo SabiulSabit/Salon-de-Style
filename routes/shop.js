@@ -13,6 +13,7 @@ const shopStaff = require('../controllers/shop/staff');
 const shopService = require('../controllers/shop/service');
 const shopPackage = require('../controllers/shop/package');
 const shopPortfolio = require('../controllers/shop/portfolio');
+const shopClient = require('../controllers/shop/client');
 
 
 
@@ -81,12 +82,12 @@ router.route('/invoicedetail')
 
 ///clientdetail      
 router.route('/clientdetail')
-      .get(shopAuthentication.isAuthentic,shopController.getClientDetail)
-      .post(shopAuthentication.isAuthentic,shopController.postClientDetail)
+      .get(shopAuthentication.isAuthentic,shopClient.getClientDetail)
+      .post(shopAuthentication.isAuthentic,shopClient.postClientDetail)
 
 ///clientinvoice
-router.route('/clientinvoice')
-      .get(shopAuthentication.isAuthentic,shopController.getClientInvoice)
+router.route('/clientlist')
+      .get(shopAuthentication.isAuthentic,shopClient.getClientInvoice)
       
 
 ///categorieslist
