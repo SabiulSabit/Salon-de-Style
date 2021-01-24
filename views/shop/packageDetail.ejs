@@ -2,62 +2,14 @@
  <!-- Header Start-->
  <%- include('./include/header.ejs') %>
   <!-- Header End-->
-
-
-    <style>
-        .row {
-            margin-bottom: 20px;
-        }
-
-        .button.button-small {
-            height: 30px;
-            line-height: 30px;
-            padding: 0px 10px;
-        }
-
-        td input[type=text],
-        td select {
-            width: 100%;
-            height: 30px;
-            margin: 0;
-            padding: 2px 8px;
-        }
-
-        th:last-child {
-            text-align: right;
-        }
-
-        td:last-child {
-            text-align: right;
-        }
-
-        td:last-child .button {
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            padding: 0px;
-            margin-bottom: 0px;
-            margin-right: 5px;
-            
-        }
-
-        td:last-child .button .fa {
-            line-height: 30px;
-            width: 30px;
-        }
-    </style>
+   <link rel="stylesheet" href="/css/shop/paclageDetail.css">
 </head>
 
 <body>
-
-
     <%- include('./sideBar.ejs') %>
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
+
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
+
         <div class="row page-titles">
             <div class="col-md-5 col-12 align-self-center">
                 <h3 class="text-themecolor mb-0">Packages</h3>
@@ -67,12 +19,8 @@
                 </ol>
             </div>
         </div>
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- Container fluid  -->
+
         <div class="container-fluid">
-
-
-  
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered" id="editableTable">
@@ -110,9 +58,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            <% } %>
-                           
-                           
+                            <% } %>  
                         </tbody>
                     </table>
                 </div>
@@ -121,9 +67,8 @@
         </div>
         <!-- End Container fluid  -->
     </div>
-    <!-- End Page wrapper  -->
+
     </div>
-    <!-- End Wrapper -->
  <!-- JS Plugin Start-->
  <%- include('./include/js.ejs') %>
   <!-- JS Plugin End-->
