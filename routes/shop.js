@@ -16,6 +16,7 @@ const shopPortfolio = require('../controllers/shop/portfolio');
 const shopClient = require('../controllers/shop/client');
 const shopHealthSafety = require('../controllers/shop/healthSafety');
 const shopSales = require('../controllers/shop/sales');
+const shopTimeSchedule = require('../controllers/shop/timeSchedule');
 
 
 
@@ -43,10 +44,10 @@ router.route('/savetax')
 
  //show shop open and close hours
  router.route('/openinghours')
-      .get(shopAuthentication.isAuthentic,shopController.getOpeningHours)
+      .get(shopAuthentication.isAuthentic,shopTimeSchedule.getOpeningHours)
 
 router.route('/savedate')
-       .post(shopAuthentication.isAuthentic,shopController.saveNewDate)           
+       .post(shopAuthentication.isAuthentic,shopTimeSchedule.saveNewDate)           
 
 
 router.route('/staffmember')
