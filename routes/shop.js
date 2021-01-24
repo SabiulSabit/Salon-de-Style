@@ -41,17 +41,11 @@ router.route('/savetax')
       .post(shopAuthentication.isAuthentic,shopController.postSaveTax)
 
  //show shop open and close hours
- 
  router.route('/openinghours')
       .get(shopAuthentication.isAuthentic,shopController.getOpeningHours)
 
 router.route('/savedate')
        .post(shopAuthentication.isAuthentic,shopController.saveNewDate)           
-
-
-router.route('/workschedule')
-      .get(shopAuthentication.isAuthentic,shopController.getWorkSchedule)  
-      
 
 
 router.route('/staffmember')

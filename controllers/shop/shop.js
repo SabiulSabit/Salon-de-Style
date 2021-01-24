@@ -424,37 +424,6 @@ exports.saveNewDate = (req, res, next) => {
 
 }
 
-// get getWorkSchedule 
-exports.getWorkSchedule = (req, res, next) => {
-
-    var connectDB = mysql.createConnection({
-        host: hostNameDB,
-        user: userNameDB,
-        password: passwordDB,
-        database: databaseName
-    });
-
-    data = "SELECT * " +
-        "FROM `shoptime` " +
-        " WHERE  businessMail  = " + mysql.escape(req.session.mail);
-
-    connectDB.query(data, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        else {
-            //console.log(result);
-            // d = []
-            // for(i=0;i<result.length;i++){
-            //     d.push(result[i]);
-            // }
-            // console.log(result);
-            res.render('shop/workschedule', { data: result });
-        }
-    })
-
-}
-
 
 //get  sales history page
 exports.getSalesHistory = (req, res, next) => {
