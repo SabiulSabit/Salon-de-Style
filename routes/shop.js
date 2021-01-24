@@ -14,6 +14,7 @@ const shopService = require('../controllers/shop/service');
 const shopPackage = require('../controllers/shop/package');
 const shopPortfolio = require('../controllers/shop/portfolio');
 const shopClient = require('../controllers/shop/client');
+const shopHealthSafety = require('../controllers/shop/healthSafety');
 
 
 
@@ -97,8 +98,8 @@ router.route('/categorieslist')
 
 ///health&safety    
 router.route('/health&safety')
-      .get(shopAuthentication.isAuthentic,shopController.getHealthSafety)
-      .post(shopAuthentication.isAuthentic,shopController.postHealthSafety)
+      .get(shopAuthentication.isAuthentic,shopHealthSafety.getHealthSafety)
+      .post(shopAuthentication.isAuthentic,shopHealthSafety.postHealthSafety)
 
 
 

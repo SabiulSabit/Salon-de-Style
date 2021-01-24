@@ -1,7 +1,7 @@
 //import model
-var mysql = require('mysql');
-var formidable = require('formidable');
-let fs = require('fs')
+const mysql = require('mysql');
+const formidable = require('formidable');
+const fs = require('fs')
 const path = require('path');
 
 require("dotenv").config();
