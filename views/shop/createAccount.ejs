@@ -1,6 +1,5 @@
-
- <!-- Header Start-->
- <%- include('./include/header.ejs') %>
+<!-- Header Start-->
+<%- include('./include/header.ejs') %>
   <!-- Header End-->
 
 
@@ -194,7 +193,7 @@
         padding: 2rem 0 3rem;
       }
     }
-    
+
     .box {
       position: relative;
       background: #ffffff;
@@ -262,260 +261,261 @@
       border-radius: 0;
       margin-bottom: 0;
     }
-    .container .form-right input{
-border-radius: 25px;
+
+    .container .form-right input {
+      border-radius: 25px;
     }
   </style>
 
 
-</head>
+  </head>
 
-<body>
+  <body>
 
     <div class="row1">
-     
-    </div>
-  
-  <div class="container">
-    
-    <div class="form-left">
-     
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Quick and free sign-up</h4>
-        <h5>Enter your email address to create an account</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Quick and free sign-up</h4>
-        <h5>Enter your email address to create an account</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Quick and free sign-up</h4>
-        <h5>Enter your email address to create an account</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Quick and free sign-up</h4>
-        <h5>Enter your email address to create an account</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Quick and free sign-up</h4>
-        <h5>Enter your email address to create an account</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Quick and free sign-up</h4>
-        <h5>Enter your email address to create an account</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Cross-platform solution</h4>
-        <h5>Preview your newsletters on any device before sending them out</h5>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <h4>Start sending emails</h4>
-        <h5>Use our API or pick our pre-built templates</h5>
-      </div>
-    </div>
-    <div class="form-right">
-      
-      <h2>Create your account</h2>
-      <form id="form" class="form" action="/shop/createaccount" method="POST" enctype="multipart/form-data">
 
-        <div class="form-control">
-          <label for="fullname">User Name</label>
-          <input type="text" name="ownername" placeholder="Enter your full name" autocomplete="off">
-          <small>Error message</small>
-        </div>
+    </div>
 
-        <div class="form-control">
-          <label for="password">User Password</label>
-          <input type="password" name="pass" id="password" placeholder="Type to create a password">
-          <small>Error message</small>
+    <div class="container">
+
+      <div class="form-left">
+
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Quick and free sign-up</h4>
+          <h5>Enter your email address to create an account</h5>
         </div>
-        <div class="form-control">
-          <label for="password">User confirm Password</label>
-          <input type="password" name="conPass" id="password" placeholder="Confirm your password">
-          <small>Error message</small>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Quick and free sign-up</h4>
+          <h5>Enter your email address to create an account</h5>
         </div>
-        <div class="form-control">
-          <label for="fullname">Shop Category</label>
-          <input type="text" name="category" placeholder="Enter your Shop Category" autocomplete="off">
-          <small>Error message</small>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Quick and free sign-up</h4>
+          <h5>Enter your email address to create an account</h5>
         </div>
-        <div class="form-control">
-          <label for="fullname">Shop Name</label>
-          <input type="text" name="shopname" placeholder="Enter your Shop name" autocomplete="off">
-          <small>Error message</small>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Quick and free sign-up</h4>
+          <h5>Enter your email address to create an account</h5>
         </div>
-        <div class="form-control">
-          <label for="email">Shop Email</label>
-          <input type="text" name="shopemail" placeholder="Enter your email address" autocomplete="off" autofocus>
-          <small>Error message</small>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Quick and free sign-up</h4>
+          <h5>Enter your email address to create an account</h5>
         </div>
-        <div class="form-control">
-          <label for="email">Shop Number</label>
-          <input type="text" name="phone" placeholder="Enter your Phone Number" autocomplete="off" autofocus>
-          <small>Error message</small>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Quick and free sign-up</h4>
+          <h5>Enter your email address to create an account</h5>
         </div>
-  
-        <div class="form-control">
-          <label for="">Location</label>
-              <input class="form-control" name="address" type="text" id="us2-address" required />
-              <div class="col-md-6">
-                <input class="form-control" name="lati" type="hidden" id="us2-lat" hidden />
-              </div>
-              <div class="col-md-6">
-                <input class="form-control" name="long" type="hidden" id="us2-lon" hidden />
-              </div>
-              <div class="col-md-12">
-                <div id="maparea" style="height: 300px;"></div>
-                <div class=""></div>
-              </div>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Cross-platform solution</h4>
+          <h5>Preview your newsletters on any device before sending them out</h5>
         </div>
-        <div class="form-control">
-          <label class="control-label">Upload File</label>
-                <div class="preview-zone hidden">
-                  <div class="box box-solid">
-                    <div class="box-header with-border">
-                      <div><b>Preview</b></div>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-danger btn-xs remove-preview">
-                          <i class="fa fa-times"></i> Remove Image
-                        </button>
-                      </div>
-                    </div>
-                    <div class="box-body"></div>
+        <div>
+          <i class="fas fa-check"></i>
+          <h4>Start sending emails</h4>
+          <h5>Use our API or pick our pre-built templates</h5>
+        </div>
+      </div>
+      <div class="form-right">
+
+        <h2>Create your account</h2>
+        <form id="form" class="form" action="/shop/createaccount" method="POST" enctype="multipart/form-data">
+
+          <div class="form-control">
+            <label for="fullname">User Name</label>
+            <input type="text" name="ownername" placeholder="Enter your full name" autocomplete="off">
+            <small>Error message</small>
+          </div>
+
+          <div class="form-control">
+            <label for="password">User Password</label>
+            <input type="password" name="pass" id="password" placeholder="Type to create a password">
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="password">User confirm Password</label>
+            <input type="password" name="conPass" id="password" placeholder="Confirm your password">
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="fullname">Shop Category</label>
+            <input type="text" name="category" placeholder="Enter your Shop Category" autocomplete="off">
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="fullname">Shop Name</label>
+            <input type="text" name="shopname" placeholder="Enter your Shop name" autocomplete="off">
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="email">Shop Email</label>
+            <input type="text" name="shopemail" placeholder="Enter your email address" autocomplete="off" autofocus>
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for="email">Shop Number</label>
+            <input type="text" name="phone" placeholder="Enter your Phone Number" autocomplete="off" autofocus>
+            <small>Error message</small>
+          </div>
+
+          <div class="form-control">
+            <label for="">Location</label>
+            <input class="form-control" name="address" type="text" id="us2-address" required />
+            <div class="col-md-6">
+              <input class="form-control" name="lati" type="hidden" id="us2-lat" hidden />
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" name="long" type="hidden" id="us2-lon" hidden />
+            </div>
+            <div class="col-md-12">
+              <div id="maparea" style="height: 300px;"></div>
+              <div class=""></div>
+            </div>
+          </div>
+          <div class="form-control">
+            <label class="control-label">Upload File</label>
+            <div class="preview-zone hidden">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <div><b>Preview</b></div>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-danger btn-xs remove-preview">
+                      <i class="fa fa-times"></i> Remove Image
+                    </button>
                   </div>
                 </div>
-                <div class="dropzone-wrapper">
-                  <div class="dropzone-desc">
-                    <i class="glyphicon glyphicon-download-alt"></i>
-                    <p>Choose an image file or drag it here.</p>
-                  </div>
-                  <input type="file" name="img" class="dropzone" required>
-                </div>
-        </div>
-        
-        <div class="checkbox-control">
-          <input type="checkbox" id="checkbox">
-          <label for="update">Get updates and notifications about our product</label>
-        </div>
-        <button class="btn submitBtn" type="submit">Submit</button>
-      </form>
+                <div class="box-body"></div>
+              </div>
+            </div>
+            <div class="dropzone-wrapper">
+              <div class="dropzone-desc">
+                <i class="glyphicon glyphicon-download-alt"></i>
+                <p>Choose an image file or drag it here.</p>
+              </div>
+              <input type="file" name="img" class="dropzone" required>
+            </div>
+          </div>
+
+          <div class="checkbox-control">
+            <input type="checkbox" id="checkbox">
+            <label for="update">Get updates and notifications about our product</label>
+          </div>
+          <button class="btn submitBtn" type="submit">Submit</button>
+        </form>
+      </div>
     </div>
-  </div>
 
-</body>
-<!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
-<script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
+  </body>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
+  <script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script>
 
-<script>
-  $(document).ready(function () {
-    $('#maparea').locationpicker({
-      inputBinding: {
-        latitudeInput: $('#us2-lat'),
-        longitudeInput: $('#us2-lon'),
-        locationNameInput: $('#us2-address')
-      },
-      enableAutocomplete: true,
+  <script>
+    $(document).ready(function () {
+      $('#maparea').locationpicker({
+        inputBinding: {
+          latitudeInput: $('#us2-lat'),
+          longitudeInput: $('#us2-lon'),
+          locationNameInput: $('#us2-address')
+        },
+        enableAutocomplete: true,
 
-      onchanged: function (currentLocation) {
-        var placeType = ["atm", "pharmacy"];
-        var sep = ',';
-        var request = [],
-          lat = currentLocation.latitude,
-          lan = currentLocation.longitude;
-        for (var i = 0; i < placeType.length; i++) {
-          request = {
-            location: new google.maps.LatLng(lat, lan),
-            types: [placeType[i]],
-            rankBy: google.maps.places.RankBy.DISTANCE
-          };
-          var container = document.getElementById("'" + placeType[i] + "'");
-          var service = new google.maps.places.PlacesService(container);
-          service.nearbySearch(request, callback);
+        onchanged: function (currentLocation) {
+          var placeType = ["atm", "pharmacy"];
+          var sep = ',';
+          var request = [],
+            lat = currentLocation.latitude,
+            lan = currentLocation.longitude;
+          for (var i = 0; i < placeType.length; i++) {
+            request = {
+              location: new google.maps.LatLng(lat, lan),
+              types: [placeType[i]],
+              rankBy: google.maps.places.RankBy.DISTANCE
+            };
+            var container = document.getElementById("'" + placeType[i] + "'");
+            var service = new google.maps.places.PlacesService(container);
+            service.nearbySearch(request, callback);
 
-          function callback(results, status) {
-            if (status == google.maps.places.PlacesServiceStatus.OK) {
-              for (var j = 0; j < 3; j++) {
-                var input = document.getElementById("'" + placeType[i] + "'");
-                var resultset = results[j].name + sep + results[j].vicinity + '.';
+            function callback(results, status) {
+              if (status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var j = 0; j < 3; j++) {
+                  var input = document.getElementById("'" + placeType[i] + "'");
+                  var resultset = results[j].name + sep + results[j].vicinity + '.';
 
+
+                }
 
               }
-
             }
           }
         }
-      }
 
+      });
     });
-  });
-</script>
+  </script>
 
-<script>
-  function readFile(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
+  <script>
+    function readFile(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-      reader.onload = function (e) {
-        var htmlPreview =
-          '<img width="200" src="' + e.target.result + '" />' +
-          '<p>' + input.files[0].name + '</p>';
-        var wrapperZone = $(input).parent();
-        var previewZone = $(input).parent().parent().find('.preview-zone');
-        var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+        reader.onload = function (e) {
+          var htmlPreview =
+            '<img width="200" src="' + e.target.result + '" />' +
+            '<p>' + input.files[0].name + '</p>';
+          var wrapperZone = $(input).parent();
+          var previewZone = $(input).parent().parent().find('.preview-zone');
+          var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
 
-        wrapperZone.removeClass('dragover');
-        previewZone.removeClass('hidden');
-        boxZone.empty();
-        boxZone.append(htmlPreview);
-      };
+          wrapperZone.removeClass('dragover');
+          previewZone.removeClass('hidden');
+          boxZone.empty();
+          boxZone.append(htmlPreview);
+        };
 
-      reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(input.files[0]);
+      }
     }
-  }
 
-  function reset(e) {
-    e.wrap('<form>').closest('form').get(0).reset();
-    e.unwrap();
-  }
+    function reset(e) {
+      e.wrap('<form>').closest('form').get(0).reset();
+      e.unwrap();
+    }
 
-  $(".dropzone").change(function () {
-    readFile(this);
-  });
+    $(".dropzone").change(function () {
+      readFile(this);
+    });
 
-  $('.dropzone-wrapper').on('dragover', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).addClass('dragover');
-  });
+    $('.dropzone-wrapper').on('dragover', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).addClass('dragover');
+    });
 
-  $('.dropzone-wrapper').on('dragleave', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).removeClass('dragover');
-  });
+    $('.dropzone-wrapper').on('dragleave', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).removeClass('dragover');
+    });
 
-  $('.remove-preview').on('click', function () {
-    var boxZone = $(this).parents('.preview-zone').find('.box-body');
-    var previewZone = $(this).parents('.preview-zone');
-    var dropzone = $(this).parents('.form-group').find('.dropzone');
-    boxZone.empty();
-    previewZone.addClass('hidden');
-    reset(dropzone);
-  });
-</script>
+    $('.remove-preview').on('click', function () {
+      var boxZone = $(this).parents('.preview-zone').find('.box-body');
+      var previewZone = $(this).parents('.preview-zone');
+      var dropzone = $(this).parents('.form-group').find('.dropzone');
+      boxZone.empty();
+      previewZone.addClass('hidden');
+      reset(dropzone);
+    });
+  </script>
 
-</body>
+  </body>
 
-</html>
+  </html>

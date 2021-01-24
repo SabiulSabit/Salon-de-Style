@@ -2,99 +2,14 @@
  <!-- Header Start-->
  <%- include('./include/header.ejs') %>
   <!-- Header End-->
-
-
-
-  <style>
-    /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
-    #map {
-      height: 500px;
-    }
-
-    #description {
-      font-family: Roboto;
-      font-size: 15px;
-      font-weight: 300;
-    }
-
-    #infowindow-content .title {
-      font-weight: bold;
-    }
-
-    #infowindow-content {
-      display: none;
-    }
-
-    #map #infowindow-content {
-      display: inline;
-    }
-
-    .pac-card {
-      margin: 10px 10px 0 0;
-      border-radius: 2px 0 0 2px;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      outline: none;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      background-color: #fff;
-      font-family: Roboto;
-    }
-
-    #pac-container {
-      padding-bottom: 12px;
-      margin-right: 12px;
-    }
-
-    .pac-controls {
-      display: inline-block;
-      padding: 5px 11px;
-    }
-
-    .pac-controls label {
-      font-family: Roboto;
-      font-size: 13px;
-      font-weight: 300;
-    }
-
-    #pac-input {
-      background-color: #fff;
-      font-family: Roboto;
-      font-size: 15px;
-      font-weight: 300;
-      margin-left: 12px;
-      padding: 0 11px 0 13px;
-      text-overflow: ellipsis;
-      width: 400px;
-    }
-
-    #pac-input:focus {
-      border-color: #4d90fe;
-    }
-
-    #title {
-      color: #fff;
-      background-color: #4d90fe;
-      font-size: 25px;
-      font-weight: 500;
-      padding: 6px 12px;
-    }
-
-    #target {
-      width: 345px;
-    }
-  </style>
-
+  <link rel="stylesheet" href="/css/shop/companyInfo.css"> 
 </head>
 
 <body onload="setMap()">
-  <!-- partial:index.partial.html -->
-
 
   <!-- Side bar start -->
   <%- include('./sideBar.ejs') %>
   <!-- Side bar end -->
-
 
   <div class="page-wrapper">
     <div class="row">
@@ -247,7 +162,6 @@
   </div>
   <!-- /page content -->
 
-
   </div>
   </div>
 
@@ -258,75 +172,10 @@
   <!-- custom js -->
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUJfIu3uSSh5QOT5nRZ0gEbeGONrY3pgQ&libraries=places&callback=initAutocomplete"></script>
-  <!-- <script src='https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js'></script> -->
-  
+
   <script src="/js/shop/map.js"></script>
   <script src="/js/shop/script.js"></script>
-
-  <script>
-
-    let lat, lon;
-    function setMap() {
-
-      lat = document.getElementById('lat').value;
-      lon = document.getElementById('lon').value;
-      let address = document.getElementById('address').value;
-
-
-      //console.log(lat,lon);
-
-      document.getElementById('us2-lat').value = lat;
-      document.getElementById('us2-lon').value = lon;
-      document.getElementById('us2-address').value = address;
-
-    }
-
-    $(document).ready(function () {
-
-      // lat = document.getElementById('lat').value;
-      // lon = document.getElementById('lon').value;
-      $('#maparea').locationpicker({
-        inputBinding: {
-          latitudeInput: $('#us2-lat'),
-          longitudeInput: $('#us2-lon'),
-          locationNameInput: $('#us2-address')
-        },
-        enableAutocomplete: true,
-        onchanged: function (currentLocation) {
-          console.log(currentLocation)
-          var placeType = ["atm", "pharmacy"];
-          var sep = ',';
-          var request = [], resultset,
-           lat = currentLocation.latitude,
-           lan = currentLocation.longitude;
-          for (var i = 0; i < placeType.length; i++) {
-            request = {
-              location: new google.maps.LatLng(lat, lon),
-              types: [placeType[i]],
-              rankBy: google.maps.places.RankBy.DISTANCE
-
-            };
-            var container = document.getElementById(placeType[i]);
-            //console.log(container);
-            var service = new google.maps.places.PlacesService(container);
-            service.nearbySearch(request, callback);
-            //console.log(placeType[i]);
-            function callback(results, status) {
-              if (status == google.maps.places.PlacesServiceStatus.OK) {
-                for (var j = 0; j < 3; j++) {
-                  resultset += results[j].name + sep + results[j].vicinity + '.<br>'
-
-                }
-
-              }
-            }
-
-          }
-        }
-
-      });
-    });
-  </script>
+  <script src="/js/shop/companyInfo.js"></script>
 
 </body>
 
