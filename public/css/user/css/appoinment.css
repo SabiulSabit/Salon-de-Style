@@ -1,0 +1,26 @@
+.cancelBtn {
+    background-color: #ff304f;
+    padding: 2px 10px;
+    line-height: 22px;
+    font-weight: 900;
+    font-size: 15px;
+    color: white;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.approveBtn {
+    background-color: #74f6a7;
+    padding: 2px 10px;
+    line-height: 22px;
+    font-weight: 900;
+    font-size: 15px;
+    color: white;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.buttons-to-right .button {
+    margin-left: 2px;
+    margin-top: 10px;
+}
